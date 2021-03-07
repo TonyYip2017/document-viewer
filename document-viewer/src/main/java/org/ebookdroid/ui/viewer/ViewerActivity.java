@@ -1,22 +1,5 @@
 package org.ebookdroid.ui.viewer;
 
-import org.ebookdroid.common.settings.types.DocumentViewMode;
-import org.ebookdroid.common.settings.types.RotationType;
-import org.emdev.ui.uimanager.UIManagerAppCompat;
-import org.sufficientlysecure.viewer.R;
-import org.ebookdroid.common.settings.AppSettings;
-import org.ebookdroid.common.settings.books.BookSettings;
-import org.ebookdroid.common.settings.books.Bookmark;
-import org.ebookdroid.common.settings.types.ToastPosition;
-import org.ebookdroid.common.touch.TouchManagerView;
-import org.ebookdroid.core.DecodeService;
-import org.ebookdroid.core.codec.CodecFeatures;
-import org.ebookdroid.ui.viewer.stubs.ViewStub;
-import org.ebookdroid.ui.viewer.viewers.GLView;
-import org.ebookdroid.ui.viewer.views.ManualCropView;
-import org.ebookdroid.ui.viewer.views.PageViewZoomControls;
-import org.ebookdroid.ui.viewer.views.SearchControls;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -33,14 +16,29 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import org.emdev.common.android.AndroidVersion;
+import org.ebookdroid.common.settings.AppSettings;
+import org.ebookdroid.common.settings.books.BookSettings;
+import org.ebookdroid.common.settings.books.Bookmark;
+import org.ebookdroid.common.settings.types.DocumentViewMode;
+import org.ebookdroid.common.settings.types.RotationType;
+import org.ebookdroid.common.settings.types.ToastPosition;
+import org.ebookdroid.common.touch.TouchManagerView;
+import org.ebookdroid.core.DecodeService;
+import org.ebookdroid.core.codec.CodecFeatures;
+import org.ebookdroid.ui.viewer.stubs.ViewStub;
+import org.ebookdroid.ui.viewer.viewers.GLView;
+import org.ebookdroid.ui.viewer.views.ManualCropView;
+import org.ebookdroid.ui.viewer.views.PageViewZoomControls;
+import org.ebookdroid.ui.viewer.views.SearchControls;
 import org.emdev.ui.AbstractActionActivity;
 import org.emdev.ui.actions.ActionDialogBuilder;
 import org.emdev.ui.actions.ActionMenuHelper;
 import org.emdev.ui.gl.GLConfiguration;
 import org.emdev.ui.uimanager.IUIManager;
+import org.emdev.ui.uimanager.UIManagerAppCompat;
 import org.emdev.utils.LayoutUtils;
 import org.emdev.utils.LengthUtils;
+import org.sufficientlysecure.viewer.R;
 
 public class ViewerActivity extends AbstractActionActivity<ViewerActivity, ViewerActivityController> {
 

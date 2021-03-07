@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;
 import org.emdev.utils.LengthUtils;
-import org.emdev.utils.collections.ArrayDeque;
+import java.util.ArrayDeque;
 import org.emdev.utils.collections.SparseArrayEx;
 import org.emdev.utils.collections.TLIterator;
 
@@ -35,9 +35,9 @@ public class ByteBufferManager {
     private static final AtomicLong memoryUsed = new AtomicLong();
     private static final AtomicLong memoryPooled = new AtomicLong();
 
-    private static AtomicLong generation = new AtomicLong();
+    private static final AtomicLong generation = new AtomicLong();
 
-    private static ReentrantLock lock = new ReentrantLock();
+    private static final ReentrantLock lock = new ReentrantLock();
 
     static int partSize = 1 << 7;
 
@@ -50,41 +50,37 @@ public class ByteBufferManager {
                 }
             }
 
-            final TLIterator<ByteBufferBitmap> it = pool.iterator();
-            try {
-                while (it.hasNext()) {
-                    final ByteBufferBitmap ref = it.next();
+            final Iterator<ByteBufferBitmap> it = pool.iterator();
+            while (it.hasNext()) {
+                final ByteBufferBitmap ref = it.next();
 
-                    if (ref.size >= 4 * width * height) {
-                        if (ref.used.compareAndSet(false, true)) {
-                            it.remove();
+                if (ref.size >= 4 * width * height) {
+                    if (ref.used.compareAndSet(false, true)) {
+                        it.remove();
 
-                            ref.pixels.rewind();
-                            ref.gen = generation.get();
-                            ref.width = width;
-                            ref.height = height;
-                            used.append(ref.id, ref);
+                        ref.pixels.rewind();
+                        ref.gen = generation.get();
+                        ref.width = width;
+                        ref.height = height;
+                        used.append(ref.id, ref);
 
-                            reused.incrementAndGet();
-                            memoryPooled.addAndGet(-ref.size);
-                            memoryUsed.addAndGet(ref.size);
+                        reused.incrementAndGet();
+                        memoryPooled.addAndGet(-ref.size);
+                        memoryUsed.addAndGet(ref.size);
 
-                            if (LCTX.isDebugEnabled()) {
-                                LCTX.d("Reuse bitmap: [" + ref.id + ", " + width + ", " + height + "], created="
-                                        + created + ", reused=" + reused + ", memoryUsed=" + used.size() + "/"
-                                        + (memoryUsed.get() / 1024) + "KB" + ", memoryInPool=" + pool.size() + "/"
-                                        + (memoryPooled.get() / 1024) + "KB");
-                            }
-                            return ref;
-                        } else {
-                            if (LCTX.isDebugEnabled()) {
-                                LCTX.d("Attempt to re-use used bitmap: " + ref);
-                            }
+                        if (LCTX.isDebugEnabled()) {
+                            LCTX.d("Reuse bitmap: [" + ref.id + ", " + width + ", " + height + "], created="
+                                    + created + ", reused=" + reused + ", memoryUsed=" + used.size() + "/"
+                                    + (memoryUsed.get() / 1024) + "KB" + ", memoryInPool=" + pool.size() + "/"
+                                    + (memoryPooled.get() / 1024) + "KB");
+                        }
+                        return ref;
+                    } else {
+                        if (LCTX.isDebugEnabled()) {
+                            LCTX.d("Attempt to re-use used bitmap: " + ref);
                         }
                     }
                 }
-            } finally {
-                it.release();
             }
 
             final ByteBufferBitmap ref = new ByteBufferBitmap(width, height);
@@ -121,35 +117,31 @@ public class ByteBufferManager {
             final ByteBufferBitmap[] arr = new ByteBufferBitmap[length];
 
             final int size = 4 * partSize * partSize;
-            final TLIterator<ByteBufferBitmap> it = pool.iterator();
-            try {
-                while (filled < length && it.hasNext()) {
-                    final ByteBufferBitmap ref = it.next();
+            final Iterator<ByteBufferBitmap> it = pool.iterator();
+            while (filled < length && it.hasNext()) {
+                final ByteBufferBitmap ref = it.next();
 
-                    if (ref.size == size) {
-                        if (ref.used.compareAndSet(false, true)) {
-                            it.remove();
+                if (ref.size == size) {
+                    if (ref.used.compareAndSet(false, true)) {
+                        it.remove();
 
-                            ref.pixels.rewind();
-                            ref.gen = generation.get();
-                            ref.width = partSize;
-                            ref.height = partSize;
-                            used.append(ref.id, ref);
+                        ref.pixels.rewind();
+                        ref.gen = generation.get();
+                        ref.width = partSize;
+                        ref.height = partSize;
+                        used.append(ref.id, ref);
 
-                            reused.incrementAndGet();
-                            memoryPooled.addAndGet(-ref.size);
-                            memoryUsed.addAndGet(ref.size);
+                        reused.incrementAndGet();
+                        memoryPooled.addAndGet(-ref.size);
+                        memoryUsed.addAndGet(ref.size);
 
-                            arr[filled++] = ref;
-                        } else {
-                            if (LCTX.isDebugEnabled()) {
-                                LCTX.d("Attempt to re-use used bitmap: " + ref);
-                            }
+                        arr[filled++] = ref;
+                    } else {
+                        if (LCTX.isDebugEnabled()) {
+                            LCTX.d("Attempt to re-use used bitmap: " + ref);
                         }
                     }
                 }
-            } finally {
-                it.release();
             }
 
             final int reused = filled;
@@ -191,7 +183,6 @@ public class ByteBufferManager {
         }
     }
 
-    @SuppressWarnings("unchecked")
     public static void release() {
         lock.lock();
         try {

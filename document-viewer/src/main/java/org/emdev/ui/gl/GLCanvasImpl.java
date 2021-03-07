@@ -46,8 +46,8 @@ public class GLCanvasImpl implements GLCanvas {
 
     final GL11 mGL;
 
-    private final float mMatrixValues[] = new float[16];
-    private final float mTextureMatrixValues[] = new float[16];
+    private final float[] mMatrixValues = new float[16];
+    private final float[] mTextureMatrixValues = new float[16];
 
     private int mBoxCoords;
 

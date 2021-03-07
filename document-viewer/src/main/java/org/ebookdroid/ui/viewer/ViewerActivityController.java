@@ -1,11 +1,28 @@
 package org.ebookdroid.ui.viewer;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.graphics.PointF;
+import android.graphics.RectF;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.AnyThread;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
+import android.text.InputType;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import org.ebookdroid.CodecType;
 import org.ebookdroid.EBookDroidApp;
-import org.ebookdroid.common.settings.types.RotationType;
-import org.emdev.ui.actions.ActionMenuHelper;
-import org.emdev.ui.uimanager.UIManagerAppCompat;
-import org.sufficientlysecure.viewer.R;
 import org.ebookdroid.common.bitmaps.BitmapManager;
 import org.ebookdroid.common.bitmaps.ByteBufferManager;
 import org.ebookdroid.common.cache.CacheManager;
@@ -19,6 +36,7 @@ import org.ebookdroid.common.settings.books.Bookmark;
 import org.ebookdroid.common.settings.listeners.IAppSettingsChangeListener;
 import org.ebookdroid.common.settings.listeners.IBookSettingsChangeListener;
 import org.ebookdroid.common.settings.types.DocumentViewMode;
+import org.ebookdroid.common.settings.types.RotationType;
 import org.ebookdroid.common.touch.TouchManager;
 import org.ebookdroid.core.DecodeService;
 import org.ebookdroid.core.NavigationHistory;
@@ -42,39 +60,7 @@ import org.ebookdroid.ui.viewer.stubs.ViewContollerStub;
 import org.ebookdroid.ui.viewer.views.ManualCropView;
 import org.ebookdroid.ui.viewer.views.SearchControls;
 import org.ebookdroid.ui.viewer.views.ViewEffects;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.graphics.PointF;
-import android.graphics.RectF;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.AnyThread;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v7.widget.AppCompatEditText;
-import android.text.Editable;
-import android.text.InputType;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-
 import org.emdev.BaseDroidApp;
-import org.emdev.common.android.AndroidVersion;
 import org.emdev.common.backup.BackupManager;
 import org.emdev.common.content.ContentScheme;
 import org.emdev.common.filesystem.PathFromUri;
@@ -91,9 +77,20 @@ import org.emdev.ui.tasks.AsyncTask;
 import org.emdev.ui.tasks.AsyncTaskExecutor;
 import org.emdev.ui.tasks.BaseAsyncTask;
 import org.emdev.ui.uimanager.IUIManager;
+import org.emdev.ui.uimanager.UIManagerAppCompat;
 import org.emdev.utils.FileUtils;
 import org.emdev.utils.LengthUtils;
 import org.emdev.utils.StringUtils;
+import org.sufficientlysecure.viewer.R;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ViewerActivityController extends AbstractActivityController<ViewerActivity> implements
         IActivityController, DecodingProgressListener, CurrentPageListener, IAppSettingsChangeListener,

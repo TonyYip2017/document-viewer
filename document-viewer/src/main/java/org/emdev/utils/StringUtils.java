@@ -11,8 +11,6 @@ import java.util.Set;
 
 public class StringUtils {
 
-    public static final NaturalStringComparator NSC = new NaturalStringComparator();
-
     public static final NaturalFileComparator NFC = new NaturalFileComparator();
 
     private StringUtils() {
@@ -26,7 +24,7 @@ public class StringUtils {
         try {
             out = in.substring(0, in.lastIndexOf('.'));
             out = out.replaceAll("\\(.*?\\)|\\[.*?\\]", "").replaceAll("_", " ").replaceAll(".fb2$", "").trim();
-        } catch (final IndexOutOfBoundsException e) {
+        } catch (final IndexOutOfBoundsException ignored) {
         }
         return out;
     }
@@ -40,9 +38,9 @@ public class StringUtils {
             final byte[] a = digest.digest();
             final int len = a.length;
             final StringBuilder sb = new StringBuilder(len << 1);
-            for (int i = 0; i < len; i++) {
-                sb.append(Character.forDigit((a[i] & 0xf0) >> 4, 16));
-                sb.append(Character.forDigit(a[i] & 0x0f, 16));
+            for (byte b : a) {
+                sb.append(Character.forDigit((b & 0xf0) >> 4, 16));
+                sb.append(Character.forDigit(b & 0x0f, 16));
             }
             return sb.toString();
         } catch (final NoSuchAlgorithmException e) {
@@ -63,21 +61,8 @@ public class StringUtils {
         return list;
     }
 
-    public static String merge(final String separator, final String... items) {
-        final StringBuffer result = new StringBuffer();
-        for (final String item : items) {
-            if (LengthUtils.isNotEmpty(item)) {
-                if (result.length() > 0) {
-                    result.append(separator);
-                }
-                result.append(item);
-            }
-        }
-        return result.toString();
-    }
-
     public static String merge(final String separator, final Collection<String> items) {
-        final StringBuffer result = new StringBuffer();
+        final StringBuilder result = new StringBuilder();
         for (final String item : items) {
             if (LengthUtils.isNotEmpty(item)) {
                 if (result.length() > 0) {
@@ -89,7 +74,7 @@ public class StringUtils {
         return result.toString();
     }
 
-    public static final int compareNatural(String firstString, String secondString) {
+    public static int compareNatural(String firstString, String secondString) {
         int firstIndex = 0;
         int secondIndex = 0;
 
@@ -194,49 +179,6 @@ public class StringUtils {
         }
     }
 
-    @Deprecated
-    public static Comparator<? super File> getNaturalFileComparator() {
-        return NFC;
-    }
-
-    public static int split(char[] str, int begin, int len, int[] outStart, int[] outLength, boolean lineBreaksOnly) {
-        if (str == null) {
-            return 0;
-        }
-        if (len == 0) {
-            return 0;
-        }
-        int i = begin, start = begin;
-        int index = 0;
-        boolean match = false;
-        while (i < begin + len) {
-            if ((lineBreaksOnly && (str[i] == 0x0D || str[i] == 0x0A)) || (!lineBreaksOnly && (str[i] == 0x20 || str[i] == 0x0D || str[i] == 0x0A || str[i] == 0x09))) {
-                if (match) {
-                    outStart[index] = start;
-                    outLength[index] = i - start;
-                    index++;
-                    match = false;
-                }
-                start = ++i;
-                continue;
-            }
-            match = true;
-            i++;
-        }
-        if (match) {
-            outStart[index] = start;
-            outLength[index] = i - start;
-            index++;
-        }
-        return index;
-    }
-
-    public static final class NaturalStringComparator implements Comparator<String> {
-
-        public int compare(String o1, String o2) {
-            return compareNatural(o1, o2);
-        }
-    }
 
     public static final class NaturalFileComparator implements Comparator<File> {
 

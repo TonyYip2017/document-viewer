@@ -41,8 +41,7 @@ import org.emdev.common.log.LogManager;
 // blending). The user or subclass can override it using setOpaque().
 public abstract class UploadedTexture extends BasicTexture {
 
-    @SuppressWarnings("unused")
-    private static final LogContext LCTX = LogManager.root().lctx("Texture");
+//    private static final LogContext LCTX = LogManager.root().lctx("Texture");
 
     protected boolean mContentValid = true;
 

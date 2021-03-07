@@ -1,15 +1,13 @@
 package org.ebookdroid.ui.viewer.viewers;
 
-import org.ebookdroid.common.settings.AppSettings;
-
 import android.app.Activity;
 import android.os.Handler;
 import android.view.View;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import org.emdev.common.android.AndroidVersion;
+import org.ebookdroid.common.settings.AppSettings;
 import org.emdev.ui.uimanager.IUIManager;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FullScreenCallback implements Runnable {
 
@@ -29,9 +27,7 @@ public class FullScreenCallback implements Runnable {
     }
 
     public static FullScreenCallback get(final Activity activity, final View view) {
-        return AndroidVersion.is4x ?
-        /* Creates full-screen callback devices with Android 4.x */
-        new FullScreenCallback(activity, view) : null;
+        return new FullScreenCallback(activity, view);
     }
 
     @Override

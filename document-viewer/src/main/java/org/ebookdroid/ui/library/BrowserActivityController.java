@@ -1,9 +1,15 @@
 package org.ebookdroid.ui.library;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 import org.ebookdroid.CodecType;
-import org.emdev.ui.uimanager.IUIManager;
-import org.emdev.ui.uimanager.UIManagerAppCompat;
-import org.sufficientlysecure.viewer.R;
 import org.ebookdroid.common.cache.CacheManager;
 import org.ebookdroid.common.settings.LibSettings;
 import org.ebookdroid.common.settings.SettingsManager;
@@ -15,25 +21,9 @@ import org.ebookdroid.ui.library.dialogs.FolderDlg;
 import org.ebookdroid.ui.library.tasks.CopyBookTask;
 import org.ebookdroid.ui.library.tasks.MoveBookTask;
 import org.ebookdroid.ui.library.tasks.RenameBookTask;
-import org.ebookdroid.ui.opds.OPDSActivity;
 import org.ebookdroid.ui.settings.SettingsUI;
 import org.ebookdroid.ui.viewer.ViewerActivity;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v7.widget.AppCompatEditText;
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.ImageView;
-
-import java.io.File;
-import java.io.FileFilter;
-import java.util.Set;
-
 import org.emdev.BaseDroidApp;
-import org.emdev.common.android.AndroidVersion;
 import org.emdev.common.filesystem.CompositeFilter;
 import org.emdev.common.filesystem.DirectoryFilter;
 import org.emdev.common.filesystem.PathFromUri;
@@ -44,9 +34,15 @@ import org.emdev.ui.actions.ActionMenuHelper;
 import org.emdev.ui.actions.ActionMethod;
 import org.emdev.ui.actions.params.Constant;
 import org.emdev.ui.actions.params.EditableValue;
+import org.emdev.ui.uimanager.UIManagerAppCompat;
 import org.emdev.utils.CompareUtils;
 import org.emdev.utils.FileUtils;
 import org.emdev.utils.LengthUtils;
+import org.sufficientlysecure.viewer.R;
+
+import java.io.File;
+import java.io.FileFilter;
+import java.util.Set;
 
 public class BrowserActivityController extends AbstractActivityController<BrowserActivity> implements IBrowserActivity {
 
@@ -145,13 +141,6 @@ public class BrowserActivityController extends AbstractActivityController<Browse
         final Intent myIntent = new Intent(activity, RecentActivity.class);
         activity.startActivity(myIntent);
         activity.finish();
-    }
-
-    @ActionMethod(ids = R.id.mainmenu_opds)
-    public void goOPDSBrowser(final ActionEx action) {
-        final BrowserActivity activity = getManagedComponent();
-        final Intent myIntent = new Intent(activity, OPDSActivity.class);
-        activity.startActivity(myIntent);
     }
 
     /**

@@ -1,8 +1,5 @@
 package org.ebookdroid.common.keysbinding;
 
-import org.sufficientlysecure.viewer.R;
-import org.ebookdroid.ui.viewer.IActivityController;
-
 import android.app.Dialog;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -15,16 +12,17 @@ import android.widget.ExpandableListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.emdev.common.android.AndroidVersion;
+import org.ebookdroid.ui.viewer.IActivityController;
 import org.emdev.ui.actions.ActionEx;
 import org.emdev.ui.adapters.ActionsAdapter;
 import org.emdev.utils.LayoutUtils;
 import org.emdev.utils.LengthUtils;
+import org.sufficientlysecure.viewer.R;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class KeyBindingsDialog extends Dialog {
 
@@ -66,10 +64,8 @@ public class KeyBindingsDialog extends Dialog {
         keyboard.addInterval(KeyEvent.KEYCODE_ENTER, KeyEvent.KEYCODE_AT);
         keyboard.add(KeyEvent.KEYCODE_TAB, KeyEvent.KEYCODE_SPACE);
 
-        if (!AndroidVersion.lessThan3x) {
-            keyboard.addInterval(/* KeyEvent.KEYCODE_PAGE_UP */92, /* (KeyEvent.KEYCODE_PAGE_DOWN */93);
-            keyboard.addInterval(/* KeyEvent.KEYCODE_MOVE_HOME */122, /* KeyEvent.KEYCODE_NUMPAD_RIGHT_PAREN */163);
-        }
+        keyboard.addInterval(/* KeyEvent.KEYCODE_PAGE_UP */92, /* (KeyEvent.KEYCODE_PAGE_DOWN */93);
+        keyboard.addInterval(/* KeyEvent.KEYCODE_MOVE_HOME */122, /* KeyEvent.KEYCODE_NUMPAD_RIGHT_PAREN */163);
 
         final KeyGroup service = groups.add("Service keys");
         service.add(KeyEvent.KEYCODE_CAMERA, KeyEvent.KEYCODE_CLEAR);

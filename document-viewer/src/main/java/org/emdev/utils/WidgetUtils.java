@@ -46,7 +46,7 @@ public final class WidgetUtils {
             final String string = context.getResources().getString(resId);
             try {
                 return Integer.parseInt(string);
-            } catch (final NumberFormatException e) {
+            } catch (final NumberFormatException ignored) {
             }
         }
         return attrs.getAttributeIntValue(namespace, name, defValue);

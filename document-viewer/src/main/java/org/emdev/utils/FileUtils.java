@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 import java.text.SimpleDateFormat;
@@ -18,10 +19,10 @@ import org.emdev.ui.progress.IProgressIndicator;
 
 public final class FileUtils {
 
-    private static ArrayList<String> mounts = new ArrayList<String>();
-    private static ArrayList<String> mountsPR = new ArrayList<String>();
-    private static ArrayList<String> aliases = new ArrayList<String>();
-    private static ArrayList<String> aliasesPR = new ArrayList<String>();
+    private static final ArrayList<String> mounts = new ArrayList<String>();
+    private static final ArrayList<String> mountsPR = new ArrayList<String>();
+    private static final ArrayList<String> aliases = new ArrayList<String>();
+    private static final ArrayList<String> aliasesPR = new ArrayList<String>();
 
     static {
         File root = new File("/");
@@ -47,10 +48,9 @@ public final class FileUtils {
         }
     }
 
-    private FileUtils() {
-    }
+    private FileUtils() { }
 
-    public static final String getFileSize(final long size) {
+    public static String getFileSize(final long size) {
         if (size > 1073741824) {
             return String.format("%.2f", size / 1073741824.0) + " GB";
         } else if (size > 1048576) {
@@ -63,15 +63,15 @@ public final class FileUtils {
 
     }
 
-    public static final String getFileDate(final long time) {
+    public static String getFileDate(final long time) {
         return new SimpleDateFormat("dd MMM yyyy").format(time);
     }
 
-    public static final String getAbsolutePath(final File file) {
+    public static String getAbsolutePath(final File file) {
         return file != null ? file.getAbsolutePath() : null;
     }
 
-    public static final String getCanonicalPath(final File file) {
+    public static String getCanonicalPath(final File file) {
         try {
             return file != null ? file.getCanonicalPath() : null;
         } catch (final IOException ex) {
@@ -79,7 +79,7 @@ public final class FileUtils {
         }
     }
 
-    public static final String invertMountPrefix(final String fileName) {
+    public static String invertMountPrefix(final String fileName) {
         for (int i = 0, n = Math.min(aliases.size(), mounts.size()); i < n; i++) {
             final String alias = aliases.get(i);
             final String mount = mounts.get(i);
@@ -103,7 +103,7 @@ public final class FileUtils {
         return null;
     }
 
-    public static final String getExtensionWithDot(final File file) {
+    public static String getExtensionWithDot(final File file) {
         if (file == null) {
             return "";
         }
@@ -115,7 +115,7 @@ public final class FileUtils {
         return name.substring(index);
     }
 
-    public static final FilePath parseFilePath(final String path, final Collection<String> extensions) {
+    public static FilePath parseFilePath(final String path, final Collection<String> extensions) {
         final File file = new File(path);
         final FilePath result = new FilePath();
         result.path = LengthUtils.safeString(file.getParent());
@@ -133,35 +133,9 @@ public final class FileUtils {
     }
 
     public static void copy(final File source, final File target) throws IOException {
-        if (!source.exists()) {
-            return;
-        }
-        final long length = source.length();
-        final int bufsize = MathUtils.adjust((int) length, 1024, 512 * 1024);
-
-        final byte[] buf = new byte[bufsize];
-        int l = 0;
-        InputStream ins = null;
-        OutputStream outs = null;
-        try {
-            ins = new FileInputStream(source);
-            outs = new FileOutputStream(target);
-            for (l = ins.read(buf); l > -1; l = ins.read(buf)) {
-                outs.write(buf, 0, l);
-            }
-        } finally {
-            if (outs != null) {
-                try {
-                    outs.close();
-                } catch (final IOException ex) {
-                }
-            }
-            if (ins != null) {
-                try {
-                    ins.close();
-                } catch (final IOException ex) {
-                }
-            }
+        try (FileChannel sourceChannel = new FileInputStream(source).getChannel();
+             FileChannel destChannel = new FileOutputStream(target).getChannel()) {
+            destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());
         }
     }
 
@@ -173,8 +147,6 @@ public final class FileUtils {
 
         boolean renamed = true;
 
-        final byte[] buf = new byte[128 * 1024];
-        int length = 0;
         for (final String file : fileNames) {
             final File source = new File(sourceDir, file);
             final File target = new File(targetDir, file);
@@ -187,28 +159,7 @@ public final class FileUtils {
             }
 
             try {
-                InputStream ins = null;
-                OutputStream outs = null;
-                try {
-                    ins = new FileInputStream(source);
-                    outs = new FileOutputStream(target);
-                    for (length = ins.read(buf); length > -1; length = ins.read(buf)) {
-                        outs.write(buf, 0, length);
-                    }
-                } finally {
-                    if (outs != null) {
-                        try {
-                            outs.close();
-                        } catch (final IOException ex) {
-                        }
-                    }
-                    if (ins != null) {
-                        try {
-                            ins.close();
-                        } catch (final IOException ex) {
-                        }
-                    }
-                }
+                copy(source, target);
                 source.delete();
                 count++;
 
@@ -223,40 +174,20 @@ public final class FileUtils {
     }
 
     public static void copy(final InputStream source, final OutputStream target) throws IOException {
-        ReadableByteChannel in = null;
-        WritableByteChannel out = null;
-        try {
-            in = Channels.newChannel(source);
-            out = Channels.newChannel(target);
+        try (ReadableByteChannel in = Channels.newChannel(source);
+             WritableByteChannel out = Channels.newChannel(target)) {
             final ByteBuffer buf = ByteBuffer.allocateDirect(512 * 1024);
             while (in.read(buf) > 0) {
                 buf.flip();
                 out.write(buf);
                 buf.flip();
             }
-        } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (final IOException ex) {
-                }
-            }
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (final IOException ex) {
-                }
-            }
         }
     }
 
     public static void copy(final InputStream source, final OutputStream target, final int bufsize,
             final CopingProgress progress) throws IOException {
-        ReadableByteChannel in = null;
-        WritableByteChannel out = null;
-        try {
-            in = Channels.newChannel(source);
-            out = Channels.newChannel(target);
+        try (ReadableByteChannel in = Channels.newChannel(source); WritableByteChannel out = Channels.newChannel(target)) {
             final ByteBuffer buf = ByteBuffer.allocateDirect(bufsize);
             long read = 0;
             while (in.read(buf) > 0) {
@@ -268,29 +199,14 @@ public final class FileUtils {
                 out.write(buf);
                 buf.flip();
             }
-        } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (final IOException ex) {
-                }
-            }
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (final IOException ex) {
-                }
-            }
         }
     }
 
-    public static interface CopingProgress {
-
+    public interface CopingProgress {
         void progress(long bytes);
     }
 
     public static final class FilePath {
-
         public String path;
         public String name;
         public String extWithDot;

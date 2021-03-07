@@ -1,5 +1,12 @@
 package org.ebookdroid.ui.settings;
 
+import android.app.Activity;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceGroup;
+
 import org.ebookdroid.common.cache.CacheManager;
 import org.ebookdroid.common.settings.AppSettings;
 import org.ebookdroid.common.settings.books.BookSettings;
@@ -11,25 +18,16 @@ import org.ebookdroid.common.settings.types.CacheLocation;
 import org.ebookdroid.common.settings.types.DocumentViewMode;
 import org.ebookdroid.common.settings.types.PageAlign;
 import org.ebookdroid.core.curl.PageAnimationType;
-
-import android.app.Activity;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceGroup;
+import org.emdev.ui.preference.SeekBarPreference;
+import org.emdev.ui.uimanager.IUIManager;
+import org.emdev.utils.LengthUtils;
+import org.emdev.utils.enums.EnumUtils;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import org.emdev.common.android.AndroidVersion;
-import org.emdev.ui.preference.SeekBarPreference;
-import org.emdev.ui.uimanager.IUIManager;
-import org.emdev.utils.LengthUtils;
-import org.emdev.utils.enums.EnumUtils;
 
 /**
  * @author whippet
@@ -82,7 +80,7 @@ public class PreferencesDecorator implements IPreferenceContainer, AppPreference
     }
 
     public void decorateBrowserSettings() {
-        final boolean isTablet = IUIManager.instance.isTabletUi(parent.getActivity()) && !AndroidVersion.lessThan3x;
+        final boolean isTablet = IUIManager.instance.isTabletUi(parent.getActivity());
         enableSettings(isTablet, SHOW_REMOVABLE_MEDIA.key, SHOW_SCANNING_MEDIA.key);
 
         addListener(CACHE_LOCATION.key, new OnPreferenceChangeListener() {

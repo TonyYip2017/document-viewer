@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import org.emdev.BaseDroidApp;
 import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;
-import org.emdev.utils.collections.ArrayDeque;
+import java.util.ArrayDeque;
 import org.emdev.utils.collections.SparseArrayEx;
 import org.emdev.utils.collections.TLIterator;
 
@@ -87,39 +87,35 @@ public class BitmapManager {
                 }
             }
 
-            final TLIterator<AbstractBitmapRef> it = pool.iterator();
-            try {
-                while (it.hasNext()) {
-                    final AbstractBitmapRef ref = it.next();
+            final Iterator<AbstractBitmapRef> it = pool.iterator();
+            while (it.hasNext()) {
+                final AbstractBitmapRef ref = it.next();
 
-                    if (!ref.isRecycled() && ref.config == config && ref.width == width && ref.height >= height) {
-                        if (ref.used.compareAndSet(false, true)) {
-                            it.remove();
+                if (!ref.isRecycled() && ref.config == config && ref.width == width && ref.height >= height) {
+                    if (ref.used.compareAndSet(false, true)) {
+                        it.remove();
 
-                            ref.gen = generation.get();
-                            used.append(ref.id, ref);
+                        ref.gen = generation.get();
+                        used.append(ref.id, ref);
 
-                            reused.incrementAndGet();
-                            memoryPooled.addAndGet(-ref.size);
-                            memoryUsed.addAndGet(ref.size);
+                        reused.incrementAndGet();
+                        memoryPooled.addAndGet(-ref.size);
+                        memoryUsed.addAndGet(ref.size);
 
-                            if (LCTX.isDebugEnabled()) {
-                                LCTX.d("Reuse bitmap: [" + ref.id + ", " + ref.name + " => " + name + ", " + width
-                                        + ", " + height + "], created=" + created + ", reused=" + reused
-                                        + ", memoryUsed=" + used.size() + "/" + (memoryUsed.get() / 1024) + "KB"
-                                        + ", memoryInPool=" + pool.size() + "/" + (memoryPooled.get() / 1024) + "KB");
-                            }
-                            ref.name = name;
-                            return ref;
-                        } else {
-                            if (LCTX.isDebugEnabled()) {
-                                LCTX.d("Attempt to re-use used bitmap: " + ref);
-                            }
+                        if (LCTX.isDebugEnabled()) {
+                            LCTX.d("Reuse bitmap: [" + ref.id + ", " + ref.name + " => " + name + ", " + width
+                                    + ", " + height + "], created=" + created + ", reused=" + reused
+                                    + ", memoryUsed=" + used.size() + "/" + (memoryUsed.get() / 1024) + "KB"
+                                    + ", memoryInPool=" + pool.size() + "/" + (memoryPooled.get() / 1024) + "KB");
+                        }
+                        ref.name = name;
+                        return ref;
+                    } else {
+                        if (LCTX.isDebugEnabled()) {
+                            LCTX.d("Attempt to re-use used bitmap: " + ref);
                         }
                     }
                 }
-            } finally {
-                it.release();
             }
 
             final BitmapRef ref = new BitmapRef(Bitmap.createBitmap(width, height, config), generation.get());

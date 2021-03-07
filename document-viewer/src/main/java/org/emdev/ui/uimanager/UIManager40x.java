@@ -1,31 +1,17 @@
 package org.emdev.ui.uimanager;
 
-import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
-
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.widget.ProgressBar;
-
-import org.emdev.common.android.AndroidVersion;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@TargetApi(14)
-public class UIManager40x implements IUIManager {
+import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 
-    protected static final int STANDARD_SYS_UI_FLAGS =
-    /**/
-    View.SYSTEM_UI_FLAG_LOW_PROFILE |
-    /**/
-    View.SYSTEM_UI_FLAG_FULLSCREEN |
-    /**/
-    View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+public class UIManager40x implements IUIManager {
 
     protected static final Map<ComponentName, Data> data = new HashMap<ComponentName, Data>() {
 
@@ -60,16 +46,15 @@ public class UIManager40x implements IUIManager {
         }
 
         if (view != null) {
-            if (fullScreen) {
-                view.setSystemUiVisibility(getHideSysUIFlags(activity));
-            } else {
-                view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-            }
+            int visibility = !fullScreen ? View.SYSTEM_UI_FLAG_VISIBLE :
+                    View.SYSTEM_UI_FLAG_LOW_PROFILE |
+                    View.SYSTEM_UI_FLAG_FULLSCREEN |
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                    View.SYSTEM_UI_FLAG_IMMERSIVE;
+            view.setSystemUiVisibility(visibility);
         }
-    }
-
-    protected int getHideSysUIFlags(final Activity activity) {
-        return STANDARD_SYS_UI_FLAGS;
     }
 
     @Override

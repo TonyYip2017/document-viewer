@@ -52,7 +52,7 @@ public class BackupManager {
         for (final File f : list) {
             try {
                 backups.add(new BackupInfo(f));
-            } catch (final Exception ex) {
+            } catch (final Exception ignored) {
             }
         }
         return backups;

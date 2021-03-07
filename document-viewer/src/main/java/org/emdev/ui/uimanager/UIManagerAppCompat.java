@@ -1,6 +1,5 @@
 package org.emdev.ui.uimanager;
 
-import android.app.Activity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;

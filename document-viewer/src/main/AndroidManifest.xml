@@ -12,7 +12,6 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="org.ebookdroid.EBookDroidApp"
@@ -147,11 +146,6 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name">
         </activity>
-        <activity
-            android:name="org.ebookdroid.ui.opds.OPDSActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/opds"
-            android:launchMode="singleTask" />
         <activity
             android:name="org.ebookdroid.ui.settings.SettingsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

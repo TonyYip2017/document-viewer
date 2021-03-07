@@ -1,13 +1,5 @@
 package org.ebookdroid.ui.library;
 
-import org.emdev.ui.uimanager.UIManagerAppCompat;
-import org.sufficientlysecure.viewer.R;
-import org.ebookdroid.common.settings.SettingsManager;
-import org.ebookdroid.common.settings.books.BookSettings;
-import org.ebookdroid.common.settings.books.Bookmark;
-import org.ebookdroid.core.PageIndex;
-import org.ebookdroid.ui.library.views.FileBrowserView;
-
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
@@ -23,21 +15,24 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.ExpandableListContextMenuInfo;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import org.ebookdroid.common.settings.SettingsManager;
+import org.ebookdroid.common.settings.books.BookSettings;
+import org.ebookdroid.common.settings.books.Bookmark;
+import org.ebookdroid.core.PageIndex;
+import org.ebookdroid.ui.library.views.FileBrowserView;
+import org.emdev.ui.AbstractActionActivity;
+import org.emdev.ui.actions.ActionMenuHelper;
+import org.emdev.ui.uimanager.UIManagerAppCompat;
+import org.emdev.utils.LayoutUtils;
+import org.emdev.utils.LengthUtils;
+import org.sufficientlysecure.viewer.R;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.emdev.common.android.AndroidVersion;
-import org.emdev.ui.AbstractActionActivity;
-import org.emdev.ui.actions.ActionMenuHelper;
-import org.emdev.ui.uimanager.IUIManager;
-import org.emdev.utils.LayoutUtils;
-import org.emdev.utils.LengthUtils;
 
 public class BrowserActivity extends AbstractActionActivity<BrowserActivity, BrowserActivityController> {
 

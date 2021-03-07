@@ -10,15 +10,14 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
+import org.emdev.common.log.LogManager;
+import org.emdev.utils.FileUtils;
+import org.emdev.utils.LengthUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Locale;
 import java.util.Properties;
-
-import org.emdev.common.android.AndroidVersion;
-import org.emdev.common.log.LogManager;
-import org.emdev.utils.FileUtils;
-import org.emdev.utils.LengthUtils;
 
 public class BaseDroidApp extends Application {
 
@@ -67,7 +66,7 @@ public class BaseDroidApp extends Application {
         BUILD_PROPS = new Properties();
         try {
             BUILD_PROPS.load(new FileInputStream("/system/build.prop"));
-        } catch (final Throwable th) {
+        } catch (final Throwable ignored) {
         }
 
         final PackageManager pm = getPackageManager();
@@ -91,7 +90,7 @@ public class BaseDroidApp extends Application {
             Log.i(APP_NAME, "Cache            dir: " + FileUtils.getAbsolutePath(getCacheDir()));
             Log.i(APP_NAME, "System locale       : " + defLocale);
 
-            Log.i(APP_NAME, "VERSION     : " + AndroidVersion.VERSION);
+            Log.i(APP_NAME, "VERSION     : " + Build.VERSION.SDK_INT);
             Log.i(APP_NAME, "BOARD       : " + Build.BOARD);
             Log.i(APP_NAME, "BRAND       : " + Build.BRAND);
             Log.i(APP_NAME, "CPU_ABI     : " + BUILD_PROPS.getProperty("ro.product.cpu.abi"));

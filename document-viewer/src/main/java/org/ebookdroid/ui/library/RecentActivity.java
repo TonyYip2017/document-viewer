@@ -1,9 +1,28 @@
 package org.ebookdroid.ui.library;
 
-import org.emdev.ui.actions.ActionEx;
-import org.emdev.ui.actions.params.Constant;
-import org.emdev.ui.uimanager.UIManagerAppCompat;
-import org.sufficientlysecure.viewer.R;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.text.SpannableStringBuilder;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SubMenu;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.ExpandableListContextMenuInfo;
+import android.widget.ViewFlipper;
+
 import org.ebookdroid.common.settings.LibSettings;
 import org.ebookdroid.common.settings.books.BookSettings;
 import org.ebookdroid.common.settings.books.Bookmark;
@@ -16,31 +35,16 @@ import org.ebookdroid.ui.library.adapters.RecentAdapter;
 import org.ebookdroid.ui.library.views.BookcaseView;
 import org.ebookdroid.ui.library.views.LibraryView;
 import org.ebookdroid.ui.library.views.RecentBooksView;
-
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.text.SpannableStringBuilder;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.SubMenu;
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.ExpandableListContextMenuInfo;
-import android.widget.ImageView;
-import android.widget.ViewFlipper;
+import org.emdev.BaseDroidApp;
+import org.emdev.common.filesystem.MediaManager;
+import org.emdev.ui.AbstractActionActivity;
+import org.emdev.ui.actions.ActionEx;
+import org.emdev.ui.actions.ActionMenuHelper;
+import org.emdev.ui.actions.params.Constant;
+import org.emdev.ui.uimanager.UIManagerAppCompat;
+import org.emdev.utils.FileUtils;
+import org.emdev.utils.LengthUtils;
+import org.sufficientlysecure.viewer.R;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,15 +52,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import org.emdev.BaseDroidApp;
-import org.emdev.common.android.AndroidVersion;
-import org.emdev.common.filesystem.MediaManager;
-import org.emdev.ui.AbstractActionActivity;
-import org.emdev.ui.actions.ActionMenuHelper;
-import org.emdev.ui.uimanager.IUIManager;
-import org.emdev.utils.FileUtils;
-import org.emdev.utils.LengthUtils;
 
 public class RecentActivity extends AbstractActionActivity<RecentActivity, RecentActivityController> {
 

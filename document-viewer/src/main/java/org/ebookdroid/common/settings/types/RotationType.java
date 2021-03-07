@@ -1,12 +1,11 @@
 package org.ebookdroid.common.settings.types;
 
-import org.ebookdroid.EBookDroidApp;
-import org.sufficientlysecure.viewer.R;
-
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 
-import org.emdev.common.android.AndroidVersion;
+import org.ebookdroid.EBookDroidApp;
 import org.emdev.utils.enums.ResourceConstant;
+import org.sufficientlysecure.viewer.R;
 
 public enum RotationType implements ResourceConstant {
 
@@ -65,7 +64,7 @@ public enum RotationType implements ResourceConstant {
 
     private final int version;
 
-    private RotationType(final int resId, final int orientation, final int version) {
+    RotationType(final int resId, final int orientation, final int version) {
         this.resValue = EBookDroidApp.context.getString(resId);
         this.orientation = orientation;
         this.version = version;
@@ -76,7 +75,7 @@ public enum RotationType implements ResourceConstant {
     }
 
     public int getOrientation() {
-        return this.version <= AndroidVersion.VERSION ? orientation : ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
+        return this.version <= Build.VERSION.SDK_INT ? orientation : ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
     }
 
     public int getVersion() {

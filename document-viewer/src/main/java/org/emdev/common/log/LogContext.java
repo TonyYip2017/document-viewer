@@ -66,11 +66,11 @@ public class LogContext {
     }
 
     public boolean isDebugEnabled() {
-        return debugEnabled != null ? debugEnabled.booleanValue() : parent != null ? parent.isDebugEnabled() : false;
+        return debugEnabled != null ? debugEnabled : parent != null && parent.isDebugEnabled();
     }
 
-    public boolean setDebugEnabled(final boolean enabled) {
-        return debugEnabled = enabled;
+    public void setDebugEnabled(final boolean enabled) {
+        debugEnabled = enabled;
     }
 
     @Override

@@ -118,28 +118,18 @@ public class BackupInfo implements Comparable<BackupInfo> {
 
     public static JSONObject fromJSON(final File file) {
         final StringBuilder buf = new StringBuilder();
-        try {
-            final BufferedReader in = new BufferedReader(new FileReader(file));
-            try {
-                for (String s = in.readLine(); s != null; s = in.readLine()) {
-                    buf.append(s).append("\n");
-                }
-                return new JSONObject(buf.toString());
-            } catch (final Exception ex) {
-                BackupManager.LCTX.e("Reading backup file failed: " + ex.getMessage());
-            } finally {
-                try {
-                    in.close();
-                } catch (final IOException ex) {
-                }
+        try (BufferedReader in = new BufferedReader(new FileReader(file))) {
+            for (String s = in.readLine(); s != null; s = in.readLine()) {
+                buf.append(s).append("\n");
             }
-        } catch (final FileNotFoundException ex) {
+            return new JSONObject(buf.toString());
+        } catch (final Exception ex) {
             BackupManager.LCTX.e("Reading backup file failed: " + ex.getMessage());
         }
         return null;
     }
 
-    public static enum Type {
+    public enum Type {
         AUTO, USER;
     }
 

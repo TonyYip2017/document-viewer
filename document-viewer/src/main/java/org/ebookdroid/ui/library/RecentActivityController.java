@@ -1,9 +1,15 @@
 package org.ebookdroid.ui.library;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 import org.ebookdroid.CodecType;
 import org.ebookdroid.EBookDroidApp;
-import org.emdev.ui.uimanager.UIManagerAppCompat;
-import org.sufficientlysecure.viewer.R;
 import org.ebookdroid.common.cache.CacheManager;
 import org.ebookdroid.common.cache.CacheManager.ICacheListener;
 import org.ebookdroid.common.cache.ThumbnailFile;
@@ -25,25 +31,8 @@ import org.ebookdroid.ui.library.dialogs.FolderDlg;
 import org.ebookdroid.ui.library.tasks.CopyBookTask;
 import org.ebookdroid.ui.library.tasks.MoveBookTask;
 import org.ebookdroid.ui.library.tasks.RenameBookTask;
-import org.ebookdroid.ui.opds.OPDSActivity;
 import org.ebookdroid.ui.settings.SettingsUI;
 import org.ebookdroid.ui.viewer.ViewerActivity;
-
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.support.v7.widget.AppCompatEditText;
-import android.text.Editable;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-
-import java.io.File;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.emdev.common.backup.BackupManager;
 import org.emdev.common.filesystem.FileExtensionFilter;
 import org.emdev.common.filesystem.MediaManager;
@@ -56,10 +45,16 @@ import org.emdev.ui.actions.ActionMethod;
 import org.emdev.ui.actions.IActionController;
 import org.emdev.ui.actions.params.Constant;
 import org.emdev.ui.actions.params.EditableValue;
-import org.emdev.ui.uimanager.IUIManager;
+import org.emdev.ui.uimanager.UIManagerAppCompat;
 import org.emdev.utils.CompareUtils;
 import org.emdev.utils.FileUtils;
 import org.emdev.utils.LengthUtils;
+import org.sufficientlysecure.viewer.R;
+
+import java.io.File;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RecentActivityController extends AbstractActivityController<RecentActivity> implements IBrowserActivity,
         ILibSettingsChangeListener, IRecentBooksChangedListener, ICacheListener, MediaManager.Listener {
@@ -448,11 +443,6 @@ public class RecentActivityController extends AbstractActivityController<RecentA
         getManagedComponent().startActivity(myIntent);
     }
 
-    @ActionMethod(ids = R.id.mainmenu_opds)
-    public void goOPDSBrowser(final ActionEx action) {
-        final Intent myIntent = new Intent(getManagedComponent(), OPDSActivity.class);
-        getManagedComponent().startActivity(myIntent);
-    }
 
     @ActionMethod(ids = R.id.recentmenu_backupsettings)
     public void backupSettings(final ActionEx action) {

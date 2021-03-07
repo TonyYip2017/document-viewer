@@ -27,8 +27,7 @@ import org.emdev.utils.MathUtils;
 // If a BasicTexture is loaded into GL memory, it has a GL texture id.
 public abstract class BasicTexture implements Texture {
 
-    @SuppressWarnings("unused")
-    private static final LogContext LCTX = LogManager.root().lctx("BasicTexture");
+//    private static final LogContext LCTX = LogManager.root().lctx("BasicTexture");
 
     protected static final int UNSPECIFIED = -1;
 
@@ -46,8 +45,8 @@ public abstract class BasicTexture implements Texture {
     private int mTextureHeight;
 
     protected GLCanvas mCanvasRef = null;
-    private static WeakHashMap<BasicTexture, Object> sAllTextures = new WeakHashMap<BasicTexture, Object>();
-    private static ThreadLocal<Class<?>> sInFinalizer = new ThreadLocal<Class<?>>();
+    private static final WeakHashMap<BasicTexture, Object> sAllTextures = new WeakHashMap<BasicTexture, Object>();
+    private static final ThreadLocal<Class<?>> sInFinalizer = new ThreadLocal<Class<?>>();
 
     protected BasicTexture(final GLCanvas canvas, final int id, final int state) {
         setAssociatedCanvas(canvas);

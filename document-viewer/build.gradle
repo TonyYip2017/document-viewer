@@ -34,12 +34,11 @@ android {
     // copied from: https://github.com/kontalk/androidclient
     // temporarly introduced to fix Cyanogenmod bug
     // https://issuetracker.google.com/issues/64434571#comment35
-    buildToolsVersion '28.0.3'
 
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 25
         targetSdkVersion 28
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

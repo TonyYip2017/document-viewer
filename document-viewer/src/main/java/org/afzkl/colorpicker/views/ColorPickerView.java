@@ -24,19 +24,18 @@ import android.graphics.Color;
 import android.graphics.ComposeShader;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
 import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import org.afzkl.colorpicker.drawables.AlphaPatternDrawable;
-import org.emdev.common.android.AndroidVersion;
 
 /**
  * Displays a color picker to the user and allow them
@@ -159,13 +158,11 @@ public class ColorPickerView extends View{
 
 	@TargetApi(11)
 	private void disableHWAccel() {
-		if (AndroidVersion.VERSION >= 11) {
-			// ComposeShader is broken with hardware acceleration, so disable it
-			// See:
-			// https://github.com/SufficientlySecure/document-viewer/issues/222
-			// https://developer.android.com/guide/topics/graphics/hardware-accel.html
-			setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		}
+		// ComposeShader is broken with hardware acceleration, so disable it
+		// See:
+		// https://github.com/SufficientlySecure/document-viewer/issues/222
+		// https://developer.android.com/guide/topics/graphics/hardware-accel.html
+		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 	}
 
 	private void init(){
