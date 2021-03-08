@@ -20,7 +20,7 @@ public class SettingsActivity extends BaseSettingsActivity {
     protected final void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        EBookDroidApp.initFonts();
+//        EBookDroidApp.initFonts();
 
         final Uri uri = getIntent().getData();
         if (uri != null) {

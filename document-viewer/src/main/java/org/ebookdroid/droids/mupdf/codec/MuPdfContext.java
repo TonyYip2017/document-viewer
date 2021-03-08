@@ -1,14 +1,7 @@
 package org.ebookdroid.droids.mupdf.codec;
 
 import org.ebookdroid.EBookDroidLibraryLoader;
-import org.ebookdroid.common.settings.AppSettings;
 import org.ebookdroid.core.codec.AbstractCodecContext;
-
-import java.util.Arrays;
-
-import org.emdev.common.fonts.FontManager;
-import org.emdev.common.fonts.data.FontFamilyType;
-import org.emdev.common.fonts.data.FontStyle;
 import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;
 
@@ -28,13 +21,13 @@ public abstract class MuPdfContext extends AbstractCodecContext {
         super(MUPDF_FEATURES);
     }
 
-    private static native void setMonoFonts(String regular, String italic, String bold, String boldItalic);
-
-    private static native void setSansFonts(String regular, String italic, String bold, String boldItalic);
-
-    private static native void setSerifFonts(String regular, String italic, String bold, String boldItalic);
-
-    private static native void setSymbolFont(String regular);
-
-    private static native void setDingbatFont(String regular);
+//    private static native void setMonoFonts(String regular, String italic, String bold, String boldItalic);
+//
+//    private static native void setSansFonts(String regular, String italic, String bold, String boldItalic);
+//
+//    private static native void setSerifFonts(String regular, String italic, String bold, String boldItalic);
+//
+//    private static native void setSymbolFont(String regular);
+//
+//    private static native void setDingbatFont(String regular);
 }

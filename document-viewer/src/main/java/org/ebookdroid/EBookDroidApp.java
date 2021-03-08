@@ -1,5 +1,8 @@
 package org.ebookdroid;
 
+import android.content.Context;
+import android.util.Log;
+
 import org.ebookdroid.common.bitmaps.BitmapManager;
 import org.ebookdroid.common.bitmaps.ByteBufferManager;
 import org.ebookdroid.common.cache.CacheManager;
@@ -11,21 +14,10 @@ import org.ebookdroid.common.settings.SettingsManager;
 import org.ebookdroid.common.settings.listeners.IAppSettingsChangeListener;
 import org.ebookdroid.common.settings.listeners.IBackupSettingsChangeListener;
 import org.ebookdroid.common.settings.listeners.ILibSettingsChangeListener;
-import org.ebookdroid.ui.library.RecentActivityController;
-
-import android.content.Context;
-import android.util.Log;
-import android.webkit.WebView;
-
 import org.emdev.BaseDroidApp;
 import org.emdev.common.backup.BackupManager;
 import org.emdev.common.filesystem.MediaManager;
-import org.emdev.common.fonts.FontManager;
-import org.emdev.ui.actions.ActionController;
-import org.emdev.ui.actions.ActionDialogBuilder;
-import org.emdev.ui.gl.GLConfiguration;
 import org.emdev.utils.concurrent.Flag;
-import org.sufficientlysecure.viewer.R;
 
 public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeListener, IBackupSettingsChangeListener,
         ILibSettingsChangeListener {
@@ -33,8 +25,6 @@ public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeLis
     public static final Flag initialized = new Flag();
 
     public static EBookDroidVersion version;
-
-    private static EBookDroidApp instance;
 
     /**
      * {@inheritDoc}
@@ -45,14 +35,13 @@ public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeLis
     public void onCreate() {
         super.onCreate();
 
-        instance = this;
         version = EBookDroidVersion.get(APP_VERSION_CODE);
 
         SettingsManager.init(this);
         CacheManager.init(this);
         MediaManager.init(this);
 
-        initFonts();
+//        initFonts();
 
         preallocateHeap(AppSettings.current().heapPreallocate);
 
@@ -63,9 +52,7 @@ public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeLis
         initialized.set();
     }
 
-    public static void initFonts() {
-        FontManager.init(APP_STORAGE);
-    }
+//    public static void initFonts() { FontManager.init(APP_STORAGE); }
 
     @Override
     public void onTerminate() {

@@ -424,10 +424,8 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
             task.get();
         } catch (final InterruptedException ex) {
             Thread.interrupted();
-        } catch (final ExecutionException ex) {
+        } catch (final Throwable ex) {
             ex.printStackTrace();
-        } catch (final Throwable th) {
-            th.printStackTrace();
         }
     }
 
