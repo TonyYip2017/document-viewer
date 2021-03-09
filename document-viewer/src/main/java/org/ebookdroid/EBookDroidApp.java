@@ -1,6 +1,5 @@
 package org.ebookdroid;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.ebookdroid.common.bitmaps.BitmapManager;
@@ -19,12 +18,12 @@ import org.emdev.common.backup.BackupManager;
 import org.emdev.common.filesystem.MediaManager;
 import org.emdev.utils.concurrent.Flag;
 
-public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeListener, IBackupSettingsChangeListener,
-        ILibSettingsChangeListener {
+public class EBookDroidApp extends BaseDroidApp
+        implements IAppSettingsChangeListener, IBackupSettingsChangeListener, ILibSettingsChangeListener {
 
     public static final Flag initialized = new Flag();
 
-    public static EBookDroidVersion version;
+//    public static EBookDroidVersion version;
 
     /**
      * {@inheritDoc}
@@ -35,7 +34,7 @@ public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeLis
     public void onCreate() {
         super.onCreate();
 
-        version = EBookDroidVersion.get(APP_VERSION_CODE);
+//        version = EBookDroidVersion.get(APP_VERSION_CODE);
 
         SettingsManager.init(this);
         CacheManager.init(this);
@@ -43,7 +42,7 @@ public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeLis
 
 //        initFonts();
 
-        preallocateHeap(AppSettings.current().heapPreallocate);
+//        preallocateHeap(AppSettings.current().heapPreallocate);
 
         SettingsManager.addListener(this);
         onAppSettingsChanged(null, AppSettings.current(), null);
@@ -56,6 +55,7 @@ public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeLis
 
     @Override
     public void onTerminate() {
+        super.onTerminate();
         SettingsManager.onTerminate();
         MediaManager.onTerminate(this);
     }
@@ -94,56 +94,33 @@ public class EBookDroidApp extends BaseDroidApp implements IAppSettingsChangeLis
         }
     }
 
-    public static void checkInstalledFonts(final Context context) {
-//        if (!FontManager.external.hasInstalled()) {
-//            if (!SettingsManager.isInitialFlagsSet(SettingsManager.INITIAL_FONTS)) {
-//                SettingsManager.setInitialFlags(SettingsManager.INITIAL_FONTS);
-//
-//                final ActionDialogBuilder b = new ActionDialogBuilder(context, new ActionController<Context>(context));
-//                final WebView view = new WebView(context);
-//
-//                final String text = context.getResources().getString(R.string.font_reminder);
-//                final String content = "<html><body>" + text + "</body></html>";
-//
-//                view.loadDataWithBaseURL("file:///fake/not_used", content, "text/html", "UTF-8", "");
-//
-//                b.setTitle(R.string.font_reminder_title);
-//                b.setView(view);
-//                b.setPositiveButton(android.R.string.ok, R.id.actions_no_action);
-//                b.show();
+//    public static void checkInstalledFonts(final Context context) { }
+
+//    /**
+//     * Preallocate heap.
+//     *
+//     * @param size
+//     *            the size in megabytes
+//     */
+//    private static void preallocateHeap(final int size) {
+//        if (size <= 0) {
+//            Log.i(APP_NAME, "No heap preallocation");
+//            return;
+//        }
+//        int i = size;
+//        Log.i(APP_NAME, "Trying to preallocate " + size + "Mb");
+//        while (i > 0) {
+//            try {
+//                byte[] tmp = new byte[i * 1024 * 1024];
+//                tmp[size - 1] = (byte) size;
+//                Log.i(APP_NAME, "Preallocated " + i + "Mb");
+//                tmp = null;
+//                return;
+//            } catch (final OutOfMemoryError | IllegalArgumentException e) {
+//                i--;
 //            }
 //        }
-    }
-
-    /**
-     * Preallocate heap.
-     *
-     * @param size
-     *            the size in megabytes
-     * @return the object
-     */
-    private static Object preallocateHeap(final int size) {
-        if (size <= 0) {
-            Log.i(APP_NAME, "No heap preallocation");
-            return null;
-        }
-        int i = size;
-        Log.i(APP_NAME, "Trying to preallocate " + size + "Mb");
-        while (i > 0) {
-            try {
-                byte[] tmp = new byte[i * 1024 * 1024];
-                tmp[size - 1] = (byte) size;
-                Log.i(APP_NAME, "Preallocated " + i + "Mb");
-                tmp = null;
-                return tmp;
-            } catch (final OutOfMemoryError e) {
-                i--;
-            } catch (final IllegalArgumentException e) {
-                i--;
-            }
-        }
-        Log.i(APP_NAME, "Heap preallocation failed");
-        return null;
-    }
+//        Log.i(APP_NAME, "Heap preallocation failed");
+//    }
 
 }

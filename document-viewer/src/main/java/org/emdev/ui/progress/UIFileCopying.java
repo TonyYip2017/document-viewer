@@ -18,7 +18,7 @@ public class UIFileCopying implements CopingProgress {
     private final int stringId;
     private final IProgressIndicator delegate;
 
-    private long interval;
+    private final long interval;
     private long contentLength;
     private long copied;
     private long indicated;

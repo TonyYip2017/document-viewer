@@ -11,6 +11,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,16 +52,11 @@ public final class FileUtils {
     private FileUtils() { }
 
     public static String getFileSize(final long size) {
-        if (size > 1073741824) {
-            return String.format("%.2f", size / 1073741824.0) + " GB";
-        } else if (size > 1048576) {
-            return String.format("%.2f", size / 1048576.0) + " MB";
-        } else if (size > 1024) {
-            return String.format("%.2f", size / 1024.0) + " KB";
-        } else {
-            return size + " B";
-        }
-
+        DecimalFormat df = new DecimalFormat("0.00");
+        return  size <= 1024L ? size + " B" :
+                size <= 1048576L ? df.format(size/1024.0) + " KB" :
+                size <= 1073741824L ? df.format(size/1048576.0) + " MB" :
+                df.format(size/1048576.0) + " GB";
     }
 
     public static String getFileDate(final long time) {
@@ -173,17 +169,17 @@ public final class FileUtils {
         return count;
     }
 
-    public static void copy(final InputStream source, final OutputStream target) throws IOException {
-        try (ReadableByteChannel in = Channels.newChannel(source);
-             WritableByteChannel out = Channels.newChannel(target)) {
-            final ByteBuffer buf = ByteBuffer.allocateDirect(512 * 1024);
-            while (in.read(buf) > 0) {
-                buf.flip();
-                out.write(buf);
-                buf.flip();
-            }
-        }
-    }
+//    public static void copy(final InputStream source, final OutputStream target) throws IOException {
+//        try (ReadableByteChannel in = Channels.newChannel(source);
+//             WritableByteChannel out = Channels.newChannel(target)) {
+//            final ByteBuffer buf = ByteBuffer.allocateDirect(512 * 1024);
+//            while (in.read(buf) > 0) {
+//                buf.flip();
+//                out.write(buf);
+//                buf.flip();
+//            }
+//        }
+//    }
 
     public static void copy(final InputStream source, final OutputStream target, final int bufsize,
             final CopingProgress progress) throws IOException {

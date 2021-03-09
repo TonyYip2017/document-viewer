@@ -268,9 +268,9 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
 
     public void startDecoding(final String password) {
         final BookLoadTask loadTask = new BookLoadTask(password);
-        if (codecType != null && codecType.useCustomFonts ) {
-            EBookDroidApp.checkInstalledFonts(getContext());
-        }
+//        if (codecType != null && codecType.useCustomFonts ) {
+//            EBookDroidApp.checkInstalledFonts(getContext());
+//        }
         loadTask.run();
     }
 

@@ -10,13 +10,9 @@ public final class CompareUtils {
   public static int compare(final float val1, final float val2) { return val1 < val2 ? -1 : val1 > val2 ? 1 : 0; }
 
   public static <T extends Comparable<T>> int compare(final T t1, final T t2) {
-    if (t1 == null) {
-      return t2 == null ? 0 : -1;
-    }
-    if (t2 == null) {
-        return 1;
-    }
-    return t1.compareTo(t2);
+    return  t1 == null ? (t2 == null ? 0 : -1) :
+            t2 == null ? 1 :
+            t1.compareTo(t2);
   }
 
   public static boolean equals(final Object o1, final Object o2) { return Objects.equals(o1, o2); }

@@ -41,12 +41,11 @@ import org.emdev.ui.gl.GLId;
 // blending). The user or subclass can override it using setOpaque().
 public class ByteBufferTexture extends BasicTexture {
 
-    @SuppressWarnings("unused")
     private static final LogContext LCTX = LogManager.root().lctx("Texture");
 
-    private static int[] sTextureId = new int[1];
+    private static final int[] sTextureId = new int[1];
 
-    private static float[] sCropRect = new float[4];
+    private static final float[] sCropRect = new float[4];
 
     private boolean mOpaque = true;
 

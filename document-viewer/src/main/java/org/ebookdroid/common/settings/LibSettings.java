@@ -72,22 +72,22 @@ public class LibSettings implements LibPreferences, IBackupAgent {
         }
     }
 
-    public static void changeAutoScanDirs(final String dir, final boolean add) {
-        SettingsManager.lock.writeLock().lock();
-        try {
-            final Set<String> dirs = new HashSet<String>(current.autoScanDirs);
-            if (add && dirs.add(dir) || dirs.remove(dir)) {
-                final Editor edit = SettingsManager.prefs.edit();
-                LibPreferences.AUTO_SCAN_DIRS.setPreferenceValue(edit, dirs);
-                edit.commit();
-                final LibSettings oldSettings = current;
-                current = new LibSettings();
-                applySettingsChanges(oldSettings, current);
-            }
-        } finally {
-            SettingsManager.lock.writeLock().unlock();
-        }
-    }
+//    public static void changeAutoScanDirs(final String dir, final boolean add) {
+//        SettingsManager.lock.writeLock().lock();
+//        try {
+//            final Set<String> dirs = new HashSet<String>(current.autoScanDirs);
+//            if (add && dirs.add(dir) || dirs.remove(dir)) {
+//                final Editor edit = SettingsManager.prefs.edit();
+//                LibPreferences.AUTO_SCAN_DIRS.setPreferenceValue(edit, dirs);
+//                edit.commit();
+//                final LibSettings oldSettings = current;
+//                current = new LibSettings();
+//                applySettingsChanges(oldSettings, current);
+//            }
+//        } finally {
+//            SettingsManager.lock.writeLock().unlock();
+//        }
+//    }
 
     public static void updateSearchBookQuery(final String searchQuery) {
         SettingsManager.lock.writeLock().lock();
@@ -103,17 +103,16 @@ public class LibSettings implements LibPreferences, IBackupAgent {
         }
     }
 
-    static Diff onSettingsChanged() {
+    static void onSettingsChanged() {
         final LibSettings oldLibSettings = current;
         current = new LibSettings();
-        return applySettingsChanges(oldLibSettings, current);
+        applySettingsChanges(oldLibSettings, current);
     }
 
-    public static LibSettings.Diff applySettingsChanges(final LibSettings oldSettings, final LibSettings newSettings) {
+    public static void applySettingsChanges(final LibSettings oldSettings, final LibSettings newSettings) {
         final LibSettings.Diff diff = new LibSettings.Diff(oldSettings, newSettings);
         final ILibSettingsChangeListener l = SettingsManager.listeners.getListener();
         l.onLibSettingsChanged(oldSettings, newSettings, diff);
-        return diff;
     }
 
     @Override

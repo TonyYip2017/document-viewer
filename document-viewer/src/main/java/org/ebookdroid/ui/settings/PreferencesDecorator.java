@@ -13,7 +13,6 @@ import org.ebookdroid.common.settings.books.BookSettings;
 import org.ebookdroid.common.settings.definitions.AppPreferences;
 import org.ebookdroid.common.settings.definitions.BookPreferences;
 import org.ebookdroid.common.settings.definitions.LibPreferences;
-import org.ebookdroid.common.settings.definitions.OpdsPreferences;
 import org.ebookdroid.common.settings.types.CacheLocation;
 import org.ebookdroid.common.settings.types.DocumentViewMode;
 import org.ebookdroid.common.settings.types.PageAlign;
@@ -33,8 +32,7 @@ import java.util.Map;
  * @author whippet
  *
  */
-public class PreferencesDecorator implements IPreferenceContainer, AppPreferences, BookPreferences, LibPreferences,
-        OpdsPreferences {
+public class PreferencesDecorator implements IPreferenceContainer, AppPreferences, BookPreferences, LibPreferences {
 
     private final Map<String, CharSequence> summaries = new HashMap<String, CharSequence>();
 

@@ -17,12 +17,12 @@ public class ListenerProxy {
     /**
      * All objects
      */
-    private final List<WeakReference<Object>> references = new LinkedList<WeakReference<Object>>();
+    private final List<WeakReference<Object>> references = new LinkedList<>();
 
     /**
      * Real listeners.
      */
-    private final Map<Class<?>, List<WeakReference<Object>>> realListeners = new HashMap<Class<?>, List<WeakReference<Object>>>();
+    private final Map<Class<?>, List<WeakReference<Object>>> realListeners = new HashMap<>();
 
     /**
      * Supported interfaces.

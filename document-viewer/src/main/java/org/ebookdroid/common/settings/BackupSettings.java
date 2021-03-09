@@ -69,17 +69,16 @@ public class BackupSettings implements BackupPreferences, IBackupAgent {
         onSettingsChanged();
     }
 
-    static Diff onSettingsChanged() {
+    static void onSettingsChanged() {
         final BackupSettings oldAppSettings = current;
         current = new BackupSettings();
-        return applySettingsChanges(oldAppSettings, current);
+        applySettingsChanges(oldAppSettings, current);
     }
 
-    static BackupSettings.Diff applySettingsChanges(final BackupSettings oldSettings, final BackupSettings newSettings) {
+    static void applySettingsChanges(final BackupSettings oldSettings, final BackupSettings newSettings) {
         final BackupSettings.Diff diff = new BackupSettings.Diff(oldSettings, newSettings);
         final IBackupSettingsChangeListener l = SettingsManager.listeners.getListener();
         l.onBackupSettingsChanged(oldSettings, newSettings, diff);
-        return diff;
     }
 
     public static class Diff {

@@ -61,14 +61,14 @@ public class CacheManager {
         return true;
     }
 
-    public static File createTempFile(final InputStream source, final String suffix) throws IOException {
-        final File tempfile = File.createTempFile("temp", suffix, s_cacheDir);
-        tempfile.deleteOnExit();
-
-        FileUtils.copy(source, new FileOutputStream(tempfile));
-
-        return tempfile;
-    }
+//    public static File createTempFile(final InputStream source, final String suffix) throws IOException {
+//        final File tempfile = File.createTempFile("temp", suffix, s_cacheDir);
+//        tempfile.deleteOnExit();
+//
+//        FileUtils.copy(source, new FileOutputStream(tempfile));
+//
+//        return tempfile;
+//    }
 
     public static File createTempDocument(final InputStream source, final String fileName, final UIFileCopying worker)
             throws IOException {
@@ -79,14 +79,14 @@ public class CacheManager {
         return tempfile;
     }
 
-    public static File createTempFile(final byte[] source, final String suffix) throws IOException {
-        final File tempfile = File.createTempFile("temp", suffix, s_cacheDir);
-        tempfile.deleteOnExit();
-
-        FileUtils.copy(new ByteArrayInputStream(source), new FileOutputStream(tempfile), source.length, null);
-
-        return tempfile;
-    }
+//    public static File createTempFile(final byte[] source, final String suffix) throws IOException {
+//        final File tempfile = File.createTempFile("temp", suffix, s_cacheDir);
+//        tempfile.deleteOnExit();
+//
+//        FileUtils.copy(new ByteArrayInputStream(source), new FileOutputStream(tempfile), source.length, null);
+//
+//        return tempfile;
+//    }
 
     public static File createTempFile(final Uri uri, final String extension, final UIFileCopying worker) throws IOException {
         final File tempfile = File.createTempFile("temp", "content." + extension, s_cacheDir);
@@ -98,15 +98,15 @@ public class CacheManager {
         return tempfile;
     }
 
-    public static File createTempFile(final Uri uri) throws IOException {
-        final File tempfile = File.createTempFile("temp", "content", s_cacheDir);
-        tempfile.deleteOnExit();
-
-        final InputStream source = s_context.getContentResolver().openInputStream(uri);
-        FileUtils.copy(source, new FileOutputStream(tempfile));
-
-        return tempfile;
-    }
+//    public static File createTempFile(final Uri uri) throws IOException {
+//        final File tempfile = File.createTempFile("temp", "content", s_cacheDir);
+//        tempfile.deleteOnExit();
+//
+//        final InputStream source = s_context.getContentResolver().openInputStream(uri);
+//        FileUtils.copy(source, new FileOutputStream(tempfile));
+//
+//        return tempfile;
+//    }
 
     public static void clear() {
         final String[] files = s_cacheDir != null ? s_cacheDir.list() : null;

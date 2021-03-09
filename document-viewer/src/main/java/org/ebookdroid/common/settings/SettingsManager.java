@@ -1,23 +1,28 @@
 package org.ebookdroid.common.settings;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import org.ebookdroid.common.settings.books.BookSettings;
 import org.ebookdroid.common.settings.books.DBSettingsManager;
 import org.ebookdroid.common.settings.listeners.IAppSettingsChangeListener;
 import org.ebookdroid.common.settings.listeners.IBackupSettingsChangeListener;
 import org.ebookdroid.common.settings.listeners.IBookSettingsChangeListener;
 import org.ebookdroid.common.settings.listeners.ILibSettingsChangeListener;
-import org.ebookdroid.common.settings.listeners.IOpdsSettingsChangeListener;
 import org.ebookdroid.common.settings.listeners.IRecentBooksChangedListener;
 import org.ebookdroid.common.settings.types.DocumentViewMode;
 import org.ebookdroid.common.settings.types.PageAlign;
 import org.ebookdroid.common.settings.types.RotationType;
 import org.ebookdroid.core.PageIndex;
 import org.ebookdroid.core.curl.PageAnimationType;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import org.emdev.common.log.LogContext;
+import org.emdev.common.log.LogManager;
+import org.emdev.utils.FileUtils;
+import org.emdev.utils.LengthUtils;
+import org.emdev.utils.concurrent.Flag;
+import org.emdev.utils.listeners.ListenerProxy;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,13 +31,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
-import org.emdev.utils.FileUtils;
-import org.emdev.utils.LengthUtils;
-import org.emdev.utils.concurrent.Flag;
-import org.emdev.utils.listeners.ListenerProxy;
 
 public class SettingsManager {
 
@@ -53,7 +51,7 @@ public class SettingsManager {
     private static final Map<String, BookSettings> bookSettings = new HashMap<String, BookSettings>();
 
     static ListenerProxy listeners = new ListenerProxy(IAppSettingsChangeListener.class,
-            IBackupSettingsChangeListener.class, ILibSettingsChangeListener.class, IOpdsSettingsChangeListener.class,
+            IBackupSettingsChangeListener.class, ILibSettingsChangeListener.class,
             IBookSettingsChangeListener.class, IRecentBooksChangedListener.class);
 
     private static BookSettingsUpdate updateThread;
@@ -67,7 +65,7 @@ public class SettingsManager {
             AppSettings.init();
             BackupSettings.init();
             LibSettings.init();
-            OpdsSettings.init();
+//            OpdsSettings.init();
 
             updateThread = new BookSettingsUpdate();
             updateThread.start();
@@ -392,7 +390,7 @@ public class SettingsManager {
             AppSettings.onSettingsChanged();
             BackupSettings.onSettingsChanged();
             LibSettings.onSettingsChanged();
-            OpdsSettings.onSettingsChanged();
+//            OpdsSettings.onSettingsChanged();
         } finally {
             lock.writeLock().unlock();
         }

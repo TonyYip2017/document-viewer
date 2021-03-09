@@ -116,7 +116,7 @@ public class RecentActivityController extends AbstractActivityController<RecentA
             if (recentLoaded) {
                 return;
             }
-            EBookDroidApp.checkInstalledFonts(getManagedComponent());
+//            EBookDroidApp.checkInstalledFonts(getManagedComponent());
         }
 
         changeLibraryView(recent != null ? RecentActivity.VIEW_RECENT : RecentActivity.VIEW_LIBRARY);
@@ -125,7 +125,7 @@ public class RecentActivityController extends AbstractActivityController<RecentA
     protected boolean checkAutoLoad(final LibSettings libSettings, final BookSettings recent) {
         final boolean shouldLoad = AppSettings.current().loadRecent;
         final File file = (recent != null && recent.fileName != null) ? new File(recent.fileName) : null;
-        final boolean found = file != null ? file.exists() && libSettings.allowedFileTypes.accept(file) : false;
+        final boolean found = file != null && (file.exists() && libSettings.allowedFileTypes.accept(file));
 
         if (LCTX.isDebugEnabled()) {
             LCTX.d("Last book: " + (file != null ? file.getAbsolutePath() : "") + ", found: " + found
