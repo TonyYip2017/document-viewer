@@ -213,8 +213,8 @@ public class DBSettingsManagerTest {
 
     @Test
     public void testAddBookmark() {
-        m_bs.bookmarks.addAll(Arrays.asList(m_b1));
-        assertThat(roundTrip(m_bs).bookmarks, is(Arrays.asList(m_b1)));
+        m_bs.bookmarks.addAll(Collections.singletonList(m_b1));
+        assertThat(roundTrip(m_bs).bookmarks, is(Collections.singletonList(m_b1)));
 
         m_bs.bookmarks.clear();
         m_bs.bookmarks.addAll(Arrays.asList(m_b1, m_b2));
@@ -237,8 +237,8 @@ public class DBSettingsManagerTest {
         m_bs2.bookmarks.add(m_b2);
         assertThat(m_manager.storeBookSettings(Arrays.asList(m_bs, m_bs2)), is(true));
 
-        assertThat(m_manager.getBookSettings(BS_FILENAME).bookmarks, is(Arrays.asList(m_b1)));
-        assertThat(m_manager.getBookSettings(BS_FILENAME2).bookmarks, is(Arrays.asList(m_b2)));
+        assertThat(m_manager.getBookSettings(BS_FILENAME).bookmarks, is(Collections.singletonList(m_b1)));
+        assertThat(m_manager.getBookSettings(BS_FILENAME2).bookmarks, is(Collections.singletonList(m_b2)));
 
         assertThat(m_manager.deleteAllBookmarks(), is(true));
 
@@ -382,13 +382,13 @@ public class DBSettingsManagerTest {
         m_bs2.lastChanged = 1L; // trigger `lastUpdated` to be updated to the current time
         assertThat(m_manager.storeBookSettings(m_bs2), is(true));
 
-        Set<String> expectedFilenames = new HashSet<String>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
+        Set<String> expectedFilenames = new HashSet<>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
         assertThat(expectedFilenames, hasSize(2));
 
         assertThat(m_manager.getAllBooks().keySet(), is(expectedFilenames));
         assertThat(m_manager.getRecentBooks(true).keySet(), is(expectedFilenames));
 
-        Set<String> filename2Set = new HashSet<String>(Arrays.asList(BS_FILENAME2));
+        Set<String> filename2Set = new HashSet<>(Collections.singletonList(BS_FILENAME2));
         assertThat(m_manager.getRecentBooks(false).keySet(), is(filename2Set));
     }
 
@@ -407,7 +407,7 @@ public class DBSettingsManagerTest {
         assertThat(m_manager.storeBookSettings(m_bs), is(true));
         assertThat(m_manager.storeBookSettings(m_bs2), is(true));
 
-        Set<String> expectedAll = new HashSet<String>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
+        Set<String> expectedAll = new HashSet<>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
         assertThat(m_manager.getRecentBooks(true).keySet(), is(expectedAll));
 
         // mark `m_bs` as not recent
@@ -415,7 +415,7 @@ public class DBSettingsManagerTest {
         assertThat(m_manager.removeBookFromRecents(m_bs), is(true));
         assertThat(m_manager.getBookSettings(BS_FILENAME).lastUpdated, is(0L));
 
-        Set<String> expectedAfterBsRemoved = new HashSet<String>(Arrays.asList(BS_FILENAME2));
+        Set<String> expectedAfterBsRemoved = new HashSet<>(Collections.singletonList(BS_FILENAME2));
         assertThat(m_manager.getRecentBooks(true).keySet(), is(expectedAfterBsRemoved));
     }
 
@@ -424,7 +424,7 @@ public class DBSettingsManagerTest {
         assertThat(m_manager.storeBookSettings(m_bs), is(true));
         assertThat(m_manager.storeBookSettings(m_bs2), is(true));
 
-        Set<String> expectedAll = new HashSet<String>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
+        Set<String> expectedAll = new HashSet<>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
         assertThat(m_manager.getRecentBooks(true).keySet(), is(expectedAll));
 
         assertThat(m_manager.clearRecent(), is(true));
@@ -442,8 +442,8 @@ public class DBSettingsManagerTest {
         assertThat(m_bs2.lastUpdated, is(greaterThan(0L)));
         assertThat(m_manager.storeBookSettings(m_bs2), is(true));
 
-        Set<String> expectedAll = new HashSet<String>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
-        Set<String> expectedRecent = new HashSet<String>(Arrays.asList(BS_FILENAME2));
+        Set<String> expectedAll = new HashSet<>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
+        Set<String> expectedRecent = new HashSet<>(Collections.singletonList(BS_FILENAME2));
 
         assertThat(m_manager.getAllBooks().keySet(), is(expectedAll));
         assertThat(m_manager.getRecentBooks(true).keySet(), is(expectedRecent));
@@ -462,8 +462,8 @@ public class DBSettingsManagerTest {
     public void testDeleteBook() {
         assertThat(m_manager.storeBookSettings(Arrays.asList(m_bs, m_bs2)), is(true));
 
-        Set<String> expectedAll = new HashSet<String>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
-        Set<String> expectedAfterDeletion = new HashSet<String>(Arrays.asList(BS_FILENAME2));
+        Set<String> expectedAll = new HashSet<>(Arrays.asList(BS_FILENAME, BS_FILENAME2));
+        Set<String> expectedAfterDeletion = new HashSet<>(Collections.singletonList(BS_FILENAME2));
 
         assertThat(m_manager.getAllBooks().keySet(), is(expectedAll));
         m_manager.delete(m_bs);

@@ -170,7 +170,7 @@ public class RecentActivity extends AbstractActionActivity<RecentActivity, Recen
             final SubMenu subMenu = storageMenu.getSubMenu();
             subMenu.removeGroup(R.id.actions_storageGroup);
 
-            final Set<String> added = new HashSet<String>();
+            final Set<String> added = new HashSet<>();
             added.add("/");
             added.add(FileUtils.getCanonicalPath(BaseDroidApp.EXT_STORAGE));
 
@@ -262,7 +262,7 @@ public class RecentActivity extends AbstractActionActivity<RecentActivity, Recen
         }
         osm.clear();
 
-        final List<Bookmark> list = new ArrayList<Bookmark>();
+        final List<Bookmark> list = new ArrayList<>();
         list.add(new Bookmark(true, getString(R.string.bookmark_start), PageIndex.FIRST, 0, 0));
         list.add(new Bookmark(true, getString(R.string.bookmark_end), PageIndex.LAST, 0, 1));
         if (bs != null) {
@@ -310,17 +310,17 @@ public class RecentActivity extends AbstractActionActivity<RecentActivity, Recen
         }
     }
 
-    void showNextBookshelf() {
-        if (bookcaseView != null) {
-            bookcaseView.nextList();
-        }
-    }
-
-    void showPrevBookshelf() {
-        if (bookcaseView != null) {
-            bookcaseView.prevList();
-        }
-    }
+//    void showNextBookshelf() {
+//        if (bookcaseView != null) {
+//            bookcaseView.nextList();
+//        }
+//    }
+//
+//    void showPrevBookshelf() {
+//        if (bookcaseView != null) {
+//            bookcaseView.prevList();
+//        }
+//    }
 
     void showBookcase(final BooksAdapter bookshelfAdapter, final RecentAdapter recentAdapter) {
         final ViewFlipper vf = getViewflipper();

@@ -44,13 +44,12 @@ public class EventScrollDown extends AbstractEventScroll<EventScrollDown> {
             return;
         }
 
-        final int midIndex = firstVisiblePage;
         int delta = 0;
         int run = 2;
         while (run > 0) {
             run = 0;
-            final int left = midIndex - delta;
-            final int right = midIndex + delta;
+            final int left = firstVisiblePage - delta;
+            final int right = firstVisiblePage + delta;
             if (left >= 0) {
                 run++;
                 if (ctrl.isPageVisible(pages[left], viewState, bounds)) {

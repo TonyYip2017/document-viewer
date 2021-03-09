@@ -18,7 +18,7 @@ public class FilePrefixFilter implements FileFilter, FilenameFilter {
     }
 
     public FilePrefixFilter(final String... prefixes) {
-        this.prefixes = new HashSet<String>(Arrays.asList(prefixes));
+        this.prefixes = new HashSet<>(Arrays.asList(prefixes));
     }
 
     @Override

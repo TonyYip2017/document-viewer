@@ -121,9 +121,9 @@ public abstract class AbstractCodecContext implements CodecContext {
                 final Field f = ViewerActivity.DM.getClass().getDeclaredField("densityDpi");
                 densityDPI = ((Integer) f.get(ViewerActivity.DM));
             } catch (final Throwable ex) {
-                densityDPI = Integer.valueOf(120);
+                densityDPI = 120;
             }
         }
-        return densityDPI.intValue();
+        return densityDPI;
     }
 }

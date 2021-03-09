@@ -80,7 +80,7 @@ class DBAdapterV1 implements IDBAdapter {
     }
 
     protected final Map<String, BookSettings> getBookSettings(final String query, final boolean all) {
-        final Map<String, BookSettings> map = new LinkedHashMap<String, BookSettings>();
+        final Map<String, BookSettings> map = new LinkedHashMap<>();
 
         try {
             final SQLiteDatabase db = manager.getReadableDatabase();

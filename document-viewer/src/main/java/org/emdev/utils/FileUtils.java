@@ -20,10 +20,10 @@ import org.emdev.ui.progress.IProgressIndicator;
 
 public final class FileUtils {
 
-    private static final ArrayList<String> mounts = new ArrayList<String>();
-    private static final ArrayList<String> mountsPR = new ArrayList<String>();
-    private static final ArrayList<String> aliases = new ArrayList<String>();
-    private static final ArrayList<String> aliasesPR = new ArrayList<String>();
+    private static final ArrayList<String> mounts = new ArrayList<>();
+    private static final ArrayList<String> mountsPR = new ArrayList<>();
+    private static final ArrayList<String> aliases = new ArrayList<>();
+    private static final ArrayList<String> aliasesPR = new ArrayList<>();
 
     static {
         File root = new File("/");

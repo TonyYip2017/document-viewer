@@ -31,7 +31,7 @@ public class EventDispatcher {
     /**
      * Real listeners.
      */
-    private final Map<Class<?>, List<Object>> m_listeners = new HashMap<Class<?>, List<Object>>();
+    private final Map<Class<?>, List<Object>> m_listeners = new HashMap<>();
 
     private final Object m_proxy;
 
@@ -79,7 +79,7 @@ public class EventDispatcher {
                 if (listenerClass.isInstance(listener)) {
                     List<Object> list = m_listeners.get(listenerClass);
                     if (list == null) {
-                        list = new LinkedList<Object>();
+                        list = new LinkedList<>();
                         m_listeners.put(listenerClass, list);
                     }
 

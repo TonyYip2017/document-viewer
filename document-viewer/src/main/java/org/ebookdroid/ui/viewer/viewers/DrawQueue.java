@@ -13,9 +13,9 @@ public class DrawQueue {
 
     private static final LogContext LCTX = LogManager.root().lctx("Imaging");
 
-    private final ArrayBlockingQueue<ViewState> queue = new ArrayBlockingQueue<ViewState>(16, true);
+    private final ArrayBlockingQueue<ViewState> queue = new ArrayBlockingQueue<>(16, true);
 
-    private final ArrayList<ViewState> list = new ArrayList<ViewState>();
+    private final ArrayList<ViewState> list = new ArrayList<>();
 
     public DrawQueue() {
     }

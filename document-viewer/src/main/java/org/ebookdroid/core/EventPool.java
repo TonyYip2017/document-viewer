@@ -10,16 +10,16 @@ import org.emdev.ui.gl.GLCanvas;
 
 public class EventPool {
 
-    private static final ConcurrentLinkedQueue<EventGLDraw> glEvents = new ConcurrentLinkedQueue<EventGLDraw>();
-    private static final ConcurrentLinkedQueue<EventReset> resetEvents = new ConcurrentLinkedQueue<EventReset>();
+    private static final ConcurrentLinkedQueue<EventGLDraw> glEvents = new ConcurrentLinkedQueue<>();
+    private static final ConcurrentLinkedQueue<EventReset> resetEvents = new ConcurrentLinkedQueue<>();
 
-    private static final ConcurrentLinkedQueue<EventScrollUp> scrollUpEvents = new ConcurrentLinkedQueue<EventScrollUp>();
-    private static final ConcurrentLinkedQueue<EventScrollDown> scrollDownEvents = new ConcurrentLinkedQueue<EventScrollDown>();
-    private static final ConcurrentLinkedQueue<EventScrollTo> scrollToEvents = new ConcurrentLinkedQueue<EventScrollTo>();
-    private static final ConcurrentLinkedQueue<EventChildLoaded> childLoadedEvents = new ConcurrentLinkedQueue<EventChildLoaded>();
+    private static final ConcurrentLinkedQueue<EventScrollUp> scrollUpEvents = new ConcurrentLinkedQueue<>();
+    private static final ConcurrentLinkedQueue<EventScrollDown> scrollDownEvents = new ConcurrentLinkedQueue<>();
+    private static final ConcurrentLinkedQueue<EventScrollTo> scrollToEvents = new ConcurrentLinkedQueue<>();
+    private static final ConcurrentLinkedQueue<EventChildLoaded> childLoadedEvents = new ConcurrentLinkedQueue<>();
 
-    private static final ConcurrentLinkedQueue<EventZoomIn> zoomInEvents = new ConcurrentLinkedQueue<EventZoomIn>();
-    private static final ConcurrentLinkedQueue<EventZoomOut> zoomOutEvents = new ConcurrentLinkedQueue<EventZoomOut>();
+    private static final ConcurrentLinkedQueue<EventZoomIn> zoomInEvents = new ConcurrentLinkedQueue<>();
+    private static final ConcurrentLinkedQueue<EventZoomOut> zoomOutEvents = new ConcurrentLinkedQueue<>();
 
     public static EventGLDraw newGLEventDraw(final ViewState viewState, final GLCanvas canvas) {
         EventGLDraw event = glEvents.poll();

@@ -154,7 +154,7 @@ public class MuPdfPage extends AbstractCodecPage {
     public List<? extends RectF> searchText(final String pattern) {
         final List<PageTextBox> rects = search(docHandle, pageHandle, pattern);
         if (LengthUtils.isNotEmpty(rects)) {
-            final Set<String> temp = new HashSet<String>();
+            final Set<String> temp = new HashSet<>();
             final Iterator<PageTextBox> iter = rects.iterator();
             while (iter.hasNext()) {
                 final PageTextBox b = iter.next();

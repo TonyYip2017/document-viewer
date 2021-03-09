@@ -52,15 +52,15 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
 
     final AtomicBoolean inScan = new AtomicBoolean();
 
-    final SparseArrayEx<BookShelfAdapter> data = new SparseArrayEx<BookShelfAdapter>();
+    final SparseArrayEx<BookShelfAdapter> data = new SparseArrayEx<>();
 
-    final TreeMap<String, BookShelfAdapter> folders = new TreeMap<String, BookShelfAdapter>();
+    final TreeMap<String, BookShelfAdapter> folders = new TreeMap<>();
 
     private final RecentAdapter recent;
 
     private final FileSystemScanner scanner;
 
-    private final List<DataSetObserver> _dsoList = new ArrayList<DataSetObserver>();
+    private final List<DataSetObserver> _dsoList = new ArrayList<>();
 
     private String searchQuery;
 
@@ -203,7 +203,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
             return null;
         }
 
-        final List<String> result = new ArrayList<String>(data.size());
+        final List<String> result = new ArrayList<>(data.size());
         for (int index = 0; index < size; index++) {
             final BookShelfAdapter a = data.valueAt(index);
             result.add(a.name);
@@ -220,7 +220,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
             return null;
         }
 
-        final List<String> result = new ArrayList<String>(data.size());
+        final List<String> result = new ArrayList<>(data.size());
         for (int index = 0; index < size; index++) {
             final BookShelfAdapter a = data.valueAt(index);
             result.add(a.path);
@@ -296,7 +296,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
     public void startScan() {
         clearData();
         final LibSettings libSettings = LibSettings.current();
-        final Set<String> folders = new LinkedHashSet<String>(libSettings.autoScanDirs);
+        final Set<String> folders = new LinkedHashSet<>(libSettings.autoScanDirs);
         if (libSettings.autoScanRemovableMedia) {
             folders.addAll(MediaManager.getReadableMedia());
         }
@@ -592,7 +592,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
 
     class SearchTask extends AsyncTask<String, String, Void> {
 
-        private final BlockingQueue<BookNode> queue = new ArrayBlockingQueue<BookNode>(160, true);
+        private final BlockingQueue<BookNode> queue = new ArrayBlockingQueue<>(160, true);
 
         @Override
         protected void onPreExecute() {
@@ -619,7 +619,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
 
         @Override
         protected void onProgressUpdate(final String... values) {
-            final ArrayList<BookNode> nodes = new ArrayList<BookNode>();
+            final ArrayList<BookNode> nodes = new ArrayList<>();
             while (!queue.isEmpty()) {
                 nodes.add(queue.poll());
             }

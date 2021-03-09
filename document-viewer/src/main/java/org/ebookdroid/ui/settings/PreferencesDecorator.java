@@ -34,9 +34,9 @@ import java.util.Map;
  */
 public class PreferencesDecorator implements IPreferenceContainer, AppPreferences, BookPreferences, LibPreferences {
 
-    private final Map<String, CharSequence> summaries = new HashMap<String, CharSequence>();
+    private final Map<String, CharSequence> summaries = new HashMap<>();
 
-    private final Map<String, CompositeListener> listeners = new HashMap<String, CompositeListener>();
+    private final Map<String, CompositeListener> listeners = new HashMap<>();
 
     private final IPreferenceContainer parent;
 
@@ -251,7 +251,7 @@ public class PreferencesDecorator implements IPreferenceContainer, AppPreference
 
     protected static class CompositeListener implements OnPreferenceChangeListener {
 
-        final List<OnPreferenceChangeListener> listeners = new LinkedList<Preference.OnPreferenceChangeListener>();
+        final List<OnPreferenceChangeListener> listeners = new LinkedList<>();
 
         @Override
         public boolean onPreferenceChange(final Preference preference, final Object newValue) {

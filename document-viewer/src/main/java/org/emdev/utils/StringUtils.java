@@ -50,7 +50,7 @@ public class StringUtils {
     }
 
     public static Set<String> split(final String separator, final String value) {
-        final Set<String> list = new LinkedHashSet<String>();
+        final Set<String> list = new LinkedHashSet<>();
 
         final String[] split = value.split(separator);
         for (final String string : split) {

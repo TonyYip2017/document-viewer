@@ -360,7 +360,7 @@ public abstract class AbstractActionActivity<A extends Activity, C extends Abstr
             final int actionId = data.getIntExtra(ActionMenuHelper.ACTIVITY_RESULT_ACTION_ID, 0);
             if (actionId != 0) {
                 final ActionEx action = getController().getOrCreateAction(actionId);
-                action.putValue(ActionMenuHelper.ACTIVITY_RESULT_CODE, Integer.valueOf(resultCode));
+                action.putValue(ActionMenuHelper.ACTIVITY_RESULT_CODE, resultCode);
                 action.putValue(ActionMenuHelper.ACTIVITY_RESULT_DATA, data);
                 action.run();
             }

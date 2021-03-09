@@ -148,23 +148,18 @@ public class Page {
         }
     }
 
-    public float getTargetRectScale() {
-        return type.getWidthScale();
-    }
+//    public float getTargetRectScale() {
+//        return type.getWidthScale();
+//    }
 
     @Override
     public String toString() {
-
-        String buf = "Page" + "[" +
-                "index" + "=" + index +
-                ", " +
-                "bounds" + "=" + bounds +
-                ", " +
-                "aspectRatio" + "=" + aspectRatio +
-                ", " +
+        return "Page" + "[" +
+                "index" + "=" + index + ", " +
+                "bounds" + "=" + bounds + ", " +
+                "aspectRatio" + "=" + aspectRatio + ", " +
                 "type" + "=" + type.name() +
                 "]";
-        return buf;
     }
 
     public static RectF getTargetRect(final PageType pageType, final RectF pageBounds, final RectF normalizedRect) {

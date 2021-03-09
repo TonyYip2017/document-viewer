@@ -45,7 +45,7 @@ public class TouchConfigDialog extends Dialog {
         super(base.getContext());
         this.view = view;
         this.profile = profile;
-        DialogController<TouchConfigDialog> actions = new DialogController<TouchConfigDialog>(this);
+        DialogController<TouchConfigDialog> actions = new DialogController<>(this);
 
         setTitle("Tap configuration");
         setContentView(R.layout.tap_zones_config);
@@ -156,7 +156,7 @@ public class TouchConfigDialog extends Dialog {
     }
 
     private List<RegionWrapper> wraps(final List<Region> list) {
-        final List<RegionWrapper> res = new ArrayList<RegionWrapper>(list.size());
+        final List<RegionWrapper> res = new ArrayList<>(list.size());
         for (final Region r : list) {
             res.add(new RegionWrapper(r));
         }
@@ -207,7 +207,7 @@ public class TouchConfigDialog extends Dialog {
         }
     }
 
-    final class RegionsAdapter extends ArrayAdapter<RegionWrapper> {
+    static final class RegionsAdapter extends ArrayAdapter<RegionWrapper> {
 
         RegionsAdapter(final Context context, final List<RegionWrapper> objects) {
             super(context, R.layout.list_item, R.id.list_item, objects);

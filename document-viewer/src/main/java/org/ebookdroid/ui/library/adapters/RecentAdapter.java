@@ -25,8 +25,8 @@ public class RecentAdapter extends BaseAdapter {
 
     final IBrowserActivity base;
 
-    private final List<BookNode> books = new ArrayList<BookNode>();
-    private final Map<String, BookNode> nodes = new HashMap<String, BookNode>();
+    private final List<BookNode> books = new ArrayList<>();
+    private final Map<String, BookNode> nodes = new HashMap<>();
 
     public RecentAdapter(final IBrowserActivity base) {
         this.base = base;

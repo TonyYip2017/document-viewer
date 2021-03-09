@@ -19,8 +19,7 @@ public class ZipArchive implements ArchiveFile<ZipArchiveEntry> {
         try {
             this.zipfile = new ZipFile(zipfile);
         } catch (final ZipException ex) {
-            final IOException exx = new IOException(ex.getMessage(), ex);
-            throw exx;
+            throw new IOException(ex.getMessage(), ex);
         }
     }
 

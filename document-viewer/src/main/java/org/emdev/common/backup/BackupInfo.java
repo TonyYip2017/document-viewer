@@ -67,12 +67,10 @@ public class BackupInfo implements Comparable<BackupInfo> {
 
     @Override
     public String toString() {
-        String buf = this.getClass().getSimpleName() + "[" +
-                "timestamp" + "=" + (timestamp != null ? SDF.format(timestamp) : null) +
-                ", " +
+        return this.getClass().getSimpleName() + "[" +
+                "timestamp" + "=" + (timestamp != null ? SDF.format(timestamp) : null) + ", " +
                 "name" + "=" + name +
                 "]";
-        return buf;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class MuPdfLinks {
     private static final float[] temp = new float[4];
 
     static List<PageLink> getPageLinks(final long docHandle, final long pageHandle, final RectF pageBounds) {
-        final List<PageLink> links = new ArrayList<PageLink>();
+        final List<PageLink> links = new ArrayList<>();
         for (long linkHandle = getFirstPageLink(docHandle, pageHandle); linkHandle != 0; linkHandle = getNextPageLink(linkHandle)) {
             final PageLink link = new PageLink();
             final int type = getPageLinkType(docHandle, linkHandle);

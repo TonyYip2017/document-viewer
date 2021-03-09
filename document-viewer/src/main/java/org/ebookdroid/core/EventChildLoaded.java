@@ -79,7 +79,7 @@ public class EventChildLoaded extends AbstractEvent {
         // }
 
         if (!viewState.isNodeVisible(parent, bounds) || hiddenByChildren) {
-            final List<GLBitmaps> bitmapsToRecycle = new ArrayList<GLBitmaps>();
+            final List<GLBitmaps> bitmapsToRecycle = new ArrayList<>();
             final boolean res = nodes.recycleParents(child, bitmapsToRecycle);
             ByteBufferManager.release(bitmapsToRecycle);
 

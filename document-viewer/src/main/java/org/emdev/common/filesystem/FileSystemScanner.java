@@ -39,7 +39,7 @@ public class FileSystemScanner {
 
     final EventDispatcher listeners;
     final AtomicBoolean inScan = new AtomicBoolean();
-    final Map<File, FileObserver> observers = new HashMap<File, FileObserver>();
+    final Map<File, FileObserver> observers = new HashMap<>();
 
     private ScanTask m_scanTask;
 
@@ -173,7 +173,7 @@ public class FileSystemScanner {
 
         final FileExtensionFilter filter;
 
-        final LinkedList<File> paths = new LinkedList<File>();
+        final LinkedList<File> paths = new LinkedList<>();
 
         public ScanTask(final FileExtensionFilter filter) {
             this.filter = filter;

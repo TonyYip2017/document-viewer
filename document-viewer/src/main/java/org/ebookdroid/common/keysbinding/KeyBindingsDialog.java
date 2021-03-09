@@ -121,11 +121,11 @@ public class KeyBindingsDialog extends Dialog {
         }
     }
 
-    public class KeyGroup {
+    public static class KeyGroup {
 
         final String label;
-        final Map<Integer, KeyAction> keys = new LinkedHashMap<Integer, KeyAction>();
-        final List<KeyAction> actions = new ArrayList<KeyAction>();
+        final Map<Integer, KeyAction> keys = new LinkedHashMap<>();
+        final List<KeyAction> actions = new ArrayList<>();
 
         public KeyGroup(final String label) {
             this.label = label;
@@ -150,7 +150,7 @@ public class KeyBindingsDialog extends Dialog {
 
     public class KeyGroups extends BaseExpandableListAdapter implements OnItemSelectedListener {
 
-        final List<KeyGroup> groups = new ArrayList<KeyGroup>();
+        final List<KeyGroup> groups = new ArrayList<>();
 
         public KeyGroup add(final String label) {
             final KeyGroup group = new KeyGroup(label);

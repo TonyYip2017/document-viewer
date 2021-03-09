@@ -47,7 +47,7 @@ public class BookSettings implements CurrentPageListener {
 
     public PageAnimationType animationType = PageAnimationType.NONE;
 
-    public final List<Bookmark> bookmarks = new ArrayList<Bookmark>();
+    public final List<Bookmark> bookmarks = new ArrayList<>();
 
     public boolean cropPages;
 

@@ -42,9 +42,9 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
 
     private final ActionControllerMethod m_method;
 
-    private final Map<String, Object> m_values = new LinkedHashMap<String, Object>();
+    private final Map<String, Object> m_values = new LinkedHashMap<>();
 
-    private final Map<String, IActionParameter> m_actionParameters = new LinkedHashMap<String, IActionParameter>();
+    private final Map<String, IActionParameter> m_actionParameters = new LinkedHashMap<>();
 
     private boolean enabled = true;
 
@@ -272,8 +272,8 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
     }
 
     private static void fillMapping() {
-        s_names = new SparseArrayEx<String>();
-        s_ids = new HashMap<String, Integer>();
+        s_names = new SparseArrayEx<>();
+        s_ids = new HashMap<>();
 
         for (final Field f : R.id.class.getFields()) {
             final int modifiers = f.getModifiers();

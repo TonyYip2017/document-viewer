@@ -48,7 +48,7 @@ public class DocumentModel extends ListenerProxy {
 
     protected static final LogContext LCTX = LogManager.root().lctx("DocModel", false);
 
-    private final ThreadLocal<PageIterator> iterators = new ThreadLocal<DocumentModel.PageIterator>();
+    private final ThreadLocal<PageIterator> iterators = new ThreadLocal<>();
 
     public final DecodeService decodeService;
 
@@ -126,7 +126,7 @@ public class DocumentModel extends ListenerProxy {
         if (LengthUtils.isNotEmpty(pages)) {
             saveDocumentInfo();
 
-            final List<GLBitmaps> bitmapsToRecycle = new ArrayList<GLBitmaps>();
+            final List<GLBitmaps> bitmapsToRecycle = new ArrayList<>();
             for (final Page page : pages) {
                 page.recycle(bitmapsToRecycle);
             }
@@ -247,7 +247,7 @@ public class DocumentModel extends ListenerProxy {
 
         final long start = System.currentTimeMillis();
         try {
-            final ArrayList<Page> list = new ArrayList<Page>();
+            final ArrayList<Page> list = new ArrayList<>();
 
             if (docInfo == null) {
                 retrieveDocumentInfo(base, bs, task);

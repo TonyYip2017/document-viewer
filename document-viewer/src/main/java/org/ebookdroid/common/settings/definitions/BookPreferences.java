@@ -91,16 +91,16 @@ public interface BookPreferences {
     BooleanPreferenceDefinition BOOK_CROP_PAGES = new BooleanPreferenceDefinition(pref_book_croppages_id,
             pref_croppages_defvalue);
 
-    EnumPreferenceDefinition<RotationType> BOOK_ROTATION = new EnumPreferenceDefinition<RotationType>(
+    EnumPreferenceDefinition<RotationType> BOOK_ROTATION = new EnumPreferenceDefinition<>(
             RotationType.class, pref_book_rotation_id, pref_rotation_unspecified);
 
-    EnumPreferenceDefinition<DocumentViewMode> BOOK_VIEW_MODE = new EnumPreferenceDefinition<DocumentViewMode>(
+    EnumPreferenceDefinition<DocumentViewMode> BOOK_VIEW_MODE = new EnumPreferenceDefinition<>(
             DocumentViewMode.class, pref_book_viewmode_id, pref_viewmode_vertical_scroll);
 
-    EnumPreferenceDefinition<PageAlign> BOOK_PAGE_ALIGN = new EnumPreferenceDefinition<PageAlign>(PageAlign.class,
+    EnumPreferenceDefinition<PageAlign> BOOK_PAGE_ALIGN = new EnumPreferenceDefinition<>(PageAlign.class,
             pref_book_align_id, pref_align_by_width);
 
-    EnumPreferenceDefinition<PageAnimationType> BOOK_ANIMATION_TYPE = new EnumPreferenceDefinition<PageAnimationType>(
+    EnumPreferenceDefinition<PageAnimationType> BOOK_ANIMATION_TYPE = new EnumPreferenceDefinition<>(
             PageAnimationType.class, pref_book_animation_type_id, pref_animation_type_none);
 
     BooleanPreferenceDefinition BOOK_RTL= new BooleanPreferenceDefinition(pref_book_rtl_id, pref_rtl_defvalue);

@@ -15,7 +15,7 @@ public class ActionControllerMethod {
 
     private static final LogContext LCTX = LogManager.root().lctx("Actions");
 
-    private static final HashMap<Class<?>, SparseArrayEx<Method>> s_methods = new HashMap<Class<?>, SparseArrayEx<Method>>();
+    private static final HashMap<Class<?>, SparseArrayEx<Method>> s_methods = new HashMap<>();
 
     private final IActionController<?> m_controller;
 
@@ -80,7 +80,7 @@ public class ActionControllerMethod {
      */
     Method getMethod() {
         if (m_method == null && m_errorInfo == null) {
-            List<String> classes = new ArrayList<String>();
+            List<String> classes = new ArrayList<>();
 
             for (IActionController<?> c = m_controller; m_method == null && c != null; c = c.getParent()) {
                 classes.add(c.getManagedComponent().getClass().getSimpleName());
@@ -135,7 +135,7 @@ public class ActionControllerMethod {
      * @return the map of action methods method
      */
     private static SparseArrayEx<Method> getActionMethods(final Class<?> clazz) {
-        final SparseArrayEx<Method> result = new SparseArrayEx<Method>();
+        final SparseArrayEx<Method> result = new SparseArrayEx<>();
         getActionMethodsFromMethodAnnotations(clazz, result);
         return result;
     }

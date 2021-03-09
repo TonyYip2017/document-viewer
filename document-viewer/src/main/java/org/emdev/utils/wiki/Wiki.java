@@ -71,8 +71,7 @@ public class Wiki {
             }
         }
 
-        final String content = buf.append("</body></html>").toString();
-        return content;
+        return buf.append("</body></html>").toString();
     }
 
     private static String replacePreformatted(final String str) {

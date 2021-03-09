@@ -46,7 +46,7 @@ public class FileListPreferenceDefinition extends BasePreferenceDefinition<Set<S
 
     @Override
     public void restore(final JSONObject root, final Editor edit) throws JSONException {
-        final Set<String> values = new LinkedHashSet<String>();
+        final Set<String> values = new LinkedHashSet<>();
         final JSONArray arr = root.optJSONArray(key);
         if (arr != null) {
             for (int i = 0, n = arr.length(); i < n; i++) {

@@ -17,7 +17,7 @@ public class GLBitmaps {
 
     protected static final LogContext LCTX = LogManager.root().lctx("Bitmaps", false);
 
-    protected static final ThreadLocal<ByteBufferBitmap> threadSlices = new ThreadLocal<ByteBufferBitmap>();
+    protected static final ThreadLocal<ByteBufferBitmap> threadSlices = new ThreadLocal<>();
 
     protected final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
@@ -163,8 +163,8 @@ public class GLBitmaps {
         lock.writeLock().lock();
         try {
             if (textures != null) {
-                for (int i = 0; i < textures.length; i++) {
-                    textures[i].recycle();
+                for (ByteBufferTexture texture : textures) {
+                    texture.recycle();
                 }
                 textures = null;
             }

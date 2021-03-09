@@ -62,7 +62,7 @@ public class DecodeServiceBase implements DecodeService {
 
         isRecycled = new AtomicBoolean();
 
-        viewState = new AtomicReference<ViewState>();
+        viewState = new AtomicReference<>();
 
         pages = new PageCache();
 
@@ -418,7 +418,7 @@ public class DecodeServiceBase implements DecodeService {
 
     class Executor implements Runnable {
 
-        final Map<PageTreeNode, DecodeTask> decodingTasks = new IdentityHashMap<PageTreeNode, DecodeTask>();
+        final Map<PageTreeNode, DecodeTask> decodingTasks = new IdentityHashMap<>();
 
         final ArrayList<Task> tasks;
         final Thread[] threads;
@@ -426,7 +426,7 @@ public class DecodeServiceBase implements DecodeService {
         final AtomicBoolean run = new AtomicBoolean(true);
 
         Executor() {
-            tasks = new ArrayList<Task>();
+            tasks = new ArrayList<>();
             threads = new Thread[AppSettings.current().decodingThreads];
 
             LCTX.i("Number of decoding threads: " + threads.length);
@@ -440,9 +440,9 @@ public class DecodeServiceBase implements DecodeService {
             final int decodingThreadPriority = AppSettings.current().decodingThreadPriority;
             LCTX.i("Decoding thread priority: " + decodingThreadPriority);
 
-            for (int i = 0; i < threads.length; i++) {
-                threads[i].setPriority(decodingThreadPriority);
-                threads[i].start();
+            for (Thread thread : threads) {
+                thread.setPriority(decodingThreadPriority);
+                thread.start();
             }
         }
 
@@ -824,17 +824,12 @@ public class DecodeServiceBase implements DecodeService {
 
         @Override
         public String toString() {
-
-            String buf = "DecodeTask" + "[" +
-                    "id" + "=" + id +
-                    ", " +
-                    "target" + "=" + node +
-                    ", " +
-                    "width" + "=" + (int) viewState.viewRect.width() +
-                    ", " +
+            return "DecodeTask" + "[" +
+                    "id" + "=" + id + ", " +
+                    "target" + "=" + node + ", " +
+                    "width" + "=" + (int) viewState.viewRect.width() + ", " +
                     "zoom" + "=" + viewState.zoom +
                     "]";
-            return buf;
         }
     }
 
@@ -856,8 +851,7 @@ public class DecodeServiceBase implements DecodeService {
                 height = height * th / tw;
             }
             final Bitmap scaled = Bitmap.createScaledBitmap(thumbnail, width, height, true);
-            final IBitmapRef ref = BitmapManager.addBitmap("Thumbnail", scaled);
-            return ref;
+            return BitmapManager.addBitmap("Thumbnail", scaled);
         } else {
             final CodecPage page = getPage(pageNo);
             return page.renderBitmap(null, width, height, region).toBitmap();

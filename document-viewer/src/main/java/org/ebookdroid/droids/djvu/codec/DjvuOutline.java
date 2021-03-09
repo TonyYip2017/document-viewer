@@ -10,7 +10,7 @@ public class DjvuOutline {
     private long docHandle;
 
     public List<OutlineLink> getOutline(final long dochandle) {
-        final List<OutlineLink> ls = new ArrayList<OutlineLink>();
+        final List<OutlineLink> ls = new ArrayList<>();
         docHandle = dochandle;
         final long expr = open(docHandle);
         ttOutline(ls, expr, 0);

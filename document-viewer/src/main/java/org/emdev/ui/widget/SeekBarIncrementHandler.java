@@ -29,13 +29,13 @@ public class SeekBarIncrementHandler extends Handler implements OnTouchListener,
         this.seekBar = seekBar;
 
         View minus = parent.findViewById(minusViewId);
-        minus.setTag(Integer.valueOf(-1));
+        minus.setTag(-1);
         minus.setOnTouchListener(this);
         minus.setOnClickListener(this);
         minus.setOnLongClickListener(this);
 
         View plus = parent.findViewById(plusViewId);
-        plus.setTag(Integer.valueOf(+1));
+        plus.setTag(+1);
         plus.setOnTouchListener(this);
         plus.setOnClickListener(this);
         plus.setOnLongClickListener(this);
@@ -77,7 +77,7 @@ public class SeekBarIncrementHandler extends Handler implements OnTouchListener,
     @Override
     public void onClick(final View v) {
         if (seekBar != null) {
-            final int delta = ((Integer) v.getTag()).intValue();
+            final int delta = (Integer) v.getTag();
             seekBar.incrementProgressBy(delta);
         }
     }
@@ -85,7 +85,7 @@ public class SeekBarIncrementHandler extends Handler implements OnTouchListener,
     @Override
     public boolean onLongClick(final View v) {
         if (seekBar != null) {
-            final int delta = INIT_MULT * ((Integer) v.getTag()).intValue();
+            final int delta = INIT_MULT * (Integer) v.getTag();
             startIncrement(delta);
         }
         return true;

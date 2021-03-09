@@ -33,76 +33,54 @@ public class DocumentCacheFile extends File {
     }
 
     public DocumentInfo load() {
-        try {
-            LCTX.d("Loading document info...");
-            final DocumentInfo info = new DocumentInfo();
-            final DataInputStream in = new DataInputStream(new FileInputStream(this));
-            try {
-                while (true) {
-                    byte tag = -1;
-                    try {
-                        tag = in.readByte();
-                    } catch (EOFException ex) {
-                        return info;
-                    }
-                    final byte id = (byte) (tag & 0x3F);
-                    final boolean docPage = (tag & 0x80) == 0;
-                    final boolean leftPage = (tag & 0x40) == 0;
-
-                    switch (id) {
-                        case TAG_PAGE_COUNTS:
-                            // Number of pages
-                            info.loadPageCounts(in);
-                            break;
-                        case TAG_CODEC_PAGE_INFO:
-                            // CodecPageInfo - only for docs
-                            info.loadCodePageInfo(in);
-                            break;
-                        case TAG_AUTO_CROPPING:
-                            // Auto cropping
-                            info.loadAutoCropping(in, docPage, leftPage);
-                            break;
-                        case TAG_MANUAL_CROPPING:
-                            // Manual cropping
-                            info.loadManualCropping(in, docPage, leftPage);
-                            break;
-                    }
-                }
-            } catch (final EOFException ex) {
-                LCTX.e("Loading document info failed: " + ex.getMessage());
-            } catch (final IOException ex) {
-                LCTX.e("Loading document info failed: " + ex.getMessage());
-            } finally {
+        LCTX.d("Loading document info...");
+        final DocumentInfo info = new DocumentInfo();
+        try (DataInputStream in = new DataInputStream(new FileInputStream(this))) {
+            while (true) {
+                byte tag = -1;
                 try {
-                    in.close();
-                } catch (final IOException ignored) {
+                    tag = in.readByte();
+                } catch (EOFException ex) {
+                    return info;
+                }
+                final byte id = (byte) (tag & 0x3F);
+                final boolean docPage = (tag & 0x80) == 0;
+                final boolean leftPage = (tag & 0x40) == 0;
+
+                switch (id) {
+                    case TAG_PAGE_COUNTS:
+                        // Number of pages
+                        info.loadPageCounts(in);
+                        break;
+                    case TAG_CODEC_PAGE_INFO:
+                        // CodecPageInfo - only for docs
+                        info.loadCodePageInfo(in);
+                        break;
+                    case TAG_AUTO_CROPPING:
+                        // Auto cropping
+                        info.loadAutoCropping(in, docPage, leftPage);
+                        break;
+                    case TAG_MANUAL_CROPPING:
+                        // Manual cropping
+                        info.loadManualCropping(in, docPage, leftPage);
+                        break;
                 }
             }
-        } catch (final FileNotFoundException ex) {
+        } catch (final IOException ex) {
             LCTX.e("Loading document info failed: " + ex.getMessage());
         }
         return null;
     }
 
     public void save(final DocumentInfo info) {
-        try {
-            LCTX.d("Saving document info...");
-            final DataOutputStream out = new DataOutputStream(new FileOutputStream(this));
-            try {
-                info.savePageCounts(out);
-                info.saveCodePageInfo(out);
-                info.saveAutoCropping(out);
-                info.saveManualCropping(out);
+        LCTX.d("Saving document info...");
+        try (DataOutputStream out = new DataOutputStream(new FileOutputStream(this))) {
+            info.savePageCounts(out);
+            info.saveCodePageInfo(out);
+            info.saveAutoCropping(out);
+            info.saveManualCropping(out);
 
-                LCTX.d("Saving document info finished");
-            } catch (final IOException ex) {
-                LCTX.e("Saving document info failed: " + ex.getMessage());
-            } finally {
-                try {
-                    out.close();
-                } catch (final IOException ignored) {
-                }
-            }
+            LCTX.d("Saving document info finished");
         } catch (final IOException ex) {
             LCTX.e("Saving document info failed: " + ex.getMessage());
         }
@@ -113,9 +91,9 @@ public class DocumentCacheFile extends File {
         public int docPageCount;
         public int viewPageCount;
 
-        public final SparseArrayEx<PageInfo> docPages = new SparseArrayEx<PageInfo>();
-        public final SparseArrayEx<PageInfo> leftPages = new SparseArrayEx<PageInfo>();
-        public final SparseArrayEx<PageInfo> rightPages = new SparseArrayEx<PageInfo>();
+        public final SparseArrayEx<PageInfo> docPages = new SparseArrayEx<>();
+        public final SparseArrayEx<PageInfo> leftPages = new SparseArrayEx<>();
+        public final SparseArrayEx<PageInfo> rightPages = new SparseArrayEx<>();
 
         void loadPageCounts(final DataInputStream in) throws IOException {
             this.docPageCount = in.readShort();

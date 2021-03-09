@@ -3,7 +3,7 @@ import android.util.SparseArray;
 
 public class SymbolTree<E> {
 
-    private final Node<E> root = new Node<E>();
+    private final Node<E> root = new Node<>();
 
     public void add(final E value, final String s) {
         add(value, s.toCharArray(), 0, s.length());
@@ -14,12 +14,12 @@ public class SymbolTree<E> {
         for (int i = 0; i < length;) {
             final char c = ch[start + i];
             if (node.children == null) {
-                node.children = new SparseArray<SymbolTree.Node<E>>(8);
+                node.children = new SparseArray<>(8);
             }
 
             final Node<E> child = node.children.get(c);
             if (child == null) {
-                final Node<E> term = new Node<E>();
+                final Node<E> term = new Node<>();
                 term.ch = ch;
                 term.start = start + i + 1;
                 term.length = length - i - 1;
@@ -36,10 +36,10 @@ public class SymbolTree<E> {
 
             final int tail = length - i - 1;
             if (tail <= 0) {
-                final Node<E> inter = new Node<E>();
+                final Node<E> inter = new Node<>();
                 node.children.append(c, inter);
 
-                inter.children = new SparseArray<SymbolTree.Node<E>>(8);
+                inter.children = new SparseArray<>(8);
                 inter.children.append(child.ch[child.start], child);
 
                 child.start += 1;
@@ -62,14 +62,14 @@ public class SymbolTree<E> {
                 i += pref + 1;
                 continue;
             } else if (pref > 0) {
-                final Node<E> inter = new Node<E>();
+                final Node<E> inter = new Node<>();
                 node.children.append(c, inter);
 
                 inter.ch = child.ch;
                 inter.start = child.start;
                 inter.length = pref;
                 inter.value = null;
-                inter.children = new SparseArray<SymbolTree.Node<E>>(8);
+                inter.children = new SparseArray<>(8);
                 inter.children.append(child.ch[child.start + pref], child);
 
                 child.start += pref + 1;
@@ -85,10 +85,10 @@ public class SymbolTree<E> {
                 continue;
 
             } else {
-                final Node<E> inter = new Node<E>();
+                final Node<E> inter = new Node<>();
                 node.children.append(c, inter);
 
-                inter.children = new SparseArray<SymbolTree.Node<E>>(8);
+                inter.children = new SparseArray<>(8);
                 inter.children.append(child.ch[child.start], child);
 
                 child.start += 1;

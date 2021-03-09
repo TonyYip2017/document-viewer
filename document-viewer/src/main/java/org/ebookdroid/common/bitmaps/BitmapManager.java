@@ -26,13 +26,13 @@ public class BitmapManager {
 
     private static final int GENERATION_THRESHOLD = 10;
 
-    private static final SparseArrayEx<AbstractBitmapRef> used = new SparseArrayEx<AbstractBitmapRef>();
+    private static final SparseArrayEx<AbstractBitmapRef> used = new SparseArrayEx<>();
 
-    private static final ArrayDeque<AbstractBitmapRef> pool = new ArrayDeque<AbstractBitmapRef>();
+    private static final ArrayDeque<AbstractBitmapRef> pool = new ArrayDeque<>();
 
-    private static final SparseArray<Bitmap> resources = new SparseArray<Bitmap>();
+    private static final SparseArray<Bitmap> resources = new SparseArray<>();
 
-    private static final Queue<Object> releasing = new ConcurrentLinkedQueue<Object>();
+    private static final Queue<Object> releasing = new ConcurrentLinkedQueue<>();
 
     private static final AtomicLong created = new AtomicLong();
     private static final AtomicLong reused = new AtomicLong();

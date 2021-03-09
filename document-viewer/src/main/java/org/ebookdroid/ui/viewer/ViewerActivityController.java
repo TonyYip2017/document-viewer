@@ -241,12 +241,11 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
         progressModel = new DecodingProgressModel();
         progressModel.addListener(ViewerActivityController.this);
 
-        final Uri uri = data;
         if (scheme.temporary) {
             m_fileName = scheme.key;
             CacheManager.clear(scheme.key);
         } else {
-            m_fileName = PathFromUri.retrieve(activity.getContentResolver(), uri);
+            m_fileName = PathFromUri.retrieve(activity.getContentResolver(), data);
         }
 
         bookSettings = SettingsManager.create(id, m_fileName, scheme.temporary, intent);
@@ -417,7 +416,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
      */
     @Override
     public void runOnUiThread(final Runnable r) {
-        final FutureTask<Object> task = new FutureTask<Object>(r, null);
+        final FutureTask<Object> task = new FutureTask<>(r, null);
 
         try {
             getActivity().runOnUiThread(task);
@@ -908,7 +907,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
         }
         SettingsManager.releaseBookSettings(id, bookSettings);
 
-        if (getOrCreateAction(R.id.actions_doClose).getParameter("up", Boolean.FALSE).booleanValue()) {
+        if (getOrCreateAction(R.id.actions_doClose).getParameter("up", Boolean.FALSE)) {
             goUp();
         } else {
             getManagedComponent().finish();

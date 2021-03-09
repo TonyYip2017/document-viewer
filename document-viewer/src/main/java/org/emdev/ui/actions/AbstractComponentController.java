@@ -21,7 +21,7 @@ public abstract class AbstractComponentController<ManagedComponent> implements I
 
     protected static final LogContext LCTX = LogManager.root().lctx("Actions");
 
-    protected final Map<Integer, ActionEx> m_actions = new LinkedHashMap<Integer, ActionEx>();
+    protected final Map<Integer, ActionEx> m_actions = new LinkedHashMap<>();
 
     protected final ReentrantReadWriteLock m_actionsLock = new ReentrantReadWriteLock();
 

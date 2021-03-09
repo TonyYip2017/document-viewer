@@ -25,35 +25,23 @@ public class PageCacheFile extends File {
     }
 
     public DocumentInfo load() {
-        try {
-            LCTX.d("Loading pages cache...");
-            final DataInputStream in = new DataInputStream(new FileInputStream(this));
-            try {
-                final DocumentInfo info = new DocumentInfo();
-                info.docPageCount = in.readInt();
-                info.viewPageCount = -1;
+        LCTX.d("Loading pages cache...");
+        try (DataInputStream in = new DataInputStream(new FileInputStream(this))) {
+            final DocumentInfo info = new DocumentInfo();
+            info.docPageCount = in.readInt();
+            info.viewPageCount = -1;
 
-                for (int i = 0; i < info.docPageCount; i++) {
-                    final PageInfo pi = new PageInfo(i);
-                    pi.info = new CodecPageInfo(in.readInt(), in.readInt());
-                    info.docPages.append(i, pi);
-                    if (pi.info.width == -1 || pi.info.height == -1) {
-                        return null;
-                    }
-                }
-                LCTX.d("Loading pages cache finished");
-                return info;
-            } catch (final EOFException ex) {
-                LCTX.e("Loading pages cache failed: " + ex.getMessage());
-            } catch (final IOException ex) {
-                LCTX.e("Loading pages cache failed: " + ex.getMessage());
-            } finally {
-                try {
-                    in.close();
-                } catch (final IOException ignored) {
+            for (int i = 0; i < info.docPageCount; i++) {
+                final PageInfo pi = new PageInfo(i);
+                pi.info = new CodecPageInfo(in.readInt(), in.readInt());
+                info.docPages.append(i, pi);
+                if (pi.info.width == -1 || pi.info.height == -1) {
+                    return null;
                 }
             }
-        } catch (final FileNotFoundException ex) {
+            LCTX.d("Loading pages cache finished");
+            return info;
+        } catch (final IOException ex) {
             LCTX.e("Loading pages cache failed: " + ex.getMessage());
         }
         return null;

@@ -9,7 +9,7 @@ public class NavigationHistory {
 
     private final IActivityController base;
 
-    private final LinkedList<Position> history = new LinkedList<NavigationHistory.Position>();
+    private final LinkedList<Position> history = new LinkedList<>();
 
     public NavigationHistory(final IActivityController base) {
         this.base = base;

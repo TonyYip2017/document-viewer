@@ -18,7 +18,7 @@ public class FileExtensionFilter implements FileFilter, FilenameFilter {
     }
 
     public FileExtensionFilter(final String... extensions) {
-        this.extensions = new HashSet<String>(Arrays.asList(extensions));
+        this.extensions = new HashSet<>(Arrays.asList(extensions));
     }
 
     @Override

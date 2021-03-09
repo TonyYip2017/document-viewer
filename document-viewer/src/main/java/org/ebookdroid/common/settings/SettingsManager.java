@@ -48,7 +48,7 @@ public class SettingsManager {
 
     private static DBSettingsManager db;
 
-    private static final Map<String, BookSettings> bookSettings = new HashMap<String, BookSettings>();
+    private static final Map<String, BookSettings> bookSettings = new HashMap<>();
 
     static ListenerProxy listeners = new ListenerProxy(IAppSettingsChangeListener.class,
             IBackupSettingsChangeListener.class, ILibSettingsChangeListener.class,
@@ -481,7 +481,7 @@ public class SettingsManager {
 
         final Flag run = new Flag(true);
 
-        final List<BookSettings> list = new ArrayList<BookSettings>();
+        final List<BookSettings> list = new ArrayList<>();
 
         @Override
         public void run() {

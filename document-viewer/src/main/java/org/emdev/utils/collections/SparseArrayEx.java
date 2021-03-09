@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 public class SparseArrayEx<T> extends SparseArray<T> implements Iterable<T> {
 
-    private final ThreadLocal<SparseArrayIterator> iterators = new ThreadLocal<SparseArrayEx<T>.SparseArrayIterator>();
+    private final ThreadLocal<SparseArrayIterator> iterators = new ThreadLocal<>();
 
     public boolean isEmpty() {
         return size() == 0;

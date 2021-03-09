@@ -17,12 +17,12 @@ import org.json.JSONObject;
 
 public class SettingsBackupHelper {
 
-    private static final Map<Class<?>, List<BasePreferenceDefinition<?>>> defs = new HashMap<Class<?>, List<BasePreferenceDefinition<?>>>();
+    private static final Map<Class<?>, List<BasePreferenceDefinition<?>>> defs = new HashMap<>();
 
     public static List<BasePreferenceDefinition<?>> getPreferences(final Class<?> preferences) {
         List<BasePreferenceDefinition<?>> list = defs.get(preferences);
         if (list == null) {
-            list = new ArrayList<BasePreferenceDefinition<?>>();
+            list = new ArrayList<>();
 
             final Field[] fields = preferences.getFields();
             for (final Field field : fields) {

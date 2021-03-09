@@ -21,7 +21,7 @@ import org.emdev.utils.listeners.ListenerProxy;
 
 public class CacheManager extends org.emdev.common.cache.CacheManager {
 
-    private static final Map<String, SoftReference<ThumbnailFile>> thumbmails = new HashMap<String, SoftReference<ThumbnailFile>>();
+    private static final Map<String, SoftReference<ThumbnailFile>> thumbmails = new HashMap<>();
 
     public static final ListenerProxy listeners = new ListenerProxy(ICacheListener.class);
 
@@ -71,9 +71,9 @@ public class CacheManager extends org.emdev.common.cache.CacheManager {
             file = f.exists() ? f : file;
         }
 
-        thumbmails.put(amd5, new SoftReference<ThumbnailFile>(file));
+        thumbmails.put(amd5, new SoftReference<>(file));
         if (mmd5 != null) {
-            thumbmails.put(mmd5, new SoftReference<ThumbnailFile>(file));
+            thumbmails.put(mmd5, new SoftReference<>(file));
         }
         return file;
     }

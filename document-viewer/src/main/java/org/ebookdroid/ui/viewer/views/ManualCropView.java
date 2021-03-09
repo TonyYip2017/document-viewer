@@ -36,7 +36,7 @@ public class ManualCropView extends View {
 
     private final GestureDetector gestureDetector;
 
-    private final ActionController<ManualCropView> controller = new ActionController<ManualCropView>(this);
+    private final ActionController<ManualCropView> controller = new ActionController<>(this);
 
     private final PointF topLeft = new PointF(0.1f, 0.1f);
     private final PointF bottomRight = new PointF(0.9f, 0.9f);
@@ -120,7 +120,7 @@ public class ManualCropView extends View {
 
         EventCrop event = null;
 
-        switch (index.intValue()) {
+        switch (index) {
             case 0:
                 // Apply to current only
                 event = new EventCrop(base.getDocumentController(), result, true);

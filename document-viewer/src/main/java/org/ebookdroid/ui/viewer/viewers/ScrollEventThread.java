@@ -41,9 +41,9 @@ final class ScrollEventThread extends Thread {
 
     private final Flag stop = new Flag();
 
-    private final BlockingQueue<OnScrollEvent> queue = new LinkedBlockingQueue<OnScrollEvent>();
+    private final BlockingQueue<OnScrollEvent> queue = new LinkedBlockingQueue<>();
 
-    private final ConcurrentLinkedQueue<OnScrollEvent> pool = new ConcurrentLinkedQueue<OnScrollEvent>();
+    private final ConcurrentLinkedQueue<OnScrollEvent> pool = new ConcurrentLinkedQueue<>();
 
     ScrollEventThread(final IActivityController base, IView view) {
         super("ScrollEventThread");

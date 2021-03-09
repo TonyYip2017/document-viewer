@@ -54,7 +54,7 @@ public class GLCanvasImpl implements GLCanvas {
     private final GLState mGLState;
 
     private float mAlpha;
-    private final ArrayList<ConfigState> mRestoreStack = new ArrayList<ConfigState>();
+    private final ArrayList<ConfigState> mRestoreStack = new ArrayList<>();
     private ConfigState mRecycledRestoreAction;
 
     private final RectF mDrawTextureSourceRect = new RectF();
@@ -273,9 +273,9 @@ public class GLCanvasImpl implements GLCanvas {
 
         final int bytes = 2 * path.length * Float.SIZE;
         final FloatBuffer xyBuffer = allocateDirectNativeOrderBuffer(bytes).asFloatBuffer();
-        for (int i = 0; i < path.length; i++) {
-            xyBuffer.put(path[i].x / mScreenWidth);
-            xyBuffer.put(path[i].y / mScreenHeight);
+        for (PointF pointF : path) {
+            xyBuffer.put(pointF.x / mScreenWidth);
+            xyBuffer.put(pointF.y / mScreenHeight);
         }
         xyBuffer.position(0);
 
@@ -307,9 +307,9 @@ public class GLCanvasImpl implements GLCanvas {
 
         final int bytes = 2 * path.length * Float.SIZE;
         final FloatBuffer xyBuffer = allocateDirectNativeOrderBuffer(bytes).asFloatBuffer();
-        for (int i = 0; i < path.length; i++) {
-            xyBuffer.put(path[i].x / mScreenWidth);
-            xyBuffer.put(path[i].y / mScreenHeight);
+        for (PointF pointF : path) {
+            xyBuffer.put(pointF.x / mScreenWidth);
+            xyBuffer.put(pointF.y / mScreenHeight);
         }
         xyBuffer.position(0);
 

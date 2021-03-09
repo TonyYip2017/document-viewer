@@ -37,7 +37,7 @@ public final class GLView extends GLRootView implements IView, SurfaceHolder.Cal
 
     protected boolean layoutLocked;
 
-    protected final AtomicReference<Rect> layout = new AtomicReference<Rect>();
+    protected final AtomicReference<Rect> layout = new AtomicReference<>();
 
     protected final Flag layoutFlag = new Flag();
 

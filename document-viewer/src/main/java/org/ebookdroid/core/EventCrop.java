@@ -20,7 +20,7 @@ public class EventCrop extends AbstractEvent {
     protected final PageTreeLevel level;
     protected final InvalidateSizeReason reason = InvalidateSizeReason.PAGE_LOADED;
 
-    protected final List<Page> pages = new ArrayList<Page>();
+    protected final List<Page> pages = new ArrayList<>();
     protected final boolean commit;
 
     protected final RectF[] croppings;
@@ -85,7 +85,7 @@ public class EventCrop extends AbstractEvent {
     @Override
     public ViewState process() {
         try {
-            final List<GLBitmaps> bitmapsToRecycle = new ArrayList<GLBitmaps>();
+            final List<GLBitmaps> bitmapsToRecycle = new ArrayList<>();
 
             if (processAll) {
                 for (final Page page : ctrl.getBase().getDocumentModel().getPages()) {

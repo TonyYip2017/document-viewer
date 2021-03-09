@@ -118,7 +118,7 @@ public class HScrollController extends AbstractScrollController {
         if (changedPage == null || isRightToLeft()) {
             float widthAccum = 0;
 
-            List<Page> pages = new ArrayList<Page>(Arrays.asList(model.getPages()));
+            List<Page> pages = new ArrayList<>(Arrays.asList(model.getPages()));
             if (isRightToLeft()) {
                 Collections.reverse(pages);
             }

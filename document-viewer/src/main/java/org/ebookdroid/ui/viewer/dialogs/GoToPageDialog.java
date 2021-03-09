@@ -45,7 +45,7 @@ public class GoToPageDialog extends Dialog {
     public GoToPageDialog(final IActivityController base) {
         super(base.getContext());
         this.base = base;
-        this.actions = new DialogController<GoToPageDialog>(this);
+        this.actions = new DialogController<>(this);
         this.handler = new SeekBarIncrementHandler();
 
         final BookSettings bs = base.getBookSettings();

@@ -80,9 +80,9 @@ public class BaseEGLConfigChooser implements EGLConfigChooser {
         int minStencil = Integer.MAX_VALUE;
         final int[] value = new int[1];
 
-        for (int i = 0, n = configs.length; i < n; ++i) {
-            logConfig("Config found: ", egl, display, configs[i]);
-            if (egl.eglGetConfigAttrib(display, configs[i], EGL10.EGL_RED_SIZE, value)) {
+        for (EGLConfig config : configs) {
+            logConfig("Config found: ", egl, display, config);
+            if (egl.eglGetConfigAttrib(display, config, EGL10.EGL_RED_SIZE, value)) {
                 if (GLConfiguration.use8888 && value[0] != 8) {
                     continue;
                 }
@@ -91,13 +91,13 @@ public class BaseEGLConfigChooser implements EGLConfigChooser {
                 }
             }
 
-            if (egl.eglGetConfigAttrib(display, configs[i], EGL10.EGL_STENCIL_SIZE, value)) {
+            if (egl.eglGetConfigAttrib(display, config, EGL10.EGL_STENCIL_SIZE, value)) {
                 if (value[0] == 0) {
                     continue;
                 }
                 if (value[0] < minStencil) {
                     minStencil = value[0];
-                    result = configs[i];
+                    result = config;
                 }
             } else {
                 LCTX.e("eglGetConfigAttrib error: " + egl.eglGetError());

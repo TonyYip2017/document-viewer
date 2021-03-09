@@ -20,7 +20,7 @@ public class KeyBindingsManager {
 
     private static final LogContext LCTX = LogManager.root().lctx("Actions");
 
-    private static final SparseArrayEx<ActionRef> actions = new SparseArrayEx<KeyBindingsManager.ActionRef>();
+    private static final SparseArrayEx<ActionRef> actions = new SparseArrayEx<>();
 
     private static SparseArrayEx<String> keyLabels;
 
@@ -71,7 +71,7 @@ public class KeyBindingsManager {
 
     public static Integer getAction(final int code) {
         final ActionRef ref = actions.get(code);
-        return ref != null && ref.enabled ? Integer.valueOf(ref.id) : null;
+        return ref != null && ref.enabled ? ref.id : null;
     }
 
     public static void addAction(final int id, final int... keys) {
@@ -86,7 +86,7 @@ public class KeyBindingsManager {
 
     public static String keyCodeToString(final int code) {
         if (keyLabels == null) {
-            keyLabels = new SparseArrayEx<String>();
+            keyLabels = new SparseArrayEx<>();
             for (final Field f : KeyEvent.class.getFields()) {
                 if (f.getName().startsWith("KEYCODE_")) {
                     try {

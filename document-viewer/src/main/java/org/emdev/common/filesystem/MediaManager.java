@@ -28,7 +28,7 @@ public class MediaManager extends BroadcastReceiver {
 
     public static final ListenerProxy listeners = new ListenerProxy(Listener.class);
 
-    private static final Map<String, ExternalMedia> mountedMedia = new TreeMap<String, ExternalMedia>();
+    private static final Map<String, ExternalMedia> mountedMedia = new TreeMap<>();
 
     private static final MediaManager instance = new MediaManager();
 
@@ -41,21 +41,11 @@ public class MediaManager extends BroadcastReceiver {
     }
 
     static void readMounts() {
-        try {
-            final BufferedReader in = new BufferedReader(new FileReader("/proc/mounts"));
-            try {
-                for (String s = in.readLine(); s != null; s = in.readLine()) {
-                    processMountPoint(s);
-                }
-            } catch (final IOException ex) {
-                LCTX.e("Reading mounting points failed: " + ex.getMessage());
-            } finally {
-                try {
-                    in.close();
-                } catch (final IOException ignored) {
-                }
+        try (BufferedReader in = new BufferedReader(new FileReader("/proc/mounts"))) {
+            for (String s = in.readLine(); s != null; s = in.readLine()) {
+                processMountPoint(s);
             }
-        } catch (final FileNotFoundException ex) {
+        } catch (final IOException ex) {
             LCTX.e("Reading mounting points failed: " + ex.getMessage());
         }
     }
@@ -147,7 +137,7 @@ public class MediaManager extends BroadcastReceiver {
     }
 
     public static synchronized Collection<String> getReadableMedia() {
-        final List<String> list = new ArrayList<String>(mountedMedia.size());
+        final List<String> list = new ArrayList<>(mountedMedia.size());
         for (final ExternalMedia m : MediaManager.mountedMedia.values()) {
             if (m.state.readable) {
                 list.add(m.path);
@@ -182,7 +172,7 @@ public class MediaManager extends BroadcastReceiver {
 
         public final String device;
         public final String point;
-        public final Map<String, String> params = new LinkedHashMap<String, String>();
+        public final Map<String, String> params = new LinkedHashMap<>();
 
         public MountedDevice(final String s) {
             final String[] fields = s.split("\\s");
@@ -193,8 +183,8 @@ public class MediaManager extends BroadcastReceiver {
             point = fields[1];
 
             final String[] pp = fields[3].split(",");
-            for (int i = 0; i < pp.length; i++) {
-                String key = pp[i];
+            for (String value : pp) {
+                String key = value;
                 String val = key;
 
                 final int index = key.indexOf("=");

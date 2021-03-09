@@ -58,7 +58,7 @@ public abstract class AbstractViewController extends AbstractComponentController
      */
     private static final float LINK_TAP_THRESHOLD_DP = 10.0f;
 
-    private static final Float FZERO = Float.valueOf(0);
+    private static final Float FZERO = (float) 0;
 
     public final IActivityController base;
 
@@ -575,8 +575,8 @@ public abstract class AbstractViewController extends AbstractComponentController
             if (LCTX.isDebugEnabled()) {
                 LCTX.d("Touch action: " + action.name + ", " + action.getMethod().toString());
             }
-            action.addParameter(new Constant("tap_x", Float.valueOf(x))).addParameter(
-                    new Constant("tap_y", Float.valueOf(y)));
+            action.addParameter(new Constant("tap_x", x)).addParameter(
+                    new Constant("tap_y", y));
             action.run();
             return true;
         } else {

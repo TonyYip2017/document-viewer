@@ -460,7 +460,7 @@ public class TextViewMultilineEllipse extends View {
 
         public LineBreaker() {
             mRequiredEllipsis = false;
-            mLines = new ArrayList<int[]>(100);
+            mLines = new ArrayList<>(100);
         }
 
         /**

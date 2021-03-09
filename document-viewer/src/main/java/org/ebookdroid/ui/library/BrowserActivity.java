@@ -129,15 +129,15 @@ public class BrowserActivity extends AbstractActionActivity<BrowserActivity, Bro
         return super.onKeyUp(keyCode, event);
     }
 
-    public void showProgress(final boolean show) {
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                UIManagerAppCompat.setProgressSpinnerVisible(BrowserActivity.this, show);
-            }
-        });
-    }
+//    public void showProgress(final boolean show) {
+//        runOnUiThread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                UIManagerAppCompat.setProgressSpinnerVisible(BrowserActivity.this, show);
+//            }
+//        });
+//    }
 
     /**
      * {@inheritDoc}
@@ -201,7 +201,7 @@ public class BrowserActivity extends AbstractActionActivity<BrowserActivity, Bro
         }
         osm.clear();
 
-        final List<Bookmark> list = new ArrayList<Bookmark>();
+        final List<Bookmark> list = new ArrayList<>();
         list.add(new Bookmark(true, getString(R.string.bookmark_start), PageIndex.FIRST, 0, 0));
         list.add(new Bookmark(true, getString(R.string.bookmark_end), PageIndex.LAST, 0, 1));
         if (bs != null) {

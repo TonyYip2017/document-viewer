@@ -26,7 +26,7 @@ public class CodecPageHolder {
     private final CodecDocument document;
     private final int pageIndex;
 
-    private SoftReference<CodecPage> ref = new SoftReference<CodecPage>(null);
+    private SoftReference<CodecPage> ref = new SoftReference<>(null);
 
     public CodecPageHolder(final CodecDocument document, final int pageIndex) {
         this.document = document;
@@ -119,7 +119,7 @@ public class CodecPageHolder {
             if (page == null || page.isRecycled()) {
                 page = null;
                 page = document.getPage(pageIndex);
-                ref = new SoftReference<CodecPage>(page);
+                ref = new SoftReference<>(page);
             }
             lock();
             return page;
@@ -142,7 +142,7 @@ public class CodecPageHolder {
             final CodecPage page = ref.get();
             if (page != null && !page.isRecycled()) {
                 page.recycle();
-                ref = new SoftReference<CodecPage>(null);
+                ref = new SoftReference<>(null);
                 return true;
             }
             return false;

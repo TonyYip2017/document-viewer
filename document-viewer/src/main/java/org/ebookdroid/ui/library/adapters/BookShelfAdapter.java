@@ -20,14 +20,14 @@ import org.emdev.utils.StringUtils;
 public class BookShelfAdapter extends BaseAdapter {
 
     private final IBrowserActivity base;
-    private final IdentityHashMap<DataSetObserver, DataSetObserver> observers = new IdentityHashMap<DataSetObserver, DataSetObserver>();
+    private final IdentityHashMap<DataSetObserver, DataSetObserver> observers = new IdentityHashMap<>();
 
     public final int id;
     public final String name;
     public final String path;
     public final String mpath;
 
-    final List<BookNode> nodes = new ArrayList<BookNode>();
+    final List<BookNode> nodes = new ArrayList<>();
     public boolean measuring = false;
 
     public BookShelfAdapter(final IBrowserActivity base, final int index, final String name, final String path) {

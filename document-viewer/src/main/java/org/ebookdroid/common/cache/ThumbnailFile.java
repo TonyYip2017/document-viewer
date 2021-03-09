@@ -28,7 +28,7 @@ public class ThumbnailFile extends File {
 
     private static Bitmap defaultImage;
 
-    private final AtomicReference<Bitmap> ref = new AtomicReference<Bitmap>();
+    private final AtomicReference<Bitmap> ref = new AtomicReference<>();
 
     private ImageLoadingListener listener;
 
@@ -102,18 +102,9 @@ public class ThumbnailFile extends File {
     }
 
     private void store(final Bitmap image) {
-        FileOutputStream out = null;
-        try {
-            out = new FileOutputStream(this);
+        try (FileOutputStream out = new FileOutputStream(this)) {
             image.compress(Bitmap.CompressFormat.JPEG, 50, out);
         } catch (final IOException ignored) {
-        } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (final IOException ignored) {
-                }
-            }
         }
     }
 

@@ -19,7 +19,7 @@ public class FileTypeFilterPreferenceDefinition extends JsonObjectPreferenceDefi
 
     public FileExtensionFilter getFilter(final SharedPreferences prefs) {
         final JSONObject obj = getPreferenceValue(prefs);
-        final Set<String> res = new HashSet<String>();
+        final Set<String> res = new HashSet<>();
 
         for (final String ex : CodecType.getAllExtensions()) {
             if (!obj.has(ex) || obj.optBoolean(ex)) {

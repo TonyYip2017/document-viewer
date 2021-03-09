@@ -23,11 +23,11 @@ public class ByteBufferManager {
 
     private static final int GENERATION_THRESHOLD = 10;
 
-    private static final SparseArrayEx<ByteBufferBitmap> used = new SparseArrayEx<ByteBufferBitmap>();
+    private static final SparseArrayEx<ByteBufferBitmap> used = new SparseArrayEx<>();
 
-    private static final ArrayDeque<ByteBufferBitmap> pool = new ArrayDeque<ByteBufferBitmap>();
+    private static final ArrayDeque<ByteBufferBitmap> pool = new ArrayDeque<>();
 
-    private static final Queue<Object> releasing = new ConcurrentLinkedQueue<Object>();
+    private static final Queue<Object> releasing = new ConcurrentLinkedQueue<>();
 
     private static final AtomicLong created = new AtomicLong();
     private static final AtomicLong reused = new AtomicLong();
@@ -273,7 +273,7 @@ public class ByteBufferManager {
             if (LCTX.isDebugEnabled()) {
                 LCTX.d("Adding  list of " + bitmapsToRecycle.size() + " bitmaps to release queue");
             }
-            releasing.add(new ArrayList<GLBitmaps>(bitmapsToRecycle));
+            releasing.add(new ArrayList<>(bitmapsToRecycle));
         }
     }
 

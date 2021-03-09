@@ -14,7 +14,7 @@ public class MuPdfOutline {
     private long docHandle;
 
     public List<OutlineLink> getOutline(final long dochandle) {
-        final List<OutlineLink> ls = new ArrayList<OutlineLink>();
+        final List<OutlineLink> ls = new ArrayList<>();
         docHandle = dochandle;
         final long outline = open(dochandle);
         ttOutline(ls, outline, 0);

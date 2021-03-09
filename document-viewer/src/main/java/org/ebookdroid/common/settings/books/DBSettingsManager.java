@@ -256,7 +256,7 @@ public class DBSettingsManager extends SQLiteOpenHelper implements IBackupAgent 
     @Override
     public void restore(final JSONObject backup) {
         try {
-            final List<BookSettings> list = new ArrayList<BookSettings>();
+            final List<BookSettings> list = new ArrayList<>();
             final JSONArray books = backup.getJSONArray("books");
             if (LengthUtils.isNotEmpty(books)) {
                 for (int i = 0, n = books.length(); i < n; i++) {

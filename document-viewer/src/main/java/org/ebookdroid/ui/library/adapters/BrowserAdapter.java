@@ -93,8 +93,7 @@ public class BrowserAdapter extends BaseAdapter implements Comparator<File> {
     }
 
     private void setFiles(final File[] files) {
-        final List<File> ff = LengthUtils.isNotEmpty(files) ? new ArrayList<File>(Arrays.asList(files)) : new ArrayList<File>();
-        this.files = ff;
+        this.files = LengthUtils.isNotEmpty(files) ? new ArrayList<>(Arrays.asList(files)) : new ArrayList<File>();
         notifyDataSetChanged();
     }
 

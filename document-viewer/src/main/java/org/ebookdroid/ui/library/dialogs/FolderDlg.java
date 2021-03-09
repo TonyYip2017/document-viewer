@@ -46,7 +46,7 @@ public class FolderDlg implements AdapterView.OnItemClickListener {
     public FolderDlg(final IActionController<? extends Activity> controller) {
         this.filter = DirectoryFilter.NOT_HIDDEN;
         this.context = controller.getManagedComponent();
-        this.controller = new ActionController<FolderDlg>(controller, this);
+        this.controller = new ActionController<>(controller, this);
     }
 
     public void show(final File file, int titleId, final int okActionId) {

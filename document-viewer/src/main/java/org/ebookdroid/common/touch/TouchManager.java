@@ -28,9 +28,9 @@ public class TouchManager {
 
     public static final String DEFAULT_PROFILE = "DocumentView.Default";
 
-    private static final Map<String, TouchProfile> profiles = new HashMap<String, TouchManager.TouchProfile>();
+    private static final Map<String, TouchProfile> profiles = new HashMap<>();
 
-    private static final LinkedList<TouchProfile> stack = new LinkedList<TouchProfile>();
+    private static final LinkedList<TouchProfile> stack = new LinkedList<>();
 
     public static void loadFromSettings(final AppSettings newSettings) {
         profiles.clear();
@@ -121,7 +121,7 @@ public class TouchManager {
     }
 
     private static List<TouchProfile> fromJSON(final String str) throws JSONException {
-        final List<TouchProfile> list = new ArrayList<TouchProfile>();
+        final List<TouchProfile> list = new ArrayList<>();
 
         final JSONObject root = new JSONObject(str);
 
@@ -137,7 +137,7 @@ public class TouchManager {
     public static class TouchProfile {
 
         public final String name;
-        final LinkedList<Region> regions = new LinkedList<Region>();
+        final LinkedList<Region> regions = new LinkedList<>();
 
         public TouchProfile(final String name) {
             super();
@@ -196,13 +196,10 @@ public class TouchManager {
 
         @Override
         public String toString() {
-
-            String buf = this.getClass().getSimpleName() + "[" +
-                    "name" + "=" + name +
-                    ", " +
+            return this.getClass().getSimpleName() + "[" +
+                    "name" + "=" + name + ", " +
                     "regions" + "=" + regions +
                     "]";
-            return buf;
         }
 
         public JSONObject toJSON() throws JSONException {
@@ -280,13 +277,10 @@ public class TouchManager {
 
         @Override
         public String toString() {
-
-            String buf = this.getClass().getSimpleName() + "[" +
-                    "rect" + "=" + rect +
-                    ", " +
+            return this.getClass().getSimpleName() + "[" +
+                    "rect" + "=" + rect + ", " +
                     "actions" + "=" + Arrays.toString(actions) +
                     "]";
-            return buf;
         }
 
         public JSONObject toJSON() throws JSONException {

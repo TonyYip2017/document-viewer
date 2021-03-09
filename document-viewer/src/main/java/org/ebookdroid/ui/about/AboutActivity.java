@@ -118,10 +118,7 @@ public class AboutActivity extends AppCompatActivity {
         }
 
         public String getActualFileName(final String lang) {
-            final String s = "about" + "/" + lang +
-                    "/" +
-                    fileName;
-            return s;
+            return "about" + "/" + lang + "/" + fileName;
         }
 
     }
@@ -200,19 +197,8 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private enum Format {
-        /**
-         *
-         */
         TEXT,
-
-        /**
-         *
-         */
         HTML,
-
-        /**
-         *
-         */
         WIKI {
 
             @Override

@@ -25,16 +25,16 @@ public interface ActivityEvents {
 
         public static int merge(final int... events) {
             int res = 0;
-            for (int i = 0; i < events.length; i++) {
-                res |= events[i];
+            for (int event : events) {
+                res |= event;
             }
             return res;
         }
 
         public static int exclude(final int orig, final int... excluding) {
             int res = orig;
-            for (int i = 0; i < excluding.length; i++) {
-                res &= ~excluding[i];
+            for (int value : excluding) {
+                res &= ~value;
             }
             return res;
         }

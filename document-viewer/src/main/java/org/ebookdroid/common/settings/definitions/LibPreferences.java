@@ -39,7 +39,7 @@ public interface LibPreferences {
 
     FileTypeFilterPreferenceDefinition FILE_TYPE_FILTER = new FileTypeFilterPreferenceDefinition(pref_brfiletypes);
 
-    EnumPreferenceDefinition<CacheLocation> CACHE_LOCATION = new EnumPreferenceDefinition<CacheLocation>(
+    EnumPreferenceDefinition<CacheLocation> CACHE_LOCATION = new EnumPreferenceDefinition<>(
             CacheLocation.class, pref_cachelocation_id, pref_cachelocation_defvalue);
 
     BooleanPreferenceDefinition AUTO_SCAN_REMOVABLE_MEDIA = new BooleanPreferenceDefinition(pref_autoscanremovable_id,

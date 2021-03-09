@@ -49,7 +49,7 @@ public class EventReset extends AbstractEvent {
     public ViewState process() {
         try {
             if (clearPages) {
-                final List<GLBitmaps> bitmapsToRecycle = new ArrayList<GLBitmaps>();
+                final List<GLBitmaps> bitmapsToRecycle = new ArrayList<>();
                 for (final Page page : ctrl.model.getPages()) {
                     page.nodes.recycleAll(bitmapsToRecycle, true);
                 }

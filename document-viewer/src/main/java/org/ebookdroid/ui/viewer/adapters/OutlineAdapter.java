@@ -223,7 +223,7 @@ public class OutlineAdapter extends BaseAdapter {
         public void onClick(final View v) {
             // System.out.println("btn.OnClickListener()");
             {
-                final int position = ((Integer) v.getTag()).intValue();
+                final int position = (Integer) v.getTag();
                 final int id = (int) getItemId(position);
                 final OutlineItemState newState = states[id] == OutlineItemState.EXPANDED ? OutlineItemState.COLLAPSED
                         : OutlineItemState.EXPANDED;
@@ -250,7 +250,7 @@ public class OutlineAdapter extends BaseAdapter {
                     final ListView list = (ListView) p;
                     final OnItemClickListener l = list.getOnItemClickListener();
                     if (l != null) {
-                        l.onItemClick(list, v, ((Integer) v.getTag()).intValue(), 0);
+                        l.onItemClick(list, v, (Integer) v.getTag(), 0);
                     }
                     return;
                 }

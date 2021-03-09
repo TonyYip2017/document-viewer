@@ -34,7 +34,7 @@ public interface AppPreferences {
     BooleanPreferenceDefinition KEEP_SCREEN_ON = new BooleanPreferenceDefinition(pref_keepscreenon_id,
             pref_keepscreenon_defvalue);
 
-    EnumPreferenceDefinition<RotationType> ROTATION = new EnumPreferenceDefinition<RotationType>(RotationType.class,
+    EnumPreferenceDefinition<RotationType> ROTATION = new EnumPreferenceDefinition<>(RotationType.class,
             pref_rotation_id, pref_rotation_unspecified);
 
     BooleanPreferenceDefinition FULLSCREEN = new BooleanPreferenceDefinition(pref_fullscreen_id,
@@ -45,10 +45,10 @@ public interface AppPreferences {
     BooleanPreferenceDefinition SHOW_PAGE_IN_TITLE = new BooleanPreferenceDefinition(pref_pageintitle_id,
             pref_pageintitle_defvalue);
 
-    EnumPreferenceDefinition<ToastPosition> PAGE_NUMBER_TOAST_POSITION = new EnumPreferenceDefinition<ToastPosition>(
+    EnumPreferenceDefinition<ToastPosition> PAGE_NUMBER_TOAST_POSITION = new EnumPreferenceDefinition<>(
             ToastPosition.class, pref_pagenumbertoastposition_id, pref_toastposition_lefttop);
 
-    EnumPreferenceDefinition<ToastPosition> ZOOM_TOAST_POSITION = new EnumPreferenceDefinition<ToastPosition>(
+    EnumPreferenceDefinition<ToastPosition> ZOOM_TOAST_POSITION = new EnumPreferenceDefinition<>(
             ToastPosition.class, pref_zoomtoastposition_id, pref_toastposition_leftbottom);
 
     BooleanPreferenceDefinition SHOW_ANIM_ICON = new BooleanPreferenceDefinition(pref_showanimicon_id,
@@ -161,13 +161,13 @@ public interface AppPreferences {
 
     BooleanPreferenceDefinition CROP_PAGES = new BooleanPreferenceDefinition(pref_croppages_id, pref_croppages_defvalue);
 
-    EnumPreferenceDefinition<DocumentViewMode> VIEW_MODE = new EnumPreferenceDefinition<DocumentViewMode>(
+    EnumPreferenceDefinition<DocumentViewMode> VIEW_MODE = new EnumPreferenceDefinition<>(
             DocumentViewMode.class, pref_viewmode_id, pref_viewmode_vertical_scroll);
 
-    EnumPreferenceDefinition<PageAlign> PAGE_ALIGN = new EnumPreferenceDefinition<PageAlign>(PageAlign.class,
+    EnumPreferenceDefinition<PageAlign> PAGE_ALIGN = new EnumPreferenceDefinition<>(PageAlign.class,
             pref_align_id, pref_align_by_width);
 
-    EnumPreferenceDefinition<PageAnimationType> ANIMATION_TYPE = new EnumPreferenceDefinition<PageAnimationType>(
+    EnumPreferenceDefinition<PageAnimationType> ANIMATION_TYPE = new EnumPreferenceDefinition<>(
             PageAnimationType.class, pref_animation_type_id, pref_animation_type_none);
 
     BooleanPreferenceDefinition RTL = new BooleanPreferenceDefinition(pref_rtl_id, pref_rtl_defvalue);

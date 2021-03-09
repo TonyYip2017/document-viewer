@@ -22,6 +22,6 @@ public interface BackupPreferences {
             pref_maxnumberofautobackups_id, pref_maxnumberofautobackups_defvalue, pref_maxnumberofautobackups_minvalue,
             pref_maxnumberofautobackups_maxvalue);
 
-    EnumPreferenceDefinition<BookBackupType> BOOK_BACKUP_TYPE = new EnumPreferenceDefinition<BookBackupType>(
+    EnumPreferenceDefinition<BookBackupType> BOOK_BACKUP_TYPE = new EnumPreferenceDefinition<>(
             BookBackupType.class, pref_bookbackuptype_id, pref_bookbackuptype_defvalue);
 }

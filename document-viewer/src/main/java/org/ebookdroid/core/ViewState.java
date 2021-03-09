@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ViewState {
 
-    private static final ConcurrentLinkedQueue<ViewState> states = new ConcurrentLinkedQueue<ViewState>();
+    private static final ConcurrentLinkedQueue<ViewState> states = new ConcurrentLinkedQueue<>();
 
     private State state;
 

@@ -33,7 +33,7 @@ public class SearchModel {
 
     public SearchModel(final IActivityController base) {
         this.base = base;
-        this.matches = new SparseArrayEx<Matches>();
+        this.matches = new SparseArrayEx<>();
     }
 
     public String getPattern() {
@@ -50,9 +50,8 @@ public class SearchModel {
             try {
                 this.pattern = p;
                 for (final Matches ref : matches) {
-                    final Matches m = ref;
-                    if (m != null) {
-                        m.cancel();
+                    if (ref != null) {
+                        ref.cancel();
                     }
                 }
                 this.matches.clear();
@@ -74,8 +73,7 @@ public class SearchModel {
     protected Matches getMatches(final int key) {
         lock.readLock().lock();
         try {
-            final Matches ref = matches.get(key);
-            return ref;
+            return matches.get(key);
         } finally {
             lock.readLock().unlock();
         }
@@ -257,8 +255,8 @@ public class SearchModel {
         static final AtomicLong SEQ = new AtomicLong();
         final long id = SEQ.getAndIncrement();
         final int key;
-        final AtomicReference<CountDownLatch> running = new AtomicReference<CountDownLatch>();
-        final AtomicReference<List<? extends RectF>> matches = new AtomicReference<List<? extends RectF>>();
+        final AtomicReference<CountDownLatch> running = new AtomicReference<>();
+        final AtomicReference<List<? extends RectF>> matches = new AtomicReference<>();
 
         Matches(final int key) {
             this.key = key;

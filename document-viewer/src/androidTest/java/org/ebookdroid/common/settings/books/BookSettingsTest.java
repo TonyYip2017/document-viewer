@@ -34,14 +34,8 @@ public class BookSettingsTest {
 
     private static String openAssetAsString(String filename) {
         try {
-            InputStream is = null;
-            try {
-                is = InstrumentationRegistry.getContext().getAssets().open(filename);
+            try (InputStream is = InstrumentationRegistry.getContext().getAssets().open(filename)) {
                 return IOUtils.toString(is, StandardCharsets.UTF_8);
-            } finally {
-                if (is != null) {
-                    is.close();
-                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

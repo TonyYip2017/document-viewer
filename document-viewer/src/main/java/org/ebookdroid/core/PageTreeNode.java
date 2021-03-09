@@ -270,20 +270,16 @@ public class PageTreeNode implements DecodeService.DecodeCallback {
 
     @Override
     public String toString() {
-
-        String buf = "PageTreeNode" + "[" +
-                "id" + "=" + page.index.viewIndex + ":" + id +
-                ", " +
-                "rect" + "=" + this.pageSliceBounds +
-                ", " +
+        return "PageTreeNode" + "[" +
+                "id" + "=" + page.index.viewIndex + ":" + id + ", " +
+                "rect" + "=" + this.pageSliceBounds + ", " +
                 "hasBitmap" + "=" + holder.hasBitmaps() +
                 "]";
-        return buf;
     }
 
     static class BitmapHolder {
 
-        final AtomicReference<GLBitmaps> ref = new AtomicReference<GLBitmaps>();
+        final AtomicReference<GLBitmaps> ref = new AtomicReference<>();
 
         public boolean drawBitmap(final GLCanvas canvas, final PagePaint paint, final PointF viewBase,
                 final RectF targetRect, final RectF clipRect) {

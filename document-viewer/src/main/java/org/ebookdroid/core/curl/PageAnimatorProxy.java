@@ -13,7 +13,7 @@ public class PageAnimatorProxy implements PageAnimator {
     private final AtomicReference<PageAnimator> orig;
 
     public PageAnimatorProxy(final PageAnimator pa) {
-        orig = new AtomicReference<PageAnimator>(pa);
+        orig = new AtomicReference<>(pa);
     }
 
     public void switchCurler(final PageAnimator orig) {

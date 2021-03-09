@@ -19,7 +19,7 @@ public class AsyncTaskExecutor {
     public AsyncTaskExecutor(final int maxQueueSize, final int corePoolSize, final int maximumPoolSize,
             final long keepAliveTime, final String threadName) {
         ThreadFactory threadFactory = new DefaultThreadFactory(threadName);
-        BlockingQueue<Runnable> poolWorkQueue = new ArrayBlockingQueue<Runnable>(maxQueueSize);
+        BlockingQueue<Runnable> poolWorkQueue = new ArrayBlockingQueue<>(maxQueueSize);
         executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.SECONDS,
                 poolWorkQueue, threadFactory);
         serial = new SerialExecutor();
@@ -55,7 +55,7 @@ public class AsyncTaskExecutor {
 
     private class SerialExecutor implements Executor {
 
-        final ArrayDeque<Runnable> mTasks = new ArrayDeque<Runnable>();
+        final ArrayDeque<Runnable> mTasks = new ArrayDeque<>();
         Runnable mActive;
 
         @Override

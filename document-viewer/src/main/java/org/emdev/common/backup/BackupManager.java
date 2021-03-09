@@ -36,7 +36,7 @@ public class BackupManager {
     private static final CompositeFilter AUTO_BACKUP_FILTER = new CompositeFilter(true, new FilePrefixFilter(Type.AUTO
             .name().toLowerCase() + "."), BACKUP_FILTER);
 
-    private static final Map<String, IBackupAgent> agents = new TreeMap<String, IBackupAgent>();
+    private static final Map<String, IBackupAgent> agents = new TreeMap<>();
 
     private static int maxNumberOfAutoBackups = 1;
 
@@ -45,7 +45,7 @@ public class BackupManager {
     }
 
     public static Collection<BackupInfo> getAvailableBackups() {
-        final Set<BackupInfo> backups = new TreeSet<BackupInfo>();
+        final Set<BackupInfo> backups = new TreeSet<>();
 
         BACKUP_FOLDER.mkdirs();
         final File[] list = BACKUP_FILTER.listFiles(BACKUP_FOLDER);
@@ -59,7 +59,7 @@ public class BackupManager {
     }
 
     public static List<BackupInfo> getAutoBackups() {
-        final Set<BackupInfo> backups = new TreeSet<BackupInfo>();
+        final Set<BackupInfo> backups = new TreeSet<>();
 
         BACKUP_FOLDER.mkdirs();
 
@@ -73,7 +73,7 @@ public class BackupManager {
                 }
             }
         }
-        return new ArrayList<BackupInfo>(backups);
+        return new ArrayList<>(backups);
     }
 
     public static boolean backup() {
@@ -143,7 +143,7 @@ public class BackupManager {
             return false;
         }
 
-        final Map<String, JSONObject> m = new HashMap<String, JSONObject>();
+        final Map<String, JSONObject> m = new HashMap<>();
 
         try {
             final JSONObject root = BackupInfo.fromJSON(file);

@@ -246,7 +246,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
 
     @SuppressWarnings("unchecked")
     private Result postResult(final Result result) {
-        final Message message = sHandler.obtainMessage(MESSAGE_POST_RESULT, new AsyncTaskResult<Result>(this, result));
+        final Message message = sHandler.obtainMessage(MESSAGE_POST_RESULT, new AsyncTaskResult<>(this, result));
         message.sendToTarget();
         return result;
     }
@@ -553,7 +553,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      */
     protected final void publishProgress(final Progress... values) {
         if (!isCancelled()) {
-            sHandler.obtainMessage(MESSAGE_POST_PROGRESS, new AsyncTaskResult<Progress>(this, values)).sendToTarget();
+            sHandler.obtainMessage(MESSAGE_POST_PROGRESS, new AsyncTaskResult<>(this, values)).sendToTarget();
         }
     }
 

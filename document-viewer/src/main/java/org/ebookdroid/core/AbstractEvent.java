@@ -16,8 +16,8 @@ public abstract class AbstractEvent implements IEvent {
 
     public final LogContext LCTX = LogManager.root().lctx(getClass().getSimpleName(), false);
 
-    protected final List<PageTreeNode> nodesToDecode = new ArrayList<PageTreeNode>();
-    protected final List<GLBitmaps> bitmapsToRecycle = new ArrayList<GLBitmaps>();
+    protected final List<PageTreeNode> nodesToDecode = new ArrayList<>();
+    protected final List<GLBitmaps> bitmapsToRecycle = new ArrayList<>();
 
     public AbstractViewController ctrl;
     protected ViewState viewState;

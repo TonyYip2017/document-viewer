@@ -67,7 +67,7 @@ public class ListenerProxy {
      */
     public void addListener(final Object listener) {
         if (listener != null) {
-            WeakReference<Object> ref = new WeakReference<Object>(listener);
+            WeakReference<Object> ref = new WeakReference<>(listener);
             for (WeakReference<Object> r : references) {
                 if (r.get() == listener) {
                     return;
@@ -79,7 +79,7 @@ public class ListenerProxy {
                 if (listenerClass.isInstance(listener)) {
                     List<WeakReference<Object>> list = realListeners.get(listenerClass);
                     if (list == null) {
-                        list = new LinkedList<WeakReference<Object>>();
+                        list = new LinkedList<>();
                         realListeners.put(listenerClass, list);
                     }
                     list.add(ref);
