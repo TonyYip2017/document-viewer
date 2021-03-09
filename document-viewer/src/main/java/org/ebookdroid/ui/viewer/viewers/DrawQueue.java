@@ -50,16 +50,16 @@ public class DrawQueue {
         return task;
     }
 
-    public ViewState takeFirstTask() {
-        ViewState task = null;
-        try {
-            task = queue.poll(0, TimeUnit.MILLISECONDS);
-        } catch (final Throwable ex) {
-            // Go to next attempt
-            LCTX.e("Unexpected error on retrieving view state from draw queue: " + ex.getMessage());
-        }
-        return task;
-    }
+//    public ViewState takeFirstTask() {
+//        ViewState task = null;
+//        try {
+//            task = queue.poll(0, TimeUnit.MILLISECONDS);
+//        } catch (final Throwable ex) {
+//            // Go to next attempt
+//            LCTX.e("Unexpected error on retrieving view state from draw queue: " + ex.getMessage());
+//        }
+//        return task;
+//    }
 
     public void draw(final ViewState viewState) {
         if (viewState != null) {

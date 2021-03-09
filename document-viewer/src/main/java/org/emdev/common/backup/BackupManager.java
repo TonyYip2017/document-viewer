@@ -29,7 +29,7 @@ public class BackupManager {
 
     public static final LogContext LCTX = LogManager.root().lctx("BackupManager");
 
-    static File BACKUP_FOLDER = new File(BaseDroidApp.APP_STORAGE, "backups");
+    static final File BACKUP_FOLDER = new File(BaseDroidApp.APP_STORAGE, "backups");
 
     private static final FileExtensionFilter BACKUP_FILTER = new FileExtensionFilter("jso");
 

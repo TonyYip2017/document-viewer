@@ -115,7 +115,7 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
 
     public final int tintColor;
 
-    public boolean positiveImagesInNightMode;
+    public final boolean positiveImagesInNightMode;
 
     final int contrast;
 

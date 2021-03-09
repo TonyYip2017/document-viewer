@@ -151,7 +151,6 @@ public class EditableValue extends AbstractActionParameter {
         }
 
         @Override
-        @SuppressWarnings("rawtypes")
         public int nextSpanTransition(final int start, final int limit, final Class type) {
             return editable.nextSpanTransition(start, limit, type);
         }

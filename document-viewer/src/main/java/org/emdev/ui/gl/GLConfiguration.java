@@ -8,7 +8,7 @@ import javax.microedition.khronos.egl.EGLDisplay;
 
 public class GLConfiguration {
 
-    public static boolean use8888 = false;
+    public static final boolean use8888 = false;
 
     private static BaseEGLConfigChooser chooser;
 

@@ -31,9 +31,9 @@ public final class GLView extends GLRootView implements IView, SurfaceHolder.Cal
 
     protected final Flinger scroller;
 
-    protected DrawQueue drawQueue;
+    protected final DrawQueue drawQueue;
 
-    protected ScrollEventThread scrollThread;
+    protected final ScrollEventThread scrollThread;
 
     protected boolean layoutLocked;
 

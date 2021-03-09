@@ -137,25 +137,25 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.emdev.ui.AbstractActionActivity#onResumeImpl()
-     */
-    @Override
-    protected void onResumeImpl() {
-        IUIManager.instance.onResume(this);
-    }
+//    /**
+//     * {@inheritDoc}
+//     *
+//     * @see org.emdev.ui.AbstractActionActivity#onResumeImpl()
+//     */
+//    @Override
+//    protected void onResumeImpl() {
+//        IUIManager.instance.onResume(this);
+//    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.emdev.ui.AbstractActionActivity#onPauseImpl(boolean)
-     */
-    @Override
-    protected void onPauseImpl(final boolean finishing) {
-        IUIManager.instance.onPause(this);
-    }
+//    /**
+//     * {@inheritDoc}
+//     *
+//     * @see org.emdev.ui.AbstractActionActivity#onPauseImpl(boolean)
+//     */
+//    @Override
+//    protected void onPauseImpl(final boolean finishing) {
+//        IUIManager.instance.onPause(this);
+//    }
 
     /**
      * {@inheritDoc}

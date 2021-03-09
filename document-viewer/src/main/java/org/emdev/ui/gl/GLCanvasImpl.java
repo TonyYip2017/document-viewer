@@ -736,7 +736,7 @@ public class GLCanvasImpl implements GLCanvas {
     private static class ConfigState {
 
         float mAlpha;
-        float[] mMatrix = new float[16];
+        final float[] mMatrix = new float[16];
         ConfigState mNextFree;
 
         public void restore(final GLCanvasImpl canvas) {

@@ -119,7 +119,7 @@ public class KeyBindingsManager {
         public final int code;
         public final int id;
         public final String name;
-        public boolean enabled;
+        public final boolean enabled;
 
         public ActionRef(final int code, final int id, final boolean enabled) {
             this.code = code;

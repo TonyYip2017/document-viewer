@@ -13,7 +13,7 @@ public class BookNode implements Comparable<BookNode> {
     public final String name;
     public final String path;
     public final String mpath;
-    public BookSettings settings;
+    public final BookSettings settings;
 
     public BookNode(final File f, final BookSettings settings) {
         this.name = f.getName();

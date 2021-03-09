@@ -39,8 +39,8 @@ public class GoToPageDialog extends Dialog {
     final SeekBarIncrementHandler handler;
     BookmarkAdapter adapter;
     Bookmark current;
-    DialogController<GoToPageDialog> actions;
-    int offset;
+    final DialogController<GoToPageDialog> actions;
+    final int offset;
 
     public GoToPageDialog(final IActivityController base) {
         super(base.getContext());

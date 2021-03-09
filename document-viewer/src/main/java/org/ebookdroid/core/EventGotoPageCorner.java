@@ -13,10 +13,10 @@ public class EventGotoPageCorner implements IEvent {
 
     public static final LogContext LCTX = LogManager.root().lctx("EventGotoPage");
 
-    protected AbstractViewController ctrl;
+    protected final AbstractViewController ctrl;
     protected final ViewState viewState;
-    protected DocumentModel model;
-    protected int viewIndex;
+    protected final DocumentModel model;
+    protected final int viewIndex;
     protected final float offsetX;
     protected final float offsetY;
 

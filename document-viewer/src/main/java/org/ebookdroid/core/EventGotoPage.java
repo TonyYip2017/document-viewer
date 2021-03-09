@@ -15,10 +15,10 @@ public class EventGotoPage implements IEvent {
 
     protected final boolean centerPage;
 
-    protected AbstractViewController ctrl;
+    protected final AbstractViewController ctrl;
     protected final ViewState viewState;
-    protected DocumentModel model;
-    protected int viewIndex;
+    protected final DocumentModel model;
+    protected final int viewIndex;
     protected final float offsetX;
     protected final float offsetY;
 

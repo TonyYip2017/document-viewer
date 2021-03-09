@@ -75,17 +75,13 @@ public class UIManager40x implements IUIManager {
         }
     }
 
-    @Override
-    public void onPause(final Activity activity) {
-    }
-
-    @Override
-    public void onResume(final Activity activity) {
-    }
-
-    @Override
-    public void onDestroy(final Activity activity) {
-    }
+//    @Override
+//    public void onPause(final Activity activity) {
+//    }
+//
+//    @Override
+//    public void onResume(final Activity activity) {
+//    }
 
     @Override
     public boolean isTabletUi(final Activity activity) {

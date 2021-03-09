@@ -50,7 +50,7 @@ public class SettingsManager {
 
     private static final Map<String, BookSettings> bookSettings = new HashMap<>();
 
-    static ListenerProxy listeners = new ListenerProxy(IAppSettingsChangeListener.class,
+    static final ListenerProxy listeners = new ListenerProxy(IAppSettingsChangeListener.class,
             IBackupSettingsChangeListener.class, ILibSettingsChangeListener.class,
             IBookSettingsChangeListener.class, IRecentBooksChangedListener.class);
 

@@ -20,7 +20,7 @@ import android.graphics.*;
 import android.graphics.drawable.Drawable;
 
 class LayerDrawable extends Drawable implements Drawable.Callback {
-    LayerState mLayerState;
+    final LayerState mLayerState;
 
     private int[] mPaddingL;
     private int[] mPaddingT;

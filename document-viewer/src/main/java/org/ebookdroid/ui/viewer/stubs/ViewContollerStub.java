@@ -138,10 +138,6 @@ public class ViewContollerStub implements IViewController {
     }
 
     @Override
-    public final void onDestroy() {
-    }
-
-    @Override
     public RectF calcPageBounds(final PageAlign pageAlign, final float pageAspectRatio, final int width,
             final int height) {
         return new RectF();

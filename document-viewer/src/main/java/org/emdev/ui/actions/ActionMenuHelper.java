@@ -122,7 +122,7 @@ public class ActionMenuHelper {
          */
         private static final long serialVersionUID = -5109930164496309305L;
 
-        public Object data;
+        public final Object data;
 
         private ExtraWrapper(final Object data) {
             super();

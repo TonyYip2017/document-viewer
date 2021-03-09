@@ -155,7 +155,7 @@ public abstract class UploadedTexture extends BasicTexture {
         return sUploadedCount > UPLOAD_LIMIT;
     }
 
-    static int[] sTextureId = new int[1];
+    static final int[] sTextureId = new int[1];
 
     private void uploadToCanvas(final GLCanvas canvas) {
         final GL11 gl = canvas.getGLInstance();

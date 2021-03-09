@@ -158,14 +158,6 @@ public abstract class AbstractViewController extends AbstractComponentController
     }
 
     /**
-     *
-     */
-    @Override
-    public final void onDestroy() {
-        // isShown = false;
-    }
-
-    /**
      * {@inheritDoc}
      *
      * @see org.ebookdroid.ui.viewer.IViewController#show()

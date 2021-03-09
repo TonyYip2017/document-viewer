@@ -334,7 +334,7 @@ public class TouchManager {
         public final Touch type;
         public final int id;
         public final String name;
-        public boolean enabled;
+        public final boolean enabled;
 
         public ActionRef(final Touch type, final int id, final boolean enabled) {
             this.type = type;

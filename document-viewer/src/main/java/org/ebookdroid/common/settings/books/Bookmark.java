@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class Bookmark implements Comparable<Bookmark> {
 
-    public boolean service;
+    public final boolean service;
     public String name;
     public PageIndex page;
     public float offsetX;

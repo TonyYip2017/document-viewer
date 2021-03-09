@@ -31,7 +31,7 @@ public abstract class BaseFileAsyncTask<Params, Result extends FileTaskResult> e
     protected void onPostExecute(final Result result) {
         super.onPostExecute(result);
         if (result == null) {
-            processNoResult();
+//            processNoResult();
             return;
         }
 
@@ -43,9 +43,6 @@ public abstract class BaseFileAsyncTask<Params, Result extends FileTaskResult> e
         if (result.error != null) {
             processError(result.error);
         }
-    }
-
-    protected void processNoResult() {
     }
 
     protected void processTargetFile(final File target) {

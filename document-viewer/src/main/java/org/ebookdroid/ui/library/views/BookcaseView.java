@@ -1,22 +1,17 @@
 package org.ebookdroid.ui.library.views;
 
-import org.ebookdroid.ui.library.RecentActivity;
-import org.ebookdroid.ui.library.RecentActivityController;
-import org.emdev.ui.AbstractActionActivity;
-import org.emdev.ui.AbstractActivityController;
-import org.sufficientlysecure.viewer.R;
-import org.ebookdroid.ui.library.adapters.BooksAdapter;
-import org.ebookdroid.ui.library.adapters.RecentAdapter;
-
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import org.ebookdroid.ui.library.RecentActivity;
+import org.ebookdroid.ui.library.RecentActivityController;
+import org.ebookdroid.ui.library.adapters.BooksAdapter;
+import org.ebookdroid.ui.library.adapters.RecentAdapter;
+import org.sufficientlysecure.viewer.R;
 
 public class BookcaseView extends RelativeLayout {
     private ViewPager shelves;
@@ -121,12 +116,12 @@ public class BookcaseView extends RelativeLayout {
         shelves.setCurrentItem(shelf);
     }
 
-    public void prevList() {
-        setCurrentList(Math.max(0, shelves.getCurrentItem() - 1));
-    }
-
-    public void nextList() {
-        setCurrentList(Math.min(shelves.getCurrentItem() + 1, adapter.getListCount() - 1));
-    }
+//    public void prevList() {
+//        setCurrentList(Math.max(0, shelves.getCurrentItem() - 1));
+//    }
+//
+//    public void nextList() {
+//        setCurrentList(Math.min(shelves.getCurrentItem() + 1, adapter.getListCount() - 1));
+//    }
 
 }

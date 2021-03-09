@@ -12,11 +12,9 @@ public interface IUIManager {
 
     IUIManager instance = new UIManager40x();
 
-    void onPause(Activity activity);
-
-    void onResume(Activity activity);
-
-    void onDestroy(Activity activity);
+//    void onPause(Activity activity);
+//
+//    void onResume(Activity activity);
 
     void setFullScreenMode(Activity activity, View view, boolean fullScreen);
 

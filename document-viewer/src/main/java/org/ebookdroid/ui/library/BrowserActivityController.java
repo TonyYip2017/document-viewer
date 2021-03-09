@@ -48,7 +48,7 @@ public class BrowserActivityController extends AbstractActivityController<Browse
 
     private static final String CURRENT_DIRECTORY = "currentDirectory";
 
-    FileFilter filter;
+    final FileFilter filter;
     BrowserAdapter adapter;
 
     public BrowserActivityController(final BrowserActivity activity) {

@@ -10,7 +10,7 @@ public class PageTree {
 
     // private static final LogContext LCTX = Page.LCTX;
 
-    static RectF[] splitMasks = {
+    static final RectF[] splitMasks = {
             // Left Top
             new RectF(0, 0, 0.5f, 0.5f),
             // Right top

@@ -80,6 +80,4 @@ public interface IViewController extends ZoomListener {
 
     void invalidateScroll();
 
-    void onDestroy();
-
 }

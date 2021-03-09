@@ -62,12 +62,12 @@ public class PreferencesDecorator implements IPreferenceContainer, AppPreference
     public void decorateSettings() {
         decoratePreference(getRoot());
         decorateBrowserSettings();
-        decorateOpdsSettings();
-        decoratePerformanceSettings();
+//        decorateOpdsSettings();
+//        decoratePerformanceSettings();
         decorateRenderSettings();
-        decorateTypeSpecificSettings();
-        decorateScrollSettings();
-        decorateUISettings();
+//        decorateTypeSpecificSettings();
+//        decorateScrollSettings();
+//        decorateUISettings();
     }
 
     public void decorateBooksSettings(final BookSettings bs) {
@@ -95,26 +95,11 @@ public class PreferencesDecorator implements IPreferenceContainer, AppPreference
         });
     }
 
-    public void decorateOpdsSettings() {
-    }
-
-    public void decoratePerformanceSettings() {
-    }
-
     public void decorateRenderSettings() {
         addViewModeListener(VIEW_MODE.key, PAGE_ALIGN.key, ANIMATION_TYPE.key);
         addAnimationTypeListener(ANIMATION_TYPE.key, PAGE_ALIGN.key);
 
         enableSinglePageModeSetting(AppSettings.current().viewMode, PAGE_ALIGN.key, ANIMATION_TYPE.key);
-    }
-
-    public void decorateTypeSpecificSettings() {
-    }
-
-    public void decorateScrollSettings() {
-    }
-
-    public void decorateUISettings() {
     }
 
     public void setPageAlign(final PageAnimationType type, final String alignPrefKey) {

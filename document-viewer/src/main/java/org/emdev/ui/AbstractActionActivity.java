@@ -57,7 +57,7 @@ public abstract class AbstractActionActivity<A extends Activity, C extends Abstr
     protected abstract C createController();
 
     @Override
-    @SuppressWarnings({ "unchecked", "deprecation" })
+    @SuppressWarnings({ "unchecked"})
     protected final void onCreate(final Bundle savedInstanceState) {
         if (shouldBeTaskRoot && !isTaskRoot()) {
             super.onCreate(savedInstanceState);
