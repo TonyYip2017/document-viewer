@@ -34,8 +34,7 @@ public class ColorPickerDialog extends AlertDialog implements
 
 	private ColorPickerView mColorPicker;
 
-	private ColorPanelView mOldColor;
-	private ColorPanelView mNewColor;
+    private ColorPanelView mNewColor;
 
 	private OnColorChangedListener mListener;
 
@@ -65,7 +64,7 @@ public class ColorPickerDialog extends AlertDialog implements
 
 		mColorPicker = (ColorPickerView) layout
 				.findViewById(R.id.color_picker_view);
-		mOldColor = (ColorPanelView) layout.findViewById(R.id.old_color_panel);
+        ColorPanelView mOldColor = (ColorPanelView) layout.findViewById(R.id.old_color_panel);
 		mNewColor = (ColorPanelView) layout.findViewById(R.id.new_color_panel);
 
 		((LinearLayout) mOldColor.getParent()).setPadding(Math

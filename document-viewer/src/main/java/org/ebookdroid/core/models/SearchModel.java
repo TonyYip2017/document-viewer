@@ -327,7 +327,7 @@ public class SearchModel {
         }
     }
 
-    public static interface ProgressCallback {
+    public interface ProgressCallback {
 
         void searchStarted(int pageIndex);
 

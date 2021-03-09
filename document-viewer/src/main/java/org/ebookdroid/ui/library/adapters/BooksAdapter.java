@@ -56,8 +56,6 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
 
     final TreeMap<String, BookShelfAdapter> folders = new TreeMap<String, BookShelfAdapter>();
 
-    private final RecentUpdater updater = new RecentUpdater();
-
     private final RecentAdapter recent;
 
     private final FileSystemScanner scanner;
@@ -69,6 +67,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
     public BooksAdapter(final IBrowserActivity base, final RecentAdapter adapter) {
         this.base = base;
         this.recent = adapter;
+        RecentUpdater updater = new RecentUpdater();
         this.recent.registerDataSetObserver(updater);
 
         this.scanner = new FileSystemScanner(base.getActivity());

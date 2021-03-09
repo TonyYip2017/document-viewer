@@ -72,8 +72,6 @@ public class RecentActivityController extends AbstractActivityController<RecentA
 
     private final ThumbnailFile def = CacheManager.getThumbnailFile(".");
 
-    private boolean recentLoaded = false;
-
     public RecentActivityController(final RecentActivity activity) {
         super(activity, BEFORE_CREATE, AFTER_CREATE, ON_RESUME, ON_DESTROY);
         working.set(true);
@@ -112,7 +110,7 @@ public class RecentActivityController extends AbstractActivityController<RecentA
 
         if (!recreated) {
             init();
-            recentLoaded = checkAutoLoad(libSettings, recent);
+            boolean recentLoaded = checkAutoLoad(libSettings, recent);
             if (recentLoaded) {
                 return;
             }

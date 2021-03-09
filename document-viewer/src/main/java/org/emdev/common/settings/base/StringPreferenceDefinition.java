@@ -33,7 +33,7 @@ public class StringPreferenceDefinition extends BasePreferenceDefinition<String>
     }
 
     @Override
-    public void restore(final JSONObject root, final Editor edit) throws JSONException {
+    public void restore(final JSONObject root, final Editor edit) {
         final String value = root.optString(key);
         setPreferenceValue(edit, value != null ? value : defValue);
     }

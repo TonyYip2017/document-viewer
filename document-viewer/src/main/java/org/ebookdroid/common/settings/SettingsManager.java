@@ -36,7 +36,7 @@ public class SettingsManager {
 
     public static final LogContext LCTX = LogManager.root().lctx("SettingsManager", false);
 
-    public static final int INITIAL_FONTS = 1 << 0;
+//    public static final int INITIAL_FONTS = 1 << 0;
 
     private static final String INITIAL_FLAGS = "initial_flags";
 

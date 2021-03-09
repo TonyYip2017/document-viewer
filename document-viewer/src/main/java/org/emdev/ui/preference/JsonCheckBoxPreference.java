@@ -67,7 +67,7 @@ public class JsonCheckBoxPreference extends CheckBoxPreference {
             final JSONObject object = def.getPreferenceValue(prefs);
             try {
                 return object.has(jsonProperty) ? object.getBoolean(jsonProperty) : defaultReturnValue;
-            } catch (final JSONException ex) {
+            } catch (final JSONException ignored) {
             }
         }
         return defaultReturnValue;
@@ -89,7 +89,7 @@ public class JsonCheckBoxPreference extends CheckBoxPreference {
                 final SharedPreferences.Editor editor = prefs.edit();
                 def.setPreferenceValue(editor, object);
                 editor.commit();
-            } catch (final JSONException ex) {
+            } catch (final JSONException ignored) {
             }
 
             return true;

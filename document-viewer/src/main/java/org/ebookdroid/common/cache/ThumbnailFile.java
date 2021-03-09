@@ -43,7 +43,7 @@ public class ThumbnailFile extends File {
             try {
                 bitmap = load(false);
                 ref.set(bitmap);
-            } catch (final OutOfMemoryError ex) {
+            } catch (final OutOfMemoryError ignored) {
             }
         }
         return bitmap;
@@ -74,7 +74,7 @@ public class ThumbnailFile extends File {
             try {
                 bitmap = load(true);
                 ref.set(bitmap);
-            } catch (final OutOfMemoryError ex) {
+            } catch (final OutOfMemoryError ignored) {
             }
         }
         return bitmap;
@@ -106,12 +106,12 @@ public class ThumbnailFile extends File {
         try {
             out = new FileOutputStream(this);
             image.compress(Bitmap.CompressFormat.JPEG, 50, out);
-        } catch (final IOException e) {
+        } catch (final IOException ignored) {
         } finally {
             if (out != null) {
                 try {
                     out.close();
-                } catch (final IOException ex) {
+                } catch (final IOException ignored) {
                 }
             }
         }
@@ -155,7 +155,7 @@ public class ThumbnailFile extends File {
         return defaultImage;
     }
 
-    public static interface ImageLoadingListener {
+    public interface ImageLoadingListener {
 
         void onImageLoaded(Bitmap image);
     }
@@ -166,7 +166,7 @@ public class ThumbnailFile extends File {
         protected Bitmap doInBackground(String... params) {
             try {
                 return load(false);
-            } catch (final OutOfMemoryError ex) {
+            } catch (final OutOfMemoryError ignored) {
             }
             return null;
         }

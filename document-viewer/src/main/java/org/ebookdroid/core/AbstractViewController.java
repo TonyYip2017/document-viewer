@@ -402,12 +402,10 @@ public abstract class AbstractViewController extends AbstractComponentController
             }
         } else if (event.getAction() == KeyEvent.ACTION_UP) {
             final Integer id = KeyBindingsManager.getAction(event);
-            if (id != null) {
-                // We handled the KeyEvent.ACTION_DOWN, so return true to indicate we are handling
-                // the KeyEvent.ACTION_UP as well.
-                // Returning false here causes the volume keys to beep when scrolling.
-                return true;
-            }
+            // We handled the KeyEvent.ACTION_DOWN, so return true to indicate we are handling
+            // the KeyEvent.ACTION_UP as well.
+            // Returning false here causes the volume keys to beep when scrolling.
+            return id != null;
         }
 
         return false;
@@ -701,12 +699,8 @@ public abstract class AbstractViewController extends AbstractComponentController
          */
         @Override
         public boolean onDown(final MotionEvent e) {
-            if (getView().forceFinishScroll()) {
-                // this touch down caused scrolling to finish, so ignore the next onSingleTapConfirmed()
-                ignoreNextTap = true;
-            } else {
-                ignoreNextTap = false;
-            }
+            // this touch down caused scrolling to finish, so ignore the next onSingleTapConfirmed()
+            ignoreNextTap = getView().forceFinishScroll();
             if (LCTX.isDebugEnabled()) {
                 LCTX.d("onDown(" + e + ")");
             }

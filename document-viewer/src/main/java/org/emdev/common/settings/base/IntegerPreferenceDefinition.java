@@ -57,7 +57,7 @@ public class IntegerPreferenceDefinition extends BasePreferenceDefinition<Intege
     }
 
     @Override
-    public void restore(final JSONObject root, final Editor edit) throws JSONException {
+    public void restore(final JSONObject root, final Editor edit) {
         final String value = root.optString(key);
         try {
             setPreferenceValue(edit, LengthUtils.isNotEmpty(value) ? Integer.valueOf(value) : defValue);

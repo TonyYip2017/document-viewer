@@ -32,7 +32,7 @@ public class SettingsBackupHelper {
                         try {
                             final BasePreferenceDefinition<?> value = (BasePreferenceDefinition<?>) field.get(null);
                             list.add(value);
-                        } catch (final Throwable th) {
+                        } catch (final Throwable ignored) {
                         }
                     }
                 }

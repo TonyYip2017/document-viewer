@@ -12,8 +12,8 @@ import java.io.File;
 
 public class LibraryView extends ExpandableListView implements ExpandableListView.OnChildClickListener {
 
-    private IBrowserActivity base;
-    private LibraryAdapter adapter;
+    private final IBrowserActivity base;
+    private final LibraryAdapter adapter;
 
     public LibraryView(IBrowserActivity base, LibraryAdapter adapter) {
         super(base.getContext());

@@ -57,7 +57,7 @@ public enum MediaState implements ResourceConstant {
     public final boolean readable;
     public final boolean writable;
 
-    private MediaState(final String value, final boolean readable, final boolean writable) {
+    MediaState(final String value, final boolean readable, final boolean writable) {
         this.resValue = value;
         this.readable = readable;
         this.writable = writable;

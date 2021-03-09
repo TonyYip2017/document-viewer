@@ -104,7 +104,7 @@ public class BrowserActivity extends AbstractActionActivity<BrowserActivity, Bro
     protected void updateMenuItems(final Menu optionsMenu) {
 
         final File dir = getController().adapter.getCurrentDirectory();
-        final boolean hasParent = dir != null ? dir.getParentFile() != null : false;
+        final boolean hasParent = dir != null && dir.getParentFile() != null;
 
         ActionMenuHelper.setMenuItemEnabled(optionsMenu, hasParent, R.id.browserupfolder,
                 R.drawable.browser_actionbar_nav_up_enabled, R.drawable.browser_actionbar_nav_up_disabled);

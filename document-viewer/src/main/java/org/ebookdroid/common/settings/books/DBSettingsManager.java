@@ -65,7 +65,7 @@ public class DBSettingsManager extends SQLiteOpenHelper implements IBackupAgent 
         if (m_db != null) {
             try {
                 m_db.close();
-            } catch (Exception ex) {
+            } catch (Exception ignored) {
             }
             m_db = null;
         }
@@ -176,7 +176,7 @@ public class DBSettingsManager extends SQLiteOpenHelper implements IBackupAgent 
         if (db != upgragingInstance && db != m_db) {
             try {
                 db.close();
-            } catch (final Exception ex) {
+            } catch (final Exception ignored) {
             }
             LCTX.d("DB connection closed: " + m_db);
         }
@@ -195,7 +195,7 @@ public class DBSettingsManager extends SQLiteOpenHelper implements IBackupAgent 
     }
 
     public boolean storeBookSettings(final BookSettings bs) {
-        return bs.persistent ? adapter.storeBookSettings(Collections.singletonList(bs)) : false;
+        return bs.persistent && adapter.storeBookSettings(Collections.singletonList(bs));
     }
 
     public boolean storeBookSettings(final List<BookSettings> list) {

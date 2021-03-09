@@ -75,7 +75,7 @@ public class DocumentCacheFile extends File {
             } finally {
                 try {
                     in.close();
-                } catch (final IOException ex) {
+                } catch (final IOException ignored) {
                 }
             }
         } catch (final FileNotFoundException ex) {
@@ -100,7 +100,7 @@ public class DocumentCacheFile extends File {
             } finally {
                 try {
                     out.close();
-                } catch (final IOException ex) {
+                } catch (final IOException ignored) {
                 }
             }
         } catch (final IOException ex) {

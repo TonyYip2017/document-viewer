@@ -16,9 +16,7 @@ import org.emdev.ui.actions.params.EditableValue;
 
 public class SearchControls extends LinearLayout {
 
-    private EditText m_edit;
-    private ImageButton m_prevButton;
-    private ImageButton m_nextButton;
+    private final EditText m_edit;
 
     public SearchControls(final ViewerActivity parent) {
         super(parent);
@@ -26,8 +24,8 @@ public class SearchControls extends LinearLayout {
         setOrientation(LinearLayout.VERTICAL);
 
         LayoutInflater.from(parent).inflate(R.layout.seach_controls, this, true);
-        m_prevButton = (ImageButton) findViewById(R.id.search_controls_prev);
-        m_nextButton = (ImageButton) findViewById(R.id.search_controls_next);
+        ImageButton m_prevButton = (ImageButton) findViewById(R.id.search_controls_prev);
+        ImageButton m_nextButton = (ImageButton) findViewById(R.id.search_controls_next);
         m_edit = (EditText) findViewById(R.id.search_controls_edit);
 
         ActionEx forwardSearch = parent.getController().getOrCreateAction(R.id.actions_doSearch);

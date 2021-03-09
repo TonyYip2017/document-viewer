@@ -30,7 +30,7 @@ public class DjvuContext extends AbstractCodecContext {
     protected void freeContext() {
         try {
             free(getContextHandle());
-        } catch (Throwable th) {
+        } catch (Throwable ignored) {
         }
     }
 

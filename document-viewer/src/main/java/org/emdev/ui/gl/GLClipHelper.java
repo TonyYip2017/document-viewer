@@ -72,7 +72,7 @@ public class GLClipHelper {
         }
     }
 
-    static interface ClipRegion {
+    interface ClipRegion {
 
         void draw(final GLCanvas canvas);
     }

@@ -35,7 +35,7 @@ abstract class AbstractBitmapRef implements IBitmapRef {
     }
 
     @Override
-    protected final void finalize() throws Throwable {
+    protected final void finalize() {
         recycle();
     }
 

@@ -21,7 +21,7 @@ public enum PageType {
     private final float leftPos;
     private final float widthScale;
 
-    private PageType(float leftPos, float widthScale) {
+    PageType(float leftPos, float widthScale) {
         this.initialRect = new RectF(leftPos / widthScale, 0, (leftPos + 1) / widthScale, 1);
         this.leftPos = leftPos;
         this.widthScale = widthScale;

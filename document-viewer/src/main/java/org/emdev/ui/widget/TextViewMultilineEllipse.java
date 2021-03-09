@@ -444,7 +444,7 @@ public class TextViewMultilineEllipse extends View {
         private boolean mRequiredEllipsis;
 
         /** Beginning and end indices for the input string. */
-        private ArrayList<int[]> mLines;
+        private final ArrayList<int[]> mLines;
 
         /** The width in pixels of the last line, used to draw the ellipsis if necessary. */
         private float mLengthLastLine;
@@ -553,7 +553,7 @@ public class TextViewMultilineEllipse extends View {
                 } else if (lengthThisLine + widthOfChar >= maxWidth) {
                     newLineRequired = true;
                     // We need to backup if we are in the middle of a word.
-                    if (input.charAt(pos) == ' ' || breakWords == false) {
+                    if (input.charAt(pos) == ' ' || !breakWords) {
                         // Backup one character, because it doesn't fit on this line.
                         pos--;
 

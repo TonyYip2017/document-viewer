@@ -208,7 +208,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
         mWorker = new WorkerRunnable<Params, Result>() {
 
             @Override
-            public Result call() throws Exception {
+            public Result call() {
                 mTaskInvoked.set(true);
 
                 Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);

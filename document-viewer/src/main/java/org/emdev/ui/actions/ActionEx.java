@@ -191,7 +191,6 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
             LCTX.e("Action " + name + " failed on execution: ", ex.getCause());
         } catch (final Throwable th) {
             LCTX.e("Action " + name + " failed on execution: ", th);
-        } finally {
         }
     }
 
@@ -217,7 +216,7 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
 
     public boolean isDialogItemSelected(final int which) {
         final SparseBooleanArray map = this.getParameter(IActionController.DIALOG_SELECTED_ITEMS_PROPERTY);
-        return map != null ? map.get(which) : false;
+        return map != null && map.get(which);
     }
 
     @Override
@@ -284,7 +283,7 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
                         final int value = f.getInt(null);
                         s_names.put(value, f.getName());
                         s_ids.put(f.getName(), value);
-                    } catch (final Throwable th) {
+                    } catch (final Throwable ignored) {
                     }
                 }
             }

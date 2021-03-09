@@ -338,7 +338,7 @@ public class FileSystemScanner {
         }
     }
 
-    public static interface Listener {
+    public interface Listener {
 
         void onFileScan(File parent, File[] files);
 
@@ -351,9 +351,9 @@ public class FileSystemScanner {
         void onDirDeleted(File parent, File f);
     }
 
-    public static interface ProgressListener {
+    public interface ProgressListener {
 
-        public void showProgress(boolean show);
+        void showProgress(boolean show);
 
     }
 }

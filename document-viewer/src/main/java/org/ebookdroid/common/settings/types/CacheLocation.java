@@ -18,7 +18,7 @@ public enum CacheLocation implements ResourceConstant {
 
     private final String resValue;
 
-    private CacheLocation(final int resId) {
+    CacheLocation(final int resId) {
         this.resValue = EBookDroidApp.context.getString(resId);
     }
 

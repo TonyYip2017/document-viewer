@@ -21,6 +21,7 @@ import android.widget.TextView;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import org.emdev.utils.CompareUtils;
 import org.emdev.utils.LayoutUtils;
@@ -98,7 +99,7 @@ public class AboutActivity extends AppCompatActivity {
                     final byte[] buffer = new byte[size];
                     input.read(buffer);
                     input.close();
-                    final String text = new String(buffer, "UTF8");
+                    final String text = new String(buffer, StandardCharsets.UTF_8);
                     content = format.format(text);
                 } catch (final IOException e) {
                     e.printStackTrace();
@@ -117,11 +118,9 @@ public class AboutActivity extends AppCompatActivity {
         }
 
         public String getActualFileName(final String lang) {
-            final StringBuilder actualName = new StringBuilder("about");
-            actualName.append("/").append(lang);
-            actualName.append("/");
-            actualName.append(fileName);
-            final String s = actualName.toString();
+            final String s = "about" + "/" + lang +
+                    "/" +
+                    fileName;
             return s;
         }
 
@@ -200,7 +199,7 @@ public class AboutActivity extends AppCompatActivity {
         }
     }
 
-    private static enum Format {
+    private enum Format {
         /**
          *
          */

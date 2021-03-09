@@ -820,12 +820,11 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
             builder.authority("org.ebookdroid.document");
             builder.path(m_fileName);
             builder.query(mimeType);
-            uri = builder.build();
         } else {
             builder.scheme("file");
             builder.path(m_fileName);
-            uri = builder.build();
         }
+        uri = builder.build();
         return uri;
     }
 
@@ -1153,7 +1152,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
                 final int length = LengthUtils.length(params);
 
                 pattern = length > 0 ? params[0] : null;
-                final boolean forward = length >= 3 ? Boolean.parseBoolean(params[2]) : true;
+                final boolean forward = length < 3 || Boolean.parseBoolean(params[2]);
 
                 searchModel.setPattern(pattern);
 
@@ -1175,7 +1174,7 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
             if (progressDialog != null) {
                 try {
                     progressDialog.dismiss();
-                } catch (final Throwable th) {
+                } catch (final Throwable ignored) {
                 }
             }
             if (result != null) {

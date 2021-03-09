@@ -19,8 +19,6 @@ import org.emdev.utils.concurrent.Flag;
 
 final class ScrollEventThread extends Thread {
 
-    private static boolean mergeEvents = false;
-
     private static Field SCROLL_X;
     private static Field SCROLL_Y;
 
@@ -61,6 +59,7 @@ final class ScrollEventThread extends Thread {
                 if (event == null) {
                     continue;
                 }
+                boolean mergeEvents = false;
                 if (mergeEvents) {
                     for (OnScrollEvent event1 = queue.poll(); event1 != null; event1 = queue.poll()) {
                         event.reuse(event1.m_curX, event1.m_curY, event.m_oldX, event.m_oldY);

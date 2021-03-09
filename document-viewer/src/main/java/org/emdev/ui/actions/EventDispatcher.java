@@ -35,8 +35,6 @@ public class EventDispatcher {
 
     private final Object m_proxy;
 
-    private final InvocationHandler m_handler;
-
     /**
      * Constructor
      * 
@@ -64,7 +62,7 @@ public class EventDispatcher {
 
         m_base = base;
         m_type = type;
-        m_handler = new Handler();
+        InvocationHandler m_handler = new Handler();
         m_interfaces = listeners;
         m_proxy = Proxy.newProxyInstance(this.getClass().getClassLoader(), listeners, m_handler);
     }
@@ -144,13 +142,10 @@ public class EventDispatcher {
          *            instance.
          * @return the value to return from the method invocation on the
          *         proxy instance.
-         * @throws Throwable
-         *             the exception to throw from the method
-         *             invocation on the proxy instance.
          * @see InvocationHandler#invoke(Object, Method, Object[])
          */
         @Override
-        public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+        public Object invoke(final Object proxy, final Method method, final Object[] args) {
             final Class<?> listenerClass = method.getDeclaringClass();
             final List<Object> targets = m_listeners.get(listenerClass);
             if (LengthUtils.isNotEmpty(targets)) {
@@ -176,7 +171,7 @@ public class EventDispatcher {
     /**
      * This class implements thread task for listener invocation.
      */
-    private class Task implements Runnable {
+    private static class Task implements Runnable {
 
         private final List<Object> m_targets;
 

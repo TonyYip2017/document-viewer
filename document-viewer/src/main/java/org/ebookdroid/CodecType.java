@@ -58,8 +58,8 @@ public enum CodecType {
 
     public final List<String> mimeTypes;
 
-    private CodecType(final Class<? extends CodecContext> contextClass, final boolean useCustomFonts,
-            final List<String> extensions, final List<String> mimeTypes) {
+    CodecType(final Class<? extends CodecContext> contextClass, final boolean useCustomFonts,
+              final List<String> extensions, final List<String> mimeTypes) {
         this.contextClass = contextClass;
         this.useCustomFonts = useCustomFonts;
         this.extensions = extensions;

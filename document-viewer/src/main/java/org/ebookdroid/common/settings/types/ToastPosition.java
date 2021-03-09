@@ -37,7 +37,7 @@ public enum ToastPosition implements ResourceConstant {
     public final int position;
     private final String resValue;
 
-    private ToastPosition(int resId, int position) {
+    ToastPosition(int resId, int position) {
         this.resValue = EBookDroidApp.context.getString(resId);
         this.position = position;
     }

@@ -56,8 +56,8 @@ public interface IViewController extends ZoomListener {
 
     void updateMemorySettings();
 
-    public static enum InvalidateSizeReason {
-        INIT, LAYOUT, PAGE_ALIGN, PAGE_LOADED;
+    enum InvalidateSizeReason {
+        INIT, LAYOUT, PAGE_ALIGN, PAGE_LOADED
     }
 
     boolean onLayoutChanged(boolean layoutChanged, boolean layoutLocked, Rect oldLaout, Rect newLayout);

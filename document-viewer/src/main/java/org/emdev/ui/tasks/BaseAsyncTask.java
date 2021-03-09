@@ -46,7 +46,7 @@ public abstract class BaseAsyncTask<Params, Result> extends AsyncTask<Params, St
         if (progressDialog != null) {
             try {
                 progressDialog.dismiss();
-            } catch (final Throwable th) {
+            } catch (final Throwable ignored) {
             }
             progressDialog = null;
         }

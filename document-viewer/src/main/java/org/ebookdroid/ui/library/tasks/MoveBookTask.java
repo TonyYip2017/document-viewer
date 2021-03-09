@@ -70,7 +70,7 @@ public class MoveBookTask extends BaseFileAsyncTask<BookNode, FileTaskResult> {
         super.processTargetFile(target);
     }
 
-    protected File move(final File target) throws FileNotFoundException, IOException {
+    protected File move(final File target) throws IOException {
         if (origin.renameTo(target)) {
             return target;
         }

@@ -19,8 +19,7 @@ public class ZipArchive implements ArchiveFile<ZipArchiveEntry> {
         try {
             this.zipfile = new ZipFile(zipfile);
         } catch (final ZipException ex) {
-            final IOException exx = new IOException(ex.getMessage());
-            exx.initCause(ex);
+            final IOException exx = new IOException(ex.getMessage(), ex);
             throw exx;
         }
     }
@@ -29,7 +28,7 @@ public class ZipArchive implements ArchiveFile<ZipArchiveEntry> {
     protected void finalize() throws Throwable {
         try {
             zipfile.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         super.finalize();
     }

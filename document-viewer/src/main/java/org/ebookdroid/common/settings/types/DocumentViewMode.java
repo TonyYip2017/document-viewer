@@ -32,8 +32,8 @@ public enum DocumentViewMode implements ResourceConstant {
 
     private Constructor<? extends IViewController> c;
 
-    private DocumentViewMode(final int resId, final PageAlign pageAlign,
-            final Class<? extends IViewController> clazz) {
+    DocumentViewMode(final int resId, final PageAlign pageAlign,
+                     final Class<? extends IViewController> clazz) {
         this.resValue = EBookDroidApp.context.getString(resId);
         this.pageAlign = pageAlign;
         try {

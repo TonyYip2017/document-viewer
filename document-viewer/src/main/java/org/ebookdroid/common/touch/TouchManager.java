@@ -196,14 +196,13 @@ public class TouchManager {
 
         @Override
         public String toString() {
-            final StringBuilder buf = new StringBuilder(this.getClass().getSimpleName());
-            buf.append("[");
-            buf.append("name").append("=").append(name);
-            buf.append(", ");
-            buf.append("regions").append("=").append(regions);
-            buf.append("]");
 
-            return buf.toString();
+            String buf = this.getClass().getSimpleName() + "[" +
+                    "name" + "=" + name +
+                    ", " +
+                    "regions" + "=" + regions +
+                    "]";
+            return buf;
         }
 
         public JSONObject toJSON() throws JSONException {
@@ -232,8 +231,8 @@ public class TouchManager {
         }
     }
 
-    public static enum Touch {
-        SingleTap, DoubleTap, LongTap, TwoFingerTap;
+    public enum Touch {
+        SingleTap, DoubleTap, LongTap, TwoFingerTap
     }
 
     public static class Region {
@@ -247,9 +246,7 @@ public class TouchManager {
 
         public Region(final Region r) {
             this.rect = new Rect(r.rect);
-            for (int i = 0; i < actions.length; i++) {
-                this.actions[i] = r.actions[i];
-            }
+            System.arraycopy(r.actions, 0, this.actions, 0, actions.length);
         }
 
         public Rect getRect() {
@@ -283,14 +280,13 @@ public class TouchManager {
 
         @Override
         public String toString() {
-            final StringBuilder buf = new StringBuilder(this.getClass().getSimpleName());
-            buf.append("[");
-            buf.append("rect").append("=").append(rect);
-            buf.append(", ");
-            buf.append("actions").append("=").append(Arrays.toString(actions));
-            buf.append("]");
 
-            return buf.toString();
+            String buf = this.getClass().getSimpleName() + "[" +
+                    "rect" + "=" + rect +
+                    ", " +
+                    "actions" + "=" + Arrays.toString(actions) +
+                    "]";
+            return buf;
         }
 
         public JSONObject toJSON() throws JSONException {

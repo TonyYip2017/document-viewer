@@ -45,8 +45,6 @@ public class BackupDlg extends Dialog implements TextWatcher, ListView.OnItemLon
 
     private final BackupInfoAdapter adapter;
 
-    private final ActionController<BackupDlg> actions = new ActionController<BackupDlg>(this);
-
     public BackupDlg(final Context context) {
         super(context);
 
@@ -59,6 +57,7 @@ public class BackupDlg extends Dialog implements TextWatcher, ListView.OnItemLon
         newBackupNameEdit.addTextChangedListener(this);
 
         backupButton = (Button) findViewById(R.id.backupButton);
+        ActionController<BackupDlg> actions = new ActionController<BackupDlg>(this);
         actions.setActionForView(backupButton);
 
         restoreButton = (Button) findViewById(R.id.restoreBackupButton);

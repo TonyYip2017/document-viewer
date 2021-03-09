@@ -50,7 +50,7 @@ public class PageCacheFile extends File {
             } finally {
                 try {
                     in.close();
-                } catch (final IOException ex) {
+                } catch (final IOException ignored) {
                 }
             }
         } catch (final FileNotFoundException ex) {

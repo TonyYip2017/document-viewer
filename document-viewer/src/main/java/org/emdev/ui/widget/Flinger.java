@@ -104,15 +104,14 @@ public class Flinger {
             if (isFinished()) {
                 if (oldProgress == 0 || oldProgress == 1) {
                     // System.out.println("oldProgress == 0 || oldProgress == 1");
-                    return false;
                 } else {
                     currX = finalX;
                     currY = finalY;
                     oldProgress = 1;
                     // System.out.println("Finished: " + currY);
                     // It was not really finished, but it surely is now.
-                    return false;
                 }
+                return false;
             }
             // System.out.println("Flinger.computeScrollOffset(" + SystemClock.uptimeMillis() + ")");
             float progress = duration > 0 ? (float) (SystemClock.uptimeMillis() - startTime) / duration : 1;

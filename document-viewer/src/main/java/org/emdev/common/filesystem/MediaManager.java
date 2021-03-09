@@ -52,7 +52,7 @@ public class MediaManager extends BroadcastReceiver {
             } finally {
                 try {
                     in.close();
-                } catch (final IOException ex) {
+                } catch (final IOException ignored) {
                 }
             }
         } catch (final FileNotFoundException ex) {
@@ -104,7 +104,7 @@ public class MediaManager extends BroadcastReceiver {
             final Uri data = intent.getData();
             final String path = PathFromUri.retrieve(context.getContentResolver(), data);
             final Bundle extras = intent.getExtras();
-            final boolean readOnly = extras != null ? extras.getBoolean("read-only") : false;
+            final boolean readOnly = extras != null && extras.getBoolean("read-only");
             setMediaState(path, readOnly ? MediaState.MEDIA_MOUNTED : MediaState.MEDIA_MOUNTED_READ_ONLY);
             return;
         }
@@ -173,7 +173,7 @@ public class MediaManager extends BroadcastReceiver {
         l.onMediaStateChanged(path, oldState, media.state);
     }
 
-    public static interface Listener {
+    public interface Listener {
 
         void onMediaStateChanged(String path, MediaState oldState, MediaState newState);
     }

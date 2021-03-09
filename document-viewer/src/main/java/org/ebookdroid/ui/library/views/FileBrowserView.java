@@ -15,8 +15,6 @@ public class FileBrowserView extends ListView implements AdapterView.OnItemClick
     private final IBrowserActivity base;
     private final BrowserAdapter adapter;
 
-    private File selected;
-
     public FileBrowserView(final IBrowserActivity base, final BrowserAdapter adapter) {
         super(base.getContext());
         this.base = base;
@@ -31,7 +29,7 @@ public class FileBrowserView extends ListView implements AdapterView.OnItemClick
 
     @Override
     public void onItemClick(final AdapterView<?> adapterView, final View view, final int i, final long l) {
-        selected = adapter.getItem(i);
+        File selected = adapter.getItem(i);
         if (selected.isDirectory()) {
             base.setCurrentDir(selected);
         } else {

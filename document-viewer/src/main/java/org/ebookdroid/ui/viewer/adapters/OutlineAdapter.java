@@ -213,8 +213,8 @@ public class OutlineAdapter extends BaseAdapter {
         return container;
     }
 
-    private static enum OutlineItemState {
-        LEAF, EXPANDED, COLLAPSED;
+    private enum OutlineItemState {
+        LEAF, EXPANDED, COLLAPSED
     }
 
     private final class CollapseListener implements OnClickListener {

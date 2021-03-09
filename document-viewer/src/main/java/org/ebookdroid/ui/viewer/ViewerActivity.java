@@ -54,8 +54,6 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
 
     private SearchControls searchControls;
 
-    private FrameLayout frameLayout;
-
     private TouchManagerView touchView;
 
     private boolean menuClosedCalled;
@@ -104,7 +102,7 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
 
         View rootLayout = getLayoutInflater().inflate(R.layout.viewer, null);
 
-        frameLayout = (FrameLayout) rootLayout.findViewById(R.id.framelayout);
+        FrameLayout frameLayout = (FrameLayout) rootLayout.findViewById(R.id.framelayout);
 
         view = ViewStub.STUB;
 

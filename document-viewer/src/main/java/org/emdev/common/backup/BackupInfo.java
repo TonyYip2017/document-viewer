@@ -67,13 +67,12 @@ public class BackupInfo implements Comparable<BackupInfo> {
 
     @Override
     public String toString() {
-        final StringBuilder buf = new StringBuilder(this.getClass().getSimpleName());
-        buf.append("[");
-        buf.append("timestamp").append("=").append(timestamp != null ? SDF.format(timestamp) : null);
-        buf.append(", ");
-        buf.append("name").append("=").append(name);
-        buf.append("]");
-        return buf.toString();
+        String buf = this.getClass().getSimpleName() + "[" +
+                "timestamp" + "=" + (timestamp != null ? SDF.format(timestamp) : null) +
+                ", " +
+                "name" + "=" + name +
+                "]";
+        return buf;
     }
 
     @Override
@@ -130,7 +129,7 @@ public class BackupInfo implements Comparable<BackupInfo> {
     }
 
     public enum Type {
-        AUTO, USER;
+        AUTO, USER
     }
 
 }

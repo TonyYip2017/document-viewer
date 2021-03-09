@@ -3,7 +3,7 @@ package org.ebookdroid.core.codec;
 
 public interface CodecFeatures {
 
-    int FEATURE_UNIFIED_PAGE_INTO = 1 << 0;
+    int FEATURE_UNIFIED_PAGE_INTO = 1;
     int FEATURE_CACHABLE_PAGE_INFO = 1 << 1;
     int FEATURE_PARALLEL_PAGE_ACCESS = 1 << 2;
 

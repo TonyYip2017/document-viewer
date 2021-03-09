@@ -20,5 +20,5 @@ public enum InvokationType {
     /**
      * An action or event executed in a current thread.
      */
-    Direct;
+    Direct
 }

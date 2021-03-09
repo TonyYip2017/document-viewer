@@ -154,18 +154,17 @@ public class Page {
 
     @Override
     public String toString() {
-        final StringBuilder buf = new StringBuilder("Page");
-        buf.append("[");
 
-        buf.append("index").append("=").append(index);
-        buf.append(", ");
-        buf.append("bounds").append("=").append(bounds);
-        buf.append(", ");
-        buf.append("aspectRatio").append("=").append(aspectRatio);
-        buf.append(", ");
-        buf.append("type").append("=").append(type.name());
-        buf.append("]");
-        return buf.toString();
+        String buf = "Page" + "[" +
+                "index" + "=" + index +
+                ", " +
+                "bounds" + "=" + bounds +
+                ", " +
+                "aspectRatio" + "=" + aspectRatio +
+                ", " +
+                "type" + "=" + type.name() +
+                "]";
+        return buf;
     }
 
     public static RectF getTargetRect(final PageType pageType, final RectF pageBounds, final RectF normalizedRect) {

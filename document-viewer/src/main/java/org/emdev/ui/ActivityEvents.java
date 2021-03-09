@@ -2,7 +2,7 @@ package org.emdev.ui;
 
 public interface ActivityEvents {
 
-    int BEFORE_CREATE = 1 << 0;
+    int BEFORE_CREATE = 1;
     int BEFORE_RECREATE = 1 << 1;
     int ON_CREATE = 1 << 2;
     int AFTER_CREATE = 1 << 3;
@@ -21,7 +21,7 @@ public interface ActivityEvents {
     int CONTROLLER_EVENTS = BEFORE_CREATE | BEFORE_RECREATE | AFTER_CREATE | ON_RESTART | ON_START
             | ON_POST_CREATE | ON_RESUME | ON_PAUSE | ON_STOP | ON_DESTROY;
 
-    public static class Helper {
+    class Helper {
 
         public static int merge(final int... events) {
             int res = 0;

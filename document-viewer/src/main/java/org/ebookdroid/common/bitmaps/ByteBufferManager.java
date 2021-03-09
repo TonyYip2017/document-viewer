@@ -23,11 +23,11 @@ public class ByteBufferManager {
 
     private static final int GENERATION_THRESHOLD = 10;
 
-    private static SparseArrayEx<ByteBufferBitmap> used = new SparseArrayEx<ByteBufferBitmap>();
+    private static final SparseArrayEx<ByteBufferBitmap> used = new SparseArrayEx<ByteBufferBitmap>();
 
-    private static ArrayDeque<ByteBufferBitmap> pool = new ArrayDeque<ByteBufferBitmap>();
+    private static final ArrayDeque<ByteBufferBitmap> pool = new ArrayDeque<ByteBufferBitmap>();
 
-    private static Queue<Object> releasing = new ConcurrentLinkedQueue<Object>();
+    private static final Queue<Object> releasing = new ConcurrentLinkedQueue<Object>();
 
     private static final AtomicLong created = new AtomicLong();
     private static final AtomicLong reused = new AtomicLong();

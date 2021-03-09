@@ -122,7 +122,7 @@ public class PageTreeNode implements DecodeService.DecodeCallback {
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    protected void finalize() {
         holder.recycle(null);
     }
 
@@ -270,32 +270,30 @@ public class PageTreeNode implements DecodeService.DecodeCallback {
 
     @Override
     public String toString() {
-        final StringBuilder buf = new StringBuilder("PageTreeNode");
-        buf.append("[");
 
-        buf.append("id").append("=").append(page.index.viewIndex).append(":").append(id);
-        buf.append(", ");
-        buf.append("rect").append("=").append(this.pageSliceBounds);
-        buf.append(", ");
-        buf.append("hasBitmap").append("=").append(holder.hasBitmaps());
-
-        buf.append("]");
-        return buf.toString();
+        String buf = "PageTreeNode" + "[" +
+                "id" + "=" + page.index.viewIndex + ":" + id +
+                ", " +
+                "rect" + "=" + this.pageSliceBounds +
+                ", " +
+                "hasBitmap" + "=" + holder.hasBitmaps() +
+                "]";
+        return buf;
     }
 
-    class BitmapHolder {
+    static class BitmapHolder {
 
         final AtomicReference<GLBitmaps> ref = new AtomicReference<GLBitmaps>();
 
         public boolean drawBitmap(final GLCanvas canvas, final PagePaint paint, final PointF viewBase,
                 final RectF targetRect, final RectF clipRect) {
             final GLBitmaps bitmaps = ref.get();
-            return bitmaps != null ? bitmaps.drawGL(canvas, paint, viewBase, targetRect, clipRect) : false;
+            return bitmaps != null && bitmaps.drawGL(canvas, paint, viewBase, targetRect, clipRect);
         }
 
         public boolean hasBitmaps() {
             final GLBitmaps bitmaps = ref.get();
-            return bitmaps != null ? bitmaps.hasBitmaps() : false;
+            return bitmaps != null && bitmaps.hasBitmaps();
         }
 
         public boolean recycle(final List<GLBitmaps> bitmapsToRecycle) {

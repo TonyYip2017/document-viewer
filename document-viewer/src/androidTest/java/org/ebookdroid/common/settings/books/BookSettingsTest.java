@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import static org.hamcrest.Matchers.is;
@@ -36,7 +37,7 @@ public class BookSettingsTest {
             InputStream is = null;
             try {
                 is = InstrumentationRegistry.getContext().getAssets().open(filename);
-                return IOUtils.toString(is, "UTF-8");
+                return IOUtils.toString(is, StandardCharsets.UTF_8);
             } finally {
                 if (is != null) {
                     is.close();

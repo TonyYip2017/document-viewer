@@ -70,11 +70,10 @@ public class SpotlightDrawable extends Drawable {
             final View view = mView.getChildAt(0);
             if (view != null) left -= (width - view.getWidth()) / 2.0f;
             right = left + width;
-            bottom = top + getIntrinsicHeight();
         } else {
             right = left + getIntrinsicWidth();
-            bottom = top + getIntrinsicHeight();
         }
+        bottom = top + getIntrinsicHeight();
 
         super.setBounds(left, top, right, bottom);
 

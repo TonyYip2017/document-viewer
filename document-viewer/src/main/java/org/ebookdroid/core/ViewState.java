@@ -272,7 +272,7 @@ public class ViewState {
         }
     }
 
-    public static enum State {
-        USED, QUEUED, RELEASED, RELEASED_AFTER_DRAW;
+    public enum State {
+        USED, QUEUED, RELEASED, RELEASED_AFTER_DRAW
     }
 }

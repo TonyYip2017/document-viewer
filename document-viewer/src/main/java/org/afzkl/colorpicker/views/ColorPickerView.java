@@ -47,7 +47,7 @@ import org.afzkl.colorpicker.drawables.AlphaPatternDrawable;
 public class ColorPickerView extends View{
 
 	public interface OnColorChangedListener{
-		public void onColorChanged(int color);		
+		void onColorChanged(int color);
 	}
 		
 	private final static int	PANEL_SAT_VAL = 0;
@@ -921,8 +921,8 @@ public class ColorPickerView extends View{
 			mValShader = null;
 			mSatShader = null;
 			mHueShader = null;
-			mAlphaShader = null;;
-			
+			mAlphaShader = null;
+
 			requestLayout();
 		}
 		

@@ -33,7 +33,7 @@ public enum PageAnimationType implements ResourceConstant {
      * @param resValue
      *            the res value
      */
-    private PageAnimationType(final int resId, final boolean hardwareAccelSupported) {
+    PageAnimationType(final int resId, final boolean hardwareAccelSupported) {
         this.resValue = EBookDroidApp.context.getString(resId);
         this.hardwareAccelSupported = hardwareAccelSupported;
     }

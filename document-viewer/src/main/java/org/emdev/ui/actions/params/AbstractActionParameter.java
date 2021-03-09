@@ -7,7 +7,7 @@ import org.emdev.ui.actions.IActionParameter;
  */
 public abstract class AbstractActionParameter implements IActionParameter
 {
-    private String m_name;
+    private final String m_name;
 
     /**
      * Constructor.

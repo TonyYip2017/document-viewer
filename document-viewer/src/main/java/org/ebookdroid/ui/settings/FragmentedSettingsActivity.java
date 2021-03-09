@@ -39,7 +39,7 @@ public class FragmentedSettingsActivity extends SettingsActivity {
     }
 
     protected boolean isValidFragment(String fragmentName) {
-        if (ScrollFragment.class.getName().equals(fragmentName)
+        return ScrollFragment.class.getName().equals(fragmentName)
                 || UIFragment.class.getName().equals(fragmentName)
                 || NavFragment.class.getName().equals(fragmentName)
                 || PerformanceFragment.class.getName().equals(fragmentName)
@@ -47,9 +47,6 @@ public class FragmentedSettingsActivity extends SettingsActivity {
                 || BackupFragment.class.getName().equals(fragmentName)
                 || BasePreferenceFragment.class.getName().equals(fragmentName)
                 || BrowserFragment.class.getName().equals(fragmentName)
-                || RenderFragment.class.getName().equals(fragmentName)) {
-            return true;
-        }
-        return false;
+                || RenderFragment.class.getName().equals(fragmentName);
     }
 }

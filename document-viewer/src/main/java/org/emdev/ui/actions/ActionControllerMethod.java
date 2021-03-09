@@ -15,7 +15,7 @@ public class ActionControllerMethod {
 
     private static final LogContext LCTX = LogManager.root().lctx("Actions");
 
-    private static HashMap<Class<?>, SparseArrayEx<Method>> s_methods = new HashMap<Class<?>, SparseArrayEx<Method>>();
+    private static final HashMap<Class<?>, SparseArrayEx<Method>> s_methods = new HashMap<Class<?>, SparseArrayEx<Method>>();
 
     private final IActionController<?> m_controller;
 
@@ -116,7 +116,7 @@ public class ActionControllerMethod {
      * @return the method
      */
     private static synchronized Method getMethod(final Object target, final int actionId) {
-        Class<? extends Object> clazz = target.getClass();
+        Class<?> clazz = target.getClass();
 
         SparseArrayEx<Method> methods = s_methods.get(clazz);
         if (methods == null) {

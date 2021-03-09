@@ -5,12 +5,12 @@ public interface IActionParameter {
     /**
      * @return parameter name
      */
-    public String getName();
+    String getName();
 
     /**
      * Calculates a parameter value
      * 
      * @return value
      */
-    public Object getValue();
+    Object getValue();
 }

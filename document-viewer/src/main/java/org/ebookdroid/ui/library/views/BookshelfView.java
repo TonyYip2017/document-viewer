@@ -45,8 +45,8 @@ import org.emdev.utils.LayoutUtils;
 public class BookshelfView extends GridView implements OnItemClickListener {
 
     private static Bitmap mShelfBackground;
-    private static Bitmap mShelfBackgroundLeft;
-    private static Bitmap mShelfBackgroundRight;
+    private static final Bitmap mShelfBackgroundLeft;
+    private static final Bitmap mShelfBackgroundRight;
     private static int mShelfWidth;
     private static int mShelfHeight;
 

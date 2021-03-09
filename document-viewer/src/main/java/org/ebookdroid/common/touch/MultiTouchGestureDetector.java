@@ -41,18 +41,16 @@ public class MultiTouchGestureDetector implements IGestureDetector {
                         + twoFingerMove);
             }
 
-            switch (ev.getPointerCount()) {
-                case 2:
-                    if (getTwoFingerDistance(ev) > 25){
-                        twoFingerDistance = getTwoFingerDistance(ev);
-                        twoFingerPress = true;
-                        twoFingerMove = false;
-                    }
-                    break;
-                default:
-                    twoFingerPress = false;
+            if (ev.getPointerCount() == 2) {
+                if (getTwoFingerDistance(ev) > 25) {
+                    twoFingerDistance = getTwoFingerDistance(ev);
+                    twoFingerPress = true;
                     twoFingerMove = false;
-                    twoFingerDistance = 0;
+                }
+            } else {
+                twoFingerPress = false;
+                twoFingerMove = false;
+                twoFingerDistance = 0;
             }
 
             multiCenter = calculateCenter(ev);

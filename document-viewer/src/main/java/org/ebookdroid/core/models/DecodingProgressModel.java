@@ -8,7 +8,7 @@ import org.emdev.utils.listeners.ListenerProxy;
 
 public class DecodingProgressModel extends ListenerProxy {
 
-    private AtomicInteger currentlyDecoding = new AtomicInteger();
+    private final AtomicInteger currentlyDecoding = new AtomicInteger();
 
     public DecodingProgressModel() {
         super(DecodingProgressListener.class);

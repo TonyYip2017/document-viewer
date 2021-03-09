@@ -7,7 +7,7 @@ public interface IViewContainer {
 
     View findViewById(int id);
 
-    public abstract class AbstractContainerBridge<T> implements IViewContainer {
+    abstract class AbstractContainerBridge<T> implements IViewContainer {
 
         protected final T container;
 
@@ -16,7 +16,7 @@ public interface IViewContainer {
         }
     }
 
-    public class ViewBridge extends AbstractContainerBridge<View> {
+    class ViewBridge extends AbstractContainerBridge<View> {
 
         public ViewBridge(View view) {
             super(view);
@@ -28,7 +28,7 @@ public interface IViewContainer {
         }
     }
     
-    public class DialogBridge extends AbstractContainerBridge<Dialog> {
+    class DialogBridge extends AbstractContainerBridge<Dialog> {
 
         public DialogBridge(Dialog dialog) {
             super(dialog);

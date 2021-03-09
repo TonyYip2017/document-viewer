@@ -27,7 +27,6 @@ import org.emdev.ui.adapters.ActionsAdapter;
 public class TouchConfigDialog extends Dialog {
 
     private final TouchManagerView view;
-    private final DialogController<TouchConfigDialog> actions;
 
     private final TouchProfile profile;
     private RegionWrapper wrapper;
@@ -39,14 +38,14 @@ public class TouchConfigDialog extends Dialog {
     private final Spinner dtList;
     private final Spinner ltList;
     private final Spinner tftList;
-    private Spinner regionList;
+    private final Spinner regionList;
 
     public TouchConfigDialog(final IActivityController base, final TouchManagerView view, final TouchProfile profile,
             final Region region) {
         super(base.getContext());
         this.view = view;
         this.profile = profile;
-        this.actions = new DialogController<TouchConfigDialog>(this);
+        DialogController<TouchConfigDialog> actions = new DialogController<TouchConfigDialog>(this);
 
         setTitle("Tap configuration");
         setContentView(R.layout.tap_zones_config);
@@ -216,7 +215,7 @@ public class TouchConfigDialog extends Dialog {
         }
     }
 
-    final class RegionWrapper {
+    static final class RegionWrapper {
 
         public Region r;
 

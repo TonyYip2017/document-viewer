@@ -64,7 +64,7 @@ public class TransitionDrawable extends LayerDrawable implements Drawable.Callba
     private int mFrom;
     private int mTo;
     private int mDuration;
-    private TransitionState mState;
+    private final TransitionState mState;
 
     public TransitionDrawable(Drawable... layers) {
         this(new TransitionState(null, null), layers);

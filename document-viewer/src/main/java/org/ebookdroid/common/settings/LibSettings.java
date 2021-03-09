@@ -133,7 +133,7 @@ public class LibSettings implements LibPreferences, IBackupAgent {
 
     public static class Diff {
 
-        private static final int D_UseBookcase = 0x0001 << 0;
+        private static final int D_UseBookcase = 0x0001;
         private static final int D_AutoScanDirs = 0x0001 << 1;
         private static final int D_AllowedFileTypes = 0x0001 << 2;
         private static final int D_CacheLocation = 0x0001 << 3;

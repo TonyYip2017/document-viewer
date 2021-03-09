@@ -28,7 +28,7 @@ public class BaseEGLConfigChooser implements EGLConfigChooser {
 
     private static final LogContext LCTX = LogManager.root().lctx("GLConfiguration");
 
-    private final int mConfigSpec[] = new int[] { EGL10.EGL_RED_SIZE, 5, EGL10.EGL_GREEN_SIZE, 6, EGL10.EGL_BLUE_SIZE,
+    private final int[] mConfigSpec = new int[] { EGL10.EGL_RED_SIZE, 5, EGL10.EGL_GREEN_SIZE, 6, EGL10.EGL_BLUE_SIZE,
             5, EGL10.EGL_ALPHA_SIZE, 0, EGL10.EGL_STENCIL_SIZE, 1, EGL10.EGL_NONE };
 
     private static final int[] ATTR_ID = { EGL10.EGL_RED_SIZE, EGL10.EGL_GREEN_SIZE, EGL10.EGL_BLUE_SIZE,
@@ -74,11 +74,11 @@ public class BaseEGLConfigChooser implements EGLConfigChooser {
         return chooseConfig(egl, display, configs);
     }
 
-    private EGLConfig chooseConfig(final EGL10 egl, final EGLDisplay display, final EGLConfig configs[]) {
+    private EGLConfig chooseConfig(final EGL10 egl, final EGLDisplay display, final EGLConfig[] configs) {
 
         EGLConfig result = null;
         int minStencil = Integer.MAX_VALUE;
-        final int value[] = new int[1];
+        final int[] value = new int[1];
 
         for (int i = 0, n = configs.length; i < n; ++i) {
             logConfig("Config found: ", egl, display, configs[i]);
@@ -111,12 +111,12 @@ public class BaseEGLConfigChooser implements EGLConfigChooser {
     }
 
     private void logConfig(final String prefix, final EGL10 egl, final EGLDisplay display, final EGLConfig config) {
-        final int value[] = new int[1];
+        final int[] value = new int[1];
         final StringBuilder sb = new StringBuilder();
         for (int j = 0; j < ATTR_ID.length; j++) {
             value[0] = -1;
             egl.eglGetConfigAttrib(display, config, ATTR_ID[j], value);
-            sb.append(ATTR_NAME[j] + value[0] + " ");
+            sb.append(ATTR_NAME[j]).append(value[0]).append(" ");
         }
         LCTX.i(prefix + sb.toString());
     }

@@ -26,7 +26,7 @@ public class ActivityControllerStub extends ActionController<ViewerActivity> imp
 
     public static final ZoomModel ZM_STUB = new ZoomModel();
 
-    private SearchModel SEARCH_STUB = new SearchModel(this);
+    private final SearchModel SEARCH_STUB = new SearchModel(this);
 
     private ActivityControllerStub() {
         super(null, null);

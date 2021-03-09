@@ -29,7 +29,6 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
     private final int minValue;
     private int currentValue;
 
-    private SeekBar seekBar;
     private TextView text;
 
     private final SeekBarIncrementHandler handler;
@@ -73,7 +72,7 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
         ((TextView) view.findViewById(R.id.pref_seek_min_value)).setText(Integer.toString(minValue));
         ((TextView) view.findViewById(R.id.pref_seek_max_value)).setText(Integer.toString(maxValue));
 
-        seekBar = (SeekBar) view.findViewById(R.id.pref_seek_bar);
+        SeekBar seekBar = (SeekBar) view.findViewById(R.id.pref_seek_bar);
         seekBar.setMax(maxValue - minValue);
         seekBar.setProgress(currentValue - minValue);
         seekBar.setKeyProgressIncrement(1);
@@ -105,7 +104,7 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
         int value = minValue;
         try {
             value = Integer.parseInt(getPersistedString(Integer.toString(defaultValue)));
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException ignored) {
         }
         try {
             return String.format(summary, value);

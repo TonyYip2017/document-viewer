@@ -30,7 +30,7 @@ public enum DragMark {
 
     private BitmapTexture dragBitmapTx;
 
-    private DragMark(final int resId, final boolean showAlways) {
+    DragMark(final int resId, final boolean showAlways) {
         this.resId = resId;
         this.showAlways = showAlways;
     }

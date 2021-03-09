@@ -731,7 +731,7 @@ public class DecodeServiceBase implements DecodeService {
 
     }
 
-    abstract class Task implements Runnable {
+    abstract static class Task implements Runnable {
 
         final long id = TASK_ID_SEQ.incrementAndGet();
         final AtomicBoolean cancelled = new AtomicBoolean();
@@ -824,19 +824,17 @@ public class DecodeServiceBase implements DecodeService {
 
         @Override
         public String toString() {
-            final StringBuilder buf = new StringBuilder("DecodeTask");
-            buf.append("[");
 
-            buf.append("id").append("=").append(id);
-            buf.append(", ");
-            buf.append("target").append("=").append(node);
-            buf.append(", ");
-            buf.append("width").append("=").append((int) viewState.viewRect.width());
-            buf.append(", ");
-            buf.append("zoom").append("=").append(viewState.zoom);
-
-            buf.append("]");
-            return buf.toString();
+            String buf = "DecodeTask" + "[" +
+                    "id" + "=" + id +
+                    ", " +
+                    "target" + "=" + node +
+                    ", " +
+                    "width" + "=" + (int) viewState.viewRect.width() +
+                    ", " +
+                    "zoom" + "=" + viewState.zoom +
+                    "]";
+            return buf;
         }
     }
 

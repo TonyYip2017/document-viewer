@@ -22,7 +22,7 @@ public enum BookBackupType implements ResourceConstant {
 
     public final String resValue;
 
-    private BookBackupType(final int resId) {
+    BookBackupType(final int resId) {
         this.resValue = BaseDroidApp.context.getString(resId);
     }
 

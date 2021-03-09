@@ -104,7 +104,7 @@ public class KeyBindingsDialog extends Dialog {
         view.setSelection(0);
     }
 
-    public class KeyAction {
+    public static class KeyAction {
 
         final int code;
         final String label;

@@ -108,14 +108,14 @@ public enum ContentScheme {
      */
     public final boolean promptForSave;
 
-    private ContentScheme(final String scheme) {
+    ContentScheme(final String scheme) {
         this.scheme = scheme;
         this.key = null;
         this.temporary = false;
         this.promptForSave = false;
     }
 
-    private ContentScheme(final String scheme, final String key, final boolean promptForSave) {
+    ContentScheme(final String scheme, final String key, final boolean promptForSave) {
         this.scheme = scheme;
         this.key = key;
         this.temporary = true;

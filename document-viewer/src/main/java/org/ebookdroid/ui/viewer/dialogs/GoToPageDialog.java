@@ -258,7 +258,7 @@ public class GoToPageDialog extends Dialog {
     private int getEnteredPageIndex(final EditText text) {
         try {
             return Integer.parseInt(text.getText().toString()) - offset;
-        } catch (final Exception e) {
+        } catch (final Exception ignored) {
         }
         return -1;
     }

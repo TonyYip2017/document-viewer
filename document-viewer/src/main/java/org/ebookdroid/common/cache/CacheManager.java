@@ -167,7 +167,7 @@ public class CacheManager extends org.emdev.common.cache.CacheManager {
         }
     }
 
-    public static interface ICacheListener {
+    public interface ICacheListener {
 
         void onThumbnailChanged(ThumbnailFile tf);
 

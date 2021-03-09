@@ -105,7 +105,7 @@ public class BookSettings implements CurrentPageListener {
         this.rtl = current.rtl;
         try {
             this.typeSpecific = current.typeSpecific != null ? new JSONObject(current.typeSpecific.toString()) : null;
-        } catch (JSONException e) {
+        } catch (JSONException ignored) {
         }
     }
 
@@ -139,7 +139,7 @@ public class BookSettings implements CurrentPageListener {
         this.rtl = current.rtl;
         try {
             this.typeSpecific = current.typeSpecific != null ? new JSONObject(current.typeSpecific.toString()) : null;
-        } catch (JSONException e) {
+        } catch (JSONException ignored) {
         }
     }
 

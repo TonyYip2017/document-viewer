@@ -13,8 +13,6 @@ public class ZoomModel extends ListenerProxy {
     public static final float MIN_ZOOM = 1.0f;
     public static final float MAX_ZOOM = 32.0f;
 
-    private static int ZOOM_ROUND_FACTOR = 0;
-
     private float initialZoom = MIN_ZOOM;
     private float currentZoom = MIN_ZOOM;
 
@@ -82,6 +80,7 @@ public class ZoomModel extends ListenerProxy {
     }
 
     float adjust(final float zoom) {
+        int ZOOM_ROUND_FACTOR = 0;
         return MathUtils.adjust(ZOOM_ROUND_FACTOR <= 0 ? zoom : MathUtils.round(zoom, ZOOM_ROUND_FACTOR), MIN_ZOOM,
                 MAX_ZOOM);
     }

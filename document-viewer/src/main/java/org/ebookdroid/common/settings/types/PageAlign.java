@@ -25,7 +25,7 @@ public enum PageAlign implements ResourceConstant {
      * @param resValue
      *            the res value
      */
-    private PageAlign(final int resId) {
+    PageAlign(final int resId) {
         this.resValue = EBookDroidApp.context.getString(resId);
     }
 

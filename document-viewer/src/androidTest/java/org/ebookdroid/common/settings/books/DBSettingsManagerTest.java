@@ -338,7 +338,7 @@ public class DBSettingsManagerTest {
         while ((System.currentTimeMillis() - start) < ms) {
             try {
                 Thread.sleep(System.currentTimeMillis() - start);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
         }
     }

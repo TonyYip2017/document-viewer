@@ -333,7 +333,7 @@ class DBAdapterV1 implements IDBAdapter {
     void endTransaction(final SQLiteDatabase db) {
         try {
             db.endTransaction();
-        } catch (final Exception ex) {
+        } catch (final Exception ignored) {
         }
         manager.closeDatabase(db);
     }
@@ -341,7 +341,7 @@ class DBAdapterV1 implements IDBAdapter {
     final void close(final Cursor c) {
         try {
             c.close();
-        } catch (final Exception ex) {
+        } catch (final Exception ignored) {
         }
     }
 }

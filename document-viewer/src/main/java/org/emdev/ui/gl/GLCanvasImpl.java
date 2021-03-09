@@ -90,7 +90,7 @@ public class GLCanvasImpl implements GLCanvas {
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         gl.glLoadIdentity();
 
-        final float matrix[] = mMatrixValues;
+        final float[] matrix = mMatrixValues;
         Matrix.setIdentityM(matrix, 0);
         // to match the graphic coordinate system in android, we flip it vertically.
         Matrix.translateM(matrix, 0, 0, height, 0);
@@ -367,7 +367,7 @@ public class GLCanvasImpl implements GLCanvas {
     }
 
     @Override
-    public void multiplyMatrix(final float matrix[], final int offset) {
+    public void multiplyMatrix(final float[] matrix, final int offset) {
         final float[] temp = mTempMatrix;
         Matrix.multiplyMM(temp, 0, mMatrixValues, 0, matrix, offset);
         System.arraycopy(temp, 0, mMatrixValues, 0, 16);
@@ -736,7 +736,7 @@ public class GLCanvasImpl implements GLCanvas {
     private static class ConfigState {
 
         float mAlpha;
-        float mMatrix[] = new float[16];
+        float[] mMatrix = new float[16];
         ConfigState mNextFree;
 
         public void restore(final GLCanvasImpl canvas) {

@@ -58,7 +58,7 @@ class DBAdapterV9 implements IDBAdapter {
     private void endTransaction(final SQLiteDatabase db) {
         try {
             db.endTransaction();
-        } catch (final Exception ex) {
+        } catch (final Exception ignored) {
         }
         manager.closeDatabase(db);
     }
@@ -66,7 +66,7 @@ class DBAdapterV9 implements IDBAdapter {
     private void close(final Cursor c) {
         try {
             c.close();
-        } catch (final Exception ex) {
+        } catch (final Exception ignored) {
         }
     }
 

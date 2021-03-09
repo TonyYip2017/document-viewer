@@ -20,7 +20,7 @@ public class KeyBindingsManager {
 
     private static final LogContext LCTX = LogManager.root().lctx("Actions");
 
-    private static SparseArrayEx<ActionRef> actions = new SparseArrayEx<KeyBindingsManager.ActionRef>();
+    private static final SparseArrayEx<ActionRef> actions = new SparseArrayEx<KeyBindingsManager.ActionRef>();
 
     private static SparseArrayEx<String> keyLabels;
 
@@ -90,7 +90,7 @@ public class KeyBindingsManager {
             for (final Field f : KeyEvent.class.getFields()) {
                 if (f.getName().startsWith("KEYCODE_")) {
                     try {
-                        final Integer value = f.getInt(null);
+                        final int value = f.getInt(null);
                         final String label = f.getName().substring("KEYCODE_".length());
                         keyLabels.append(value, label.replaceAll("_", " "));
                     } catch (final Throwable th) {

@@ -16,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import org.emdev.ui.actions.IActionController;
@@ -44,9 +45,7 @@ public final class BookmarkAdapter extends BaseAdapter {
     }
 
     public void add(final Bookmark... bookmarks) {
-        for (final Bookmark bookmark : bookmarks) {
-            bookSettings.bookmarks.add(bookmark);
-        }
+        bookSettings.bookmarks.addAll(Arrays.asList(bookmarks));
         Collections.sort(bookSettings.bookmarks);
         SettingsManager.storeBookSettings(bookSettings);
         notifyDataSetChanged();

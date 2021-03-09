@@ -5,7 +5,7 @@ package org.emdev.ui.actions.params;
  */
 public class Constant extends AbstractActionParameter
 {
-    private Object m_value;
+    private final Object m_value;
 
     /**
      * Constructor.

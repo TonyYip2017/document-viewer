@@ -425,7 +425,7 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
 
     public static class Diff {
 
-        private static final int D_Lang = 0x0001 << 0;
+        private static final int D_Lang = 0x0001;
         private static final int D_Rotation = 0x0001 << 1;
         private static final int D_FullScreen = 0x0001 << 2;
         private static final int D_ShowTitle = 0x0001 << 3;
