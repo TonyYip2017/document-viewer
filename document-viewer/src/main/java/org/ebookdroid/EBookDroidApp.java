@@ -1,7 +1,5 @@
 package org.ebookdroid;
 
-import android.util.Log;
-
 import org.ebookdroid.common.bitmaps.BitmapManager;
 import org.ebookdroid.common.bitmaps.ByteBufferManager;
 import org.ebookdroid.common.cache.CacheManager;

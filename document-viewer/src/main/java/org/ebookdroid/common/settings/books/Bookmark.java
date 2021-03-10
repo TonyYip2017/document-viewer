@@ -44,13 +44,6 @@ public class Bookmark implements Comparable<Bookmark> {
         return obj;
     }
 
-    public int getActualIndex(final boolean splittingEnabled) {
-        if (page.docIndex == page.viewIndex) {
-            return page.docIndex;
-        }
-        return splittingEnabled ? page.viewIndex : page.docIndex;
-    }
-
     @Override
     public String toString() {
         return name;

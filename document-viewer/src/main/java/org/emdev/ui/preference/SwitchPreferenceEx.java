@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.CompoundButton;
 
-@TargetApi(15)
 public class SwitchPreferenceEx extends SwitchPreference {
 
     private final Listener mListener = new Listener();

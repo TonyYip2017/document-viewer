@@ -16,7 +16,6 @@ import org.emdev.utils.WidgetUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@TargetApi(15)
 public class JsonSwitchPreferenceEx extends SwitchPreference {
 
     private JsonObjectPreferenceDefinition def;
