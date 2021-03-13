@@ -11,7 +11,6 @@ import org.ebookdroid.core.codec.CodecPage;
 import org.ebookdroid.core.models.DecodingProgressModel;
 import org.ebookdroid.ui.viewer.IViewController;
 
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -32,7 +31,7 @@ public class PageTreeNode implements DecodeService.DecodeCallback {
     final PageTreeNode parent;
     final int id;
     final PageTreeLevel level;
-    final String shortId;
+    // --Commented out by Inspection (3/10/21 5:28 PM):final String shortId;
     final String fullId;
 
     final AtomicBoolean decodingNow = new AtomicBoolean();
@@ -96,7 +95,7 @@ public class PageTreeNode implements DecodeService.DecodeCallback {
         this.parent = null;
         this.id = 0;
         this.level = PageTreeLevel.ROOT;
-        this.shortId = page.index.viewIndex + ":0";
+//        this.shortId = page.index.viewIndex + ":0";
         this.fullId = page.index + ":0";
         this.localPageSliceBounds = page.type.getInitialRect();
         this.pageSliceBounds = localPageSliceBounds;
@@ -105,15 +104,15 @@ public class PageTreeNode implements DecodeService.DecodeCallback {
     }
 
     PageTreeNode(final Page page, final PageTreeNode parent, final int id, final RectF localPageSliceBounds) {
-        assert id != 0;
-        assert page != null;
-        assert parent != null;
+//        assert id != 0;
+//        assert page != null;
+//        assert parent != null;
 
         this.page = page;
         this.parent = parent;
         this.id = id;
         this.level = parent.level.next;
-        this.shortId = page.index.viewIndex + ":" + id;
+//        this.shortId = page.index.viewIndex + ":" + id;
         this.fullId = page.index + ":" + id;
         this.localPageSliceBounds = localPageSliceBounds;
         this.pageSliceBounds = evaluatePageSliceBounds(localPageSliceBounds, parent);

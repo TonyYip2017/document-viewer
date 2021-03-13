@@ -117,16 +117,18 @@ public class ListenerProxy {
         }
     }
 
-    /**
-     * Removes the all target listeners.
-     */
-    public void removeAllListeners() {
-        references.clear();
-        for (final List<WeakReference<Object>> list : realListeners.values()) {
-            list.clear();
-        }
-        realListeners.clear();
-    }
+// --Commented out by Inspection START (3/10/21 5:34 PM):
+//    /**
+//     * Removes the all target listeners.
+//     */
+//    public void removeAllListeners() {
+//        references.clear();
+//        for (final List<WeakReference<Object>> list : realListeners.values()) {
+//            list.clear();
+//        }
+//        realListeners.clear();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:34 PM)
 
     /**
      * Gets the proxy listener casted to the given listener type.

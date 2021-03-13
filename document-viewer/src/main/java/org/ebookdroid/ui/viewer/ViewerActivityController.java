@@ -22,7 +22,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.ebookdroid.CodecType;
-import org.ebookdroid.EBookDroidApp;
 import org.ebookdroid.common.bitmaps.BitmapManager;
 import org.ebookdroid.common.bitmaps.ByteBufferManager;
 import org.ebookdroid.common.cache.CacheManager;
@@ -87,7 +86,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
@@ -619,7 +617,8 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
             bookSettings.bookmarks.add(new Bookmark(name, documentModel.getCurrentIndex(), pos.x, pos.y));
             Collections.sort(bookSettings.bookmarks);
             SettingsManager.storeBookSettings(bookSettings);
-            UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
+            getManagedComponent().invalidateOptionsMenu();
+//            UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
             state.release();
         }
     }
@@ -757,7 +756,8 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
                 mcv.initControls();
             }
         }
-        UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
+        getManagedComponent().invalidateOptionsMenu();
+//        UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
     }
 
     public final boolean dispatchKeyEvent(final KeyEvent event) {
@@ -980,8 +980,8 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
         if (diff.isPagesInMemoryChanged()) {
             getDocumentController().updateMemorySettings();
         }
-
-        UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
+        getManagedComponent().invalidateOptionsMenu();
+//        UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
     }
 
     /**
@@ -1032,7 +1032,8 @@ public class ViewerActivityController extends AbstractActivityController<ViewerA
 
         currentPageChanged(PageIndex.NULL, documentModel.getCurrentIndex());
 
-        UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
+        getManagedComponent().invalidateOptionsMenu();
+//        UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
     }
 
     final class BookLoadTask extends BaseAsyncTask<String, Throwable> implements Runnable, IProgressIndicator {

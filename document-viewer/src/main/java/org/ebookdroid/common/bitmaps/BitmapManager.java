@@ -16,7 +16,6 @@ import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;
 import java.util.ArrayDeque;
 import org.emdev.utils.collections.SparseArrayEx;
-import org.emdev.utils.collections.TLIterator;
 
 public class BitmapManager {
 

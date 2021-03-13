@@ -78,7 +78,9 @@ public enum RotationType implements ResourceConstant {
         return this.version <= Build.VERSION.SDK_INT ? orientation : ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
     }
 
-    public int getVersion() {
-        return version;
-    }
+// --Commented out by Inspection START (3/10/21 5:27 PM):
+//    public int getVersion() {
+//        return version;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:27 PM)
 }

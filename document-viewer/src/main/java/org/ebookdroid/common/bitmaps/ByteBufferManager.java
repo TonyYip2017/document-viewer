@@ -13,7 +13,6 @@ import org.emdev.common.log.LogManager;
 import org.emdev.utils.LengthUtils;
 import java.util.ArrayDeque;
 import org.emdev.utils.collections.SparseArrayEx;
-import org.emdev.utils.collections.TLIterator;
 
 public class ByteBufferManager {
 
@@ -338,9 +337,9 @@ public class ByteBufferManager {
         }
     }
 
-    public static int getPartSize() {
-        return partSize;
-    }
+//    public static int getPartSize() {
+//        return partSize;
+//    }
 
     public static void setPartSize(final int partSize) {
         ByteBufferManager.partSize = partSize;

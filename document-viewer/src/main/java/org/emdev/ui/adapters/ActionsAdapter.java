@@ -76,7 +76,7 @@ public class ActionsAdapter extends BaseAdapter {
         @Override
         public void init(final View convertView) {
             super.init(convertView);
-            this.textView = (TextView) convertView.findViewById(R.id.list_item);
+            this.textView = convertView.findViewById(R.id.list_item);
         }
     }
 

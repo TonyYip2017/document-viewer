@@ -47,8 +47,6 @@ public class ByteBufferTexture extends BasicTexture {
 
     private static final float[] sCropRect = new float[4];
 
-    private boolean mOpaque = true;
-
     protected ByteBufferBitmap mBitmap;
 
     public ByteBufferTexture(final ByteBufferBitmap bitmap) {
@@ -144,13 +142,13 @@ public class ByteBufferTexture extends BasicTexture {
         return GL10.GL_TEXTURE_2D;
     }
 
-    public void setOpaque(final boolean isOpaque) {
-        mOpaque = isOpaque;
-    }
+//    public void setOpaque(final boolean isOpaque) {
+//        mOpaque = isOpaque;
+//    }
 
     @Override
     public boolean isOpaque() {
-        return mOpaque;
+        return true;
     }
 
     @Override

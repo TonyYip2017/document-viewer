@@ -36,9 +36,11 @@ public class SearchModel {
         this.matches = new SparseArrayEx<>();
     }
 
-    public String getPattern() {
-        return pattern;
-    }
+// --Commented out by Inspection START (3/10/21 5:27 PM):
+//    public String getPattern() {
+//        return pattern;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:27 PM)
 
     public void setPattern(final String pattern) {
         final String p = pattern != null ? pattern.toLowerCase() : null;
@@ -103,20 +105,22 @@ public class SearchModel {
         return currentMatchIndex;
     }
 
-    public RectF getCurrentRegion() {
-        if (currentPage == null) {
-            return null;
-        }
-        final Matches m = getMatches(currentPage.index.docIndex);
-        if (m == null) {
-            return null;
-        }
-        final List<? extends RectF> mm = m.getMatches();
-        if (0 <= currentMatchIndex && currentMatchIndex < LengthUtils.length(mm)) {
-            return mm.get(currentMatchIndex);
-        }
-        return null;
-    }
+// --Commented out by Inspection START (3/10/21 5:27 PM):
+//    public RectF getCurrentRegion() {
+//        if (currentPage == null) {
+//            return null;
+//        }
+//        final Matches m = getMatches(currentPage.index.docIndex);
+//        if (m == null) {
+//            return null;
+//        }
+//        final List<? extends RectF> mm = m.getMatches();
+//        if (0 <= currentMatchIndex && currentMatchIndex < LengthUtils.length(mm)) {
+//            return mm.get(currentMatchIndex);
+//        }
+//        return null;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:27 PM)
 
     public RectF moveToNext(final ProgressCallback callback) {
         final IViewController ctrl = base.getDocumentController();

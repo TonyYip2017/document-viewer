@@ -17,7 +17,7 @@ public final class LogManager {
 
     static LogContext root;
 
-    static EmergencyHandler handler;
+//    static EmergencyHandler handler;
 
     private LogManager() {
     }
@@ -30,7 +30,7 @@ public final class LogManager {
         Log.i(BaseDroidApp.APP_NAME, "Debug logging " + (debugEnabled ? "enabled" : "disabled") + " by default");
 
         root = new LogContext(BaseDroidApp.APP_NAME, debugEnabled);
-        handler = new EmergencyHandler();
+//        handler = new EmergencyHandler();
     }
 
     private static boolean isDebugEnabledByDefault(final Context context) {
@@ -54,6 +54,7 @@ public final class LogManager {
     }
 
     public static void onUnexpectedError(final Throwable th) {
-        handler.processException(th);
+        BaseDroidApp.logThrowable(th);
+//        handler.processException(th);
     }
 }

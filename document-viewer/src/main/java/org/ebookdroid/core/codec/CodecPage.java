@@ -17,7 +17,7 @@ public interface CodecPage {
 
     List<PageLink> getPageLinks();
 
-    List<PageTextBox> getPageText();
+//    List<PageTextBox> getPageText();
 
     List<? extends RectF> searchText(final String pattern);
 

@@ -22,9 +22,6 @@ import android.opengl.GLUtils;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
 
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
-
 // UploadedTextures use a Bitmap for the content of the texture.
 //
 // Subclasses should implement onGetBitmap() to provide the Bitmap and
@@ -46,9 +43,8 @@ public abstract class UploadedTexture extends BasicTexture {
     protected boolean mContentValid = true;
 
     // indicate this textures is being uploaded in background
-    private boolean mIsUploading = false;
+//    private boolean mIsUploading = false;
     private boolean mOpaque = true;
-    private boolean mThrottled = false;
     private static int sUploadedCount;
     private static final int UPLOAD_LIMIT = 100;
 
@@ -58,17 +54,23 @@ public abstract class UploadedTexture extends BasicTexture {
         super(null, 0, STATE_UNLOADED);
     }
 
-    protected void setIsUploading(final boolean uploading) {
-        mIsUploading = uploading;
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    protected void setIsUploading(final boolean uploading) {
+//        mIsUploading = uploading;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
-    public boolean isUploading() {
-        return mIsUploading;
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    public boolean isUploading() {
+//        return mIsUploading;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
-    protected void setThrottled(final boolean throttled) {
-        mThrottled = throttled;
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    protected void setThrottled(final boolean throttled) {
+//        mThrottled = throttled;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
     private Bitmap getBitmap() {
         if (mBitmap == null) {
@@ -109,14 +111,16 @@ public abstract class UploadedTexture extends BasicTexture {
 
     protected abstract void onFreeBitmap(Bitmap bitmap);
 
-    protected void invalidateContent() {
-        if (mBitmap != null) {
-            freeBitmap();
-        }
-        mContentValid = false;
-        mWidth = UNSPECIFIED;
-        mHeight = UNSPECIFIED;
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    protected void invalidateContent() {
+//        if (mBitmap != null) {
+//            freeBitmap();
+//        }
+//        mContentValid = false;
+//        mWidth = UNSPECIFIED;
+//        mHeight = UNSPECIFIED;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
     /**
      * Whether the content on GPU is valid.
@@ -132,9 +136,6 @@ public abstract class UploadedTexture extends BasicTexture {
      */
     public void updateContent(final GLCanvas canvas) {
         if (!isLoaded()) {
-            if (mThrottled && ++sUploadedCount > UPLOAD_LIMIT) {
-                return;
-            }
             uploadToCanvas(canvas);
         } else if (!mContentValid) {
             final Bitmap bitmap = getBitmap();

@@ -41,7 +41,7 @@ public class BookcaseView extends RelativeLayout {
     public void init(final BooksAdapter adapter, final RecentAdapter recents) {
         this.adapter = adapter;
         this.recents = recents;
-        this.shelves = (ViewPager) findViewById(R.id.Shelves);
+        this.shelves = findViewById(R.id.Shelves);
 
         shelves.setAdapter(adapter);
 
@@ -78,7 +78,7 @@ public class BookcaseView extends RelativeLayout {
             }
         };
 
-        final TabLayout tl = (TabLayout) findViewById(R.id.tabs);
+        final TabLayout tl = findViewById(R.id.tabs);
         tl.setupWithViewPager(this.shelves);
         tl.addOnTabSelectedListener(l);
     }

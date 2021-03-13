@@ -139,9 +139,11 @@ public enum ContentScheme {
         return intent != null ? getScheme(intent.getScheme()) : UNKNOWN;
     }
 
-    public static ContentScheme getScheme(final Uri uri) {
-        return uri != null ? getScheme(uri.getScheme()) : UNKNOWN;
-    }
+// --Commented out by Inspection START (3/10/21 4:41 PM):
+//    public static ContentScheme getScheme(final Uri uri) {
+//        return uri != null ? getScheme(uri.getScheme()) : UNKNOWN;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:41 PM)
 
     public static ContentScheme getScheme(final String scheme) {
         for (final ContentScheme s : values()) {

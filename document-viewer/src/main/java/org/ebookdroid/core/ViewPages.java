@@ -12,13 +12,15 @@ public class ViewPages {
     ViewPages() {
     }
 
-    public void update(final ViewPages p) {
-        currentIndex = p.currentIndex;
-        firstVisible = p.firstVisible;
-        lastVisible = p.firstVisible;
-        firstCached = p.firstCached;
-        lastCached = p.lastCached;
-    }
+// --Commented out by Inspection START (3/10/21 5:17 PM):
+//    public void update(final ViewPages p) {
+//        currentIndex = p.currentIndex;
+//        firstVisible = p.firstVisible;
+//        lastVisible = p.firstVisible;
+//        firstCached = p.firstCached;
+//        lastCached = p.lastCached;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:17 PM)
 
     @Override
     public String toString() {

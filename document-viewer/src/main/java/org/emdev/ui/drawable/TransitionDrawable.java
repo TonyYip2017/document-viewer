@@ -59,7 +59,7 @@ public class TransitionDrawable extends LayerDrawable implements Drawable.Callba
      */
     private int mTransitionState = TRANSITION_NONE;
 
-    private boolean mReverse;
+//    private boolean mReverse;
     private long mStartTimeMillis;
     private int mFrom;
     private int mTo;
@@ -70,9 +70,9 @@ public class TransitionDrawable extends LayerDrawable implements Drawable.Callba
         this(new TransitionState(null, null), layers);
     }
 
-    TransitionDrawable() {
-        this(new TransitionState(null, null));
-    }
+//    TransitionDrawable() {
+//        this(new TransitionState(null, null));
+//    }
 
     private TransitionDrawable(TransitionState state) {
         super(state);
@@ -89,66 +89,72 @@ public class TransitionDrawable extends LayerDrawable implements Drawable.Callba
         return new TransitionState((TransitionState) state, this);
     }
 
-    /**
-     * Begin the second layer on top of the first layer.
-     *
-     * @param durationMillis The length of the transition in milliseconds
-     */
-    public void startTransition(int durationMillis) {
-        mFrom = 0;
-        mTo = 255;
-        mState.mAlpha = 0;
-        mState.mDuration = mDuration = durationMillis;
-        mReverse = false;
-        mTransitionState = TRANSITION_STARTING;
-        invalidateSelf();
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    /**
+//     * Begin the second layer on top of the first layer.
+//     *
+//     * @param durationMillis The length of the transition in milliseconds
+//     */
+//    public void startTransition(int durationMillis) {
+//        mFrom = 0;
+//        mTo = 255;
+//        mState.mAlpha = 0;
+//        mState.mDuration = mDuration = durationMillis;
+//        mReverse = false;
+//        mTransitionState = TRANSITION_STARTING;
+//        invalidateSelf();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
-    /**
-     * Show only the first layer.
-     */
-    public void resetTransition() {
-        mState.mAlpha = 0;
-        mTransitionState = TRANSITION_NONE;
-        invalidateSelf();
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    /**
+//     * Show only the first layer.
+//     */
+//    public void resetTransition() {
+//        mState.mAlpha = 0;
+//        mTransitionState = TRANSITION_NONE;
+//        invalidateSelf();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
-    /**
-     * Reverses the transition, picking up where the transition currently is.
-     * If the transition is not currently running, this will start the transition
-     * with the specified duration. If the transition is already running, the last
-     * known duration will be used.
-     *
-     * @param duration The duration to use if no transition is running.
-     */
-    public void reverseTransition(int duration) {
-        final long time = SystemClock.uptimeMillis();
-        // Animation is over
-        if (time - mStartTimeMillis > mState.mDuration) {
-            if (mState.mAlpha == 0) {
-                mFrom = 0;
-                mTo = 255;
-                mState.mAlpha = 0;
-                mReverse = false;
-            } else {
-                mFrom = 255;
-                mTo = 0;
-                mState.mAlpha = 255;
-                mReverse = true;
-            }
-            mDuration = mState.mDuration = duration;
-            mTransitionState = TRANSITION_STARTING;
-            invalidateSelf();
-            return;
-        }
-
-        mReverse = !mReverse;
-        mFrom = mState.mAlpha;
-        mTo = mReverse ? 0 : 255;
-        mDuration = (int) (mReverse ? time - mStartTimeMillis :
-                mState.mDuration - (time - mStartTimeMillis));
-        mTransitionState = TRANSITION_STARTING;
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    /**
+//     * Reverses the transition, picking up where the transition currently is.
+//     * If the transition is not currently running, this will start the transition
+//     * with the specified duration. If the transition is already running, the last
+//     * known duration will be used.
+//     *
+//     * @param duration The duration to use if no transition is running.
+//     */
+//    public void reverseTransition(int duration) {
+//        final long time = SystemClock.uptimeMillis();
+//        // Animation is over
+//        if (time - mStartTimeMillis > mState.mDuration) {
+//            if (mState.mAlpha == 0) {
+//                mFrom = 0;
+//                mTo = 255;
+//                mState.mAlpha = 0;
+//                mReverse = false;
+//            } else {
+//                mFrom = 255;
+//                mTo = 0;
+//                mState.mAlpha = 255;
+//                mReverse = true;
+//            }
+//            mDuration = mState.mDuration = duration;
+//            mTransitionState = TRANSITION_STARTING;
+//            invalidateSelf();
+//            return;
+//        }
+//
+//        mReverse = !mReverse;
+//        mFrom = mState.mAlpha;
+//        mTo = mReverse ? 0 : 255;
+//        mDuration = (int) (mReverse ? time - mStartTimeMillis :
+//                mState.mDuration - (time - mStartTimeMillis));
+//        mTransitionState = TRANSITION_STARTING;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
     @Override
     public void draw(Canvas canvas) {
@@ -199,30 +205,34 @@ public class TransitionDrawable extends LayerDrawable implements Drawable.Callba
         }
     }
 
-    /**
-     * Enables or disables the cross fade of the drawables. When cross fade
-     * is disabled, the first drawable is always drawn opaque. With cross
-     * fade enabled, the first drawable is drawn with the opposite alpha of
-     * the second drawable.
-     *
-     * @param enabled True to enable cross fading, false otherwise.
-     */
-    public void setCrossFadeEnabled(boolean enabled) {
-        mState.mCrossFade = enabled;
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    /**
+//     * Enables or disables the cross fade of the drawables. When cross fade
+//     * is disabled, the first drawable is always drawn opaque. With cross
+//     * fade enabled, the first drawable is drawn with the opposite alpha of
+//     * the second drawable.
+//     *
+//     * @param enabled True to enable cross fading, false otherwise.
+//     */
+//    public void setCrossFadeEnabled(boolean enabled) {
+//        mState.mCrossFade = enabled;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
-    /**
-     * Indicates whether the cross fade is enabled for this transition.
-     *
-     * @return True if cross fading is enabled, false otherwise.
-     */
-    public boolean isCrossFadeEnabled() {
-        return mState.mCrossFade;
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    /**
+//     * Indicates whether the cross fade is enabled for this transition.
+//     *
+//     * @return True if cross fading is enabled, false otherwise.
+//     */
+//    public boolean isCrossFadeEnabled() {
+//        return mState.mCrossFade;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
     static class TransitionState extends LayerState {
         int mAlpha = 0;
-        int mDuration;
+//        int mDuration;
         boolean mCrossFade;
 
         TransitionState(TransitionState orig, TransitionDrawable owner) {

@@ -37,25 +37,31 @@ public class LogContext {
         Log.d(tag, msg);
     }
 
-    public void d(final String msg, final Throwable th) {
-        Log.d(tag, msg, th);
-    }
+// --Commented out by Inspection START (3/10/21 5:34 PM):
+//    public void d(final String msg, final Throwable th) {
+//        Log.d(tag, msg, th);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:34 PM)
 
     public void i(final String msg) {
         Log.i(tag, msg);
     }
 
-    public void i(final String msg, final Throwable th) {
-        Log.i(tag, msg, th);
-    }
+// --Commented out by Inspection START (3/10/21 5:34 PM):
+//    public void i(final String msg, final Throwable th) {
+//        Log.i(tag, msg, th);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:34 PM)
 
     public void w(final String msg) {
         Log.w(tag, msg);
     }
 
-    public void w(final String msg, final Throwable th) {
-        Log.w(tag, msg, th);
-    }
+// --Commented out by Inspection START (3/10/21 5:34 PM):
+//    public void w(final String msg, final Throwable th) {
+//        Log.w(tag, msg, th);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:34 PM)
 
     public void e(final String msg) {
         Log.e(tag, msg);

@@ -54,9 +54,11 @@ public class FileExtensionFilter implements FileFilter, FilenameFilter {
         return name != null && name.endsWith("." + ext);
     }
 
-    public String[] list(File folder) {
-        return folder.list(this);
-    }
+// --Commented out by Inspection START (3/10/21 4:49 PM):
+//    public String[] list(File folder) {
+//        return folder.list(this);
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:49 PM)
 
     public File[] listFiles(File folder) {
         return folder.listFiles((FilenameFilter) this);

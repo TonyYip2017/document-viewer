@@ -13,9 +13,11 @@ public class MathUtils {
         return Math.min(Math.max(min, value), max);
     }
 
-    public static Rect rect(final RectF rect) {
-        return new Rect((int) rect.left, (int) rect.top, (int) rect.right, (int) rect.bottom);
-    }
+// --Commented out by Inspection START (3/10/21 5:33 PM):
+//    public static Rect rect(final RectF rect) {
+//        return new Rect((int) rect.left, (int) rect.top, (int) rect.right, (int) rect.bottom);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:33 PM)
 
     public static Rect rect(final float left, final float top, final float right, final float bottom) {
         return new Rect((int) left, (int) top, (int) right, (int) bottom);
@@ -32,13 +34,17 @@ public class MathUtils {
         target.bottom = rect.bottom * zoom;
     }
 
-    public static RectF zoom(final Rect rect, final float zoom) {
-        return new RectF(zoom * rect.left, zoom * rect.top, zoom * rect.right, zoom * rect.bottom);
-    }
+// --Commented out by Inspection START (3/10/21 5:33 PM):
+//    public static RectF zoom(final Rect rect, final float zoom) {
+//        return new RectF(zoom * rect.left, zoom * rect.top, zoom * rect.right, zoom * rect.bottom);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:33 PM)
 
-    public static Rect zoom(final float left, final float top, final float right, final float bottom, final float zoom) {
-        return new Rect((int) (zoom * left), (int) (zoom * top), (int) (zoom * right), (int) (zoom * bottom));
-    }
+// --Commented out by Inspection START (3/10/21 5:33 PM):
+//    public static Rect zoom(final float left, final float top, final float right, final float bottom, final float zoom) {
+//        return new Rect((int) (zoom * left), (int) (zoom * top), (int) (zoom * right), (int) (zoom * bottom));
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:33 PM)
 
 
     public static float fmin(final float... values) {

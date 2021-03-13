@@ -30,7 +30,7 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
 
     private static final LogContext LCTX = LogManager.root().lctx("Actions");
 
-    private static final String SHORT_DESCRIPTION = "ShortDescription";
+    // --Commented out by Inspection (3/10/21 5:05 PM):private static final String SHORT_DESCRIPTION = "ShortDescription";
 
     private static SparseArrayEx<String> s_names;
 
@@ -45,8 +45,6 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
     private final Map<String, Object> m_values = new LinkedHashMap<>();
 
     private final Map<String, IActionParameter> m_actionParameters = new LinkedHashMap<>();
-
-    private boolean enabled = true;
 
     /**
      * Constructor
@@ -64,36 +62,44 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
         this.m_method = new ActionControllerMethod(controller, this);
     }
 
-    /**
-     * Returns the action's description.
-     * 
-     * @return the actions description
-     * @see #setDescription
-     */
-    public String getDescription() {
-        return getParameter(SHORT_DESCRIPTION);
-    }
+// --Commented out by Inspection START (3/10/21 4:26 PM):
+//    /**
+//     * Returns the action's description.
+//     *
+//     * @return the actions description
+//     * @see #setDescription
+//     */
+//    public String getDescription() {
+//        return getParameter(SHORT_DESCRIPTION);
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:26 PM)
 
-    /**
-     * Sets the action's description.
-     * 
-     * @param description
-     *            the string used to set the action's description
-     * @see #getDescription
-     * @beaninfo bound: true preferred: true attribute: visualUpdate true
-     *           description: The action's name.
-     */
-    public void setDescription(final String description) {
-        putValue(SHORT_DESCRIPTION, description);
-    }
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//    /**
+//     * Sets the action's description.
+//     *
+//     * @param description
+//     *            the string used to set the action's description
+//     * @see #getDescription
+//     * @beaninfo bound: true preferred: true attribute: visualUpdate true
+//     *           description: The action's name.
+//     */
+//    public void setDescription(final String description) {
+//        putValue(SHORT_DESCRIPTION, description);
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
-    public boolean isEnabled() {
-        return enabled;
-    }
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//    public boolean isEnabled() {
+//        return enabled;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
-    public void setEnabled(final boolean enabled) {
-        this.enabled = enabled;
-    }
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//    public void setEnabled(final boolean enabled) {
+//        this.enabled = enabled;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
     /**
      * @return ActionControllerMethod
@@ -102,17 +108,19 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
         return m_method;
     }
 
-    /**
-     * Returns component managed by action controller created this action.
-     * 
-     * @param <ManagedComponent>
-     *            managed component type
-     * @return component managed by action controller created this action
-     */
-    @SuppressWarnings("unchecked")
-    public <ManagedComponent> ManagedComponent getManagedComponent() {
-        return (ManagedComponent) getValue(IActionController.MANAGED_COMPONENT_PROPERTY);
-    }
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//    /**
+//     * Returns component managed by action controller created this action.
+//     *
+//     * @param <ManagedComponent>
+//     *            managed component type
+//     * @return component managed by action controller created this action
+//     */
+//    @SuppressWarnings("unchecked")
+//    public <ManagedComponent> ManagedComponent getManagedComponent() {
+//        return (ManagedComponent) getValue(IActionController.MANAGED_COMPONENT_PROPERTY);
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
     /**
      * Gets the <code>Object</code> associated with the specified key.
@@ -180,10 +188,6 @@ public class ActionEx implements Runnable, View.OnClickListener, View.OnLongClic
     @Override
     public void run() {
         try {
-            if (!enabled) {
-                LCTX.d("Action  " + name + ": disabled");
-                return;
-            }
             setParameters();
             LCTX.d("Execute action: " + name + ": " + m_values);
             m_method.invoke(this);

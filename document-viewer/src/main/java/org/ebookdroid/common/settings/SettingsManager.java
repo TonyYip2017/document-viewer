@@ -135,14 +135,16 @@ public class SettingsManager {
         }
     }
 
-    public static boolean hasOpenedBooks() {
-        lock.readLock().lock();
-        try {
-            return !bookSettings.isEmpty();
-        } finally {
-            lock.readLock().unlock();
-        }
-    }
+// --Commented out by Inspection START (3/10/21 5:27 PM):
+//    public static boolean hasOpenedBooks() {
+//        lock.readLock().lock();
+//        try {
+//            return !bookSettings.isEmpty();
+//        } finally {
+//            lock.readLock().unlock();
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:27 PM)
 
     public static BookSettings getBookSettings(final String fileName) {
         lock.writeLock().lock();
@@ -463,17 +465,21 @@ public class SettingsManager {
         l.onRecentBooksChanged();
     }
 
-    public static boolean isInitialFlagsSet(final int flag) {
-        if (prefs.contains(INITIAL_FLAGS)) {
-            return (prefs.getInt(INITIAL_FLAGS, 0) & flag) == flag;
-        }
-        return false;
-    }
+// --Commented out by Inspection START (3/10/21 5:27 PM):
+//    public static boolean isInitialFlagsSet(final int flag) {
+//        if (prefs.contains(INITIAL_FLAGS)) {
+//            return (prefs.getInt(INITIAL_FLAGS, 0) & flag) == flag;
+//        }
+//        return false;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:27 PM)
 
-    public static void setInitialFlags(final int flag) {
-        final int old = prefs.getInt(INITIAL_FLAGS, 0);
-        prefs.edit().putInt(INITIAL_FLAGS, old | flag).commit();
-    }
+// --Commented out by Inspection START (3/10/21 5:27 PM):
+//    public static void setInitialFlags(final int flag) {
+//        final int old = prefs.getInt(INITIAL_FLAGS, 0);
+//        prefs.edit().putInt(INITIAL_FLAGS, old | flag).commit();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:27 PM)
 
     private static class BookSettingsUpdate extends Thread {
 

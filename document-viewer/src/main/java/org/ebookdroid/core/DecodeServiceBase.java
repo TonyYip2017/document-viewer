@@ -283,9 +283,6 @@ public class DecodeServiceBase implements DecodeService {
         ByteBufferManager.release(rootBitmap);
 
         final ViewState viewState = task.viewState;
-        final PageIndex currentPage = viewState.book.getCurrentPage();
-        final float offsetX = viewState.book.offsetX;
-        final float offsetY = viewState.book.offsetY;
 
         viewState.ctrl.invalidatePageSizes(InvalidateSizeReason.PAGE_LOADED, task.node.page);
 

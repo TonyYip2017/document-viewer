@@ -9,12 +9,9 @@ import org.ebookdroid.ui.viewer.views.DragMark;
 
 import android.view.MotionEvent;
 
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
-
 public class SinglePageView implements PageAnimator {
 
-    protected static final LogContext LCTX = LogManager.root().lctx("View", false);
+//    protected static final LogContext LCTX = LogManager.root().lctx("View", false);
 
     protected final PageAnimationType type;
 

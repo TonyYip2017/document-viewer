@@ -173,9 +173,11 @@ public class BackupManager {
         return true;
     }
 
-    public static int getMaxNumberOfAutoBackups() {
-        return maxNumberOfAutoBackups;
-    }
+// --Commented out by Inspection START (3/10/21 4:32 PM):
+//    public static int getMaxNumberOfAutoBackups() {
+//        return maxNumberOfAutoBackups;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:32 PM)
 
     public static void setMaxNumberOfAutoBackups(int maxNumberOfAutoBackups) {
         BackupManager.maxNumberOfAutoBackups = maxNumberOfAutoBackups;

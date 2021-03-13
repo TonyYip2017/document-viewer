@@ -3,7 +3,6 @@ package org.emdev.common.cache;
 import android.content.Context;
 import android.net.Uri;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

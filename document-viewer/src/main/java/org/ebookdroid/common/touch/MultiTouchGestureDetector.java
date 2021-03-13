@@ -3,7 +3,6 @@ package org.ebookdroid.common.touch;
 
 import android.annotation.TargetApi;
 import android.graphics.PointF;
-import android.util.FloatMath;
 import android.view.MotionEvent;
 
 import org.emdev.common.log.LogContext;

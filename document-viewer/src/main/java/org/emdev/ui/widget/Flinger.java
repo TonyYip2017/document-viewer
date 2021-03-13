@@ -102,9 +102,7 @@ public class Flinger {
         lock.lock();
         try {
             if (isFinished()) {
-                if (oldProgress == 0 || oldProgress == 1) {
-                    // System.out.println("oldProgress == 0 || oldProgress == 1");
-                } else {
+                if (oldProgress != 0 && oldProgress != 1) {
                     currX = finalX;
                     currY = finalY;
                     oldProgress = 1;
@@ -125,8 +123,7 @@ public class Flinger {
             progress = Math.min(progress, 1);
             // System.out.println("computeScrollOffset progress:" + progress);
             if (mode == MODE_FLING) {
-                float f = progress;
-                f = 1 - (float) Math.pow(1 - progress, DECELERATED_FACTOR);
+                float f = 1 - (float) Math.pow(1 - progress, DECELERATED_FACTOR);
                 currX = getX(f);
                 currY = getY(f);
                 // System.out.println("computeScrollOffset(FLING):" + f + ", " + currY);

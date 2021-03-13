@@ -31,9 +31,9 @@ class LayerDrawable extends Drawable implements Drawable.Callback {
     private Drawable mParent;
     private boolean mBlockSetBounds;
 
-    LayerDrawable(Drawable... layers) {
-        this(null, layers);
-    }
+//    LayerDrawable(Drawable... layers) {
+//        this(null, layers);
+//    }
 
     LayerDrawable(LayerState state, Drawable... layers) {
         this(state);

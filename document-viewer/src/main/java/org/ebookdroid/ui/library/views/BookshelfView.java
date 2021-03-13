@@ -40,6 +40,7 @@ import java.util.GregorianCalendar;
 
 import org.emdev.ui.drawable.SpotlightDrawable;
 import org.emdev.ui.drawable.TransitionDrawable;
+//import android.graphics.drawable.TransitionDrawable;
 import org.emdev.utils.LayoutUtils;
 
 public class BookshelfView extends GridView implements OnItemClickListener {
@@ -57,7 +58,7 @@ public class BookshelfView extends GridView implements OnItemClickListener {
     private final BookShelfAdapter adapter;
     private final Calendar now;
 
-    final String path;
+    // --Commented out by Inspection (3/10/21 5:09 PM):final String path;
 
     static {
         final Bitmap shelfBackground = BitmapManager.getResource(R.drawable.recent_bookcase_shelf_panel);
@@ -79,7 +80,7 @@ public class BookshelfView extends GridView implements OnItemClickListener {
         this.now = new GregorianCalendar();
         this.base = base;
         this.adapter = adapter;
-        this.path = adapter != null ? adapter.getPath() : "";
+//        this.path = adapter != null ? adapter.getPath() : "";
         setCacheColorHint(0);
         setSelector(android.R.color.transparent);
         setNumColumns(AUTO_FIT);

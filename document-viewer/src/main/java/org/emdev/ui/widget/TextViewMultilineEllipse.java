@@ -26,7 +26,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint.Align;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -153,25 +152,25 @@ public class TextViewMultilineEllipse extends View {
         setRawTextSize(size);
     }
 
-    /**
-     * Set the default text size to a given unit and value. See {@link TypedValue} for the possible dimension units.
-     *
-     * @param unit
-     *            The desired dimension unit.
-     * @param size
-     *            The desired size in the given units.
-     */
-    public void setTextSize(int unit, float size) {
-        Context c = getContext();
-        Resources r;
-
-        if (c == null)
-            r = Resources.getSystem();
-        else
-            r = c.getResources();
-
-        setRawTextSize(TypedValue.applyDimension(unit, size, r.getDisplayMetrics()));
-    }
+//    /**
+//     * Set the default text size to a given unit and value. See {@link TypedValue} for the possible dimension units.
+//     *
+//     * @param unit
+//     *            The desired dimension unit.
+//     * @param size
+//     *            The desired size in the given units.
+//     */
+//    public void setTextSize(int unit, float size) {
+//        Context c = getContext();
+//        Resources r;
+//
+//        if (c == null)
+//            r = Resources.getSystem();
+//        else
+//            r = c.getResources();
+//
+//        setRawTextSize(TypedValue.applyDimension(unit, size, r.getDisplayMetrics()));
+//    }
 
     private void setRawTextSize(float size) {
         if (size != mTextPaint.getTextSize()) {
@@ -182,14 +181,14 @@ public class TextViewMultilineEllipse extends View {
         }
     }
 
-    /**
-     * Sets the text color for all the states (normal, selected,
-     * focused) to be this color.
-     */
-    public void setTextColor(int color) {
-        mTextColor = ColorStateList.valueOf(color);
-        updateTextColors();
-    }
+//    /**
+//     * Sets the text color for all the states (normal, selected,
+//     * focused) to be this color.
+//     */
+//    public void setTextColor(int color) {
+//        mTextColor = ColorStateList.valueOf(color);
+//        updateTextColors();
+//    }
 
     /**
      * Sets the text color.
@@ -212,65 +211,65 @@ public class TextViewMultilineEllipse extends View {
         }
     }
 
-    /**
-     * The string to append when ellipsizing. Must be shorter than the available
-     * width for a single line!
-     *
-     * @param ellipsis
-     *            The ellipsis string to use, like "...", or "-----".
-     */
-    public void setEllipsis(String ellipsis) {
-        mStrEllipsis = ellipsis;
-    }
+//    /**
+//     * The string to append when ellipsizing. Must be shorter than the available
+//     * width for a single line!
+//     *
+//     * @param ellipsis
+//     *            The ellipsis string to use, like "...", or "-----".
+//     */
+//    public void setEllipsis(String ellipsis) {
+//        mStrEllipsis = ellipsis;
+//    }
+//
+//    /**
+//     * Optional extra ellipsize string. This
+//     *
+//     * @param ellipsisMore
+//     */
+//    public void setEllipsisMore(String ellipsisMore) {
+//        mStrEllipsisMore = ellipsisMore;
+//    }
+//
+//    /**
+//     * The maximum number of lines to allow, height-wise.
+//     *
+//     * @param maxLines
+//     */
+//    public void setMaxLines(int maxLines) {
+//        mMaxLines = maxLines;
+//    }
+//
+//    /**
+//     * Turn drawing of the optional ellipsizeMore string on or off.
+//     *
+//     * @param drawEllipsizeMoreString
+//     *            Yes or no.
+//     */
+//    public void setDrawEllipsizeMoreString(boolean drawEllipsizeMoreString) {
+//        mDrawEllipsizeMoreString = drawEllipsizeMoreString;
+//    }
 
-    /**
-     * Optional extra ellipsize string. This
-     *
-     * @param ellipsisMore
-     */
-    public void setEllipsisMore(String ellipsisMore) {
-        mStrEllipsisMore = ellipsisMore;
-    }
+//    /**
+//     * Font color to use for the optional ellipsizeMore string.
+//     *
+//     * @param color
+//     *            ARGB color.
+//     */
+//    public void setColorEllpsizeMore(int color) {
+//        mColorEllipsizeMore = color;
+//    }
 
-    /**
-     * The maximum number of lines to allow, height-wise.
-     *
-     * @param maxLines
-     */
-    public void setMaxLines(int maxLines) {
-        mMaxLines = maxLines;
-    }
-
-    /**
-     * Turn drawing of the optional ellipsizeMore string on or off.
-     *
-     * @param drawEllipsizeMoreString
-     *            Yes or no.
-     */
-    public void setDrawEllipsizeMoreString(boolean drawEllipsizeMoreString) {
-        mDrawEllipsizeMoreString = drawEllipsizeMoreString;
-    }
-
-    /**
-     * Font color to use for the optional ellipsizeMore string.
-     *
-     * @param color
-     *            ARGB color.
-     */
-    public void setColorEllpsizeMore(int color) {
-        mColorEllipsizeMore = color;
-    }
-
-    /**
-     * When drawing the ellipsizeMore string, either draw it wherever ellipsizing on the last
-     * line occurs, or always right align it. On by default.
-     *
-     * @param rightAlignEllipsizeMoreString
-     *            Yes or no.
-     */
-    public void setRightAlignEllipsizeMoreString(boolean rightAlignEllipsizeMoreString) {
-        mRightAlignEllipsizeMoreString = rightAlignEllipsizeMoreString;
-    }
+//    /**
+//     * When drawing the ellipsizeMore string, either draw it wherever ellipsizing on the last
+//     * line occurs, or always right align it. On by default.
+//     *
+//     * @param rightAlignEllipsizeMoreString
+//     *            Yes or no.
+//     */
+//    public void setRightAlignEllipsizeMoreString(boolean rightAlignEllipsizeMoreString) {
+//        mRightAlignEllipsizeMoreString = rightAlignEllipsizeMoreString;
+//    }
 
     /**
      * @see android.view.View#measure(int, int)
@@ -405,21 +404,21 @@ public class TextViewMultilineEllipse extends View {
         }
     }
 
-    public boolean getIsExpanded() {
-        return mExpanded;
-    }
+//    public boolean getIsExpanded() {
+//        return mExpanded;
+//    }
 
-    public void expand() {
-        mExpanded = true;
-        requestLayout();
-        invalidate();
-    }
+//    public void expand() {
+//        mExpanded = true;
+//        requestLayout();
+//        invalidate();
+//    }
 
-    public void collapse() {
-        mExpanded = false;
-        requestLayout();
-        invalidate();
-    }
+//    public void collapse() {
+//        mExpanded = false;
+//        requestLayout();
+//        invalidate();
+//    }
 
     private int breakWidth(int availableWidth) {
         int widthUsed = 0;

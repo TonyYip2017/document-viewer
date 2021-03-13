@@ -1,7 +1,6 @@
 package org.ebookdroid.core.curl;
 
 import android.graphics.PointF;
-import android.util.FloatMath;
 
 /**
  * Inner class used to represent a 2D point.
@@ -21,9 +20,11 @@ public class Vector2D extends PointF {
         return "(" + this.x + "," + this.y + ")";
     }
 
-    public float lengthSquared() {
-        return (x * x) + (y * y);
-    }
+// --Commented out by Inspection START (3/10/21 5:18 PM):
+//    public float lengthSquared() {
+//        return (x * x) + (y * y);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:18 PM)
 
     @Override
     public boolean equals(final Object o) {
@@ -34,9 +35,11 @@ public class Vector2D extends PointF {
         return false;
     }
 
-    public Vector2D reverse() {
-        return new Vector2D(-x, -y);
-    }
+// --Commented out by Inspection START (3/10/21 5:19 PM):
+//    public Vector2D reverse() {
+//        return new Vector2D(-x, -y);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:19 PM)
 
     public Vector2D sum(final Vector2D b) {
         return new Vector2D(x + b.x, y + b.y);
@@ -46,13 +49,17 @@ public class Vector2D extends PointF {
         return new Vector2D(x - b.x, y - b.y);
     }
 
-    public float dot(final Vector2D vec) {
-        return (x * vec.x) + (y * vec.y);
-    }
+// --Commented out by Inspection START (3/10/21 5:18 PM):
+//    public float dot(final Vector2D vec) {
+//        return (x * vec.x) + (y * vec.y);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:18 PM)
 
-    public float cross(final Vector2D a, final Vector2D b) {
-        return a.cross(b);
-    }
+// --Commented out by Inspection START (3/10/21 5:17 PM):
+//    public float cross(final Vector2D a, final Vector2D b) {
+//        return a.cross(b);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:17 PM)
 
     public float cross(final Vector2D vec) {
         return x * vec.y - y * vec.x;
@@ -73,9 +80,11 @@ public class Vector2D extends PointF {
         return Math.abs(this.x - other.x);
     }
 
-    public float absdistancey(final Vector2D other) {
-        return Math.abs(this.y - other.y);
-    }
+// --Commented out by Inspection START (3/10/21 5:17 PM):
+//    public float absdistancey(final Vector2D other) {
+//        return Math.abs(this.y - other.y);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:17 PM)
 
     public float dotProduct(final Vector2D other) {
         return other.x * x + other.y * y;

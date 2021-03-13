@@ -70,7 +70,9 @@ public class Flag {
     return get();
   }
 
-  public synchronized void notifyWaiters() {
-      notifyAll();
-  }
+// --Commented out by Inspection START (3/10/21 4:50 PM):
+//  public synchronized void notifyWaiters() {
+//      notifyAll();
+//  }
+// --Commented out by Inspection STOP (3/10/21 4:50 PM)
 }

@@ -123,11 +123,13 @@ public class PreferencesDecorator implements IPreferenceContainer, AppPreference
         }
     }
 
-    protected void decoratePreferences(final String... keys) {
-        for (final String key : keys) {
-            decoratePreference(parent.findPreference(key));
-        }
-    }
+// --Commented out by Inspection START (3/10/21 5:28 PM):
+//    protected void decoratePreferences(final String... keys) {
+//        for (final String key : keys) {
+//            decoratePreference(parent.findPreference(key));
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:28 PM)
 
     public void decoratePreference(final Preference pref) {
         if (pref instanceof ListPreference) {

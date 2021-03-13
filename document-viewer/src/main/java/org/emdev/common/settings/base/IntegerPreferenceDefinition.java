@@ -6,7 +6,6 @@ import android.content.SharedPreferences.Editor;
 import org.emdev.BaseDroidApp;
 import org.emdev.utils.LengthUtils;
 import org.emdev.utils.MathUtils;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class IntegerPreferenceDefinition extends BasePreferenceDefinition<Integer> {

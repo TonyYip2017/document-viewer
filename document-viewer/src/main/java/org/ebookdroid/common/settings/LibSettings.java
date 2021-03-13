@@ -7,7 +7,6 @@ import org.ebookdroid.common.settings.types.CacheLocation;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.emdev.common.backup.BackupManager;

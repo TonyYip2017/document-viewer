@@ -3,12 +3,9 @@ package org.emdev.ui.uimanager;
 import android.app.Activity;
 import android.view.View;
 
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
-
 public interface IUIManager {
 
-    LogContext LCTX = LogManager.root().lctx("UIManager");
+//    LogContext LCTX = LogManager.root().lctx("UIManager");
 
     IUIManager instance = new UIManager40x();
 

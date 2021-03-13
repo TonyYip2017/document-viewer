@@ -22,9 +22,6 @@ import android.graphics.RectF;
 
 import javax.microedition.khronos.opengles.GL11;
 
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
-
 //
 // GLCanvas gives a convenient interface to draw using OpenGL.
 //
@@ -33,7 +30,7 @@ import org.emdev.common.log.LogManager;
 //
 public interface GLCanvas {
 
-    LogContext LCTX = LogManager.root().lctx("GLCanvas");
+    // --Commented out by Inspection (3/10/21 4:52 PM):LogContext LCTX = LogManager.root().lctx("GLCanvas");
 
     // Tells GLCanvas the size of the underlying GL surface. This should be
     // called before first drawing and when the size of GL surface is changed.
@@ -42,8 +39,10 @@ public interface GLCanvas {
     // nonnegative.
     void setSize(int width, int height);
 
-    // Clear the drawing buffers. This should only be used by GLRoot.
-    void clearBuffer();
+// --Commented out by Inspection START (3/10/21 4:51 PM):
+//    // Clear the drawing buffers. This should only be used by GLRoot.
+//    void clearBuffer();
+// --Commented out by Inspection STOP (3/10/21 4:51 PM)
     void clearBuffer(Paint p);
     void clearBuffer(int color);
 
@@ -52,8 +51,10 @@ public interface GLCanvas {
 
     float getAlpha();
 
-    // (current alpha) = (current alpha) * alpha
-    void multiplyAlpha(float alpha);
+// --Commented out by Inspection START (3/10/21 4:52 PM):
+//    // (current alpha) = (current alpha) * alpha
+//    void multiplyAlpha(float alpha);
+// --Commented out by Inspection STOP (3/10/21 4:52 PM)
 
     // Change the current transform matrix.
     void translate(float x, float y, float z);
@@ -64,7 +65,7 @@ public interface GLCanvas {
 
     void rotate(float angle, float x, float y, float z);
 
-    void multiplyMatrix(float[] mMatrix, int offset);
+    // --Commented out by Inspection (3/10/21 4:52 PM):void multiplyMatrix(float[] mMatrix, int offset);
 
     // Pushes the configuration state (matrix, and alpha) onto
     // a private stack.
@@ -83,15 +84,19 @@ public interface GLCanvas {
     // last save call.
     void restore();
 
-    // Draws a line using the specified paint from (x1, y1) to (x2, y2).
-    // (Both end points are included).
-    void drawLine(float x1, float y1, float x2, float y2, Paint paint);
+// --Commented out by Inspection START (3/10/21 4:52 PM):
+//    // Draws a line using the specified paint from (x1, y1) to (x2, y2).
+//    // (Both end points are included).
+//    void drawLine(float x1, float y1, float x2, float y2, Paint paint);
+// --Commented out by Inspection STOP (3/10/21 4:52 PM)
 
-    // Draws a rectangle using the specified paint from (x1, y1) to (x2, y2).
-    // (Both end points are included).
-    void drawRect(float x1, float y1, float width, float heught, Paint paint);
+// --Commented out by Inspection START (3/10/21 4:52 PM):
+//    // Draws a rectangle using the specified paint from (x1, y1) to (x2, y2).
+//    // (Both end points are included).
+//    void drawRect(float x1, float y1, float width, float heught, Paint paint);
+// --Commented out by Inspection STOP (3/10/21 4:52 PM)
 
-    void drawRect(final RectF r, final Paint paint);
+    // --Commented out by Inspection (3/10/21 4:52 PM):void drawRect(final RectF r, final Paint paint);
 
     // Fills the specified rectangle with the specified color.
     void fillRect(float x, float y, float width, float height, int color);
@@ -104,8 +109,10 @@ public interface GLCanvas {
     // Draws the source rectangle part of the texture to the target rectangle.
     boolean drawTexture(BasicTexture texture, RectF source, RectF target);
 
-    // Draw a texture with a specified texture transform.
-    void drawTexture(BasicTexture texture, float[] mTextureTransform, int x, int y, int w, int h);
+// --Commented out by Inspection START (3/10/21 4:52 PM):
+//    // Draw a texture with a specified texture transform.
+//    void drawTexture(BasicTexture texture, float[] mTextureTransform, int x, int y, int w, int h);
+// --Commented out by Inspection STOP (3/10/21 4:52 PM)
 
     // Gets the underlying GL instance. This is used only when direct access to
     // GL is needed.
@@ -117,8 +124,10 @@ public interface GLCanvas {
     // BasicTexture or its descendant
     boolean unloadTexture(BasicTexture texture);
 
-    // Delete the specified buffer object, similar to unloadTexture.
-    void deleteBuffer(int bufferId);
+// --Commented out by Inspection START (3/10/21 4:52 PM):
+//    // Delete the specified buffer object, similar to unloadTexture.
+//    void deleteBuffer(int bufferId);
+// --Commented out by Inspection STOP (3/10/21 4:52 PM)
 
     // Delete the textures and buffers in GL side. This function should only be
     // called in the GL thread.

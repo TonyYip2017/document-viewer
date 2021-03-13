@@ -1,7 +1,5 @@
 package org.ebookdroid.common.notifications;
 
-import android.content.Intent;
-
 public interface INotificationManager {
 
     INotificationManager instance = new ModernNotificationManager();

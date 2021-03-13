@@ -1,23 +1,21 @@
 package org.ebookdroid.common.bitmaps;
 
-import org.ebookdroid.core.PagePaint;
-
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.util.FloatMath;
 
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
+import org.ebookdroid.core.PagePaint;
 import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;
 import org.emdev.ui.gl.GLCanvas;
 import org.emdev.utils.MathUtils;
 
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 public class GLBitmaps {
 
     protected static final LogContext LCTX = LogManager.root().lctx("Bitmaps", false);
 
-    protected static final ThreadLocal<ByteBufferBitmap> threadSlices = new ThreadLocal<>();
+    // --Commented out by Inspection (3/10/21 4:51 PM):protected static final ThreadLocal<ByteBufferBitmap> threadSlices = new ThreadLocal<>();
 
     protected final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 

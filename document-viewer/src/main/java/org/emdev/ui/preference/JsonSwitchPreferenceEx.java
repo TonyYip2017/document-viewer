@@ -1,7 +1,5 @@
 package org.emdev.ui.preference;
 
-
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.SwitchPreference;

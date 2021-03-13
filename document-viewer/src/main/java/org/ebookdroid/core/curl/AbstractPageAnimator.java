@@ -7,7 +7,6 @@ import org.ebookdroid.core.SinglePageController;
 import org.ebookdroid.core.ViewState;
 
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
@@ -17,7 +16,7 @@ import org.emdev.ui.gl.GLCanvas;
 
 public abstract class AbstractPageAnimator extends SinglePageView implements PageAnimator {
 
-    protected static final Paint PAINT = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
+//    protected static final Paint PAINT = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
 
     /** Fixed update time used to create a smooth curl animation */
     protected int mUpdateRate;

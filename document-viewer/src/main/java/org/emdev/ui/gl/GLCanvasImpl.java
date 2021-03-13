@@ -38,8 +38,8 @@ public class GLCanvasImpl implements GLCanvas {
     private static final float OPAQUE_ALPHA = 0.95f;
 
     private static final int OFFSET_FILL_RECT = 0;
-    private static final int OFFSET_DRAW_LINE = 4;
-    private static final int OFFSET_DRAW_RECT = 6;
+    // --Commented out by Inspection (3/10/21 5:13 PM):private static final int OFFSET_DRAW_LINE = 4;
+    // --Commented out by Inspection (3/10/21 5:14 PM):private static final int OFFSET_DRAW_RECT = 6;
     private static final float[] BOX_COORDINATES = { 0, 0, 1, 0, 0, 1, 1, 1, // used for filling a rectangle
             0, 0, 1, 1, // used for drawing a line
             0, 0, 0, 1, 1, 1, 1, 0 }; // used for drawing the outline of a rectangle
@@ -97,13 +97,13 @@ public class GLCanvasImpl implements GLCanvas {
         Matrix.scaleM(matrix, 0, 1, -1, 1);
     }
 
-    public int getScreenHeight() {
-        return mScreenHeight;
-    }
+//    public int getScreenHeight() {
+//        return mScreenHeight;
+//    }
 
-    public int getScreenWidth() {
-        return mScreenWidth;
-    }
+//    public int getScreenWidth() {
+//        return mScreenWidth;
+//    }
 
     @Override
     public void setAlpha(final float alpha) {
@@ -115,10 +115,10 @@ public class GLCanvasImpl implements GLCanvas {
         return mAlpha;
     }
 
-    @Override
-    public void multiplyAlpha(final float alpha) {
-        mAlpha *= alpha;
-    }
+//    @Override
+//    public void multiplyAlpha(final float alpha) {
+//        mAlpha *= alpha;
+//    }
 
     private static ByteBuffer allocateDirectNativeOrderBuffer(final int size) {
         return ByteBuffer.allocateDirect(size).order(ByteOrder.nativeOrder());
@@ -179,56 +179,56 @@ public class GLCanvasImpl implements GLCanvas {
         mClipper.clearClipRect();
     }
 
-    @Override
-    public void drawRect(final float x, final float y, final float width, final float height, final Paint paint) {
-        final GL11 gl = mGL;
+//    @Override
+//    public void drawRect(final float x, final float y, final float width, final float height, final Paint paint) {
+//        final GL11 gl = mGL;
+//
+//        mGLState.setColorMode(paint.getColor(), mAlpha);
+//        mGLState.setLineWidth(paint.getStrokeWidth());
+//
+//        saveTransform();
+//        translate(x, y);
+//        scale(width, height, 1);
+//
+//        gl.glLoadMatrixf(mMatrixValues, 0);
+//        gl.glDrawArrays(GL10.GL_LINE_LOOP, OFFSET_DRAW_RECT, 4);
+//
+//        restoreTransform();
+//    }
 
-        mGLState.setColorMode(paint.getColor(), mAlpha);
-        mGLState.setLineWidth(paint.getStrokeWidth());
+//    @Override
+//    public void drawRect(final RectF r, final Paint paint) {
+//        final GL11 gl = mGL;
+//
+//        mGLState.setColorMode(paint.getColor(), mAlpha);
+//        mGLState.setLineWidth(paint.getStrokeWidth());
+//
+//        saveTransform();
+//        translate(r.left, r.top);
+//        scale(r.width(), r.height(), 1);
+//
+//        gl.glLoadMatrixf(mMatrixValues, 0);
+//        gl.glDrawArrays(GL10.GL_LINE_LOOP, OFFSET_DRAW_RECT, 4);
+//
+//        restoreTransform();
+//    }
 
-        saveTransform();
-        translate(x, y);
-        scale(width, height, 1);
-
-        gl.glLoadMatrixf(mMatrixValues, 0);
-        gl.glDrawArrays(GL10.GL_LINE_LOOP, OFFSET_DRAW_RECT, 4);
-
-        restoreTransform();
-    }
-
-    @Override
-    public void drawRect(final RectF r, final Paint paint) {
-        final GL11 gl = mGL;
-
-        mGLState.setColorMode(paint.getColor(), mAlpha);
-        mGLState.setLineWidth(paint.getStrokeWidth());
-
-        saveTransform();
-        translate(r.left, r.top);
-        scale(r.width(), r.height(), 1);
-
-        gl.glLoadMatrixf(mMatrixValues, 0);
-        gl.glDrawArrays(GL10.GL_LINE_LOOP, OFFSET_DRAW_RECT, 4);
-
-        restoreTransform();
-    }
-
-    @Override
-    public void drawLine(final float x1, final float y1, final float x2, final float y2, final Paint paint) {
-        final GL11 gl = mGL;
-
-        mGLState.setColorMode(paint.getColor(), mAlpha);
-        mGLState.setLineWidth(paint.getStrokeWidth());
-
-        saveTransform();
-        translate(x1, y1);
-        scale(x2 - x1, y2 - y1, 1);
-
-        gl.glLoadMatrixf(mMatrixValues, 0);
-        gl.glDrawArrays(GL10.GL_LINE_STRIP, OFFSET_DRAW_LINE, 2);
-
-        restoreTransform();
-    }
+//    @Override
+//    public void drawLine(final float x1, final float y1, final float x2, final float y2, final Paint paint) {
+//        final GL11 gl = mGL;
+//
+//        mGLState.setColorMode(paint.getColor(), mAlpha);
+//        mGLState.setLineWidth(paint.getStrokeWidth());
+//
+//        saveTransform();
+//        translate(x1, y1);
+//        scale(x2 - x1, y2 - y1, 1);
+//
+//        gl.glLoadMatrixf(mMatrixValues, 0);
+//        gl.glDrawArrays(GL10.GL_LINE_STRIP, OFFSET_DRAW_LINE, 2);
+//
+//        restoreTransform();
+//    }
 
     @Override
     public void fillRect(final float x, final float y, final float width, final float height, final int color) {
@@ -366,12 +366,12 @@ public class GLCanvasImpl implements GLCanvas {
         System.arraycopy(temp, 16, mMatrixValues, 0, 16);
     }
 
-    @Override
-    public void multiplyMatrix(final float[] matrix, final int offset) {
-        final float[] temp = mTempMatrix;
-        Matrix.multiplyMM(temp, 0, mMatrixValues, 0, matrix, offset);
-        System.arraycopy(temp, 0, mMatrixValues, 0, 16);
-    }
+//    @Override
+//    public void multiplyMatrix(final float[] matrix, final int offset) {
+//        final float[] temp = mTempMatrix;
+//        Matrix.multiplyMM(temp, 0, mMatrixValues, 0, matrix, offset);
+//        System.arraycopy(temp, 0, mMatrixValues, 0, 16);
+//    }
 
     private void textureRect(final float x, final float y, final float width, final float height) {
         final GL11 gl = mGL;
@@ -437,17 +437,17 @@ public class GLCanvasImpl implements GLCanvas {
         return true;
     }
 
-    @Override
-    public void drawTexture(final BasicTexture texture, final float[] mTextureTransform, final int x, final int y,
-            final int w, final int h) {
-        mGLState.setBlendEnabled(mBlendEnabled && (!texture.isOpaque() || mAlpha < OPAQUE_ALPHA));
-        if (!bindTexture(texture)) {
-            return;
-        }
-        setTextureCoords(mTextureTransform);
-        mGLState.setTextureAlpha(mAlpha);
-        textureRect(x, y, w, h);
-    }
+//    @Override
+//    public void drawTexture(final BasicTexture texture, final float[] mTextureTransform, final int x, final int y,
+//            final int w, final int h) {
+//        mGLState.setBlendEnabled(mBlendEnabled && (!texture.isOpaque() || mAlpha < OPAQUE_ALPHA));
+//        if (!bindTexture(texture)) {
+//            return;
+//        }
+//        setTextureCoords(mTextureTransform);
+//        mGLState.setTextureAlpha(mAlpha);
+//        textureRect(x, y, w, h);
+//    }
 
     // This function changes the source coordinate to the texture coordinates.
     // It also clips the source and target coordinates if it is beyond the
@@ -600,10 +600,10 @@ public class GLCanvasImpl implements GLCanvas {
         return mGL;
     }
 
-    @Override
-    public void clearBuffer() {
-        mGL.glClear(GL10.GL_COLOR_BUFFER_BIT);
-    }
+//    @Override
+//    public void clearBuffer() {
+//        mGL.glClear(GL10.GL_COLOR_BUFFER_BIT);
+//    }
 
     @Override
     public void clearBuffer(final Paint p) {
@@ -642,11 +642,13 @@ public class GLCanvasImpl implements GLCanvas {
         mGL.glMatrixMode(GL10.GL_MODELVIEW);
     }
 
-    private void setTextureCoords(final float[] mTextureTransform) {
-        mGL.glMatrixMode(GL10.GL_TEXTURE);
-        mGL.glLoadMatrixf(mTextureTransform, 0);
-        mGL.glMatrixMode(GL10.GL_MODELVIEW);
-    }
+// --Commented out by Inspection START (3/10/21 5:14 PM):
+//    private void setTextureCoords(final float[] mTextureTransform) {
+//        mGL.glMatrixMode(GL10.GL_TEXTURE);
+//        mGL.glLoadMatrixf(mTextureTransform, 0);
+//        mGL.glMatrixMode(GL10.GL_MODELVIEW);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:14 PM)
 
     // unloadTexture and deleteBuffer can be called from the finalizer thread,
     // so we synchronized on the mUnboundTextures object.
@@ -661,12 +663,12 @@ public class GLCanvasImpl implements GLCanvas {
         }
     }
 
-    @Override
-    public void deleteBuffer(final int bufferId) {
-        synchronized (mUnboundTextures) {
-            mDeleteBuffers.add(bufferId);
-        }
-    }
+//    @Override
+//    public void deleteBuffer(final int bufferId) {
+//        synchronized (mUnboundTextures) {
+//            mDeleteBuffers.add(bufferId);
+//        }
+//    }
 
     @Override
     public void deleteRecycledResources() {

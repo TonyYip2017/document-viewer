@@ -9,9 +9,11 @@ public class SparseArrayEx<T> extends SparseArray<T> implements Iterable<T> {
 
     private final ThreadLocal<SparseArrayIterator> iterators = new ThreadLocal<>();
 
-    public boolean isEmpty() {
-        return size() == 0;
-    }
+// --Commented out by Inspection START (3/10/21 5:26 PM):
+//    public boolean isEmpty() {
+//        return size() == 0;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:26 PM)
 
     @Override
     public TLIterator<T> iterator() {

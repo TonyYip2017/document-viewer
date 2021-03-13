@@ -216,16 +216,20 @@ public class DocumentModel extends ListenerProxy {
         return this.currentIndex.viewIndex;
     }
 
-    public int getCurrentDocPageIndex() {
-        return this.currentIndex.docIndex;
-    }
+// --Commented out by Inspection START (3/10/21 4:47 PM):
+//    public int getCurrentDocPageIndex() {
+//        return this.currentIndex.docIndex;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:47 PM)
 
-    public void setCurrentPageByFirstVisible(final int firstVisiblePage) {
-        final Page page = getPageObject(firstVisiblePage);
-        if (page != null) {
-            setCurrentPageIndex(page.index);
-        }
-    }
+// --Commented out by Inspection START (3/10/21 4:47 PM):
+//    public void setCurrentPageByFirstVisible(final int firstVisiblePage) {
+//        final Page page = getPageObject(firstVisiblePage);
+//        if (page != null) {
+//            setCurrentPageIndex(page.index);
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:47 PM)
 
     @WorkerThread
     public void initPages(final IActivityController base, final IProgressIndicator task) {
@@ -233,7 +237,7 @@ public class DocumentModel extends ListenerProxy {
 
         final BookSettings bs = base.getBookSettings();
 
-        if (base == null || bs == null || context == null || decodeService == null) {
+        if (bs == null || context == null || decodeService == null) {
             return;
         }
 

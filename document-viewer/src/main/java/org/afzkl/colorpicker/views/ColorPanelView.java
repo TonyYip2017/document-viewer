@@ -45,8 +45,8 @@ public class ColorPanelView extends View{
 
 	private int 		mColor = 0xff000000;
 	
-	private Paint		mBorderPaint;
-	private Paint		mColorPaint;
+	private final Paint		mBorderPaint;
+	private final Paint		mColorPaint;
 	
 	private RectF		mDrawingRect;
 	private RectF		mColorRect;
@@ -65,10 +65,6 @@ public class ColorPanelView extends View{
 	public ColorPanelView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		
-		init();
-	}
-	
-	private void init(){
 		mBorderPaint = new Paint();
 		mColorPaint = new Paint();
 		mDensity = getContext().getResources().getDisplayMetrics().density;
@@ -79,13 +75,11 @@ public class ColorPanelView extends View{
 	protected void onDraw(Canvas canvas) {
 		
 		final RectF	rect = mColorRect;
-				
-		if(BORDER_WIDTH_PX > 0){
-			int mBorderColor = 0xff6E6E6E;
-			mBorderPaint.setColor(mBorderColor);
-			canvas.drawRect(mDrawingRect, mBorderPaint);		
-		}
-		
+
+		int mBorderColor = 0xff6E6E6E;
+		mBorderPaint.setColor(mBorderColor);
+		canvas.drawRect(mDrawingRect, mBorderPaint);
+
 		if(mAlphaPattern != null){
 			mAlphaPattern.draw(canvas);
 		}
@@ -139,8 +133,5 @@ public class ColorPanelView extends View{
 	
 	public void setColor(int color){
 		mColor = color; invalidate();
-	}
-	public int getColor(){
-		return mColor;
 	}
 }

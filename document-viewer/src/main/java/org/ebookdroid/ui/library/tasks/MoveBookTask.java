@@ -10,7 +10,6 @@ import org.ebookdroid.ui.library.adapters.RecentAdapter;
 import android.content.Context;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.emdev.ui.progress.UIFileCopying;

@@ -42,10 +42,10 @@ public final class UIManagerAppCompat {
         }
     }
 
-    public static void invalidateOptionsMenu(final AppCompatActivity activity) {
-        ActionBar actionBar = activity.getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.invalidateOptionsMenu();
-        }
-    }
+//    public static void invalidateOptionsMenu(final AppCompatActivity activity) {
+//        ActionBar actionBar = activity.getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.invalidateOptionsMenu();
+//        }
+//    }
 }

@@ -1,18 +1,15 @@
 package org.ebookdroid.ui.viewer.views;
 
-import org.sufficientlysecure.viewer.R;
-import org.ebookdroid.core.ViewState;
-import org.ebookdroid.ui.viewer.IView;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Rect;
 
+import org.ebookdroid.core.ViewState;
+import org.ebookdroid.ui.viewer.IView;
 import org.emdev.BaseDroidApp;
 import org.emdev.ui.gl.BitmapTexture;
 import org.emdev.ui.gl.GLCanvas;
+import org.sufficientlysecure.viewer.R;
 
 public enum DragMark {
 
@@ -20,7 +17,7 @@ public enum DragMark {
 
     CURLER(R.drawable.components_curler_arrows, true);
 
-    private static final Paint PAINT = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
+//    private static final Paint PAINT = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
 
     private final int resId;
 
@@ -35,20 +32,22 @@ public enum DragMark {
         this.showAlways = showAlways;
     }
 
-    public synchronized void draw(final Canvas canvas, final ViewState viewState) {
-        if (dragBitmap == null || dragBitmap.isRecycled()) {
-            dragBitmap = BitmapFactory.decodeResource(BaseDroidApp.context.getResources(), resId);
-        }
-
-        final Rect l = viewState.ctrl.getScrollLimits();
-        if (showAlways || (l.width() + l.height() > 0)) {
-            final IView view = viewState.ctrl.getView();
-            final float x = view.getScrollX() - viewState.viewBase.x + view.getWidth() - dragBitmap.getWidth() - 1;
-            final float y = view.getScrollY() - viewState.viewBase.y + view.getHeight() - dragBitmap.getHeight() - 1;
-
-            canvas.drawBitmap(dragBitmap, x, y, PAINT);
-        }
-    }
+// --Commented out by Inspection START (3/10/21 4:47 PM):
+//    public synchronized void draw(final Canvas canvas, final ViewState viewState) {
+//        if (dragBitmap == null || dragBitmap.isRecycled()) {
+//            dragBitmap = BitmapFactory.decodeResource(BaseDroidApp.context.getResources(), resId);
+//        }
+//
+//        final Rect l = viewState.ctrl.getScrollLimits();
+//        if (showAlways || (l.width() + l.height() > 0)) {
+//            final IView view = viewState.ctrl.getView();
+//            final float x = view.getScrollX() - viewState.viewBase.x + view.getWidth() - dragBitmap.getWidth() - 1;
+//            final float y = view.getScrollY() - viewState.viewBase.y + view.getHeight() - dragBitmap.getHeight() - 1;
+//
+//            canvas.drawBitmap(dragBitmap, x, y, PAINT);
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:47 PM)
 
     public synchronized void draw(final GLCanvas canvas, final ViewState viewState) {
         if (dragBitmap == null || dragBitmap.isRecycled()) {

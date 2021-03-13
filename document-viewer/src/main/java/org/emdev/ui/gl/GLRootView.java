@@ -58,9 +58,9 @@ public class GLRootView extends GLSurfaceView implements GLSurfaceView.Renderer 
     protected final Condition mFreezeCondition = mRenderLock.newCondition();
     protected boolean mFreeze;
 
-    protected long mLastDrawFinishTime;
-    protected boolean mInDownState = false;
-    protected boolean mFirstDraw = true;
+    // --Commented out by Inspection (3/10/21 5:14 PM):protected long mLastDrawFinishTime;
+    // --Commented out by Inspection (3/10/21 5:14 PM):protected boolean mInDownState = false;
+    // --Commented out by Inspection (3/10/21 5:14 PM):protected boolean mFirstDraw = true;
 
     public GLRootView(final Context context) {
         this(context, null);
@@ -204,13 +204,17 @@ public class GLRootView extends GLSurfaceView implements GLSurfaceView.Renderer 
     protected void draw(final GLCanvas canvas) {
     }
 
-    public void lockRenderThread() {
-        mRenderLock.lock();
-    }
+// --Commented out by Inspection START (3/10/21 5:14 PM):
+//    public void lockRenderThread() {
+//        mRenderLock.lock();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:14 PM)
 
-    public void unlockRenderThread() {
-        mRenderLock.unlock();
-    }
+// --Commented out by Inspection START (3/10/21 5:14 PM):
+//    public void unlockRenderThread() {
+//        mRenderLock.unlock();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:14 PM)
 
     @Override
     public void onPause() {
@@ -218,11 +222,13 @@ public class GLRootView extends GLSurfaceView implements GLSurfaceView.Renderer 
         super.onPause();
     }
 
-    public void freeze() {
-        mRenderLock.lock();
-        mFreeze = true;
-        mRenderLock.unlock();
-    }
+// --Commented out by Inspection START (3/10/21 5:14 PM):
+//    public void freeze() {
+//        mRenderLock.lock();
+//        mFreeze = true;
+//        mRenderLock.unlock();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:14 PM)
 
     public void unfreeze() {
         mRenderLock.lock();

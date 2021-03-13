@@ -25,7 +25,7 @@ public enum PageAnimationType implements ResourceConstant {
     /** The resource value. */
     private final String resValue;
 
-    private final boolean hardwareAccelSupported;
+//    private final boolean hardwareAccelSupported;
 
     /**
      * Instantiates a new page animation type.
@@ -35,7 +35,7 @@ public enum PageAnimationType implements ResourceConstant {
      */
     PageAnimationType(final int resId, final boolean hardwareAccelSupported) {
         this.resValue = EBookDroidApp.context.getString(resId);
-        this.hardwareAccelSupported = hardwareAccelSupported;
+//        this.hardwareAccelSupported = hardwareAccelSupported;
     }
 
     /**
@@ -47,9 +47,11 @@ public enum PageAnimationType implements ResourceConstant {
         return resValue;
     }
 
-    public boolean isHardwareAccelSupported() {
-        return hardwareAccelSupported;
-    }
+// --Commented out by Inspection START (3/10/21 5:30 PM):
+//    public boolean isHardwareAccelSupported() {
+//        return hardwareAccelSupported;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:30 PM)
 
     public static PageAnimator create(final PageAnimationType type, final SinglePageController singlePageDocumentView) {
         if (type != null) {

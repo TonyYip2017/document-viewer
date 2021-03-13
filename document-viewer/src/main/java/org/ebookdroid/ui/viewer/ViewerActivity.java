@@ -102,7 +102,7 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
 
         View rootLayout = getLayoutInflater().inflate(R.layout.viewer, null);
 
-        FrameLayout frameLayout = (FrameLayout) rootLayout.findViewById(R.id.framelayout);
+        FrameLayout frameLayout = rootLayout.findViewById(R.id.framelayout);
 
         view = ViewStub.STUB;
 
@@ -130,7 +130,7 @@ public class ViewerActivity extends AbstractActionActivity<ViewerActivity, Viewe
 
         setContentView(rootLayout);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);

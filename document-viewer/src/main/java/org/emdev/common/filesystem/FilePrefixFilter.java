@@ -7,15 +7,15 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.emdev.utils.LengthUtils;
-
 public class FilePrefixFilter implements FileFilter, FilenameFilter {
 
     private final Set<String> prefixes;
 
-    public FilePrefixFilter(final Set<String> prefixes) {
-        this.prefixes = prefixes;
-    }
+// --Commented out by Inspection START (3/10/21 5:13 PM):
+//    public FilePrefixFilter(final Set<String> prefixes) {
+//        this.prefixes = prefixes;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:13 PM)
 
     public FilePrefixFilter(final String... prefixes) {
         this.prefixes = new HashSet<>(Arrays.asList(prefixes));
@@ -31,15 +31,17 @@ public class FilePrefixFilter implements FileFilter, FilenameFilter {
         return acceptImpl(name.toLowerCase());
     }
 
-    public boolean accept(final String name) {
-        if (LengthUtils.isEmpty(name)) {
-            return false;
-        }
-        if (!new File(name).exists()) {
-            return false;
-        }
-        return acceptImpl(name.toLowerCase());
-    }
+// --Commented out by Inspection START (3/10/21 4:49 PM):
+//    public boolean accept(final String name) {
+//        if (LengthUtils.isEmpty(name)) {
+//            return false;
+//        }
+//        if (!new File(name).exists()) {
+//            return false;
+//        }
+//        return acceptImpl(name.toLowerCase());
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:49 PM)
 
     protected boolean acceptImpl(final String name) {
         boolean res = false;

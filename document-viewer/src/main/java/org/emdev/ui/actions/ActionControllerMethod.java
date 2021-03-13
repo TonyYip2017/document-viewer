@@ -65,15 +65,17 @@ public class ActionControllerMethod {
         return null != getMethod();
     }
 
-    /**
-     * Returns reflection error info.
-     *
-     * @return {@link Throwable}
-     */
-    public Throwable getErrorInfo() {
-        getMethod();
-        return m_errorInfo;
-    }
+// --Commented out by Inspection START (3/10/21 4:26 PM):
+//    /**
+//     * Returns reflection error info.
+//     *
+//     * @return {@link Throwable}
+//     */
+//    public Throwable getErrorInfo() {
+//        getMethod();
+//        return m_errorInfo;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:26 PM)
 
     /**
      * @return {@link Method}

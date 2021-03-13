@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import org.emdev.BaseDroidApp;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class StringPreferenceDefinition extends BasePreferenceDefinition<String> {

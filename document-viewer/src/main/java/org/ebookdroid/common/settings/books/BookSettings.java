@@ -367,29 +367,31 @@ public class BookSettings implements CurrentPageListener {
             return 0 != (mask & D_CropPages);
         }
 
-        public boolean isContrastChanged() {
-            return 0 != (mask & D_Contrast);
-        }
+//        public boolean isContrastChanged() {
+//            return 0 != (mask & D_Contrast);
+//        }
+//
+//        public boolean isGammaChanged() {
+//            return 0 != (mask & D_Gamma);
+//        }
+//
+//        public boolean isExposureChanged() {
+//            return 0 != (mask & D_Exposure);
+//        }
+//
+//        public boolean isNightModeChanged() {
+//            return 0 != (mask & D_NightMode);
+//        }
+//
+//        public boolean isPositiveImagesInNightModeChanged() {
+//            return 0 != (mask & D_PositiveImagesInNightMode);
+//        }
 
-        public boolean isGammaChanged() {
-            return 0 != (mask & D_Gamma);
-        }
-
-        public boolean isExposureChanged() {
-            return 0 != (mask & D_Exposure);
-        }
-
-        public boolean isNightModeChanged() {
-            return 0 != (mask & D_NightMode);
-        }
-
-        public boolean isPositiveImagesInNightModeChanged() {
-            return 0 != (mask & D_PositiveImagesInNightMode);
-        }
-
-        public boolean isAutoLevelsChanged() {
-            return 0 != (mask & D_AutoLevels);
-        }
+// --Commented out by Inspection START (3/10/21 4:38 PM):
+//        public boolean isAutoLevelsChanged() {
+//            return 0 != (mask & D_AutoLevels);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:38 PM)
 
         public boolean isEffectsChanged() {
             return 0 != (mask & (D_Effects));

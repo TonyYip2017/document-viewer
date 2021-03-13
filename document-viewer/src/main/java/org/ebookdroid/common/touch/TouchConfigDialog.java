@@ -54,28 +54,28 @@ public class TouchConfigDialog extends Dialog {
 
         actionsAdapter = new ActionsAdapter(getContext());
 
-        stList = (Spinner) this.findViewById(R.id.tapZonesConfigSingleAction);
+        stList = this.findViewById(R.id.tapZonesConfigSingleAction);
         stList.setAdapter(actionsAdapter);
         stList.setTag(TouchManager.Touch.SingleTap);
         stList.setOnItemSelectedListener(actionListener);
 
-        dtList = (Spinner) this.findViewById(R.id.tapZonesConfigDoubleAction);
+        dtList = this.findViewById(R.id.tapZonesConfigDoubleAction);
         dtList.setAdapter(actionsAdapter);
         dtList.setTag(TouchManager.Touch.DoubleTap);
         dtList.setOnItemSelectedListener(actionListener);
 
-        ltList = (Spinner) this.findViewById(R.id.tapZonesConfigLongAction);
+        ltList = this.findViewById(R.id.tapZonesConfigLongAction);
         ltList.setAdapter(actionsAdapter);
         ltList.setTag(TouchManager.Touch.LongTap);
         ltList.setOnItemSelectedListener(actionListener);
 
-        tftList = (Spinner) this.findViewById(R.id.tapZonesConfigTwoFingerAction);
+        tftList = this.findViewById(R.id.tapZonesConfigTwoFingerAction);
         tftList.setAdapter(actionsAdapter);
         tftList.setTag(TouchManager.Touch.TwoFingerTap);
         tftList.setOnItemSelectedListener(actionListener);
 
         adapter = new RegionsAdapter(getContext(), wraps(profile.regions));
-        regionList = (Spinner) this.findViewById(R.id.tapZonesConfigRegions);
+        regionList = this.findViewById(R.id.tapZonesConfigRegions);
         regionList.setAdapter(adapter);
         regionList.setSelection(profile.regions.indexOf(region));
         regionList.setOnItemSelectedListener(new RegionSelectionListener());

@@ -117,7 +117,7 @@ public class CodecPageHolder {
         public CodecPage call() {
             CodecPage page = ref.get();
             if (page == null || page.isRecycled()) {
-                page = null;
+//                page = null;
                 page = document.getPage(pageIndex);
                 ref = new SoftReference<>(page);
             }

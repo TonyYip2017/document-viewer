@@ -24,7 +24,6 @@ import org.ebookdroid.core.PageIndex;
 import org.ebookdroid.ui.library.views.FileBrowserView;
 import org.emdev.ui.AbstractActionActivity;
 import org.emdev.ui.actions.ActionMenuHelper;
-import org.emdev.ui.uimanager.UIManagerAppCompat;
 import org.emdev.utils.LayoutUtils;
 import org.emdev.utils.LengthUtils;
 import org.sufficientlysecure.viewer.R;
@@ -63,12 +62,12 @@ public class BrowserActivity extends AbstractActionActivity<BrowserActivity, Bro
     protected void onCreateImpl(final Bundle savedInstanceState) {
         setContentView(R.layout.browser);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         final BrowserActivityController c = getController();
 
-        viewflipper = (ViewFlipper) findViewById(R.id.browserflip);
+        viewflipper = findViewById(R.id.browserflip);
         viewflipper.addView(LayoutUtils.fillInParent(viewflipper, new FileBrowserView(c, c.adapter)));
     }
 
@@ -113,7 +112,8 @@ public class BrowserActivity extends AbstractActionActivity<BrowserActivity, Bro
     void setTitle(final File dir) {
         final String path = dir.getAbsolutePath();
         setTitle(path);
-        UIManagerAppCompat.invalidateOptionsMenu(this);
+        invalidateOptionsMenu();
+//        UIManagerAppCompat.invalidateOptionsMenu(this);
     }
 
     /**

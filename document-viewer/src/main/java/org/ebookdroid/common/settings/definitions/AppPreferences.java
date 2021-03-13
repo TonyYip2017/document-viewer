@@ -124,8 +124,10 @@ public interface AppPreferences {
     IntegerPreferenceDefinition BITMAP_SIZE = new IntegerPreferenceDefinition(pref_bitmapsize_id, pref_bitmapsize_512,
             pref_bitmapsize_64, pref_bitmapsize_1024);
 
-    IntegerPreferenceDefinition HEAP_PREALLOCATE = new IntegerPreferenceDefinition(pref_heappreallocate_id,
-            pref_heappreallocate_defvalue, pref_heappreallocate_minvalue, pref_heappreallocate_maxvalue);
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//    IntegerPreferenceDefinition HEAP_PREALLOCATE = new IntegerPreferenceDefinition(pref_heappreallocate_id,
+//            pref_heappreallocate_defvalue, pref_heappreallocate_minvalue, pref_heappreallocate_maxvalue);
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
     IntegerPreferenceDefinition PDF_STORAGE_SIZE = new IntegerPreferenceDefinition(pref_pdfstoragesize_id,
             pref_pdfstoragesize_defvalue, pref_pdfstoragesize_minvalue, pref_pdfstoragesize_maxvalue);

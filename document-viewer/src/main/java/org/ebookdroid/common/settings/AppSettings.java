@@ -97,7 +97,7 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
 
     public final int decodingThreadPriority;
 
-    public final int drawThreadPriority;
+//    public final int drawThreadPriority;
 
     public final boolean decodingOnScroll;
 
@@ -194,7 +194,7 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         pagesInMemory = PAGES_IN_MEMORY.getPreferenceValue(prefs);
         decodingThreads = DECODING_THREADS.getPreferenceValue(prefs);
         decodingThreadPriority = DECODE_THREAD_PRIORITY.getPreferenceValue(prefs);
-        drawThreadPriority = DRAW_THREAD_PRIORITY.getPreferenceValue(prefs);
+//        drawThreadPriority = DRAW_THREAD_PRIORITY.getPreferenceValue(prefs);
         decodingOnScroll = DECODING_ON_SCROLL.getPreferenceValue(prefs);
         bitmapSize = BITMAP_SIZE.getPreferenceValue(prefs);
 //        heapPreallocate = HEAP_PREALLOCATE.getPreferenceValue(prefs);
@@ -346,29 +346,31 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         bs.rtl = BOOK_RTL.getPreferenceValue(prefs, current.rtl);
     }
 
-    static void clearPseudoBookSettings() {
-        final SharedPreferences prefs = SettingsManager.prefs;
-        final Editor edit = prefs.edit();
-        edit.remove(BOOK.key);
-        edit.remove(BOOK_NIGHT_MODE.key);
-        edit.remove(BOOK_NIGHT_MODE_POS_IMAGES.key);
-        edit.remove(BOOK_TINT.key);
-        edit.remove(BOOK_TINT_COLOR.key);
-        edit.remove(BOOK_CONTRAST.key);
-        edit.remove(BOOK_GAMMA.key);
-        edit.remove(BOOK_EXPOSURE.key);
-        edit.remove(BOOK_AUTO_LEVELS.key);
-        edit.remove(BOOK_SPLIT_PAGES.key);
-        edit.remove(BOOK_SPLIT_RTL.key);
-        edit.remove(BOOK_CROP_PAGES.key);
-        edit.remove(BOOK_ROTATION.key);
-        edit.remove(BOOK_VIEW_MODE.key);
-        edit.remove(BOOK_PAGE_ALIGN.key);
-        edit.remove(BOOK_ANIMATION_TYPE.key);
-        edit.remove(BOOK_FIRST_PAGE_OFFSET.key);
-        edit.remove(BOOK_RTL.key);
-        edit.commit();
-    }
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//    static void clearPseudoBookSettings() {
+//        final SharedPreferences prefs = SettingsManager.prefs;
+//        final Editor edit = prefs.edit();
+//        edit.remove(BOOK.key);
+//        edit.remove(BOOK_NIGHT_MODE.key);
+//        edit.remove(BOOK_NIGHT_MODE_POS_IMAGES.key);
+//        edit.remove(BOOK_TINT.key);
+//        edit.remove(BOOK_TINT_COLOR.key);
+//        edit.remove(BOOK_CONTRAST.key);
+//        edit.remove(BOOK_GAMMA.key);
+//        edit.remove(BOOK_EXPOSURE.key);
+//        edit.remove(BOOK_AUTO_LEVELS.key);
+//        edit.remove(BOOK_SPLIT_PAGES.key);
+//        edit.remove(BOOK_SPLIT_RTL.key);
+//        edit.remove(BOOK_CROP_PAGES.key);
+//        edit.remove(BOOK_ROTATION.key);
+//        edit.remove(BOOK_VIEW_MODE.key);
+//        edit.remove(BOOK_PAGE_ALIGN.key);
+//        edit.remove(BOOK_ANIMATION_TYPE.key);
+//        edit.remove(BOOK_FIRST_PAGE_OFFSET.key);
+//        edit.remove(BOOK_RTL.key);
+//        edit.commit();
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
     static void updatePseudoBookSettings(final BookSettings bs) {
         final SharedPreferences prefs = SettingsManager.prefs;
@@ -437,10 +439,10 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         private static final int D_BrightnessInNightMode = 0x0001 << 9;
         private static final int D_KeepScreenOn = 0x0001 << 10;
         private static final int D_LoadRecent = 0x0001 << 11;
-        private static final int D_UseBookcase = 0x0001 << 12;
+        // --Commented out by Inspection (3/10/21 5:06 PM):private static final int D_UseBookcase = 0x0001 << 12;
         private static final int D_DjvuRenderingMode = 0x0001 << 13;
-        private static final int D_AutoScanDirs = 0x0001 << 14;
-        private static final int D_AllowedFileTypes = 0x0001 << 15;
+        // --Commented out by Inspection (3/10/21 5:06 PM):private static final int D_AutoScanDirs = 0x0001 << 14;
+        // --Commented out by Inspection (3/10/21 5:05 PM):private static final int D_AllowedFileTypes = 0x0001 << 15;
         private static final int D_TapConfigChanged = 0x0001 << 16;
         private static final int D_KeyBindingChanged = 0x0001 << 17;
 
@@ -504,9 +506,11 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
             return firstTime;
         }
 
-        public boolean isLangChanged() {
-            return 0 != (mask & D_Lang);
-        }
+// --Commented out by Inspection START (3/10/21 4:29 PM):
+//        public boolean isLangChanged() {
+//            return 0 != (mask & D_Lang);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:29 PM)
 
         public boolean isRotationChanged() {
             return 0 != (mask & D_Rotation);
@@ -520,53 +524,73 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
             return 0 != (mask & D_ShowTitle);
         }
 
-        public boolean isPageInTitleChanged() {
-            return 0 != (mask & D_PageInTitle);
-        }
+// --Commented out by Inspection START (3/10/21 4:29 PM):
+//        public boolean isPageInTitleChanged() {
+//            return 0 != (mask & D_PageInTitle);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:29 PM)
 
-        public boolean isTapsEnabledChanged() {
-            return 0 != (mask & D_TapsEnabled);
-        }
+// --Commented out by Inspection START (3/10/21 4:29 PM):
+//        public boolean isTapsEnabledChanged() {
+//            return 0 != (mask & D_TapsEnabled);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:29 PM)
 
-        public boolean isScrollHeightChanged() {
-            return 0 != (mask & D_ScrollHeight);
-        }
+// --Commented out by Inspection START (3/10/21 4:29 PM):
+//        public boolean isScrollHeightChanged() {
+//            return 0 != (mask & D_ScrollHeight);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:29 PM)
 
         public boolean isPagesInMemoryChanged() {
             return 0 != (mask & D_PagesInMemory);
         }
 
-        public boolean isBrightnessChanged() {
-            return 0 != (mask & D_Brightness);
-        }
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//        public boolean isBrightnessChanged() {
+//            return 0 != (mask & D_Brightness);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
-        public boolean isBrightnessInNightModeChanged() {
-            return 0 != (mask & D_BrightnessInNightMode);
-        }
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//        public boolean isBrightnessInNightModeChanged() {
+//            return 0 != (mask & D_BrightnessInNightMode);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
         public boolean isKeepScreenOnChanged() {
             return 0 != (mask & D_KeepScreenOn);
         }
 
-        public boolean isLoadRecentChanged() {
-            return 0 != (mask & D_LoadRecent);
-        }
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//        public boolean isLoadRecentChanged() {
+//            return 0 != (mask & D_LoadRecent);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
-        public boolean isUseBookcaseChanged() {
-            return 0 != (mask & D_UseBookcase);
-        }
+// --Commented out by Inspection START (3/10/21 4:29 PM):
+//        public boolean isUseBookcaseChanged() {
+//            return 0 != (mask & D_UseBookcase);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:29 PM)
 
-        public boolean isDjvuRenderingModeChanged() {
-            return 0 != (mask & D_DjvuRenderingMode);
-        }
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//        public boolean isDjvuRenderingModeChanged() {
+//            return 0 != (mask & D_DjvuRenderingMode);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
-        public boolean isAutoScanDirsChanged() {
-            return 0 != (mask & D_AutoScanDirs);
-        }
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//        public boolean isAutoScanDirsChanged() {
+//            return 0 != (mask & D_AutoScanDirs);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
-        public boolean isAllowedFileTypesChanged() {
-            return 0 != (mask & D_AllowedFileTypes);
-        }
+// --Commented out by Inspection START (3/10/21 4:28 PM):
+//        public boolean isAllowedFileTypesChanged() {
+//            return 0 != (mask & D_AllowedFileTypes);
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
         public boolean isTapConfigChanged() {
             return 0 != (mask & D_TapConfigChanged);

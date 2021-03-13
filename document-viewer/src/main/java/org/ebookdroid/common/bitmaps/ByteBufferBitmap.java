@@ -4,8 +4,6 @@ import org.ebookdroid.common.settings.books.BookSettings;
 import org.ebookdroid.common.settings.definitions.AppPreferences;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Rect;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -42,35 +40,37 @@ public final class ByteBufferBitmap {
         ByteBuffer buf = pixels;
         pixels = null;
         free(buf);
-        buf = null;
+//        buf = null;
     }
 
-    public static ByteBufferBitmap get(final Bitmap bmp) {
-        if (bmp.getConfig() != Bitmap.Config.ARGB_8888) {
-            throw new IllegalArgumentException("Wrong bitmap config: " + bmp.getConfig());
-        }
-        final ByteBufferBitmap b = ByteBufferManager.getBitmap(bmp.getWidth(), bmp.getHeight());
-        bmp.copyPixelsToBuffer(b.pixels);
-        return b;
-    }
+// --Commented out by Inspection START (3/10/21 5:09 PM):
+//    public static ByteBufferBitmap get(final Bitmap bmp) {
+//        if (bmp.getConfig() != Bitmap.Config.ARGB_8888) {
+//            throw new IllegalArgumentException("Wrong bitmap config: " + bmp.getConfig());
+//        }
+//        final ByteBufferBitmap b = ByteBufferManager.getBitmap(bmp.getWidth(), bmp.getHeight());
+//        bmp.copyPixelsToBuffer(b.pixels);
+//        return b;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:09 PM)
 
-    public static ByteBufferBitmap get(final Bitmap bitmap, final Rect srcRect) {
-        final ByteBufferBitmap full = get(bitmap);
-
-        final int srcWidth = srcRect.width();
-        final int srcHeight = srcRect.height();
-
-        if (full.width == srcWidth && full.height == srcHeight) {
-            return full;
-        }
-
-        final ByteBufferBitmap part = ByteBufferManager.getBitmap(srcWidth, srcHeight);
-        part.copyPixelsFrom(full, srcRect.left, srcRect.top, part.width, part.height);
-
-        ByteBufferManager.release(full);
-
-        return part;
-    }
+//    public static ByteBufferBitmap get(final Bitmap bitmap, final Rect srcRect) {
+//        final ByteBufferBitmap full = get(bitmap);
+//
+//        final int srcWidth = srcRect.width();
+//        final int srcHeight = srcRect.height();
+//
+//        if (full.width == srcWidth && full.height == srcHeight) {
+//            return full;
+//        }
+//
+//        final ByteBufferBitmap part = ByteBufferManager.getBitmap(srcWidth, srcHeight);
+//        part.copyPixelsFrom(full, srcRect.left, srcRect.top, part.width, part.height);
+//
+//        ByteBufferManager.release(full);
+//
+//        return part;
+//    }
 
     public void applyEffects(final BookSettings bs) {
         final boolean correctContrast = bs.contrast != AppPreferences.CONTRAST.defValue;
@@ -135,9 +135,9 @@ public final class ByteBufferBitmap {
         return bitmap;
     }
 
-    public void fillAlpha(final int v) {
-        nativeFillAlpha(pixels, width, height, v);
-    }
+//    public void fillAlpha(final int v) {
+//        nativeFillAlpha(pixels, width, height, v);
+//    }
 
     public void invert() {
         nativeInvert(pixels, width, height);
@@ -147,9 +147,9 @@ public final class ByteBufferBitmap {
         nativeTint(pixels, width, height, c);
     }
 
-    public int getAvgLum() {
-        return nativeAvgLum(pixels, width, height);
-    }
+//    public int getAvgLum() {
+//        return nativeAvgLum(pixels, width, height);
+//    }
 
     public void contrast(final int contrast) {
         nativeContrast(pixels, width, height, contrast * 256 / 100);
@@ -181,7 +181,7 @@ public final class ByteBufferBitmap {
 
     private static native void nativeTint(ByteBuffer src, int width, int height, int color);
 
-    private static native void nativeFillAlpha(ByteBuffer src, int width, int height, int value);
+//    private static native void nativeFillAlpha(ByteBuffer src, int width, int height, int value);
 
     private static native void nativeEraseColor(ByteBuffer src, int width, int height, int color);
 
@@ -194,11 +194,11 @@ public final class ByteBufferBitmap {
     /* Exposure correction values -128...+128 */
     private static native void nativeExposure(ByteBuffer src, int width, int height, int exposure);
 
-    private static native void nativeAutoLevels(ByteBuffer src, int width, int height);
+//    private static native void nativeAutoLevels(ByteBuffer src, int width, int height);
 
     private static native void nativeAutoLevels2(ByteBuffer src, int width, int height);
 
-    private static native int nativeAvgLum(ByteBuffer src, int width, int height);
+//    private static native int nativeAvgLum(ByteBuffer src, int width, int height);
 
     private static native void nativeFillRect(ByteBuffer src, int srcWidth, ByteBuffer dst, int dstWidth, int x,
             int y, int width, int height);

@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import org.ebookdroid.CodecType;
-import org.ebookdroid.EBookDroidApp;
 import org.ebookdroid.common.cache.CacheManager;
 import org.ebookdroid.common.cache.CacheManager.ICacheListener;
 import org.ebookdroid.common.cache.ThumbnailFile;
@@ -550,7 +549,8 @@ public class RecentActivityController extends AbstractActivityController<RecentA
                 }
             }
         } finally {
-            UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
+            getManagedComponent().invalidateOptionsMenu();
+//            UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
         }
     }
 
@@ -599,14 +599,16 @@ public class RecentActivityController extends AbstractActivityController<RecentA
                 if (LibSettings.current().autoScanRemovableMedia) {
                     bookshelfAdapter.startScan(path);
                 }
-                UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
+                getManagedComponent().invalidateOptionsMenu();
+//                UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
             }
             return;
         }
 
         if (oldState != null && oldState.readable) {
             bookshelfAdapter.removeAll(path);
-            UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
+            getManagedComponent().invalidateOptionsMenu();
+//            UIManagerAppCompat.invalidateOptionsMenu(getManagedComponent());
         }
     }
 }

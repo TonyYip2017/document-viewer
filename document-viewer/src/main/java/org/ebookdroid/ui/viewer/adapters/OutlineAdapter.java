@@ -9,7 +9,6 @@ import org.ebookdroid.ui.viewer.IActivityController;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -177,10 +176,10 @@ public class OutlineAdapter extends BaseAdapter {
         } else {
             container = convertView;
         }
-        final TextView view = (TextView) container.findViewById(R.id.outline_title);
-        final ImageView btn = (ImageView) container.findViewById(R.id.outline_collapse);
+        final TextView view = container.findViewById(R.id.outline_title);
+        final ImageView btn = container.findViewById(R.id.outline_collapse);
         final View space = container.findViewById(R.id.outline_space);
-        final TextView pageIndex = (TextView) container.findViewById(R.id.outline_pageindex);
+        final TextView pageIndex = container.findViewById(R.id.outline_pageindex);
 
         final OutlineLink item = getItem(position);
         view.setText(item.title.trim());

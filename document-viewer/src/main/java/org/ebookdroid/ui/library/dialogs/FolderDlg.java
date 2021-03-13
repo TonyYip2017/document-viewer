@@ -54,10 +54,10 @@ public class FolderDlg implements AdapterView.OnItemClickListener {
 
         adapter = new BrowserAdapter(filter);
 
-        header = (TextView) view.findViewById(R.id.browsertext);
-        filesView = (ListView) view.findViewById(R.id.browserview);
-        upButton = (ImageView) view.findViewById(R.id.browserupfolder);
-        homeButton = (ImageView) view.findViewById(R.id.browserhome);
+        header = view.findViewById(R.id.browsertext);
+        filesView = view.findViewById(R.id.browserview);
+        upButton = view.findViewById(R.id.browserupfolder);
+        homeButton = view.findViewById(R.id.browserhome);
 
         upButton.setOnClickListener(controller.getOrCreateAction(R.id.browserupfolder));
         homeButton.setOnClickListener(controller.getOrCreateAction(R.id.browserhome));
@@ -84,10 +84,10 @@ public class FolderDlg implements AdapterView.OnItemClickListener {
 
         adapter = new BrowserAdapter(filter);
 
-        header = (TextView) view.findViewById(R.id.browsertext);
-        filesView = (ListView) view.findViewById(R.id.browserview);
-        upButton = (ImageView) view.findViewById(R.id.browserupfolder);
-        homeButton = (ImageView) view.findViewById(R.id.browserhome);
+        header = view.findViewById(R.id.browsertext);
+        filesView = view.findViewById(R.id.browserview);
+        upButton = view.findViewById(R.id.browserupfolder);
+        homeButton = view.findViewById(R.id.browserhome);
 
         upButton.setOnClickListener(controller.getOrCreateAction(R.id.browserupfolder));
         homeButton.setOnClickListener(controller.getOrCreateAction(R.id.browserhome));

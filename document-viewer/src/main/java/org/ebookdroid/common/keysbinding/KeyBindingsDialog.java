@@ -183,7 +183,7 @@ public class KeyBindingsDialog extends Dialog {
             } else {
                 container = convertView;
             }
-            view = (TextView) container.findViewById(R.id.keybinding_groupText);
+            view = container.findViewById(R.id.keybinding_groupText);
             view.setText(getGroup(groupPosition).label);
             return container;
         }
@@ -207,10 +207,10 @@ public class KeyBindingsDialog extends Dialog {
 
             final KeyAction action = getChild(groupPosition, childPosition);
 
-            final TextView keyView = (TextView) convertView.findViewById(R.id.keybinding_key);
+            final TextView keyView = convertView.findViewById(R.id.keybinding_key);
             keyView.setText(action.label);
 
-            final Spinner actionsView = (Spinner) convertView.findViewById(R.id.keybinding_actions);
+            final Spinner actionsView = convertView.findViewById(R.id.keybinding_actions);
             actionsView.setOnItemSelectedListener(this);
             actionsView.setAdapter(actionsAdapter);
             actionsView.setTag(action);

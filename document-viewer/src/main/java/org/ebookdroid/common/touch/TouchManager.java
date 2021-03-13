@@ -148,9 +148,9 @@ public class TouchManager {
             return forward ? regions.listIterator() : regions.listIterator(regions.size());
         }
 
-        public void clear() {
-            regions.clear();
-        }
+//        public void clear() {
+//            regions.clear();
+//        }
 
         public Integer getAction(final Touch type, final float x, final float y, final float width, final float height) {
             LCTX.d("getAction(" + type + ", " + x + ", " + y + ", " + width + ", " + height + ")");
@@ -190,9 +190,9 @@ public class TouchManager {
             return r;
         }
 
-        public void removeRegion(final Region r) {
-            regions.remove(r);
-        }
+//        public void removeRegion(final Region r) {
+//            regions.remove(r);
+//        }
 
         @Override
         public String toString() {

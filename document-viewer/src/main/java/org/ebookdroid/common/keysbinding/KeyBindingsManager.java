@@ -149,15 +149,15 @@ public class KeyBindingsManager {
         }
     }
 
-    public static class KeyInfo {
-
-        public final int code;
-        public final String label;
-
-        public KeyInfo(final int code, final String label) {
-            this.code = code;
-            this.label = label;
-        }
-
-    }
+//    public static class KeyInfo {
+//
+//        public final int code;
+//        public final String label;
+//
+//        public KeyInfo(final int code, final String label) {
+//            this.code = code;
+//            this.label = label;
+//        }
+//
+//    }
 }

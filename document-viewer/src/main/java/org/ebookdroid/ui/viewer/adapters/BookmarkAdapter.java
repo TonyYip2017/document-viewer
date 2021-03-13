@@ -105,20 +105,20 @@ public final class BookmarkAdapter extends BaseAdapter {
         if (itemView == null) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.bookmark, parent, false);
 
-            final BookmarkView text = (BookmarkView) itemView.findViewById(R.id.bookmarkName);
+            final BookmarkView text = itemView.findViewById(R.id.bookmarkName);
             text.setActions(actions);
 
-            final ProgressBar bar = (ProgressBar) itemView.findViewById(R.id.bookmarkPage);
+            final ProgressBar bar = itemView.findViewById(R.id.bookmarkPage);
             bar.setProgressDrawable(context.getResources().getDrawable(R.drawable.viewer_goto_dlg_progress));
         }
 
         final Bookmark b = getBookmark(index);
 
-        final TextView text = (TextView) itemView.findViewById(R.id.bookmarkName);
+        final TextView text = itemView.findViewById(R.id.bookmarkName);
         text.setText(b.name);
         text.setTag(b);
 
-        final ProgressBar bar = (ProgressBar) itemView.findViewById(R.id.bookmarkPage);
+        final ProgressBar bar = itemView.findViewById(R.id.bookmarkPage);
         bar.setMax(lastPage != null ? lastPage.index.viewIndex : 0);
         bar.setProgress(b.page.viewIndex);
 

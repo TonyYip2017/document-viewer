@@ -15,11 +15,15 @@ public interface ActivityEvents {
     int ON_STOP = 1 << 11;
     int ON_DESTROY = 1 << 12;
 
-    int ACTIVITY_EVENTS = ON_CREATE | ON_RESTART | ON_START | ON_POST_CREATE | ON_RESUME | ON_PAUSE | ON_STOP
-            | ON_DESTROY;
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//    int ACTIVITY_EVENTS = ON_CREATE | ON_RESTART | ON_START | ON_POST_CREATE | ON_RESUME | ON_PAUSE | ON_STOP
+//            | ON_DESTROY;
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
-    int CONTROLLER_EVENTS = BEFORE_CREATE | BEFORE_RECREATE | AFTER_CREATE | ON_RESTART | ON_START
-            | ON_POST_CREATE | ON_RESUME | ON_PAUSE | ON_STOP | ON_DESTROY;
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//    int CONTROLLER_EVENTS = BEFORE_CREATE | BEFORE_RECREATE | AFTER_CREATE | ON_RESTART | ON_START
+//            | ON_POST_CREATE | ON_RESUME | ON_PAUSE | ON_STOP | ON_DESTROY;
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
     class Helper {
 
@@ -31,13 +35,15 @@ public interface ActivityEvents {
             return res;
         }
 
-        public static int exclude(final int orig, final int... excluding) {
-            int res = orig;
-            for (int value : excluding) {
-                res &= ~value;
-            }
-            return res;
-        }
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//        public static int exclude(final int orig, final int... excluding) {
+//            int res = orig;
+//            for (int value : excluding) {
+//                res &= ~value;
+//            }
+//            return res;
+//        }
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
         public static boolean enabled(final int events, final int mask) {
             return (events & mask) == mask;

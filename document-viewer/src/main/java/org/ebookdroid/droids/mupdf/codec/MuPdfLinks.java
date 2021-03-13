@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MuPdfLinks {
 
-    private static final int FZ_LINK_NONE = 0;
+//    private static final int FZ_LINK_NONE = 0;
     private static final int FZ_LINK_GOTO = 1;
     private static final int FZ_LINK_URI = 2;
 

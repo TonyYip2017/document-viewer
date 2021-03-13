@@ -41,7 +41,6 @@ import org.emdev.ui.AbstractActionActivity;
 import org.emdev.ui.actions.ActionEx;
 import org.emdev.ui.actions.ActionMenuHelper;
 import org.emdev.ui.actions.params.Constant;
-import org.emdev.ui.uimanager.UIManagerAppCompat;
 import org.emdev.utils.FileUtils;
 import org.emdev.utils.LengthUtils;
 import org.sufficientlysecure.viewer.R;
@@ -87,7 +86,7 @@ public class RecentActivity extends AbstractActionActivity<RecentActivity, Recen
     protected void onCreateImpl(final Bundle savedInstanceState) {
         setContentView(R.layout.recent);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
@@ -98,7 +97,8 @@ public class RecentActivity extends AbstractActionActivity<RecentActivity, Recen
      */
     @Override
     protected void onResumeImpl() {
-        UIManagerAppCompat.invalidateOptionsMenu(this);
+        invalidateOptionsMenu();
+//        UIManagerAppCompat.invalidateOptionsMenu(this);
 
         // HACK: invalidating the adapter when the tab view is not visible seems to leave
         // the scroll position in the wrong place.
@@ -106,7 +106,7 @@ public class RecentActivity extends AbstractActionActivity<RecentActivity, Recen
         h.post(new Runnable() {
             @Override
             public void run() {
-                final TabLayout tl = (TabLayout) findViewById(R.id.tabs);
+                final TabLayout tl = findViewById(R.id.tabs);
                 if (tl != null) {
                     tl.setScrollPosition(tl.getSelectedTabPosition(), 0.0f, true);
                 }
@@ -354,7 +354,7 @@ public class RecentActivity extends AbstractActionActivity<RecentActivity, Recen
 
     ViewFlipper getViewflipper() {
         if (viewflipper == null) {
-            viewflipper = (ViewFlipper) findViewById(R.id.recentflip);
+            viewflipper = findViewById(R.id.recentflip);
         }
 
         return viewflipper;

@@ -68,17 +68,17 @@ public class ThumbnailFile extends File {
         }
     }
 
-    public Bitmap getRawImage() {
-        Bitmap bitmap = ref.get();
-        if (bitmap == null || bitmap.isRecycled()) {
-            try {
-                bitmap = load(true);
-                ref.set(bitmap);
-            } catch (final OutOfMemoryError ignored) {
-            }
-        }
-        return bitmap;
-    }
+//    public Bitmap getRawImage() {
+//        Bitmap bitmap = ref.get();
+//        if (bitmap == null || bitmap.isRecycled()) {
+//            try {
+//                bitmap = load(true);
+//                ref.set(bitmap);
+//            } catch (final OutOfMemoryError ignored) {
+//            }
+//        }
+//        return bitmap;
+//    }
 
     public void setImage(final Bitmap image) {
         if (image != null) {

@@ -29,7 +29,7 @@ public class PageTreeLevel {
     public final int start;
     public final int end;
 
-    public final PageTreeLevel prev;
+    // --Commented out by Inspection (3/10/21 5:29 PM):public final PageTreeLevel prev;
     public final PageTreeLevel next;
 
     private PageTreeLevel(int count) {
@@ -38,7 +38,7 @@ public class PageTreeLevel {
         this.start = 0;
         this.end = 1;
 
-        this.prev = null;
+//        this.prev = null;
         this.next = new PageTreeLevel(this, count - 1);
     }
 
@@ -48,7 +48,7 @@ public class PageTreeLevel {
         this.start = parent.end;
         this.end = this.start + (int) Math.pow(PageTree.splitMasks.length, this.level);
 
-        this.prev = parent;
+//        this.prev = parent;
         this.next = count > 1 ? new PageTreeLevel(this, count - 1) : null;
     }
 

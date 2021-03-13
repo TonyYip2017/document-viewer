@@ -4,21 +4,18 @@ import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;
 
 public class EBookDroidLibraryLoader {
-
     private static final LogContext LCTX = LogManager.root().lctx("LibraryLoader");
-
-    private static boolean alreadyLoaded = false;
+    private static boolean loaded = false;
 
     public static void load() {
-        if (alreadyLoaded) {
+        if (loaded)
             return;
-        }
         try {
             System.loadLibrary("ebookdroid");
-            alreadyLoaded = true;
+            loaded = true;
         } catch (Throwable th) {
             LCTX.e("Native library cannot be loaded: ", th);
-            throw new RuntimeException(th);
+            throw th;
         }
     }
 

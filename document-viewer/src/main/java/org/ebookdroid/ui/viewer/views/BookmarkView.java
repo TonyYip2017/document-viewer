@@ -40,9 +40,11 @@ public class BookmarkView extends TextView {
         detector = new DefaultGestureDetector(context, new GestureListener());
     }
 
-    public IActionController<?> getActions() {
-        return actions;
-    }
+// --Commented out by Inspection START (3/10/21 4:37 PM):
+//    public IActionController<?> getActions() {
+//        return actions;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:37 PM)
 
     public void setActions(final IActionController<?> actions) {
         this.actions = actions;

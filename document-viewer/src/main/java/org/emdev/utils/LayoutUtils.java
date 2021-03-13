@@ -7,8 +7,6 @@ import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import org.emdev.BaseDroidApp;
-
 public final class LayoutUtils {
 
     public static final int FILL_PARENT = ViewGroup.LayoutParams.FILL_PARENT;
@@ -33,7 +31,9 @@ public final class LayoutUtils {
         window.setLayout(FILL_PARENT, FILL_PARENT);
     }
 
-    public static int getDeviceSize(final int dipSize) {
-        return (int) (dipSize * BaseDroidApp.context.getResources().getDisplayMetrics().density + 0.5f);
-    }
+// --Commented out by Inspection START (3/10/21 5:15 PM):
+//    public static int getDeviceSize(final int dipSize) {
+//        return (int) (dipSize * BaseDroidApp.context.getResources().getDisplayMetrics().density + 0.5f);
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:15 PM)
 }

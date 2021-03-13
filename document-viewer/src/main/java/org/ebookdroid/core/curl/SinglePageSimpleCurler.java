@@ -58,8 +58,8 @@ public class SinglePageSimpleCurler extends AbstractSinglePageCurler {
         final float _sin = 2 * tanA / (1 + tanA * tanA);
 
         // And get F
-        mF.x = (float) (width - mMovement.x + _cos * mMovement.x);
-        mF.y = (float) (height - _sin * mMovement.x);
+        mF.x = width - mMovement.x + _cos * mMovement.x;
+        mF.y = height - _sin * mMovement.x;
 
         // If the x position of A is above half of the page we are still not
         // folding the upper-right edge and so E and D are equal.
@@ -68,8 +68,8 @@ public class SinglePageSimpleCurler extends AbstractSinglePageCurler {
             mE.y = mD.y;
         } else {
             // So get E
-            mE.x = (float) (mD.x + _cos * (width - mD.x));
-            mE.y = (float) -(_sin * (width - mD.x));
+            mE.x = mD.x + _cos * (width - mD.x);
+            mE.y = -(_sin * (width - mD.x));
         }
     }
 }

@@ -3,15 +3,12 @@ package org.ebookdroid.droids.djvu.codec;
 import org.ebookdroid.EBookDroidLibraryLoader;
 import org.ebookdroid.core.codec.AbstractCodecContext;
 
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
-
 public class DjvuContext extends AbstractCodecContext {
 
     public static final int DJVU_FEATURES = FEATURE_CACHABLE_PAGE_INFO | FEATURE_PARALLEL_PAGE_ACCESS
             | FEATURE_DOCUMENT_TEXT_SEARCH | FEATURE_EMBEDDED_OUTLINE | FEATURE_CROP_SUPPORT | FEATURE_SPLIT_SUPPORT;
 
-    private static final LogContext LCTX = LogManager.root().lctx("Djvu");
+    // --Commented out by Inspection (3/10/21 4:46 PM):private static final LogContext LCTX = LogManager.root().lctx("Djvu");
 
     static {
         EBookDroidLibraryLoader.load();

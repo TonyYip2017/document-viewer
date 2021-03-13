@@ -128,10 +128,10 @@ public class BrowserAdapter extends BaseAdapter implements Comparator<File> {
         @Override
         public void init(final View convertView) {
             super.init(convertView);
-            textView = (TextView) convertView.findViewById(R.id.browserItemText);
-            imageView = (ImageView) convertView.findViewById(R.id.browserItemIcon);
-            info = (TextView) convertView.findViewById(R.id.browserItemInfo);
-            fileSize = (TextView) convertView.findViewById(R.id.browserItemfileSize);
+            textView = convertView.findViewById(R.id.browserItemText);
+            imageView = convertView.findViewById(R.id.browserItemIcon);
+            info = convertView.findViewById(R.id.browserItemInfo);
+            fileSize = convertView.findViewById(R.id.browserItemfileSize);
         }
     }
 }

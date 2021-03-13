@@ -41,7 +41,7 @@ public class CacheManager extends org.emdev.common.cache.CacheManager {
         File cacheDir = s_context.getFilesDir();
         if (cacheLocation == CacheLocation.Custom) {
             if (!BaseDroidApp.APP_STORAGE.equals(cacheDir)) {
-                cacheDir = new File(BaseDroidApp.APP_STORAGE, "files");
+                cacheDir = new File(BaseDroidApp.   APP_STORAGE, "files");
             }
         }
 

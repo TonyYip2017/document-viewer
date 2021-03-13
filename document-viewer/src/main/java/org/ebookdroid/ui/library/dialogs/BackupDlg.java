@@ -53,20 +53,20 @@ public class BackupDlg extends Dialog implements TextWatcher, ListView.OnItemLon
 
         adapter = new BackupInfoAdapter(getContext(), BackupManager.getAvailableBackups());
 
-        newBackupNameEdit = (EditText) findViewById(R.id.newBackupNameEdit);
+        newBackupNameEdit = findViewById(R.id.newBackupNameEdit);
         newBackupNameEdit.addTextChangedListener(this);
 
-        backupButton = (Button) findViewById(R.id.backupButton);
+        backupButton = findViewById(R.id.backupButton);
         ActionController<BackupDlg> actions = new ActionController<>(this);
         actions.setActionForView(backupButton);
 
-        restoreButton = (Button) findViewById(R.id.restoreBackupButton);
+        restoreButton = findViewById(R.id.restoreBackupButton);
         actions.setActionForView(restoreButton);
 
-        removeButton = (Button) findViewById(R.id.removeBackupButton);
+        removeButton = findViewById(R.id.removeBackupButton);
         actions.setActionForView(removeButton);
 
-        backupsList = (ListView) findViewById(R.id.backupsList);
+        backupsList = findViewById(R.id.backupsList);
 
         backupsList.setAdapter(adapter);
 
@@ -192,7 +192,7 @@ public class BackupDlg extends Dialog implements TextWatcher, ListView.OnItemLon
         @Override
         public View getView(final int position, final View convertView, final ViewGroup parent) {
             final View view = super.getView(position, convertView, parent);
-            final TextView text = (TextView) view.findViewById(R.id.list_item);
+            final TextView text = view.findViewById(R.id.list_item);
             final BackupInfo info = getItem(position);
             text.setText(SDF.format(info.getTimestamp()) + " " + info.name);
             return view;

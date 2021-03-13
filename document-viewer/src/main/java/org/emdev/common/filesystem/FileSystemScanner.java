@@ -134,9 +134,11 @@ public class FileSystemScanner {
         listeners.addListener(listener);
     }
 
-    public void removeListener(final Object listener) {
-        listeners.removeListener(listener);
-    }
+// --Commented out by Inspection START (3/10/21 4:50 PM):
+//    public void removeListener(final Object listener) {
+//        listeners.removeListener(listener);
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:50 PM)
 
     public static String toString(final int event) {
         switch (event) {

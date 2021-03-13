@@ -14,7 +14,6 @@ import org.ebookdroid.ui.viewer.IActivityController;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.util.FloatMath;
 
 import java.util.List;
 
@@ -37,10 +36,10 @@ public class Page {
     RectF bounds;
     int aspectRatio;
     boolean recycled;
-    float storedZoom;
-    RectF zoomedBounds;
+    // --Commented out by Inspection (3/10/21 5:31 PM):float storedZoom;
+//    RectF zoomedBounds;
 
-    int zoomLevel = 1;
+//    int zoomLevel = 1;
 
     List<PageLink> links;
 
@@ -86,18 +85,20 @@ public class Page {
     }
 
     public void setBounds(final RectF pageBounds) {
-        storedZoom = 0.0f;
-        zoomedBounds = null;
+//        storedZoom = 0.0f;
+//        zoomedBounds = null;
         bounds = pageBounds;
     }
 
-    public void setBounds(final float l, final float t, final float r, final float b) {
-        if (bounds == null) {
-            bounds = new RectF(l, t, r, b);
-        } else {
-            bounds.set(l, t, r, b);
-        }
-    }
+// --Commented out by Inspection START (3/10/21 5:31 PM):
+//    public void setBounds(final float l, final float t, final float r, final float b) {
+//        if (bounds == null) {
+//            bounds = new RectF(l, t, r, b);
+//        } else {
+//            bounds.set(l, t, r, b);
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:31 PM)
 
     public boolean shouldCrop() {
         final BookSettings bs = base.getBookSettings();

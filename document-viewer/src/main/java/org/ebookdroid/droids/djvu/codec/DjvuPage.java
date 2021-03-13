@@ -25,7 +25,7 @@ public class DjvuPage extends AbstractCodecPage {
     private final int pageNo;
     private long pageHandle;
 
-    private final static boolean USE_DIRECT = true;
+    // --Commented out by Inspection (3/10/21 4:46 PM):private final static boolean USE_DIRECT = true;
 
     DjvuPage(final long contextHandle, final long docHandle, final long pageHandle, final int pageNo) {
         this.contextHandle = contextHandle;
@@ -108,19 +108,19 @@ public class DjvuPage extends AbstractCodecPage {
         return Collections.emptyList();
     }
 
-    @Override
-    public List<PageTextBox> getPageText() {
-        final List<PageTextBox> list = getPageText(docHandle, pageNo, contextHandle, null);
-        if (LengthUtils.isNotEmpty(list)) {
-            final float width = getWidth();
-            final float height = getHeight();
-            for (final PageTextBox ptb : list) {
-                normalizeTextBox(ptb, width, height);
-                // System.out.println("" + ptb);
-            }
-        }
-        return list;
-    }
+//    @Override
+//    public List<PageTextBox> getPageText() {
+//        final List<PageTextBox> list = getPageText(docHandle, pageNo, contextHandle, null);
+//        if (LengthUtils.isNotEmpty(list)) {
+//            final float width = getWidth();
+//            final float height = getHeight();
+//            for (final PageTextBox ptb : list) {
+//                normalizeTextBox(ptb, width, height);
+//                // System.out.println("" + ptb);
+//            }
+//        }
+//        return list;
+//    }
 
     @Override
     public List<? extends RectF> searchText(final String pattern) {

@@ -118,10 +118,12 @@ public class LibraryAdapter extends BaseExpandableListAdapter {
         return false;
     }
 
-    public void clearData() {
-        adapter.clearData();
-        notifyDataSetInvalidated();
-    }
+// --Commented out by Inspection START (3/10/21 5:34 PM):
+//    public void clearData() {
+//        adapter.clearData();
+//        notifyDataSetInvalidated();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:34 PM)
 
     public static class ViewHolder extends BaseViewHolder {
 
@@ -133,10 +135,10 @@ public class LibraryAdapter extends BaseExpandableListAdapter {
         @Override
         public void init(final View convertView) {
             super.init(convertView);
-            this.name = (TextView) convertView.findViewById(R.id.browserItemText);
-            this.image = (ImageView) convertView.findViewById(R.id.browserItemIcon);
-            this.info = (TextView) convertView.findViewById(R.id.browserItemInfo);
-            this.fileSize = (TextView) convertView.findViewById(R.id.browserItemfileSize);
+            this.name = convertView.findViewById(R.id.browserItemText);
+            this.image = convertView.findViewById(R.id.browserItemIcon);
+            this.info = convertView.findViewById(R.id.browserItemInfo);
+            this.fileSize = convertView.findViewById(R.id.browserItemfileSize);
         }
     }
 

@@ -5,8 +5,6 @@ import org.ebookdroid.core.PageIndex;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.List;
-
 import org.emdev.utils.LengthUtils;
 
 class DBAdapterV2 extends DBAdapterV1 {

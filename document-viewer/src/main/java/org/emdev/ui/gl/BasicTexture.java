@@ -16,11 +16,9 @@
 
 package org.emdev.ui.gl;
 
-import java.util.WeakHashMap;
-
-import org.emdev.common.log.LogContext;
-import org.emdev.common.log.LogManager;
 import org.emdev.utils.MathUtils;
+
+import java.util.WeakHashMap;
 
 // BasicTexture is a Texture corresponds to a real GL texture.
 // The state of a BasicTexture indicates whether its data is loaded to GL memory.
@@ -127,14 +125,16 @@ public abstract class BasicTexture implements Texture {
         freeResource();
     }
 
-    // yield() is called when the texture will not be used temporarily,
-    // so it can free some resources.
-    // The default implementation unloads the texture from GL memory, so
-    // the subclass should make sure it can reload the texture to GL memory
-    // later, or it will have to override this method.
-    public void yield() {
-        freeResource();
-    }
+// --Commented out by Inspection START (3/10/21 5:08 PM):
+//    // yield() is called when the texture will not be used temporarily,
+//    // so it can free some resources.
+//    // The default implementation unloads the texture from GL memory, so
+//    // the subclass should make sure it can reload the texture to GL memory
+//    // later, or it will have to override this method.
+//    public void yield() {
+//        freeResource();
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:08 PM)
 
     private void freeResource() {
         final GLCanvas canvas = mCanvasRef;
@@ -159,13 +159,15 @@ public abstract class BasicTexture implements Texture {
         return sInFinalizer.get() != null;
     }
 
-    public static void yieldAllTextures() {
-        synchronized (sAllTextures) {
-            for (final BasicTexture t : sAllTextures.keySet()) {
-                t.yield();
-            }
-        }
-    }
+// --Commented out by Inspection START (3/10/21 4:35 PM):
+//    public static void yieldAllTextures() {
+//        synchronized (sAllTextures) {
+//            for (final BasicTexture t : sAllTextures.keySet()) {
+//                t.yield();
+//            }
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:35 PM)
 
     public static void invalidateAllTextures() {
         synchronized (sAllTextures) {

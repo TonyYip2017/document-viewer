@@ -24,9 +24,9 @@ public class SearchControls extends LinearLayout {
         setOrientation(LinearLayout.VERTICAL);
 
         LayoutInflater.from(parent).inflate(R.layout.seach_controls, this, true);
-        ImageButton m_prevButton = (ImageButton) findViewById(R.id.search_controls_prev);
-        ImageButton m_nextButton = (ImageButton) findViewById(R.id.search_controls_next);
-        m_edit = (EditText) findViewById(R.id.search_controls_edit);
+        ImageButton m_prevButton = findViewById(R.id.search_controls_prev);
+        ImageButton m_nextButton = findViewById(R.id.search_controls_next);
+        m_edit = findViewById(R.id.search_controls_edit);
 
         ActionEx forwardSearch = parent.getController().getOrCreateAction(R.id.actions_doSearch);
         ActionEx backwardSearch = parent.getController().getOrCreateAction(R.id.actions_doSearchBack);

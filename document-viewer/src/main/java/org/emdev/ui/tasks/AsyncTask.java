@@ -25,8 +25,6 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -132,7 +130,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * <h2>Cancelling a task</h2>
  * <p>
  * A task can be cancelled at any time by invoking {@link #cancel(boolean)}. Invoking this method will cause subsequent
- * calls to {@link #isCancelled()} to return true. After invoking this method, {@link #onCancelled(Object)}, instead of
+ * calls to {@link #isCancelled()} to return true. After invoking this method, {@link #onCancelled()}, instead of
  * {@link #onPostExecute(Object)} will be invoked after {@link #doInBackground(Object[])} returns. To ensure that a task
  * is cancelled as quickly as possible, you should always check the return value of {@link #isCancelled()} periodically
  * from {@link #doInBackground(Object[])}, if possible (inside a loop for instance.)
@@ -196,10 +194,12 @@ public abstract class AsyncTask<Params, Progress, Result> {
         FINISHED,
     }
 
-    /** @hide Used to force static handler to be created. */
-    public static void init() {
-        sHandler.getLooper();
-    }
+// --Commented out by Inspection START (3/10/21 4:31 PM):
+//    /** @hide Used to force static handler to be created. */
+//    public static void init() {
+//        sHandler.getLooper();
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:31 PM)
 
     /**
      * Creates a new asynchronous task. This constructor must be invoked on the UI thread.
@@ -251,14 +251,16 @@ public abstract class AsyncTask<Params, Progress, Result> {
         return result;
     }
 
-    /**
-     * Returns the current status of this task.
-     *
-     * @return The current status.
-     */
-    public final Status getStatus() {
-        return mStatus;
-    }
+// --Commented out by Inspection START (3/10/21 4:31 PM):
+//    /**
+//     * Returns the current status of this task.
+//     *
+//     * @return The current status.
+//     */
+//    public final Status getStatus() {
+//        return mStatus;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:31 PM)
 
     /**
      * Override this method to perform a computation on a background thread. The
@@ -302,7 +304,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      *
      * @see #onPreExecute
      * @see #doInBackground
-     * @see #onCancelled(Object)
+     * @see #onCancelled()
      */
     protected void onPostExecute(final Result result) {
     }
@@ -320,31 +322,28 @@ public abstract class AsyncTask<Params, Progress, Result> {
     protected void onProgressUpdate(final Progress... values) {
     }
 
-    /**
-     * <p>
-     * Runs on the UI thread after {@link #cancel(boolean)} is invoked and {@link #doInBackground(Object[])} has
-     * finished.
-     * </p>
-     *
-     * <p>
-     * The default implementation simply invokes {@link #onCancelled()} and ignores the result. If you write your own
-     * implementation, do not call <code>super.onCancelled(result)</code>.
-     * </p>
-     *
-     * @param result
-     *            The result, if any, computed in {@link #doInBackground(Object[])}, can be null
-     *
-     * @see #cancel(boolean)
-     * @see #isCancelled()
-     */
-    protected void onCancelled(final Result result) {
-        onCancelled();
-    }
+//    /**
+//     * <p>
+//     * Runs on the UI thread after {@link #cancel(boolean)} is invoked and {@link #doInBackground(Object[])} has
+//     * finished.
+//     * </p>
+//     *
+//     * <p>
+//     * The default implementation simply invokes {@link #onCancelled()} and ignores the result. If you write your own
+//     * implementation, do not call <code>super.onCancelled(result)</code>.
+//     * </p>
+//     *
+//     * @see #cancel(boolean)
+//     * @see #isCancelled()
+//     */
+//    protected void onCancelled() {
+//        onCancelled();
+//    }
 
     /**
      * <p>
-     * Applications should preferably override {@link #onCancelled(Object)}. This method is invoked by the default
-     * implementation of {@link #onCancelled(Object)}.
+     * Applications should preferably override {@link #onCancelled()}. This method is invoked by the default
+     * implementation of {@link #onCancelled()}.
      * </p>
      *
      * <p>
@@ -352,7 +351,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      * finished.
      * </p>
      *
-     * @see #onCancelled(Object)
+     * @see #onCancelled()
      * @see #cancel(boolean)
      * @see #isCancelled()
      */
@@ -383,7 +382,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      * </p>
      *
      * <p>
-     * Calling this method will result in {@link #onCancelled(Object)} being invoked on the UI thread after
+     * Calling this method will result in {@link #onCancelled()} being invoked on the UI thread after
      * {@link #doInBackground(Object[])} returns. Calling this method guarantees that {@link #onPostExecute(Object)} is
      * never invoked. After invoking this method, you should check the value returned by {@link #isCancelled()}
      * periodically from {@link #doInBackground(Object[])} to finish the task as early as possible.
@@ -398,7 +397,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
      *         typically because it has already completed normally; <tt>true</tt> otherwise
      *
      * @see #isCancelled()
-     * @see #onCancelled(Object)
+     * @see #onCancelled()
      */
     public final boolean cancel(final boolean mayInterruptIfRunning) {
         try {
@@ -408,49 +407,53 @@ public abstract class AsyncTask<Params, Progress, Result> {
         }
     }
 
-    /**
-     * Waits if necessary for the computation to complete, and then
-     * retrieves its result.
-     *
-     * @return The computed result.
-     *
-     * @throws CancellationException
-     *             If the computation was cancelled.
-     * @throws ExecutionException
-     *             If the computation threw an exception.
-     * @throws InterruptedException
-     *             If the current thread was interrupted
-     *             while waiting.
-     */
-    public final Result get() throws InterruptedException, ExecutionException {
-        return mFuture.get();
-    }
+// --Commented out by Inspection START (3/10/21 4:30 PM):
+//    /**
+//     * Waits if necessary for the computation to complete, and then
+//     * retrieves its result.
+//     *
+//     * @return The computed result.
+//     *
+//     * @throws CancellationException
+//     *             If the computation was cancelled.
+//     * @throws ExecutionException
+//     *             If the computation threw an exception.
+//     * @throws InterruptedException
+//     *             If the current thread was interrupted
+//     *             while waiting.
+//     */
+//    public final Result get() throws InterruptedException, ExecutionException {
+//        return mFuture.get();
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:30 PM)
 
-    /**
-     * Waits if necessary for at most the given time for the computation
-     * to complete, and then retrieves its result.
-     *
-     * @param timeout
-     *            Time to wait before cancelling the operation.
-     * @param unit
-     *            The time unit for the timeout.
-     *
-     * @return The computed result.
-     *
-     * @throws CancellationException
-     *             If the computation was cancelled.
-     * @throws ExecutionException
-     *             If the computation threw an exception.
-     * @throws InterruptedException
-     *             If the current thread was interrupted
-     *             while waiting.
-     * @throws TimeoutException
-     *             If the wait timed out.
-     */
-    public final Result get(final long timeout, final TimeUnit unit) throws InterruptedException, ExecutionException,
-            TimeoutException {
-        return mFuture.get(timeout, unit);
-    }
+// --Commented out by Inspection START (3/10/21 4:31 PM):
+//    /**
+//     * Waits if necessary for at most the given time for the computation
+//     * to complete, and then retrieves its result.
+//     *
+//     * @param timeout
+//     *            Time to wait before cancelling the operation.
+//     * @param unit
+//     *            The time unit for the timeout.
+//     *
+//     * @return The computed result.
+//     *
+//     * @throws CancellationException
+//     *             If the computation was cancelled.
+//     * @throws ExecutionException
+//     *             If the computation threw an exception.
+//     * @throws InterruptedException
+//     *             If the current thread was interrupted
+//     *             while waiting.
+//     * @throws TimeoutException
+//     *             If the wait timed out.
+//     */
+//    public final Result get(final long timeout, final TimeUnit unit) throws InterruptedException, ExecutionException,
+//            TimeoutException {
+//        return mFuture.get(timeout, unit);
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:31 PM)
 
     /**
      * Executes the task with the specified parameters. The task returns
@@ -559,7 +562,7 @@ public abstract class AsyncTask<Params, Progress, Result> {
 
     private void finish(final Result result) {
         if (isCancelled()) {
-            onCancelled(result);
+            onCancelled();
         } else {
             onPostExecute(result);
         }

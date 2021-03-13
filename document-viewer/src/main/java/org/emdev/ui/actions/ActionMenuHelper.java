@@ -59,22 +59,24 @@ public class ActionMenuHelper {
         intent.putExtra(name, new ExtraWrapper(data));
     }
 
-    public static void setMenuParameters(final IActionController<?> c, final Menu menu,
-            final IActionParameter... parameters) {
-        for (int i = 0, n = menu.size(); i < n; i++) {
-            final MenuItem item = menu.getItem(i);
-            final SubMenu subMenu = item.getSubMenu();
-            if (subMenu != null) {
-                setMenuParameters(c, subMenu, parameters);
-            } else {
-                final int itemId = item.getItemId();
-                final ActionEx action = c.getOrCreateAction(itemId);
-                for (final IActionParameter p : parameters) {
-                    action.addParameter(p);
-                }
-            }
-        }
-    }
+// --Commented out by Inspection START (3/10/21 4:27 PM):
+//    public static void setMenuParameters(final IActionController<?> c, final Menu menu,
+//            final IActionParameter... parameters) {
+//        for (int i = 0, n = menu.size(); i < n; i++) {
+//            final MenuItem item = menu.getItem(i);
+//            final SubMenu subMenu = item.getSubMenu();
+//            if (subMenu != null) {
+//                setMenuParameters(c, subMenu, parameters);
+//            } else {
+//                final int itemId = item.getItemId();
+//                final ActionEx action = c.getOrCreateAction(itemId);
+//                for (final IActionParameter p : parameters) {
+//                    action.addParameter(p);
+//                }
+//            }
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:27 PM)
 
     public static void setMenuItemVisible(final Menu menu, final boolean visible, final int viewId) {
         final MenuItem v = menu.findItem(viewId);

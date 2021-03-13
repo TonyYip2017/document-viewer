@@ -46,9 +46,9 @@ public class ZipArchiveEntry implements ArchiveEntry {
         return archive.open(this);
     }
 
-    public long getCompressedSize() {
-        return entry.getCompressedSize();
-    }
+//    public long getCompressedSize() {
+//        return entry.getCompressedSize();
+//    }
 
     public long getSize() {
         return entry.getSize();

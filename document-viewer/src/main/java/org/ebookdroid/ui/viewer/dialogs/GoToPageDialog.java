@@ -1,6 +1,5 @@
 package org.ebookdroid.ui.viewer.dialogs;
 
-import org.emdev.ui.uimanager.UIManagerAppCompat;
 import org.sufficientlysecure.viewer.R;
 import org.ebookdroid.common.settings.AppSettings;
 import org.ebookdroid.common.settings.books.BookSettings;
@@ -28,7 +27,6 @@ import org.emdev.ui.actions.DialogController;
 import org.emdev.ui.actions.IActionController;
 import org.emdev.ui.actions.params.Constant;
 import org.emdev.ui.actions.params.EditableValue;
-import org.emdev.ui.uimanager.IUIManager;
 import org.emdev.ui.widget.IViewContainer;
 import org.emdev.ui.widget.SeekBarIncrementHandler;
 import org.emdev.utils.LayoutUtils;
@@ -54,8 +52,8 @@ public class GoToPageDialog extends Dialog {
         setTitle(R.string.dialog_title_goto_page);
         setContentView(R.layout.gotopage);
 
-        final SeekBar seekbar = (SeekBar) findViewById(R.id.seekbar);
-        final EditText editText = (EditText) findViewById(R.id.pageNumberTextEdit);
+        final SeekBar seekbar = findViewById(R.id.seekbar);
+        final EditText editText = findViewById(R.id.pageNumberTextEdit);
 
         actions.connectViewToAction(R.id.bookmark_add);
         actions.connectViewToAction(R.id.bookmark_remove_all);
@@ -95,10 +93,10 @@ public class GoToPageDialog extends Dialog {
 
         adapter = new BookmarkAdapter(this.getContext(), actions, lastPage, base.getBookSettings());
 
-        final ListView bookmarks = (ListView) findViewById(R.id.bookmarks);
+        final ListView bookmarks = findViewById(R.id.bookmarks);
         bookmarks.setAdapter(adapter);
 
-        final SeekBar seekbar = (SeekBar) findViewById(R.id.seekbar);
+        final SeekBar seekbar = findViewById(R.id.seekbar);
         seekbar.setMax(max);
 
         updateControls(current, true);
@@ -106,10 +104,11 @@ public class GoToPageDialog extends Dialog {
 
     @Override
     protected void onStop() {
-        final ListView bookmarks = (ListView) findViewById(R.id.bookmarks);
+        final ListView bookmarks = findViewById(R.id.bookmarks);
         bookmarks.setAdapter(null);
         adapter = null;
-        UIManagerAppCompat.invalidateOptionsMenu(base.getManagedComponent());
+        base.getManagedComponent().invalidateOptionsMenu();
+//        UIManagerAppCompat.invalidateOptionsMenu(base.getManagedComponent());
     }
 
     @ActionMethod(ids = R.id.goToButton)
@@ -165,7 +164,7 @@ public class GoToPageDialog extends Dialog {
         if (bookmark == null) {
             builder.setTitle(R.string.menu_add_bookmark);
 
-            final SeekBar seekbar = (SeekBar) findViewById(R.id.seekbar);
+            final SeekBar seekbar = findViewById(R.id.seekbar);
             final int viewIndex = seekbar.getProgress();
 
             input.setText(context.getString(R.string.text_page) + " " + (viewIndex + offset));
@@ -220,8 +219,8 @@ public class GoToPageDialog extends Dialog {
     }
 
     private void updateControls(final int viewIndex, final boolean updateBar) {
-        final SeekBar seekbar = (SeekBar) findViewById(R.id.seekbar);
-        final EditText editText = (EditText) findViewById(R.id.pageNumberTextEdit);
+        final SeekBar seekbar = findViewById(R.id.seekbar);
+        final EditText editText = findViewById(R.id.pageNumberTextEdit);
 
         editText.setText("" + (viewIndex + offset));
         editText.selectAll();
@@ -243,7 +242,7 @@ public class GoToPageDialog extends Dialog {
             }
             return false;
         }
-        final EditText text = (EditText) findViewById(R.id.pageNumberTextEdit);
+        final EditText text = findViewById(R.id.pageNumberTextEdit);
         final int pageNumber = getEnteredPageIndex(text);
         final int pageCount = base.getDocumentModel().getPageCount();
         if (pageNumber < 0 || pageNumber >= pageCount) {

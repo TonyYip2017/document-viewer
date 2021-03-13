@@ -367,13 +367,13 @@ public abstract class AbstractActionActivity<A extends Activity, C extends Abstr
         }
     }
 
-    public final void setActionForView(final int id) {
-        final View view = findViewById(id);
-        final ActionEx action = getController().getOrCreateAction(id);
-        if (view != null && action != null) {
-            view.setOnClickListener(action);
-        }
-    }
+//    public final void setActionForView(final int id) {
+//        final View view = findViewById(id);
+//        final ActionEx action = getController().getOrCreateAction(id);
+//        if (view != null && action != null) {
+//            view.setOnClickListener(action);
+//        }
+//    }
 
     @ActionMethod(ids = R.id.mainmenu_about)
     public void showAbout(final ActionEx action) {

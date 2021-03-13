@@ -44,7 +44,9 @@ public class BitmapTexture extends UploadedTexture {
         return mContentBitmap;
     }
 
-    public Bitmap getBitmap() {
-        return mContentBitmap;
-    }
+// --Commented out by Inspection START (3/10/21 4:35 PM):
+//    public Bitmap getBitmap() {
+//        return mContentBitmap;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:35 PM)
 }

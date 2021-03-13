@@ -4,7 +4,6 @@ import org.ebookdroid.core.ViewState;
 
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;

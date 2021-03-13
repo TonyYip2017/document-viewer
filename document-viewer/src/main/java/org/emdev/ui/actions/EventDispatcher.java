@@ -91,24 +91,26 @@ public class EventDispatcher {
         }
     }
 
-    /**
-     * Removes the target listener.
-     * 
-     * @param listener
-     *            the listener to remove
-     */
-    public void removeListener(final Object listener) {
-        if (listener != null) {
-            for (final Class<?> listenerClass : m_interfaces) {
-                if (listenerClass.isInstance(listener)) {
-                    final List<Object> list = m_listeners.get(listenerClass);
-                    if (list != null) {
-                        list.remove(listener);
-                    }
-                }
-            }
-        }
-    }
+// --Commented out by Inspection START (3/10/21 5:05 PM):
+//    /**
+//     * Removes the target listener.
+//     *
+//     * @param listener
+//     *            the listener to remove
+//     */
+//    public void removeListener(final Object listener) {
+//        if (listener != null) {
+//            for (final Class<?> listenerClass : m_interfaces) {
+//                if (listenerClass.isInstance(listener)) {
+//                    final List<Object> list = m_listeners.get(listenerClass);
+//                    if (list != null) {
+//                        list.remove(listener);
+//                    }
+//                }
+//            }
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:05 PM)
 
     /**
      * Gets a listener of the given type.

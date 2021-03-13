@@ -12,10 +12,10 @@ public abstract class AbstractCodecPage implements CodecPage {
         return Collections.emptyList();
     }
 
-    @Override
-    public List<PageTextBox> getPageText() {
-        return Collections.emptyList();
-    }
+//    @Override
+//    public List<PageTextBox> getPageText() {
+//        return Collections.emptyList();
+//    }
 
     @Override
     public List<? extends RectF> searchText(String pattern) {

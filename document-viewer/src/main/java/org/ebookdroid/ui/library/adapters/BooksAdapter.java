@@ -25,7 +25,6 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.emdev.common.filesystem.FileSystemScanner;
@@ -50,7 +49,7 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
 
     final IBrowserActivity base;
 
-    final AtomicBoolean inScan = new AtomicBoolean();
+    // --Commented out by Inspection (3/10/21 4:38 PM):final AtomicBoolean inScan = new AtomicBoolean();
 
     final SparseArrayEx<BookShelfAdapter> data = new SparseArrayEx<>();
 
@@ -188,11 +187,13 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
         return getListName(position);
     }
 
-    public String getListPath(final int currentList) {
-        checkServiceAdapters();
-        final BookShelfAdapter list = getList(currentList);
-        return list != null ? LengthUtils.safeString(list.path) : "";
-    }
+// --Commented out by Inspection START (3/10/21 4:37 PM):
+//    public String getListPath(final int currentList) {
+//        checkServiceAdapters();
+//        final BookShelfAdapter list = getList(currentList);
+//        return list != null ? LengthUtils.safeString(list.path) : "";
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:37 PM)
 
     public synchronized List<String> getListNames() {
         checkServiceAdapters();
@@ -211,22 +212,24 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
         return result;
     }
 
-    public synchronized List<String> getListPaths() {
-        checkServiceAdapters();
-
-        final int size = data.size();
-
-        if (size == 0) {
-            return null;
-        }
-
-        final List<String> result = new ArrayList<>(data.size());
-        for (int index = 0; index < size; index++) {
-            final BookShelfAdapter a = data.valueAt(index);
-            result.add(a.path);
-        }
-        return result;
-    }
+// --Commented out by Inspection START (3/10/21 4:37 PM):
+//    public synchronized List<String> getListPaths() {
+//        checkServiceAdapters();
+//
+//        final int size = data.size();
+//
+//        if (size == 0) {
+//            return null;
+//        }
+//
+//        final List<String> result = new ArrayList<>(data.size());
+//        for (int index = 0; index < size; index++) {
+//            final BookShelfAdapter a = data.valueAt(index);
+//            result.add(a.path);
+//        }
+//        return result;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:37 PM)
 
     public synchronized BookNode getItem(final int currentList, final int position) {
         checkServiceAdapters();
@@ -236,9 +239,11 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
         throw new RuntimeException("Wrong list id: " + currentList + "/" + data.size());
     }
 
-    public long getItemId(final int position) {
-        return position;
-    }
+// --Commented out by Inspection START (3/10/21 4:37 PM):
+//    public long getItemId(final int position) {
+//        return position;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:37 PM)
 
     public synchronized void clearData() {
         getService(SEARCH_INDEX).nodes.clear();
@@ -313,9 +318,11 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
         scanner.startScan(libSettings.allowedFileTypes, paths);
     }
 
-    public void stopScan() {
-        scanner.stopScan();
-    }
+// --Commented out by Inspection START (3/10/21 4:38 PM):
+//    public void stopScan() {
+//        scanner.stopScan();
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:38 PM)
 
     public synchronized void removeAll(final Collection<String> paths) {
         boolean found = false;
@@ -373,9 +380,11 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
         return true;
     }
 
-    public String getSearchQuery() {
-        return searchQuery;
-    }
+// --Commented out by Inspection START (3/10/21 4:37 PM):
+//    public String getSearchQuery() {
+//        return searchQuery;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:37 PM)
 
     protected synchronized void onNodesFound(final List<BookNode> nodes) {
         final BookShelfAdapter search = getService(SEARCH_INDEX);
@@ -556,8 +565,8 @@ public class BooksAdapter extends PagerAdapter implements FileSystemScanner.List
         @Override
         public void init(final View convertView) {
             super.init(convertView);
-            this.imageView = (ImageView) convertView.findViewById(R.id.thumbnailImage);
-            this.textView = (TextView) convertView.findViewById(R.id.thumbnailText);
+            this.imageView = convertView.findViewById(R.id.thumbnailImage);
+            this.textView = convertView.findViewById(R.id.thumbnailText);
         }
     }
 

@@ -14,9 +14,11 @@ public class DecodingProgressModel extends ListenerProxy {
         super(DecodingProgressListener.class);
     }
 
-    public void increase() {
-        this.<DecodingProgressListener> getListener().decodingProgressChanged(currentlyDecoding.incrementAndGet());
-    }
+// --Commented out by Inspection START (3/10/21 4:44 PM):
+//    public void increase() {
+//        this.<DecodingProgressListener> getListener().decodingProgressChanged(currentlyDecoding.incrementAndGet());
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:44 PM)
 
     public void increase(int increment) {
         this.<DecodingProgressListener> getListener().decodingProgressChanged(currentlyDecoding.addAndGet(increment));

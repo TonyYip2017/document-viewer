@@ -1,26 +1,20 @@
 package org.ebookdroid.core;
 
-import org.sufficientlysecure.viewer.R;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+
 import org.ebookdroid.common.settings.AppSettings;
 import org.ebookdroid.core.codec.PageLink;
 import org.ebookdroid.core.models.SearchModel;
 import org.ebookdroid.core.models.SearchModel.Matches;
-
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.RectF;
-import android.text.TextPaint;
-
-import java.util.List;
-import java.util.Queue;
-
-import org.emdev.BaseDroidApp;
 import org.emdev.common.log.LogContext;
 import org.emdev.common.log.LogManager;
 import org.emdev.ui.gl.GLCanvas;
-import org.emdev.ui.gl.StringTexture;
 import org.emdev.utils.LengthUtils;
+
+import java.util.List;
+import java.util.Queue;
 
 public class EventGLDraw implements IEvent {
 
@@ -29,7 +23,7 @@ public class EventGLDraw implements IEvent {
     private static final Paint LINK_PAINT = new Paint();
     private static final Paint BRIGHTNESS_FILTER = new Paint();
 
-    private static final StringTexture t = new StringTexture(256, 128);
+    // --Commented out by Inspection (3/10/21 5:12 PM):private static final StringTexture t = new StringTexture(256, 128);
 
     private final Queue<EventGLDraw> eventQueue;
 
@@ -37,7 +31,6 @@ public class EventGLDraw implements IEvent {
     public PageTreeLevel level;
     public GLCanvas canvas;
 
-    Paint brightnessFilter;
     RectF pageBounds;
     final RectF fixedPageBounds = new RectF();
 
@@ -51,11 +44,13 @@ public class EventGLDraw implements IEvent {
         this.canvas = canvas;
     }
 
-    void init(final EventGLDraw event, final GLCanvas canvas) {
-        this.viewState = event.viewState;
-        this.level = event.level;
-        this.canvas = canvas;
-    }
+// --Commented out by Inspection START (3/10/21 4:49 PM):
+//    void init(final EventGLDraw event, final GLCanvas canvas) {
+//        this.viewState = event.viewState;
+//        this.level = event.level;
+//        this.canvas = canvas;
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:49 PM)
 
     void release() {
         this.canvas = null;
@@ -160,19 +155,21 @@ public class EventGLDraw implements IEvent {
         canvas.fillRect(fixedPageBounds, viewState.paint.fillPaint);
     }
 
-    protected void drawPageNumber(final Page page) {
-        final TextPaint textPaint = viewState.paint.textPaint;
-        textPaint.setTextSize(24 * viewState.zoom);
-        textPaint.setTextAlign(Align.LEFT);
-
-        final int offset = viewState.book != null ? viewState.book.firstPageOffset : 1;
-        final String text = BaseDroidApp.context.getString(R.string.text_page) + " " + (page.index.viewIndex + offset);
-
-        t.setText(text, textPaint);
-        final int w = t.getTextWidth();
-        final int h = t.getTextHeight();
-        t.draw(canvas, (int) fixedPageBounds.centerX() - w / 2, (int) fixedPageBounds.centerY() - h / 2);
-    }
+// --Commented out by Inspection START (3/10/21 4:49 PM):
+//    protected void drawPageNumber(final Page page) {
+//        final TextPaint textPaint = viewState.paint.textPaint;
+//        textPaint.setTextSize(24 * viewState.zoom);
+//        textPaint.setTextAlign(Align.LEFT);
+//
+//        final int offset = viewState.book != null ? viewState.book.firstPageOffset : 1;
+//        final String text = BaseDroidApp.context.getString(R.string.text_page) + " " + (page.index.viewIndex + offset);
+//
+//        t.setText(text, textPaint);
+//        final int w = t.getTextWidth();
+//        final int h = t.getTextHeight();
+//        t.draw(canvas, (int) fixedPageBounds.centerX() - w / 2, (int) fixedPageBounds.centerY() - h / 2);
+//    }
+// --Commented out by Inspection STOP (3/10/21 4:49 PM)
 
     private void drawPageLinks(final Page page) {
         if (LengthUtils.isEmpty(page.links)) {

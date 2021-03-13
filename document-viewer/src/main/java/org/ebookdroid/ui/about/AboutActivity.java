@@ -2,7 +2,6 @@ package org.ebookdroid.ui.about;
 
 import org.sufficientlysecure.viewer.R;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -59,10 +58,10 @@ public class AboutActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        final TextView title = (TextView) findViewById(R.id.about_title);
+        final TextView title = findViewById(R.id.about_title);
         title.setText(name + (LengthUtils.isNotEmpty(version) ? " v" + version : ""));
 
-        final ExpandableListView view = (ExpandableListView) findViewById(R.id.about_parts);
+        final ExpandableListView view = findViewById(R.id.about_parts);
         view.setAdapter(new PartsAdapter());
         view.expandGroup(0);
     }
@@ -163,14 +162,8 @@ public class AboutActivity extends AppCompatActivity {
         @Override
         public View getGroupView(final int groupPosition, final boolean isExpanded, final View convertView,
                 final ViewGroup parent) {
-            View container = null;
-            TextView view = null;
-            if (convertView == null) {
-                container = LayoutInflater.from(AboutActivity.this).inflate(R.layout.about_part, parent, false);
-            } else {
-                container = convertView;
-            }
-            view = (TextView) container.findViewById(R.id.about_partText);
+            View container = convertView != null ? convertView : LayoutInflater.from(AboutActivity.this).inflate(R.layout.about_part, parent, false);
+            TextView view = container.findViewById(R.id.about_partText);
             view.setText(getGroup(groupPosition).labelId);
             return container;
         }
@@ -178,12 +171,12 @@ public class AboutActivity extends AppCompatActivity {
         @Override
         public View getChildView(final int groupPosition, final int childPosition, final boolean isLastChild,
                 final View convertView, final ViewGroup parent) {
-            WebView view = null;
-            if (!(convertView instanceof WebView)) {
-                view = new WebView(AboutActivity.this);
-            } else {
-                view = ((WebView) convertView);
-            }
+            WebView view = convertView instanceof WebView ? (WebView) convertView : new WebView(AboutActivity.this);
+//            if (!(convertView instanceof WebView)) {
+//                view = new WebView(AboutActivity.this);
+//            } else {
+//                view = ((WebView) convertView);
+//            }
             final CharSequence content = getChild(groupPosition, childPosition).getContent(AboutActivity.this);
             view.loadDataWithBaseURL("file:///fake/not_used", content.toString(), "text/html", "UTF-8", "");
             view.setBackgroundColor(Color.GRAY);

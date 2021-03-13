@@ -163,8 +163,8 @@ public class SinglePageController extends AbstractViewController {
 
         if (page != null) {
             final RectF bounds = page.getBounds(zoom);
-            final int top = ((int) bounds.top > 0) ? 0 : (int) bounds.top;
-            final int left = ((int) bounds.left > 0) ? 0 : (int) bounds.left;
+            final int top = Math.min((int) bounds.top, 0);
+            final int left = Math.min((int) bounds.left, 0);
             final int bottom = ((int) bounds.bottom < height) ? 0 : (int) bounds.bottom - height;
             final int right = ((int) bounds.right < width) ? 0 : (int) bounds.right - width;
 

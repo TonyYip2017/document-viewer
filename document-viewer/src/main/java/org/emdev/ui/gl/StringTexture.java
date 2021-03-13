@@ -20,10 +20,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint.FontMetricsInt;
 import android.text.TextPaint;
-import android.text.TextUtils;
-import android.util.FloatMath;
-
-import org.emdev.utils.CompareUtils;
 
 // StringTexture is a texture shows the content of a specified String.
 //
@@ -42,41 +38,49 @@ public class StringTexture extends CanvasTexture {
         super(Math.max(1, maxWidth), Math.max(1, maxHeight));
     }
 
-    public void setText(final String text, final TextPaint paint) {
-        final String oldText = mText;
-        final int oldTextHeight = mTextHeight;
+// --Commented out by Inspection START (3/10/21 5:25 PM):
+//    public void setText(final String text, final TextPaint paint) {
+//        final String oldText = mText;
+//        final int oldTextHeight = mTextHeight;
+//
+//        mPaint = paint;
+//        mMetrics = paint.getFontMetricsInt();
+//        mText = text;
+//        mTextWidth = (int) Math.ceil(mPaint.measureText(mText));
+//        mTextHeight = mMetrics.bottom - mMetrics.top;
+//
+//        if (mTextWidth > mCanvasWidth) {
+//            mText = TextUtils.ellipsize(mText, mPaint, mCanvasWidth, TextUtils.TruncateAt.END).toString();
+//            mTextWidth = (int) Math.ceil(mPaint.measureText(mText));
+//        }
+//        if (!CompareUtils.equals(mText, oldText) || mTextHeight != oldTextHeight) {
+//            if (mBitmap != null) {
+//                mBitmap.eraseColor(0);
+//            }
+//            mContentValid = false;
+//            mWidth = UNSPECIFIED;
+//            mHeight = UNSPECIFIED;
+//        }
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:25 PM)
 
-        mPaint = paint;
-        mMetrics = paint.getFontMetricsInt();
-        mText = text;
-        mTextWidth = (int) Math.ceil(mPaint.measureText(mText));
-        mTextHeight = mMetrics.bottom - mMetrics.top;
+// --Commented out by Inspection START (3/10/21 5:25 PM):
+//    public String getText() {
+//        return mText;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:25 PM)
 
-        if (mTextWidth > mCanvasWidth) {
-            mText = TextUtils.ellipsize(mText, mPaint, mCanvasWidth, TextUtils.TruncateAt.END).toString();
-            mTextWidth = (int) Math.ceil(mPaint.measureText(mText));
-        }
-        if (!CompareUtils.equals(mText, oldText) || mTextHeight != oldTextHeight) {
-            if (mBitmap != null) {
-                mBitmap.eraseColor(0);
-            }
-            mContentValid = false;
-            mWidth = UNSPECIFIED;
-            mHeight = UNSPECIFIED;
-        }
-    }
+// --Commented out by Inspection START (3/10/21 5:25 PM):
+//    public int getTextWidth() {
+//        return mTextWidth;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:25 PM)
 
-    public String getText() {
-        return mText;
-    }
-
-    public int getTextWidth() {
-        return mTextWidth;
-    }
-
-    public int getTextHeight() {
-        return mTextHeight;
-    }
+// --Commented out by Inspection START (3/10/21 5:25 PM):
+//    public int getTextHeight() {
+//        return mTextHeight;
+//    }
+// --Commented out by Inspection STOP (3/10/21 5:25 PM)
 
     @Override
     public void recycle() {

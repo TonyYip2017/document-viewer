@@ -148,10 +148,10 @@ public class RecentAdapter extends BaseAdapter {
         @Override
         public void init(final View convertView) {
             super.init(convertView);
-            name = (TextView) convertView.findViewById(R.id.recentItemName);
-            imageView = (ImageView) convertView.findViewById(R.id.recentItemIcon);
-            info = (TextView) convertView.findViewById(R.id.recentItemInfo);
-            fileSize = (TextView) convertView.findViewById(R.id.recentItemfileSize);
+            name = convertView.findViewById(R.id.recentItemName);
+            imageView = convertView.findViewById(R.id.recentItemIcon);
+            info = convertView.findViewById(R.id.recentItemInfo);
+            fileSize = convertView.findViewById(R.id.recentItemfileSize);
         }
     }
 
