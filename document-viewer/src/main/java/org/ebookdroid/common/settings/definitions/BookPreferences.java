@@ -58,16 +58,16 @@ public interface BookPreferences {
 
     /* =============== Book rendering settings =============== */
 
-    StringPreferenceDefinition BOOK = new StringPreferenceDefinition(pref_book_id, 0);
+    StringPreferenceDefinition BOOK = new StringPreferenceDefinition(pref_book_id);
 
     IntegerPreferenceDefinition BOOK_FIRST_PAGE_OFFSET = new IntegerPreferenceDefinition(pref_book_firstpageoffset_id,
             pref_book_firstpageoffset_defvalue, pref_book_firstpageoffset_minvalue, pref_book_firstpageoffset_maxvalue);
 
-    BooleanPreferenceDefinition BOOK_NIGHT_MODE = new BooleanPreferenceDefinition(pref_book_nightmode_id, pref_nightmode_defvalue);
+    BooleanPreferenceDefinition BOOK_NIGHT_MODE = new BooleanPreferenceDefinition(pref_book_nightmode_id, false);
 
-    BooleanPreferenceDefinition BOOK_NIGHT_MODE_POS_IMAGES = new BooleanPreferenceDefinition(pref_book_posimages_in_nightmode_id, pref_posimages_in_nightmode_defvalue);
+    BooleanPreferenceDefinition BOOK_NIGHT_MODE_POS_IMAGES = new BooleanPreferenceDefinition(pref_book_posimages_in_nightmode_id, false);
 
-    BooleanPreferenceDefinition BOOK_TINT = new BooleanPreferenceDefinition(pref_book_tint_id, pref_tint_defvalue);
+    BooleanPreferenceDefinition BOOK_TINT = new BooleanPreferenceDefinition(pref_book_tint_id, false);
 
     IntegerPreferenceDefinition BOOK_TINT_COLOR = new IntegerPreferenceDefinition(pref_book_tint_color_id, pref_tint_color_defvalue);
 
@@ -80,16 +80,13 @@ public interface BookPreferences {
     IntegerPreferenceDefinition BOOK_EXPOSURE = new IntegerPreferenceDefinition(pref_book_exposure_id,
             pref_exposure_defvalue, pref_exposure_minvalue, pref_exposure_maxvalue);
 
-    BooleanPreferenceDefinition BOOK_AUTO_LEVELS = new BooleanPreferenceDefinition(pref_book_autolevels_id, pref_autolevels_defvalue);
+    BooleanPreferenceDefinition BOOK_AUTO_LEVELS = new BooleanPreferenceDefinition(pref_book_autolevels_id, false);
 
-    BooleanPreferenceDefinition BOOK_SPLIT_PAGES = new BooleanPreferenceDefinition(pref_book_splitpages_id,
-            pref_splitpages_defvalue);
+    BooleanPreferenceDefinition BOOK_SPLIT_PAGES = new BooleanPreferenceDefinition(pref_book_splitpages_id, false);
 
-    BooleanPreferenceDefinition BOOK_SPLIT_RTL = new BooleanPreferenceDefinition(pref_book_splitpages_rtl_id,
-            pref_splitpages_rtl_defvalue);
+    BooleanPreferenceDefinition BOOK_SPLIT_RTL = new BooleanPreferenceDefinition(pref_book_splitpages_rtl_id, false);
 
-    BooleanPreferenceDefinition BOOK_CROP_PAGES = new BooleanPreferenceDefinition(pref_book_croppages_id,
-            pref_croppages_defvalue);
+    BooleanPreferenceDefinition BOOK_CROP_PAGES = new BooleanPreferenceDefinition(pref_book_croppages_id, false);
 
     EnumPreferenceDefinition<RotationType> BOOK_ROTATION = new EnumPreferenceDefinition<>(
             RotationType.class, pref_book_rotation_id, pref_rotation_unspecified);
@@ -103,5 +100,5 @@ public interface BookPreferences {
     EnumPreferenceDefinition<PageAnimationType> BOOK_ANIMATION_TYPE = new EnumPreferenceDefinition<>(
             PageAnimationType.class, pref_book_animation_type_id, pref_animation_type_none);
 
-    BooleanPreferenceDefinition BOOK_RTL= new BooleanPreferenceDefinition(pref_book_rtl_id, pref_rtl_defvalue);
+    BooleanPreferenceDefinition BOOK_RTL= new BooleanPreferenceDefinition(pref_book_rtl_id, false);
 }

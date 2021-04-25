@@ -30,12 +30,12 @@ public interface LibPreferences {
     /* =============== Browser settings =============== */
 
     BooleanPreferenceDefinition USE_BOOK_CASE = new BooleanPreferenceDefinition(pref_usebookcase_id,
-            pref_usebookcase_defvalue);
+            true);
 
     FileListPreferenceDefinition AUTO_SCAN_DIRS = new FileListPreferenceDefinition(pref_brautoscandir_id,
             pref_brautoscandir_defvalue);
 
-    StringPreferenceDefinition SEARCH_BOOK_QUERY = new StringPreferenceDefinition(pref_brsearchbookquery_id, 0);
+    StringPreferenceDefinition SEARCH_BOOK_QUERY = new StringPreferenceDefinition(pref_brsearchbookquery_id);
 
     FileTypeFilterPreferenceDefinition FILE_TYPE_FILTER = new FileTypeFilterPreferenceDefinition(pref_brfiletypes);
 
@@ -43,15 +43,15 @@ public interface LibPreferences {
             CacheLocation.class, pref_cachelocation_id, pref_cachelocation_defvalue);
 
     BooleanPreferenceDefinition AUTO_SCAN_REMOVABLE_MEDIA = new BooleanPreferenceDefinition(pref_autoscanremovable_id,
-            pref_autoscanremovable_defvalue);
+            false);
 
     BooleanPreferenceDefinition SHOW_REMOVABLE_MEDIA = new BooleanPreferenceDefinition(pref_showremovable_id,
-            pref_showremovable_defvalue);
+            true);
 
     BooleanPreferenceDefinition SHOW_SCANNING_MEDIA = new BooleanPreferenceDefinition(pref_showscanning_id,
-            pref_showscanning_defvalue);
+            true);
 
     BooleanPreferenceDefinition SHOW_NOTIFICATIONS = new BooleanPreferenceDefinition(pref_shownotifications_id,
-            pref_shownotifications_defvalue);
+            true);
 
 }

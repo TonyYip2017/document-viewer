@@ -3,16 +3,15 @@ package org.emdev.common.settings.base;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import org.emdev.BaseDroidApp;
 import org.json.JSONObject;
 
 public class StringPreferenceDefinition extends BasePreferenceDefinition<String> {
 
     private final String defValue;
 
-    public StringPreferenceDefinition(final int keyRes, final int defValRef) {
+    public StringPreferenceDefinition(final int keyRes) {
         super(keyRes);
-        defValue = defValRef != 0 ? BaseDroidApp.context.getString(defValRef) : "";
+        defValue = "";
     }
 
     @Override

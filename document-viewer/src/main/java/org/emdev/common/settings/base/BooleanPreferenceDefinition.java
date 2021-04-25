@@ -3,16 +3,15 @@ package org.emdev.common.settings.base;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import org.emdev.BaseDroidApp;
 import org.json.JSONObject;
 
 public class BooleanPreferenceDefinition extends BasePreferenceDefinition<Boolean> {
 
     private final Boolean defValue;
 
-    public BooleanPreferenceDefinition(final int keyRes, final int defValRef) {
+    public BooleanPreferenceDefinition(final int keyRes, final boolean defValue) {
         super(keyRes);
-        defValue = Boolean.parseBoolean(BaseDroidApp.context.getString(defValRef));
+        this.defValue = defValue;
     }
 
     @Override

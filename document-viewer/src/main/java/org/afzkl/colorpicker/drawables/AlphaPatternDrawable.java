@@ -21,6 +21,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
@@ -32,19 +33,9 @@ import android.graphics.drawable.Drawable;
  * @author Daniel Nilsson
  */
 public class AlphaPatternDrawable extends Drawable {
-
-    private int mRectangleSize = 10;
-
-    private final Paint mPaint = new Paint();
+    private final int mRectangleSize;
     private final Paint mPaintWhite = new Paint();
     private final Paint mPaintGray = new Paint();
-
-    private int numRectanglesHorizontal;
-    private int numRectanglesVertical;
-
-    /**
-     * Bitmap in which the pattern will be cahched.
-     */
     private Bitmap mBitmap;
 
     public AlphaPatternDrawable(final int rectangleSize) {
@@ -55,69 +46,52 @@ public class AlphaPatternDrawable extends Drawable {
 
     @Override
     public void draw(final Canvas canvas) {
-        final Bitmap b = getBitmap();
-        if (b != null) {
-            canvas.drawBitmap(b, null, getBounds(), mPaint);
-        }
-    }
-
-    @Override
-    public int getOpacity() {
-        return 0;
-    }
-
-    @Override
-    public void setAlpha(final int alpha) {
-        throw new UnsupportedOperationException("Alpha is not supported by this drawwable.");
-    }
-
-    @Override
-    public void setColorFilter(final ColorFilter cf) {
-        throw new UnsupportedOperationException("ColorFilter is not supported by this drawwable.");
-    }
-
-    @Override
-    protected void onBoundsChange(final Rect bounds) {
-        super.onBoundsChange(bounds);
-
-        final int height = bounds.height();
-        final int width = bounds.width();
-
-        numRectanglesHorizontal = (int) Math.ceil((width / mRectangleSize));
-        numRectanglesVertical = (int) Math.ceil(height / mRectangleSize);
-    }
-
-    /**
-     * This will generate a bitmap with the pattern
-     * as big as the rectangle we were allow to draw on.
-     * We do this to chache the bitmap so we don't need to
-     * recreate it each time draw() is called since it
-     * takes a few milliseconds.
-     */
-    private Bitmap getBitmap() {
         final Rect bounds = getBounds();
         final int width = bounds.width();
         final int height = bounds.height();
 
-        if (width <= 0 || height <= 0) {
-            return null;
-        }
-        if (mBitmap == null || mBitmap.isRecycled() || mBitmap.getWidth() != width || mBitmap.getHeight() != height) {
-            if (mBitmap != null) {
-                mBitmap.recycle();
-            }
-            mBitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
-            final Canvas canvas = new Canvas(mBitmap);
-            generatePatternBitmap(canvas);
-        }
-        return mBitmap;
+        if (width <= 0 || height <= 0)
+            return;
+        if (mBitmap == null || mBitmap.isRecycled() || mBitmap.getWidth() != width || mBitmap.getHeight() != height)
+            refreshBitmap(width, height);
+
+        canvas.drawBitmap(mBitmap, null, bounds, null);
     }
 
-    public void generatePatternBitmap(final Canvas canvas) {
+    @Override
+    public int getOpacity() {
+        return PixelFormat.UNKNOWN;
+    }
+
+    @Override
+    public void setAlpha(int alpha) { }
+
+    @Override
+    public void setColorFilter(ColorFilter cf) { }
+
+//    @Override
+//    protected void onBoundsChange(final Rect bounds) {
+//        super.onBoundsChange(bounds);
+//
+//        final int height = bounds.height();
+//        final int width = bounds.width();
+//
+//        numRectanglesHorizontal = (int) Math.ceil((width / mRectangleSize));
+//        numRectanglesVertical = (int) Math.ceil(height / mRectangleSize);
+//    }
+
+    private void refreshBitmap(final int width, final int height) {
+        int numRectanglesHorizontal = width / mRectangleSize;
+        int numRectanglesVertical = height / mRectangleSize;
+
+        if (mBitmap != null)
+            mBitmap.recycle();
+        mBitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
+
+        final Canvas canvas = new Canvas(mBitmap);
         final Rect r = new Rect();
         boolean verticalStartWhite = true;
         for (int i = 0; i <= numRectanglesVertical; i++) {
-
             boolean isWhite = verticalStartWhite;
             for (int j = 0; j <= numRectanglesHorizontal; j++) {
                 r.top = i * mRectangleSize;

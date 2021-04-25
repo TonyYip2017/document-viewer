@@ -17,33 +17,27 @@ public interface AppPreferences {
 
     /* =============== UI settings =============== */
 
-    StringPreferenceDefinition LANG = new StringPreferenceDefinition(pref_lang_id, pref_lang_defvalue);
+    StringPreferenceDefinition LANG = new StringPreferenceDefinition(pref_lang_id);
 
-    BooleanPreferenceDefinition LOAD_RECENT = new BooleanPreferenceDefinition(pref_loadrecent_id,
-            pref_loadrecent_defvalue);
+    BooleanPreferenceDefinition LOAD_RECENT = new BooleanPreferenceDefinition(pref_loadrecent_id, false);
 
-    BooleanPreferenceDefinition CONFIRM_CLOSE = new BooleanPreferenceDefinition(pref_confirmclose_id,
-            pref_confirmclose_defvalue);
+    BooleanPreferenceDefinition CONFIRM_CLOSE = new BooleanPreferenceDefinition(pref_confirmclose_id, false);
 
-    BooleanPreferenceDefinition BRIGHTNESS_NIGHT_MODE_ONLY = new BooleanPreferenceDefinition(
-            pref_brightnessnightmodeonly_id, pref_brightnessnightmodeonly_defvalue);
+    BooleanPreferenceDefinition BRIGHTNESS_NIGHT_MODE_ONLY = new BooleanPreferenceDefinition(pref_brightnessnightmodeonly_id, false);
 
     IntegerPreferenceDefinition BRIGHTNESS = new IntegerPreferenceDefinition(pref_brightness_id,
             pref_brightness_defvalue, pref_brightness_minvalue, pref_brightness_maxvalue);
 
-    BooleanPreferenceDefinition KEEP_SCREEN_ON = new BooleanPreferenceDefinition(pref_keepscreenon_id,
-            pref_keepscreenon_defvalue);
+    BooleanPreferenceDefinition KEEP_SCREEN_ON = new BooleanPreferenceDefinition(pref_keepscreenon_id, true);
 
     EnumPreferenceDefinition<RotationType> ROTATION = new EnumPreferenceDefinition<>(RotationType.class,
             pref_rotation_id, pref_rotation_unspecified);
 
-    BooleanPreferenceDefinition FULLSCREEN = new BooleanPreferenceDefinition(pref_fullscreen_id,
-            pref_fullscreen_defvalue);
+    BooleanPreferenceDefinition FULLSCREEN = new BooleanPreferenceDefinition(pref_fullscreen_id, false);
 
-    BooleanPreferenceDefinition SHOW_TITLE = new BooleanPreferenceDefinition(pref_title_id, pref_title_defvalue);
+    BooleanPreferenceDefinition SHOW_TITLE = new BooleanPreferenceDefinition(pref_title_id, true);
 
-    BooleanPreferenceDefinition SHOW_PAGE_IN_TITLE = new BooleanPreferenceDefinition(pref_pageintitle_id,
-            pref_pageintitle_defvalue);
+    BooleanPreferenceDefinition SHOW_PAGE_IN_TITLE = new BooleanPreferenceDefinition(pref_pageintitle_id, true);
 
     EnumPreferenceDefinition<ToastPosition> PAGE_NUMBER_TOAST_POSITION = new EnumPreferenceDefinition<>(
             ToastPosition.class, pref_pagenumbertoastposition_id, pref_toastposition_lefttop);
@@ -51,30 +45,24 @@ public interface AppPreferences {
     EnumPreferenceDefinition<ToastPosition> ZOOM_TOAST_POSITION = new EnumPreferenceDefinition<>(
             ToastPosition.class, pref_zoomtoastposition_id, pref_toastposition_leftbottom);
 
-    BooleanPreferenceDefinition SHOW_ANIM_ICON = new BooleanPreferenceDefinition(pref_showanimicon_id,
-            pref_showanimicon_defvalue);
+    BooleanPreferenceDefinition SHOW_ANIM_ICON = new BooleanPreferenceDefinition(pref_showanimicon_id, true);
 
     /* =============== Tap & Scroll settings =============== */
 
-    BooleanPreferenceDefinition TAPS_ENABLED = new BooleanPreferenceDefinition(pref_tapsenabled_id,
-            pref_tapsenabled_defvalue);
+    BooleanPreferenceDefinition TAPS_ENABLED = new BooleanPreferenceDefinition(pref_tapsenabled_id, true);
 
     IntegerPreferenceDefinition SCROLL_HEIGHT = new IntegerPreferenceDefinition(pref_scrollheight_id,
             pref_scrollheight_defvalue, pref_scrollheight_minvalue, pref_scrollheight_maxvalue);
 
-    BooleanPreferenceDefinition ANIMATE_SCROLLING = new BooleanPreferenceDefinition(pref_animate_scrolling_id,
-            pref_animate_scrolling_defvalue);
+    BooleanPreferenceDefinition ANIMATE_SCROLLING = new BooleanPreferenceDefinition(pref_animate_scrolling_id, true);
 
-    BooleanPreferenceDefinition VOLUME_KEY_SCROLLING = new BooleanPreferenceDefinition(pref_volumekeyscrolling_id,
-            pref_volumekeyscrolling_defvalue);
+    BooleanPreferenceDefinition VOLUME_KEY_SCROLLING = new BooleanPreferenceDefinition(pref_volumekeyscrolling_id, true);
 
-    BooleanPreferenceDefinition TAP_TOGGLES_FULLSCREEN = new BooleanPreferenceDefinition(pref_tapfullscreen_id,
-            pref_tapfullscreen_defvalue);
+    BooleanPreferenceDefinition TAP_TOGGLES_FULLSCREEN = new BooleanPreferenceDefinition(pref_tapfullscreen_id, true);
 
     /* =============== Navigation & history settings =============== */
 
-    BooleanPreferenceDefinition SHOW_BOOKMARKs_MENU = new BooleanPreferenceDefinition(pref_showbookmarksmenu_id,
-            pref_showbookmarksmenu_defvalue);
+    BooleanPreferenceDefinition SHOW_BOOKMARKs_MENU = new BooleanPreferenceDefinition(pref_showbookmarksmenu_id, false);
 
     IntegerPreferenceDefinition LINK_HIGHLIGHT_COLOR = new IntegerPreferenceDefinition(pref_link_highlight_id,
             pref_link_highlight_defvalue);
@@ -85,25 +73,19 @@ public interface AppPreferences {
     IntegerPreferenceDefinition CURRENT_SEARCH_HIGHLIGHT_COLOR = new IntegerPreferenceDefinition(
             pref_current_search_highlight_id, pref_current_search_highlight_defvalue);
 
-    BooleanPreferenceDefinition STORE_GOTO_HISTORY = new BooleanPreferenceDefinition(pref_storeGotoHistory_id,
-            pref_storeGotoHistory_defvalue);
+    BooleanPreferenceDefinition STORE_GOTO_HISTORY = new BooleanPreferenceDefinition(pref_storeGotoHistory_id, true);
 
-    BooleanPreferenceDefinition STORE_LINK_GOTO_HISTORY = new BooleanPreferenceDefinition(pref_storeLinkGotoHistory_id,
-            pref_storeLinkGotoHistory_defvalue);
+    BooleanPreferenceDefinition STORE_LINK_GOTO_HISTORY = new BooleanPreferenceDefinition(pref_storeLinkGotoHistory_id, true);
 
-    BooleanPreferenceDefinition STORE_OUTLINE_GOTO_HISTORY = new BooleanPreferenceDefinition(
-            pref_storeOutlineGotoHistory_id, pref_storeOutlineGotoHistory_defvalue);
+    BooleanPreferenceDefinition STORE_OUTLINE_GOTO_HISTORY = new BooleanPreferenceDefinition(pref_storeOutlineGotoHistory_id, true);
 
-    BooleanPreferenceDefinition STORE_SEARCH_GOTO_HISTORY = new BooleanPreferenceDefinition(
-            pref_storeSearchGotoHistory_id, pref_storeSearchGotoHistory_defvalue);
+    BooleanPreferenceDefinition STORE_SEARCH_GOTO_HISTORY = new BooleanPreferenceDefinition(pref_storeSearchGotoHistory_id, false);
 
     /* =============== Tap & Keys settings =============== */
 
-    StringPreferenceDefinition TAP_PROFILES = new StringPreferenceDefinition(pref_tapprofiles_id,
-            pref_tapprofiles_defvalue);
+    StringPreferenceDefinition TAP_PROFILES = new StringPreferenceDefinition(pref_tapprofiles_id);
 
-    StringPreferenceDefinition KEY_BINDINGS = new StringPreferenceDefinition(pref_keys_binding_id,
-            pref_keys_binding_defvalue);
+    StringPreferenceDefinition KEY_BINDINGS = new StringPreferenceDefinition(pref_keys_binding_id);
 
     /* =============== Performance settings =============== */
 
@@ -119,29 +101,23 @@ public interface AppPreferences {
     IntegerPreferenceDefinition DRAW_THREAD_PRIORITY = new IntegerPreferenceDefinition(pref_drawthread_priority_id,
             pref_thread_priority_normal, pref_thread_priority_lowest, pref_thread_priority_highest);
 
-    BooleanPreferenceDefinition DECODING_ON_SCROLL = new BooleanPreferenceDefinition(pref_decodingonscroll_id, pref_decodingonscroll_defvalue);
+    BooleanPreferenceDefinition DECODING_ON_SCROLL = new BooleanPreferenceDefinition(pref_decodingonscroll_id, true);
 
     IntegerPreferenceDefinition BITMAP_SIZE = new IntegerPreferenceDefinition(pref_bitmapsize_id, pref_bitmapsize_512,
             pref_bitmapsize_64, pref_bitmapsize_1024);
-
-// --Commented out by Inspection START (3/10/21 4:28 PM):
-//    IntegerPreferenceDefinition HEAP_PREALLOCATE = new IntegerPreferenceDefinition(pref_heappreallocate_id,
-//            pref_heappreallocate_defvalue, pref_heappreallocate_minvalue, pref_heappreallocate_maxvalue);
-// --Commented out by Inspection STOP (3/10/21 4:28 PM)
 
     IntegerPreferenceDefinition PDF_STORAGE_SIZE = new IntegerPreferenceDefinition(pref_pdfstoragesize_id,
             pref_pdfstoragesize_defvalue, pref_pdfstoragesize_minvalue, pref_pdfstoragesize_maxvalue);
 
     /* =============== Default rendering settings =============== */
 
-    BooleanPreferenceDefinition NIGHT_MODE = new BooleanPreferenceDefinition(pref_nightmode_id, pref_nightmode_defvalue);
+    BooleanPreferenceDefinition NIGHT_MODE = new BooleanPreferenceDefinition(pref_nightmode_id, false);
 
-    BooleanPreferenceDefinition TINT = new BooleanPreferenceDefinition(pref_tint_id, pref_tint_defvalue);
+    BooleanPreferenceDefinition TINT = new BooleanPreferenceDefinition(pref_tint_id, false);
 
     IntegerPreferenceDefinition TINT_COLOR = new IntegerPreferenceDefinition(pref_tint_color_id, pref_tint_color_defvalue);
 
-    BooleanPreferenceDefinition NIGHT_MODE_POS_IMAGES = new BooleanPreferenceDefinition(pref_posimages_in_nightmode_id,
-            pref_posimages_in_nightmode_defvalue);
+    BooleanPreferenceDefinition NIGHT_MODE_POS_IMAGES = new BooleanPreferenceDefinition(pref_posimages_in_nightmode_id, false);
 
     IntegerPreferenceDefinition CONTRAST = new IntegerPreferenceDefinition(pref_contrast_id, pref_contrast_defvalue,
             pref_contrast_minvalue, pref_contrast_maxvalue);
@@ -152,16 +128,13 @@ public interface AppPreferences {
     IntegerPreferenceDefinition EXPOSURE = new IntegerPreferenceDefinition(pref_exposure_id, pref_exposure_defvalue,
             pref_exposure_minvalue, pref_exposure_maxvalue);
 
-    BooleanPreferenceDefinition AUTO_LEVELS = new BooleanPreferenceDefinition(pref_autolevels_id,
-            pref_autolevels_defvalue);
+    BooleanPreferenceDefinition AUTO_LEVELS = new BooleanPreferenceDefinition(pref_autolevels_id, false);
 
-    BooleanPreferenceDefinition SPLIT_PAGES = new BooleanPreferenceDefinition(pref_splitpages_id,
-            pref_splitpages_defvalue);
+    BooleanPreferenceDefinition SPLIT_PAGES = new BooleanPreferenceDefinition(pref_splitpages_id, false);
 
-    BooleanPreferenceDefinition SPLIT_RTL = new BooleanPreferenceDefinition(pref_splitpages_rtl_id,
-            pref_splitpages_rtl_defvalue);
+    BooleanPreferenceDefinition SPLIT_RTL = new BooleanPreferenceDefinition(pref_splitpages_rtl_id, false);
 
-    BooleanPreferenceDefinition CROP_PAGES = new BooleanPreferenceDefinition(pref_croppages_id, pref_croppages_defvalue);
+    BooleanPreferenceDefinition CROP_PAGES = new BooleanPreferenceDefinition(pref_croppages_id, false);
 
     EnumPreferenceDefinition<DocumentViewMode> VIEW_MODE = new EnumPreferenceDefinition<>(
             DocumentViewMode.class, pref_viewmode_id, pref_viewmode_vertical_scroll);
@@ -172,7 +145,7 @@ public interface AppPreferences {
     EnumPreferenceDefinition<PageAnimationType> ANIMATION_TYPE = new EnumPreferenceDefinition<>(
             PageAnimationType.class, pref_animation_type_id, pref_animation_type_none);
 
-    BooleanPreferenceDefinition RTL = new BooleanPreferenceDefinition(pref_rtl_id, pref_rtl_defvalue);
+    BooleanPreferenceDefinition RTL = new BooleanPreferenceDefinition(pref_rtl_id, false);
 
     /* =============== DjVU Format-specific settings =============== */
 
@@ -181,8 +154,7 @@ public interface AppPreferences {
 
     /* =============== PDF Format-specific settings =============== */
 
-    BooleanPreferenceDefinition PDF_CUSTOM_DPI = new BooleanPreferenceDefinition(pref_customdpi_id,
-            pref_customdpi_defvalue);
+    BooleanPreferenceDefinition PDF_CUSTOM_DPI = new BooleanPreferenceDefinition(pref_customdpi_id, false);
 
     IntegerPreferenceDefinition PDF_CUSTOM_XDPI = new IntegerPreferenceDefinition(pref_xdpi_id, pref_xdpi_defvalue,
             pref_xdpi_minvalue, pref_xdpi_maxvalue);
@@ -190,6 +162,5 @@ public interface AppPreferences {
     IntegerPreferenceDefinition PDF_CUSTOM_YDPI = new IntegerPreferenceDefinition(pref_ydpi_id, pref_ydpi_defvalue,
             pref_ydpi_minvalue, pref_ydpi_maxvalue);
 
-    BooleanPreferenceDefinition PDF_SLOW_CMYK = new BooleanPreferenceDefinition(pref_slowcmyk_id,
-            pref_slowcmyk_defvalue);
+    BooleanPreferenceDefinition PDF_SLOW_CMYK = new BooleanPreferenceDefinition(pref_slowcmyk_id, false);
 }

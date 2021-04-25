@@ -26,20 +26,15 @@ public class BaseDroidApp extends Application {
 
     public static Context context;
 
-    public static String APP_VERSION_NAME;
+    private static String APP_VERSION_NAME;
     public static String APP_PACKAGE;
     public static File EXT_STORAGE;
     public static File APP_STORAGE;
     public static String APP_NAME;
-    public static Locale defLocale;
+    private static Locale defLocale;
     private static Locale appLocale;
-    public static String APP_INFO;
+    private static String APP_INFO;
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see android.app.Application#onCreate()
-     */
     @Override
     public void onCreate() {
         super.onCreate();
@@ -73,27 +68,6 @@ public class BaseDroidApp extends Application {
                     "DEVICE      : " + Build.DEVICE + "\n" +
                     "DISPLAY     : " + Build.DISPLAY;
             Log.i(APP_NAME, APP_INFO);
-
-//            Log.i(APP_NAME, APP_NAME + " (" + APP_PACKAGE + ")" + " " + APP_VERSION_NAME + "(" + pi.versionCode + ")");
-////            Log.i(APP_NAME, "Root             dir: " + Environment.getRootDirectory());
-////            Log.i(APP_NAME, "Data             dir: " + Environment.getDataDirectory());
-//            Log.i(APP_NAME, "External storage dir: " + EXT_STORAGE);
-//            Log.i(APP_NAME, "App      storage dir: " + APP_STORAGE);
-//            Log.i(APP_NAME, "Files            dir: " + FileUtils.getAbsolutePath(getFilesDir()));
-//            Log.i(APP_NAME, "Cache            dir: " + FileUtils.getAbsolutePath(getCacheDir()));
-//            Log.i(APP_NAME, "System locale       : " + defLocale);
-//            Log.i(APP_NAME, "VERSION     : " + Build.VERSION.SDK_INT);
-////            Log.i(APP_NAME, "BOARD       : " + Build.BOARD);
-////            Log.i(APP_NAME, "BRAND       : " + Build.BRAND);
-//            Log.i(APP_NAME, "CPU_ABI     : " + BUILD_PROPS.getProperty("ro.product.cpu.abi"));
-//            Log.i(APP_NAME, "CPU_ABI2    : " + BUILD_PROPS.getProperty("ro.product.cpu.abi2"));
-//            Log.i(APP_NAME, "DEVICE      : " + Build.DEVICE);
-//            Log.i(APP_NAME, "DISPLAY     : " + Build.DISPLAY);
-////            Log.i(APP_NAME, "FINGERPRINT : " + Build.FINGERPRINT);
-////            Log.i(APP_NAME, "ID          : " + Build.ID);
-////            Log.i(APP_NAME, "MANUFACTURER: " + BUILD_PROPS.getProperty("ro.product.manufacturer"));
-////            Log.i(APP_NAME, "MODEL       : " + Build.MODEL);
-////            Log.i(APP_NAME, "PRODUCT     : " + Build.PRODUCT);
         } catch (final NameNotFoundException e) {
             e.printStackTrace();
         }
