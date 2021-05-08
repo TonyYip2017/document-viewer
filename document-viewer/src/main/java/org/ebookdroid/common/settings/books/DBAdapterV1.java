@@ -301,7 +301,7 @@ class DBAdapterV1 implements IDBAdapter {
                 // Page animation type
                 bs.animationType.ordinal(),
                 // Split pages on/off
-                bs.splitPages ? 1 : 0 };
+                0 };
 
         db.execSQL(DB_BOOK_STORE, args);
 
@@ -318,7 +318,7 @@ class DBAdapterV1 implements IDBAdapter {
         bs.viewMode = c.getInt(index++) != 0 ? DocumentViewMode.SINGLE_PAGE : DocumentViewMode.VERTICALL_SCROLL;
         bs.pageAlign = PageAlign.values()[c.getInt(index++)];
         bs.animationType = PageAnimationType.values()[c.getInt(index++)];
-        bs.splitPages = c.getInt(index++) != 0;
+//        bs.splitPages = c.getInt(index++) != 0;
 
         return bs;
     }

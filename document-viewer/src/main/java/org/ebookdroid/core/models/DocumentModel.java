@@ -260,17 +260,7 @@ public class DocumentModel extends ListenerProxy {
             for (int docIndex = 0; docIndex < docInfo.docPageCount; docIndex++) {
                 final PageInfo pi = docInfo.docPages.get(docIndex, null);
                 final CodecPageInfo info = pi != null ? pi.info : null;
-                if (!bs.splitPages || info == null || (info.width < info.height)) {
-                    viewIndex = createFullPage(base, docIndex, viewIndex, defCpi, info, pi, list);
-                } else {
-                    if (bs.splitRTL) {
-                        viewIndex = createRightPage(base, docIndex, viewIndex, info, list);
-                        viewIndex = createLeftPage(base, docIndex, viewIndex, info, list);
-                    } else {
-                        viewIndex = createLeftPage(base, docIndex, viewIndex, info, list);
-                        viewIndex = createRightPage(base, docIndex, viewIndex, info, list);
-                    }
-                }
+                viewIndex = createFullPage(base, docIndex, viewIndex, defCpi, info, pi, list);
             }
             pages = list.toArray(new Page[list.size()]);
             if (pages.length > 0) {

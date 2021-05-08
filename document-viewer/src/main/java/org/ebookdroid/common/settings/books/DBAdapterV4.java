@@ -112,7 +112,7 @@ class DBAdapterV4 extends DBAdapterV3 {
                 // Page animation type
                 bs.animationType.ordinal(),
                 // Split pages on/off
-                bs.splitPages ? 1 : 0,
+                0,
                 // Crop pages on/off
                 bs.cropPages ? 1 : 0,
                 // Offset x
@@ -138,7 +138,7 @@ class DBAdapterV4 extends DBAdapterV3 {
         bs.viewMode = c.getInt(index++) != 0 ? DocumentViewMode.SINGLE_PAGE : DocumentViewMode.VERTICALL_SCROLL;
         bs.pageAlign = PageAlign.values()[c.getInt(index++)];
         bs.animationType = PageAnimationType.values()[c.getInt(index++)];
-        bs.splitPages = c.getInt(index++) != 0;
+        index++;
         bs.cropPages = c.getInt(index++) != 0;
 
         return bs;

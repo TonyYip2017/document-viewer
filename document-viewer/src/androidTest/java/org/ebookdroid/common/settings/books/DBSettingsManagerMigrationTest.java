@@ -42,8 +42,8 @@ public class DBSettingsManagerMigrationTest {
         bs.firstPageOffset = 2;
         bs.currentPage = PageIndex.LAST;
         bs.zoom = 55;
-        bs.splitPages = true;
-        bs.splitRTL = true;
+//        bs.splitPages = true;
+//        bs.splitRTL = true;
         bs.rotation = RotationType.AUTOMATIC;
         bs.viewMode = DocumentViewMode.HORIZONTAL_SCROLL;
         bs.pageAlign = PageAlign.HEIGHT;
@@ -71,8 +71,8 @@ public class DBSettingsManagerMigrationTest {
         assertThat(bs.firstPageOffset, is(2));
         assertThat(bs.currentPage, is(PageIndex.LAST));
         assertThat(bs.zoom, is(55));
-        assertThat(bs.splitPages, is(true));
-        assertThat(bs.splitRTL, is(true));
+//        assertThat(bs.splitPages, is(true));
+//        assertThat(bs.splitRTL, is(true));
         assertThat(bs.rotation, is(RotationType.AUTOMATIC));
         assertThat(bs.viewMode, is(DocumentViewMode.HORIZONTAL_SCROLL));
         assertThat(bs.pageAlign, is(PageAlign.HEIGHT));
@@ -102,8 +102,8 @@ public class DBSettingsManagerMigrationTest {
         bs.firstPageOffset = 0;
         bs.currentPage = new PageIndex(44, 0);
         bs.zoom = 0;
-        bs.splitPages = false;
-        bs.splitRTL = false;
+//        bs.splitPages = false;
+//        bs.splitRTL = false;
         bs.rotation = RotationType.UNSPECIFIED;
         bs.viewMode = DocumentViewMode.SINGLE_PAGE;
         bs.pageAlign = PageAlign.AUTO;
@@ -131,8 +131,8 @@ public class DBSettingsManagerMigrationTest {
         assertThat(bs.firstPageOffset, is(0));
         assertThat(bs.currentPage, is(new PageIndex(44, 0)));
         assertThat(bs.zoom, is(0));
-        assertThat(bs.splitPages, is(false));
-        assertThat(bs.splitRTL, is(false));
+//        assertThat(bs.splitPages, is(false));
+//        assertThat(bs.splitRTL, is(false));
         assertThat(bs.rotation, is(RotationType.UNSPECIFIED));
         assertThat(bs.viewMode, is(DocumentViewMode.SINGLE_PAGE));
         assertThat(bs.pageAlign, is(PageAlign.AUTO));

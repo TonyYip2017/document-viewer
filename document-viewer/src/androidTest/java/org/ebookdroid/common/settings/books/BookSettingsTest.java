@@ -55,8 +55,8 @@ public class BookSettingsTest {
         assertThat(bs.firstPageOffset, is(1));
         assertThat(bs.currentPage, is(new PageIndex(2, 2)));
         assertThat(bs.zoom, is(100));
-        assertThat(bs.splitPages, is(false));
-        assertThat(bs.splitRTL, is(false));
+//        assertThat(bs.splitPages, is(false));
+//        assertThat(bs.splitRTL, is(false));
         assertThat(bs.rotation, is(RotationType.UNSPECIFIED));
         assertThat(bs.viewMode, is(DocumentViewMode.VERTICALL_SCROLL));
         assertThat(bs.pageAlign, is(PageAlign.WIDTH));

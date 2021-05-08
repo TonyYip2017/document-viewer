@@ -157,7 +157,7 @@ class DBAdapterV6 extends DBAdapterV5 {
     protected long getFlags(final BookSettings bs) {
         return
         /* Split page flag */
-        (bs.splitPages ? F_SPLIT_PAGES : 0) |
+//        (bs.splitPages ? F_SPLIT_PAGES : 0) |
         /* Crop page flag */
         (bs.cropPages ? F_CROP_PAGES : 0) |
         /* Night mode flag */
@@ -167,9 +167,9 @@ class DBAdapterV6 extends DBAdapterV5 {
         /* Positive image flag */
         (bs.positiveImagesInNightMode ? F_NIGHT_MODE_POS_IMAGES : 0) |
         /* Rotation flags */
-        getRotationFlags(bs) |
+        getRotationFlags(bs);
         /* Positive image flag */
-        (bs.splitRTL ? F_SPLIT_RTL : 0);
+//        (bs.splitRTL ? F_SPLIT_RTL : 0);
 
     }
 
@@ -184,7 +184,7 @@ class DBAdapterV6 extends DBAdapterV5 {
     }
 
     protected void setFlags(final BookSettings bs, final long flags) {
-        bs.splitPages = (flags & F_SPLIT_PAGES) != 0;
+//        bs.splitPages = (flags & F_SPLIT_PAGES) != 0;
         bs.cropPages = (flags & F_CROP_PAGES) != 0;
         bs.nightMode = (flags & F_NIGHT_MODE) != 0;
         bs.positiveImagesInNightMode = (flags & F_NIGHT_MODE_POS_IMAGES) != 0;
@@ -200,6 +200,6 @@ class DBAdapterV6 extends DBAdapterV5 {
             bs.rotation = RotationType.UNSPECIFIED;
         }
 
-        bs.splitRTL = (flags & F_SPLIT_RTL) != 0;
+//        bs.splitRTL = (flags & F_SPLIT_RTL) != 0;
     }
 }

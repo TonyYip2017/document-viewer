@@ -107,8 +107,8 @@ public class SettingsManager {
                         intent.getStringExtra("animationType"), current.animationType.toString()));
                 current.pageAlign = PageAlign.valueOf(LengthUtils.safeString(intent.getStringExtra("pageAlign"),
                         current.pageAlign.toString()));
-                current.splitPages = Boolean.parseBoolean(LengthUtils.safeString(intent.getStringExtra("splitPages"),
-                        Boolean.toString(current.splitPages)));
+//                current.splitPages = Boolean.parseBoolean(LengthUtils.safeString(intent.getStringExtra("splitPages"),
+//                        Boolean.toString(current.splitPages)));
                 current.cropPages = Boolean.parseBoolean(LengthUtils.safeString(intent.getStringExtra("cropPages"),
                         Boolean.toString(current.cropPages)));
                 current.nightMode = Boolean.parseBoolean(LengthUtils.safeString(intent.getStringExtra("nightMode"),
@@ -117,8 +117,7 @@ public class SettingsManager {
                 if (intent.hasExtra("pageIndex")) {
                     final int pageIndex = Integer.parseInt(LengthUtils.safeString(intent.getStringExtra("pageIndex"),
                             Integer.toString(current.currentPage.viewIndex)));
-                    current.currentPage = new PageIndex(current.splitPages ? current.currentPage.docIndex : pageIndex,
-                            pageIndex);
+                    current.currentPage = new PageIndex(pageIndex, pageIndex);
 
 //                    current.offsetX = Float.parseFloat(LengthUtils.safeString(intent.getStringExtra("offsetX"), "0"));
 //                    current.offsetY = Float.parseFloat(LengthUtils.safeString(intent.getStringExtra("offsetY"), "0"));
@@ -303,19 +302,19 @@ public class SettingsManager {
     }
 
     public static void toggleSplitPages(final BookSettings current) {
-        if (current == null) {
-            return;
-        }
-        lock.writeLock().lock();
-        try {
-            final BookSettings olds = new BookSettings(current);
-            current.splitPages = !current.splitPages;
-            current.lastChanged = System.currentTimeMillis();
-            db.storeBookSettings(current);
-            applyBookSettingsChanges(olds, current);
-        } finally {
-            lock.writeLock().unlock();
-        }
+//        if (current == null) {
+//            return;
+//        }
+//        lock.writeLock().lock();
+//        try {
+//            final BookSettings olds = new BookSettings(current);
+//            current.splitPages = !current.splitPages;
+//            current.lastChanged = System.currentTimeMillis();
+//            db.storeBookSettings(current);
+//            applyBookSettingsChanges(olds, current);
+//        } finally {
+//            lock.writeLock().unlock();
+//        }
     }
 
     public static void toggleCropPages(final BookSettings current) {

@@ -92,7 +92,7 @@ class DBAdapterV5 extends DBAdapterV4 {
                 // Page animation type
                 bs.animationType.ordinal(),
                 // Flags
-                (bs.splitPages ? F_SPLIT_PAGES : 0) | (bs.cropPages ? F_CROP_PAGES : 0),
+                (bs.cropPages ? F_CROP_PAGES : 0),
                 // Offset x
                 0,
                 // Offset y
@@ -118,7 +118,7 @@ class DBAdapterV5 extends DBAdapterV4 {
         bs.animationType = PageAnimationType.values()[c.getInt(index++)];
 
         long flags = c.getLong(index++);
-        bs.splitPages = (flags & F_SPLIT_PAGES) != 0;
+//        bs.splitPages = (flags & F_SPLIT_PAGES) != 0;
         bs.cropPages = (flags & F_CROP_PAGES) != 0;
 
         return bs;

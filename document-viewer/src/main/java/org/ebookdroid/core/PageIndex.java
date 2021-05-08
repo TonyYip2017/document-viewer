@@ -43,25 +43,24 @@ public class PageIndex {
         }
         // If now page splitting is switched off:
         // The document index is valid in all cases
-        if (!bs.splitPages) {
-            return dm.getPageObject(viewIndex);
-        }
-        // If now page splitting is switched on and bookmark was created in splitting mode (page.docIndex !=
-        // page.viewIndex)
-        // The view index is valid
-        if (docIndex != viewIndex) {
-            return dm.getPageObject(viewIndex);
-        }
+        return dm.getPageObject(viewIndex);
 
-        // If now page splitting is switched on and bookmark was created in non-splitting mode (page.docIndex !=
-        // page.viewIndex)
-        for (final Page p : dm.getPages()) {
-            if (p.index.docIndex == docIndex) {
-                return p;
-            }
-        }
-
-        return null;
+//        // If now page splitting is switched on and bookmark was created in splitting mode (page.docIndex !=
+//        // page.viewIndex)
+//        // The view index is valid
+//        if (docIndex != viewIndex) {
+//            return dm.getPageObject(viewIndex);
+//        }
+//
+//        // If now page splitting is switched on and bookmark was created in non-splitting mode (page.docIndex !=
+//        // page.viewIndex)
+//        for (final Page p : dm.getPages()) {
+//            if (p.index.docIndex == docIndex) {
+//                return p;
+//            }
+//        }
+//
+//        return null;
     }
 
     @Override

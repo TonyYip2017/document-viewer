@@ -73,8 +73,7 @@ public class OutlineAdapter extends BaseAdapter {
                 states[i] = OutlineItemState.LEAF;
             }
 
-            final Page page = model.getLinkTargetPage(this.objects[i].targetPage - 1, this.objects[i].targetRect, null,
-                    bs.splitRTL);
+            final Page page = model.getLinkTargetPage(this.objects[i].targetPage - 1, this.objects[i].targetRect, null, false);
             this.pageIndexes[i] = page != null ? page.index.viewIndex + 1 : -1;
         }
 

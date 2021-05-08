@@ -652,8 +652,7 @@ public abstract class AbstractViewController extends AbstractComponentController
     public void goToLink(final int pageDocIndex, final RectF targetRect, final boolean addToHistory) {
         if (pageDocIndex >= 0) {
             final PointF linkPoint = new PointF();
-            final Page target = model.getLinkTargetPage(pageDocIndex, targetRect, linkPoint,
-                    base.getBookSettings().splitRTL);
+            final Page target = model.getLinkTargetPage(pageDocIndex, targetRect, linkPoint, false);
             if (LCTX.isDebugEnabled()) {
                 LCTX.d("Target page found: " + target);
             }

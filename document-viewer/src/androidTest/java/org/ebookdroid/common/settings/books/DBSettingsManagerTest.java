@@ -83,8 +83,8 @@ public class DBSettingsManagerTest {
         assertThat(bs.firstPageOffset, is(1));
         assertThat(bs.currentPage, is(PageIndex.FIRST));
         assertThat(bs.zoom, is(100));
-        assertThat(bs.splitPages, is(false));
-        assertThat(bs.splitRTL, is(false));
+//        assertThat(bs.splitPages, is(false));
+//        assertThat(bs.splitRTL, is(false));
         assertThat(bs.rotation, is(RotationType.UNSPECIFIED));
         assertThat(bs.viewMode, is(DocumentViewMode.VERTICALL_SCROLL));
         assertThat(bs.pageAlign, is(PageAlign.AUTO));
@@ -146,22 +146,6 @@ public class DBSettingsManagerTest {
         for (int testValue : new int[] {15, 45}) {
             m_bs.zoom = testValue;
             assertThat(roundTrip(m_bs).zoom, is(testValue));
-        }
-    }
-
-    @Test
-    public void testSplitPages() {
-        for (boolean testValue : new boolean[] { true, false }) {
-            m_bs.splitPages = testValue;
-            assertThat(roundTrip(m_bs).splitPages, is(testValue));
-        }
-    }
-
-    @Test
-    public void testSplitRTL() {
-        for (boolean testValue : new boolean[] { true, false }) {
-            m_bs.splitRTL = testValue;
-            assertThat(roundTrip(m_bs).splitRTL, is(testValue));
         }
     }
 

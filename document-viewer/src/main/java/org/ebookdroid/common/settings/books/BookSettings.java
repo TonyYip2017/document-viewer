@@ -2,22 +2,20 @@ package org.ebookdroid.common.settings.books;
 
 import org.ebookdroid.common.settings.AppSettings;
 import org.ebookdroid.common.settings.definitions.AppPreferences;
-import org.ebookdroid.common.settings.definitions.BookPreferences;
 import org.ebookdroid.common.settings.types.DocumentViewMode;
 import org.ebookdroid.common.settings.types.PageAlign;
 import org.ebookdroid.common.settings.types.RotationType;
 import org.ebookdroid.core.PageIndex;
 import org.ebookdroid.core.curl.PageAnimationType;
 import org.ebookdroid.core.events.CurrentPageListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.emdev.utils.LengthUtils;
 import org.emdev.utils.enums.EnumUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookSettings implements CurrentPageListener {
     public transient boolean persistent;
@@ -27,8 +25,8 @@ public class BookSettings implements CurrentPageListener {
     public int firstPageOffset = 1;
     public PageIndex currentPage;
     public int zoom = 100;
-    public boolean splitPages;
-    public boolean splitRTL;
+    public final boolean splitPages = false;
+//    public final boolean splitRTL = false;
     public RotationType rotation;
     public DocumentViewMode viewMode;
     public PageAlign pageAlign = PageAlign.AUTO;
@@ -57,8 +55,8 @@ public class BookSettings implements CurrentPageListener {
         this.firstPageOffset = current.firstPageOffset;
         this.currentPage = current.currentPage;
         this.zoom = current.zoom;
-        this.splitPages = current.splitPages;
-        this.splitRTL = current.splitRTL;
+//        this.splitPages = current.splitPages;
+//        this.splitRTL = current.splitRTL;
         this.rotation = current.rotation;
         this.viewMode = current.viewMode;
         this.pageAlign = current.pageAlign;
@@ -89,8 +87,8 @@ public class BookSettings implements CurrentPageListener {
         this.firstPageOffset = current.firstPageOffset;
         this.currentPage = current.currentPage;
         this.zoom = current.zoom;
-        this.splitPages = current.splitPages;
-        this.splitRTL = current.splitRTL;
+//        this.splitPages = current.splitPages;
+//        this.splitRTL = current.splitRTL;
         this.rotation = current.rotation;
         this.viewMode = current.viewMode;
         this.pageAlign = current.pageAlign;
@@ -129,8 +127,8 @@ public class BookSettings implements CurrentPageListener {
         this.firstPageOffset = object.optInt("firstPageOffset", 1);
         this.currentPage = new PageIndex(object.getJSONObject("currentPage"));
         this.zoom = object.getInt("zoom");
-        this.splitPages = object.getBoolean("splitPages");
-        this.splitRTL = object.optBoolean("splitRTL", false);
+//        this.splitPages = object.getBoolean("splitPages");
+//        this.splitRTL = object.optBoolean("splitRTL", false);
         this.rotation = EnumUtils.getByName(RotationType.class, object, "rotation", RotationType.UNSPECIFIED);
         this.viewMode = EnumUtils.getByName(DocumentViewMode.class, object, "viewMode", DocumentViewMode.VERTICALL_SCROLL);
         this.pageAlign = EnumUtils.getByName(PageAlign.class, object, "pageAlign", PageAlign.AUTO);
@@ -167,8 +165,8 @@ public class BookSettings implements CurrentPageListener {
         obj.put("firstPageOffset", firstPageOffset);
         obj.put("currentPage", currentPage != null ? currentPage.toJSON() : null);
         obj.put("zoom", zoom);
-        obj.put("splitPages", splitPages);
-        obj.put("splitRTL", splitRTL);
+        obj.put("splitPages", false);
+        obj.put("splitRTL", false);
         obj.put("rotation", rotation != null ? rotation.name() : null);
         obj.put("viewMode", viewMode != null ? viewMode.name() : null);
         obj.put("pageAlign", pageAlign != null ? pageAlign.name() : null);
@@ -260,9 +258,6 @@ public class BookSettings implements CurrentPageListener {
             if (firstTime) {
                 mask = 0xFFFFFFFF;
             } else if (news != null) {
-                if (olds.splitPages != news.splitPages || olds.splitRTL != news.splitRTL) {
-                    mask |= D_SplitPages;
-                }
                 if (olds.cropPages != news.cropPages) {
                     mask |= D_CropPages;
                 }
@@ -302,9 +297,6 @@ public class BookSettings implements CurrentPageListener {
                 if (olds.autoLevels != news.autoLevels) {
                     mask |= D_AutoLevels;
                 }
-//                if (olds.rtl != news.rtl) {
-//                    mask |= D_RTL;
-//                }
             }
         }
 

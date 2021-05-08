@@ -316,8 +316,8 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         bs.gamma = current.gamma;
         bs.exposure = current.exposure;
         bs.autoLevels = current.autoLevels;
-        bs.splitPages = current.splitPages;
-        bs.splitRTL = current.splitRTL;
+//        bs.splitPages = current.splitPages;
+//        bs.splitRTL = current.splitRTL;
         bs.cropPages = current.cropPages;
         bs.viewMode = current.viewMode;
         bs.pageAlign = current.pageAlign;
@@ -335,8 +335,8 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         bs.gamma = BOOK_GAMMA.getPreferenceValue(prefs, current.gamma);
         bs.exposure = BOOK_EXPOSURE.getPreferenceValue(prefs, current.exposure);
         bs.autoLevels = BOOK_AUTO_LEVELS.getPreferenceValue(prefs, current.autoLevels);
-        bs.splitPages = BOOK_SPLIT_PAGES.getPreferenceValue(prefs, current.splitPages);
-        bs.splitRTL = BOOK_SPLIT_RTL.getPreferenceValue(prefs, current.splitRTL);
+//        bs.splitPages = BOOK_SPLIT_PAGES.getPreferenceValue(prefs, current.splitPages);
+//        bs.splitRTL = BOOK_SPLIT_RTL.getPreferenceValue(prefs, current.splitRTL);
         bs.cropPages = BOOK_CROP_PAGES.getPreferenceValue(prefs, current.cropPages);
         bs.rotation = BOOK_ROTATION.getPreferenceValue(prefs, RotationType.UNSPECIFIED);
         bs.viewMode = BOOK_VIEW_MODE.getPreferenceValue(prefs, current.viewMode);
@@ -384,8 +384,8 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         BOOK_GAMMA.setPreferenceValue(edit, bs.gamma);
         BOOK_EXPOSURE.setPreferenceValue(edit, bs.exposure);
         BOOK_AUTO_LEVELS.setPreferenceValue(edit, bs.autoLevels);
-        BOOK_SPLIT_PAGES.setPreferenceValue(edit, bs.splitPages);
-        BOOK_SPLIT_RTL.setPreferenceValue(edit, bs.splitRTL);
+//        BOOK_SPLIT_PAGES.setPreferenceValue(edit, bs.splitPages);
+//        BOOK_SPLIT_RTL.setPreferenceValue(edit, bs.splitRTL);
         BOOK_CROP_PAGES.setPreferenceValue(edit, bs.cropPages);
         BOOK_ROTATION.setPreferenceValue(edit, bs.rotation);
         BOOK_VIEW_MODE.setPreferenceValue(edit, bs.viewMode);
