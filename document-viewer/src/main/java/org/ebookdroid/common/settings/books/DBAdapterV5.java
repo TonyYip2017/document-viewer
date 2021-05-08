@@ -94,9 +94,9 @@ class DBAdapterV5 extends DBAdapterV4 {
                 // Flags
                 (bs.splitPages ? F_SPLIT_PAGES : 0) | (bs.cropPages ? F_CROP_PAGES : 0),
                 // Offset x
-                (int) (bs.offsetX * OFFSET_FACTOR),
+                0,
                 // Offset y
-                (int) (bs.offsetY * OFFSET_FACTOR)
+                0
         // ...
         };
 
@@ -120,9 +120,6 @@ class DBAdapterV5 extends DBAdapterV4 {
         long flags = c.getLong(index++);
         bs.splitPages = (flags & F_SPLIT_PAGES) != 0;
         bs.cropPages = (flags & F_CROP_PAGES) != 0;
-
-        bs.offsetX = c.getInt(index++) / OFFSET_FACTOR;
-        bs.offsetY = c.getInt(index++) / OFFSET_FACTOR;
 
         return bs;
     }

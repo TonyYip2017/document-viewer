@@ -120,8 +120,8 @@ public class SettingsManager {
                     current.currentPage = new PageIndex(current.splitPages ? current.currentPage.docIndex : pageIndex,
                             pageIndex);
 
-                    current.offsetX = Float.parseFloat(LengthUtils.safeString(intent.getStringExtra("offsetX"), "0"));
-                    current.offsetY = Float.parseFloat(LengthUtils.safeString(intent.getStringExtra("offsetY"), "0"));
+//                    current.offsetX = Float.parseFloat(LengthUtils.safeString(intent.getStringExtra("offsetX"), "0"));
+//                    current.offsetY = Float.parseFloat(LengthUtils.safeString(intent.getStringExtra("offsetY"), "0"));
                 }
             }
 
@@ -374,17 +374,17 @@ public class SettingsManager {
         }
     }
 
-    public static void positionChanged(final BookSettings current, final float offsetX, final float offsetY) {
-        if (current == null) {
-            return;
-        }
-        lock.writeLock().lock();
-        try {
-            current.positionChanged(offsetX, offsetY);
-        } finally {
-            lock.writeLock().unlock();
-        }
-    }
+//    public static void positionChanged(final BookSettings current, final float offsetX, final float offsetY) {
+//        if (current == null) {
+//            return;
+//        }
+//        lock.writeLock().lock();
+//        try {
+//            current.positionChanged(offsetX, offsetY);
+//        } finally {
+//            lock.writeLock().unlock();
+//        }
+//    }
 
     public static void onSettingsChanged() {
         lock.writeLock().lock();

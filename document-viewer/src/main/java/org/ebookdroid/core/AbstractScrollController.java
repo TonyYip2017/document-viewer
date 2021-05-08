@@ -68,10 +68,10 @@ public abstract class AbstractScrollController extends AbstractViewController {
     @Override
     public final boolean onLayoutChanged(final boolean layoutChanged, final boolean layoutLocked, final Rect oldLaout,
             final Rect newLayout) {
-        final BookSettings bs = base.getBookSettings();
+//        final BookSettings bs = base.getBookSettings();
         final int page = model != null ? model.getCurrentViewPageIndex() : -1;
-        final float offsetX = bs != null ? bs.offsetX : 0;
-        final float offsetY = bs != null ? bs.offsetY : 0;
+        final float offsetX = 0;
+        final float offsetY = 0;
 
         if (super.onLayoutChanged(layoutChanged, layoutLocked, oldLaout, newLayout)) {
             if (isShown && layoutChanged && page != -1) {

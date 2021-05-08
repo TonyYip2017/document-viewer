@@ -70,10 +70,10 @@ public class HScrollController extends AbstractScrollController {
         }
     }
 
-    private boolean isRightToLeft() {
-        final BookSettings bs = base.getBookSettings();
-        return bs.rtl;
-    }
+//    private boolean isRightToLeft() {
+//        final BookSettings bs = base.getBookSettings();
+//        return false;
+//    }
 
     /**
      * {@inheritDoc}
@@ -84,7 +84,7 @@ public class HScrollController extends AbstractScrollController {
     public final Rect getScrollLimits() {
         final int width = getWidth();
         final int height = getHeight();
-        final Page lpo = isRightToLeft() ? model.getPageObject(0) : model.getLastPageObject();
+        final Page lpo = model.getLastPageObject();
 
         final float zoom = getBase().getZoomModel().getZoom();
 
@@ -115,13 +115,10 @@ public class HScrollController extends AbstractScrollController {
         final BookSettings bookSettings = base.getBookSettings();
         final PageAlign pageAlign = DocumentViewMode.getPageAlign(bookSettings);
 
-        if (changedPage == null || isRightToLeft()) {
+        if (changedPage == null) {
             float widthAccum = 0;
 
             List<Page> pages = new ArrayList<>(Arrays.asList(model.getPages()));
-            if (isRightToLeft()) {
-                Collections.reverse(pages);
-            }
 
             for (final Page page : pages) {
                 final RectF pageBounds = calcPageBounds(pageAlign, page.getAspectRatio(), width, height);

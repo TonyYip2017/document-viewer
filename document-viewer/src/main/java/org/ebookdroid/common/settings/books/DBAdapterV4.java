@@ -116,9 +116,9 @@ class DBAdapterV4 extends DBAdapterV3 {
                 // Crop pages on/off
                 bs.cropPages ? 1 : 0,
                 // Offset x
-                (int) bs.offsetX,
+                0,
                 // Offset y
-                (int) bs.offsetY
+                0
         // ...
         };
 
@@ -140,8 +140,6 @@ class DBAdapterV4 extends DBAdapterV3 {
         bs.animationType = PageAnimationType.values()[c.getInt(index++)];
         bs.splitPages = c.getInt(index++) != 0;
         bs.cropPages = c.getInt(index++) != 0;
-        bs.offsetX = c.getInt(index++);
-        bs.offsetY = c.getInt(index++);
 
         return bs;
     }

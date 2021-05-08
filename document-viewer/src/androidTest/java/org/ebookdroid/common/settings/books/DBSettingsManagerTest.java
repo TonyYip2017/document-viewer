@@ -91,8 +91,8 @@ public class DBSettingsManagerTest {
         assertThat(bs.animationType, is(PageAnimationType.NONE));
         assertThat(bs.bookmarks, is(empty()));
         assertThat(bs.cropPages, is(false));
-        assertThat(bs.offsetX, is(0.0f));
-        assertThat(bs.offsetY, is(0.0f));
+//        assertThat(bs.offsetX, is(0.0f));
+//        assertThat(bs.offsetY, is(0.0f));
         assertThat(bs.nightMode, is(false));
         assertThat(bs.positiveImagesInNightMode, is(false));
         assertThat(bs.contrast, is(AppPreferences.CONTRAST.defValue));
@@ -249,22 +249,6 @@ public class DBSettingsManagerTest {
         for (boolean testValue : new boolean[] { true, false }) {
             m_bs.cropPages = testValue;
             assertThat(roundTrip(m_bs).cropPages, is(testValue));
-        }
-    }
-
-    @Test
-    public void testOffsetX() {
-        for (float testValue : new float[] { -1.0f, 3.3f }) {
-            m_bs.offsetX = testValue;
-            assertThat(roundTrip(m_bs).offsetX, is(testValue));
-        }
-    }
-
-    @Test
-    public void testOffsetY() {
-        for (float testValue : new float[] { -1.0f, 3.3f }) {
-            m_bs.offsetY = testValue;
-            assertThat(roundTrip(m_bs).offsetY, is(testValue));
         }
     }
 

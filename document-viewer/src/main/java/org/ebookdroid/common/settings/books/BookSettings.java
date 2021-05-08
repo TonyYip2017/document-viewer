@@ -20,59 +20,32 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class BookSettings implements CurrentPageListener {
-
     public transient boolean persistent;
-
     public transient long lastChanged;
-
     public final String fileName;
-
     public long lastUpdated;
-
     public int firstPageOffset = 1;
-
     public PageIndex currentPage;
-
     public int zoom = 100;
-
     public boolean splitPages;
-
     public boolean splitRTL;
-
     public RotationType rotation;
-
     public DocumentViewMode viewMode;
-
     public PageAlign pageAlign = PageAlign.AUTO;
-
     public PageAnimationType animationType = PageAnimationType.NONE;
-
     public final List<Bookmark> bookmarks = new ArrayList<>();
-
     public boolean cropPages;
-
-    public float offsetX;
-
-    public float offsetY;
-
+//    public final float offsetX = 0;
+//    public final float offsetY = 0;
     public boolean nightMode;
-
     public boolean positiveImagesInNightMode;
-
     public boolean tint;
-
     public int tintColor;
-
     public int contrast = AppPreferences.CONTRAST.defValue;
-
     public int gamma = AppPreferences.GAMMA.defValue;
-
     public int exposure = AppPreferences.EXPOSURE.defValue;
-
     public boolean autoLevels;
-
-    public boolean rtl;
-
+//    public final boolean rtl = false;
     public JSONObject typeSpecific;
 
     public BookSettings(final BookSettings current) {
@@ -92,8 +65,6 @@ public class BookSettings implements CurrentPageListener {
         this.animationType = current.animationType;
         this.bookmarks.addAll(current.bookmarks);
         this.cropPages = current.cropPages;
-        this.offsetX = current.offsetX;
-        this.offsetY = current.offsetY;
         this.nightMode = current.nightMode;
         this.positiveImagesInNightMode = current.positiveImagesInNightMode;
         this.tint = current.tint;
@@ -102,7 +73,7 @@ public class BookSettings implements CurrentPageListener {
         this.gamma = current.gamma;
         this.exposure = current.exposure;
         this.autoLevels = current.autoLevels;
-        this.rtl = current.rtl;
+//        this.rtl = current.rtl;
         try {
             this.typeSpecific = current.typeSpecific != null ? new JSONObject(current.typeSpecific.toString()) : null;
         } catch (JSONException ignored) {
@@ -126,8 +97,6 @@ public class BookSettings implements CurrentPageListener {
         this.animationType = current.animationType;
         this.bookmarks.addAll(current.bookmarks);
         this.cropPages = current.cropPages;
-        this.offsetX = current.offsetX;
-        this.offsetY = current.offsetY;
         this.nightMode = current.nightMode;
         this.positiveImagesInNightMode = current.positiveImagesInNightMode;
         this.tint = current.tint;
@@ -136,7 +105,7 @@ public class BookSettings implements CurrentPageListener {
         this.gamma = current.gamma;
         this.exposure = current.exposure;
         this.autoLevels = current.autoLevels;
-        this.rtl = current.rtl;
+//        this.rtl = current.rtl;
         try {
             this.typeSpecific = current.typeSpecific != null ? new JSONObject(current.typeSpecific.toString()) : null;
         } catch (JSONException ignored) {
@@ -167,8 +136,8 @@ public class BookSettings implements CurrentPageListener {
         this.pageAlign = EnumUtils.getByName(PageAlign.class, object, "pageAlign", PageAlign.AUTO);
         this.animationType = EnumUtils.getByName(PageAnimationType.class, object, "animationType", PageAnimationType.NONE);
         this.cropPages = object.getBoolean("cropPages");
-        this.offsetX = (float) object.getDouble("offsetX");
-        this.offsetY = (float) object.getDouble("offsetY");
+//        this.offsetX = (float) object.getDouble("offsetX");
+//        this.offsetY = (float) object.getDouble("offsetY");
         this.nightMode = object.getBoolean("nightMode");
         this.positiveImagesInNightMode = object.optBoolean("positiveImagesInNightMode", false);
         this.tint = object.optBoolean("tint", false);
@@ -177,7 +146,7 @@ public class BookSettings implements CurrentPageListener {
         this.gamma = object.optInt("gamma", AppPreferences.GAMMA.defValue);
         this.exposure = object.getInt("exposure");
         this.autoLevels = object.getBoolean("autoLevels");
-        this.rtl = object.optBoolean("rtl", BookPreferences.BOOK_RTL.getDefaultValue());
+//        this.rtl = object.optBoolean("rtl", BookPreferences.BOOK_RTL.getDefaultValue());
 
         final JSONArray bookmarks = object.optJSONArray("bookmarks");
         if (LengthUtils.isNotEmpty(bookmarks)) {
@@ -205,8 +174,8 @@ public class BookSettings implements CurrentPageListener {
         obj.put("pageAlign", pageAlign != null ? pageAlign.name() : null);
         obj.put("animationType", animationType != null ? animationType.name() : null);
         obj.put("cropPages", cropPages);
-        obj.put("offsetX", offsetX);
-        obj.put("offsetY", offsetY);
+        obj.put("offsetX", 0);
+        obj.put("offsetY", 0);
         obj.put("nightMode", nightMode);
         obj.put("positiveImagesInNightMode", positiveImagesInNightMode);
         obj.put("tint", tint);
@@ -215,7 +184,7 @@ public class BookSettings implements CurrentPageListener {
         obj.put("gamma", gamma);
         obj.put("exposure", exposure);
         obj.put("autoLevels", autoLevels);
-        obj.put("rtl", rtl);
+        obj.put("rtl", false);
 
         final JSONArray bookmarks = new JSONArray();
         obj.put("bookmarks", bookmarks);
@@ -234,11 +203,11 @@ public class BookSettings implements CurrentPageListener {
         this.lastChanged = System.currentTimeMillis();
     }
 
-    public void positionChanged(final float offsetX, final float offsetY) {
-        this.offsetX = offsetX;
-        this.offsetY = offsetY;
-        this.lastChanged = System.currentTimeMillis();
-    }
+//    public void positionChanged(final float offsetX, final float offsetY) {
+//        this.offsetX = offsetX;
+//        this.offsetY = offsetY;
+//        this.lastChanged = System.currentTimeMillis();
+//    }
 
     public PageIndex getCurrentPage() {
         return currentPage;
@@ -333,9 +302,9 @@ public class BookSettings implements CurrentPageListener {
                 if (olds.autoLevels != news.autoLevels) {
                     mask |= D_AutoLevels;
                 }
-                if (olds.rtl != news.rtl) {
-                    mask |= D_RTL;
-                }
+//                if (olds.rtl != news.rtl) {
+//                    mask |= D_RTL;
+//                }
             }
         }
 

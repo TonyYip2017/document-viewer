@@ -322,7 +322,7 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         bs.viewMode = current.viewMode;
         bs.pageAlign = current.pageAlign;
         bs.animationType = current.animationType;
-        bs.rtl = current.rtl;
+//        bs.rtl = current.rtl;
     }
 
     static void fillBookSettings(final BookSettings bs) {
@@ -343,7 +343,7 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         bs.pageAlign = BOOK_PAGE_ALIGN.getPreferenceValue(prefs, current.pageAlign);
         bs.animationType = BOOK_ANIMATION_TYPE.getPreferenceValue(prefs, current.animationType);
         bs.firstPageOffset = BOOK_FIRST_PAGE_OFFSET.getPreferenceValue(prefs);
-        bs.rtl = BOOK_RTL.getPreferenceValue(prefs, current.rtl);
+//        bs.rtl = BOOK_RTL.getPreferenceValue(prefs, current.rtl);
     }
 
 // --Commented out by Inspection START (3/10/21 4:28 PM):
@@ -392,7 +392,7 @@ public class AppSettings implements AppPreferences, BookPreferences, IBackupAgen
         BOOK_PAGE_ALIGN.setPreferenceValue(edit, bs.pageAlign);
         BOOK_ANIMATION_TYPE.setPreferenceValue(edit, bs.animationType);
         BOOK_FIRST_PAGE_OFFSET.setPreferenceValue(edit, bs.firstPageOffset);
-        BOOK_RTL.setPreferenceValue(edit, bs.rtl);
+//        BOOK_RTL.setPreferenceValue(edit, bs.rtl);
         edit.commit();
     }
 

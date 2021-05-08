@@ -113,9 +113,9 @@ class DBAdapterV8 extends DBAdapterV7 {
                 // Flags
                 getFlags(bs),
                 // Offset x
-                (int) (bs.offsetX * OFFSET_FACTOR),
+                0,
                 // Offset y
-                (int) (bs.offsetY * OFFSET_FACTOR),
+                0,
                 // Contrast
                 bs.contrast,
                 // Gamma
@@ -147,8 +147,8 @@ class DBAdapterV8 extends DBAdapterV7 {
 
         setFlags(bs, c.getLong(index++));
 
-        bs.offsetX = c.getInt(index++) / OFFSET_FACTOR;
-        bs.offsetY = c.getInt(index++) / OFFSET_FACTOR;
+        index++;
+        index++;
 
         bs.contrast = c.getInt(index++);
         bs.gamma = c.getInt(index++);

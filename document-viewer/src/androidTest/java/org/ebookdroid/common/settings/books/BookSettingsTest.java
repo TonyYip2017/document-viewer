@@ -63,8 +63,8 @@ public class BookSettingsTest {
         assertThat(bs.animationType, is(PageAnimationType.NONE));
         assertThat(bs.bookmarks, is(Matchers.<Bookmark>empty()));
         assertThat(bs.cropPages, is(false));
-        assertThat(bs.offsetX, is(0f));
-        assertThat(bs.offsetY, is(0.4187299907207489f));
+//        assertThat(bs.offsetX, is(0f));
+//        assertThat(bs.offsetY, is(0.4187299907207489f));
         assertThat(bs.nightMode, is(false));
         assertThat(bs.positiveImagesInNightMode, is(false));
         assertThat(bs.contrast, is(100));

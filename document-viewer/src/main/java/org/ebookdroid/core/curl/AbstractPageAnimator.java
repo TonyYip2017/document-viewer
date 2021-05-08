@@ -1,18 +1,16 @@
 package org.ebookdroid.core.curl;
 
-import org.ebookdroid.common.settings.books.BookSettings;
-import org.ebookdroid.core.EventGLDraw;
-import org.ebookdroid.core.Page;
-import org.ebookdroid.core.SinglePageController;
-import org.ebookdroid.core.ViewState;
-
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
+import org.ebookdroid.core.EventGLDraw;
+import org.ebookdroid.core.Page;
+import org.ebookdroid.core.SinglePageController;
+import org.ebookdroid.core.ViewState;
 import org.emdev.ui.gl.GLCanvas;
+
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public abstract class AbstractPageAnimator extends SinglePageView implements PageAnimator {
 
@@ -80,10 +78,10 @@ public abstract class AbstractPageAnimator extends SinglePageView implements Pag
         return pageIndex == this.foreIndex || pageIndex == this.backIndex;
     }
 
-    private boolean isRightToLeft() {
-        final BookSettings bs = view.base.getBookSettings();
-        return bs.rtl;
-    }
+//    private boolean isRightToLeft() {
+//        final BookSettings bs = view.base.getBookSettings();
+//        return false;
+//    }
 
     /**
      * Swap to next (more accurately, right) view
@@ -97,13 +95,13 @@ public abstract class AbstractPageAnimator extends SinglePageView implements Pag
         if (pageCount == 0) {
             return viewState;
         }
-        if (isRightToLeft()) {
-            foreIndex = viewState.pages.currentIndex % pageCount;
-            backIndex = (pageCount + viewState.pages.currentIndex - 1) % pageCount;
-        } else {
+//        if (isRightToLeft()) {
+//            foreIndex = viewState.pages.currentIndex % pageCount;
+//            backIndex = (pageCount + viewState.pages.currentIndex - 1) % pageCount;
+//        } else {
             foreIndex = viewState.pages.currentIndex % pageCount;
             backIndex = (foreIndex + 1) % pageCount;
-        }
+//        }
 
         final Page forePage = viewState.model.getPageObject(foreIndex);
         final Page backPage = viewState.model.getPageObject(backIndex);
@@ -123,13 +121,13 @@ public abstract class AbstractPageAnimator extends SinglePageView implements Pag
             return viewState;
         }
 
-        if (isRightToLeft()) {
-            backIndex = viewState.pages.currentIndex % pageCount;
-            foreIndex = (viewState.pages.currentIndex + 1) % pageCount;
-        } else {
+//        if (isRightToLeft()) {
+//            backIndex = viewState.pages.currentIndex % pageCount;
+//            foreIndex = (viewState.pages.currentIndex + 1) % pageCount;
+//        } else {
             backIndex = viewState.pages.currentIndex % pageCount;
             foreIndex = (pageCount + backIndex - 1) % pageCount;
-        }
+//        }
 
         final Page forePage = viewState.model.getPageObject(foreIndex);
         final Page backPage = viewState.model.getPageObject(backIndex);

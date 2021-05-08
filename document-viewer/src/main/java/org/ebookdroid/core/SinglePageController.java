@@ -120,8 +120,8 @@ public class SinglePageController extends AbstractViewController {
         if (curler.enabled()) {
             curler.animate(direction);
         } else {
-            final BookSettings bs = base.getBookSettings();
-            final float offsetX = bs != null ? bs.offsetX : 0;
+//            final BookSettings bs = base.getBookSettings();
+            final float offsetX = 0;
 
             final Page page = model.getCurrentPageObject();
             final RectF viewRect = base.getView().getViewRect();

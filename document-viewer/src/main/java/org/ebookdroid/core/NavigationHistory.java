@@ -41,8 +41,8 @@ public class NavigationHistory {
 
         Position(final BookSettings bs) {
             this.index = bs.currentPage;
-            this.offsetX = bs.offsetX;
-            this.offsetY = bs.offsetY;
+            this.offsetX = 0;
+            this.offsetY = 0;
         }
     }
 }

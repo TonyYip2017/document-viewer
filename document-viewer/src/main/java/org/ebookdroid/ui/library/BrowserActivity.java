@@ -208,7 +208,7 @@ public class BrowserActivity extends AbstractActionActivity<BrowserActivity, Bro
             if (LengthUtils.isNotEmpty(bs.bookmarks)) {
                 list.addAll(bs.bookmarks);
             }
-            list.add(new Bookmark(true, getString(R.string.bookmark_current), bs.currentPage, bs.offsetX, bs.offsetY));
+            list.add(new Bookmark(true, getString(R.string.bookmark_current), bs.currentPage, 0, 0));
         }
 
         Collections.sort(list);

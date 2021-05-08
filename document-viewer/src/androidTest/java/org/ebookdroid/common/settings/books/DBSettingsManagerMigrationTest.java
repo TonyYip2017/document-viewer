@@ -50,8 +50,8 @@ public class DBSettingsManagerMigrationTest {
         bs.animationType = PageAnimationType.CURLER;
         bs.bookmarks.addAll(createBook1Bookmarks());
         bs.cropPages = true;
-        bs.offsetX = 4.5f;
-        bs.offsetY = -1.5f;
+//        bs.offsetX = 4.5f;
+//        bs.offsetY = -1.5f;
         bs.nightMode = true;
         bs.positiveImagesInNightMode = true;
         bs.contrast = 20;
@@ -79,8 +79,8 @@ public class DBSettingsManagerMigrationTest {
         assertThat(bs.animationType, is(PageAnimationType.CURLER));
         assertThat(bs.bookmarks, is(createBook1Bookmarks()));
         assertThat(bs.cropPages, is(true));
-        assertThat(bs.offsetX, is(4.5f));
-        assertThat(bs.offsetY, is(-1.5f));
+//        assertThat(bs.offsetX, is(4.5f));
+//        assertThat(bs.offsetY, is(-1.5f));
         assertThat(bs.nightMode, is(true));
         assertThat(bs.positiveImagesInNightMode, is(true));
         assertThat(bs.contrast, is(20));
@@ -110,8 +110,8 @@ public class DBSettingsManagerMigrationTest {
         bs.animationType = PageAnimationType.NONE;
         bs.bookmarks.addAll(createBook2Bookmarks());
         bs.cropPages = false;
-        bs.offsetX = 100.0f;
-        bs.offsetY = 0.0f;
+//        bs.offsetX = 100.0f;
+//        bs.offsetY = 0.0f;
         bs.nightMode = false;
         bs.positiveImagesInNightMode = false;
         bs.contrast = 5;
@@ -139,8 +139,8 @@ public class DBSettingsManagerMigrationTest {
         assertThat(bs.animationType, is(PageAnimationType.NONE));
         assertThat(bs.bookmarks, is(createBook2Bookmarks()));
         assertThat(bs.cropPages, is(false));
-        assertThat(bs.offsetX, is(100f));
-        assertThat(bs.offsetY, is(0f));
+//        assertThat(bs.offsetX, is(100f));
+//        assertThat(bs.offsetY, is(0f));
         assertThat(bs.nightMode, is(false));
         assertThat(bs.positiveImagesInNightMode, is(false));
         assertThat(bs.contrast, is(5));

@@ -182,7 +182,7 @@ public abstract class AbstractViewController extends AbstractComponentController
             final Page page = pageToGo.getActualPage(model, bs);
             final int toPage = page != null ? page.index.viewIndex : 0;
 
-            goToPage(toPage, bs.offsetX, bs.offsetY);
+            goToPage(toPage, 0, 0);
         } else {
             if (LCTX.isDebugEnabled()) {
                 LCTX.d("View has been shown before");
@@ -191,8 +191,8 @@ public abstract class AbstractViewController extends AbstractComponentController
     }
 
     protected final void updatePosition(final Page page, final ViewState viewState) {
-        final PointF pos = viewState.getPositionOnPage(page);
-        SettingsManager.positionChanged(base.getBookSettings(), pos.x, pos.y);
+//        final PointF pos = viewState.getPositionOnPage(page);
+//        SettingsManager.positionChanged(base.getBookSettings(), pos.x, pos.y);
     }
 
     /**
